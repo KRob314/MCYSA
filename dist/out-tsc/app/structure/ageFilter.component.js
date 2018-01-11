@@ -11,28 +11,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("../models/repository");
-var TeamTableComponent = /** @class */ (function () {
-    function TeamTableComponent(repo) {
+var AgeFilterComponent = /** @class */ (function () {
+    function AgeFilterComponent(repo) {
         this.repo = repo;
     }
-    Object.defineProperty(TeamTableComponent.prototype, "teams", {
-        get: function () {
-            return this.repo.teams;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    TeamTableComponent.prototype.selectTeam = function (id) {
-        return this.repo.getTeam(id);
+    AgeFilterComponent.prototype.setAge = function (age) {
+        this.repo.filter.age = age;
+        this.repo.getTeams();
     };
-    TeamTableComponent = __decorate([
+    AgeFilterComponent = __decorate([
         core_1.Component({
-            selector: "team-table",
-            templateUrl: "./teamTable.component.html"
+            selector: "age-filter",
+            templateUrl: "ageFilter.component.html"
         }),
         __metadata("design:paramtypes", [repository_1.Repository])
-    ], TeamTableComponent);
-    return TeamTableComponent;
+    ], AgeFilterComponent);
+    return AgeFilterComponent;
 }());
-exports.TeamTableComponent = TeamTableComponent;
-//# sourceMappingURL=teamTable.component.js.map
+exports.AgeFilterComponent = AgeFilterComponent;
+//# sourceMappingURL=ageFilter.component.js.map

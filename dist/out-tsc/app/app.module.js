@@ -14,13 +14,15 @@ var app_component_1 = require("./app.component");
 var model_module_1 = require("./models/model.module");
 var teamTable_component_1 = require("./structure/teamTable.component");
 var stateFilter_component_1 = require("./structure/stateFilter.component");
+var ageFilter_component_1 = require("./structure/ageFilter.component");
+var teamDetails_component_1 = require("./structure/teamDetails.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             declarations: [
-                app_component_1.AppComponent, teamTable_component_1.TeamTableComponent, stateFilter_component_1.StateFilterComponent
+                app_component_1.AppComponent, teamTable_component_1.TeamTableComponent, stateFilter_component_1.StateFilterComponent, ageFilter_component_1.AgeFilterComponent, teamDetails_component_1.TeamDetailComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,

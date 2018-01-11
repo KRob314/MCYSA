@@ -7,6 +7,7 @@
             <th>Manager First Name</th>
             <th>Manager Last Name</th>
             <th>State</th>
+            <th></th>
         </tr>
         <tr *ngFor="let team of teams">
             <td>{{team?.teamName || 'Loading Data...'}}</td>
@@ -14,5 +15,6 @@
             <td>{{team?.managerFirstName}}</td>
             <td>{{team?.managerLastName}}</td>
             <td>{{team?.state.name}}</td>
+            <td> <button class="btn btn-default btn-sm" (click)="selectTeam(team.id)">Details</button></td>
         </tr>
     </table>

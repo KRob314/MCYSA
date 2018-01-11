@@ -13,9 +13,9 @@ var core_1 = require("@angular/core");
 var repository_1 = require("./models/repository");
 var team_model_1 = require("./models/team.model");
 var AppComponent = /** @class */ (function () {
+    //title = 'app works!';
     function AppComponent(repo) {
         this.repo = repo;
-        this.title = 'app works!';
         console.log("AppComponent constructor");
     }
     Object.defineProperty(AppComponent.prototype, "team", {

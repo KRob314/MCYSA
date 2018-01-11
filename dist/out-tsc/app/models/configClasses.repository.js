@@ -6,6 +6,7 @@ var Filter = /** @class */ (function () {
     }
     Filter.prototype.reset = function () {
         this.state = this.search = null;
+        this.age = null;
         this.related = false;
     };
     return Filter;

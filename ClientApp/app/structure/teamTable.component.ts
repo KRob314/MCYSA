@@ -1,5 +1,9 @@
 ﻿import { Component } from '@angular/core';
-import { Repository } from "../models/repository";import { Team } from "../models/team.model";@Component({    selector: "team-table",
+import { Repository } from "../models/repository";
+import { Team } from "../models/team.model";
+
+@Component({
+    selector: "team-table",
     templateUrl: "./teamTable.component.html"
 })
 
@@ -13,5 +17,11 @@ export class TeamTableComponent
     get teams(): Team[]
     {
         return this.repo.teams;
+    }
+
+    selectTeam(id: number)
+    {
+       
+        return this.repo.getTeam(id);
     }
 }

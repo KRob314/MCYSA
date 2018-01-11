@@ -10,7 +10,7 @@ import { Team } from "./models/team.model";
 export class AppComponent
 {
 
-    title = 'app works!';
+    //title = 'app works!';
 
     constructor(private repo: Repository)
     {

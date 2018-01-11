@@ -18,7 +18,7 @@ export class Repository
     {
         //this.team = JSON.parse(document.getElementById("data").textContent);
        // this.getTeam(2);
-        this.filter.state = "va";
+        //this.filter.state = "va";
         this.filter.related = true;
         this.getTeams(true);
     }
@@ -30,7 +30,7 @@ export class Repository
         this.sendRequest(RequestMethod.Get, teamUrl + "/" + id)
             .subscribe(response =>
             {
-                this.team = response.json();
+                this.team = response;
                 console.log(this.team);
             });
 
@@ -45,6 +45,9 @@ export class Repository
 
         if (this.filter.state)
             url += "&state=" + this.filter.state;
+
+        if (this.filter.age)
+            url += "&ageGroupId=" + this.filter.age;
 
         this.sendRequest(RequestMethod.Get, url).subscribe(response =>
             this.teams = response);

@@ -11,28 +11,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("../models/repository");
-var TeamTableComponent = /** @class */ (function () {
-    function TeamTableComponent(repo) {
+var TeamDetailComponent = /** @class */ (function () {
+    function TeamDetailComponent(repo) {
         this.repo = repo;
     }
-    Object.defineProperty(TeamTableComponent.prototype, "teams", {
+    Object.defineProperty(TeamDetailComponent.prototype, "team", {
         get: function () {
-            return this.repo.teams;
+            return this.repo.team;
         },
         enumerable: true,
         configurable: true
     });
-    TeamTableComponent.prototype.selectTeam = function (id) {
-        return this.repo.getTeam(id);
-    };
-    TeamTableComponent = __decorate([
+    TeamDetailComponent = __decorate([
         core_1.Component({
-            selector: "team-table",
-            templateUrl: "./teamTable.component.html"
+            selector: "team-detail",
+            templateUrl: "teamDetail.component.html"
         }),
         __metadata("design:paramtypes", [repository_1.Repository])
-    ], TeamTableComponent);
-    return TeamTableComponent;
+    ], TeamDetailComponent);
+    return TeamDetailComponent;
 }());
-exports.TeamTableComponent = TeamTableComponent;
-//# sourceMappingURL=teamTable.component.js.map
+exports.TeamDetailComponent = TeamDetailComponent;
+//# sourceMappingURL=teamDetails.component.js.map

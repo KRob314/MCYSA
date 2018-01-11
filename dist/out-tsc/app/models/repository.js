@@ -20,7 +20,7 @@ var Repository = /** @class */ (function () {
         this.filterObject = new configClasses_repository_1.Filter();
         //this.team = JSON.parse(document.getElementById("data").textContent);
         // this.getTeam(2);
-        this.filter.state = "va";
+        //this.filter.state = "va";
         this.filter.related = true;
         this.getTeams(true);
     }
@@ -40,6 +40,8 @@ var Repository = /** @class */ (function () {
         var url = teamUrl + "?related=" + this.filter.related;
         if (this.filter.state)
             url += "&state=" + this.filter.state;
+        if (this.filter.age)
+            url += "&ageGroupId=" + this.filter.age;
         this.sendRequest(http_1.RequestMethod.Get, url).subscribe(function (response) {
             return _this.teams = response;
         });

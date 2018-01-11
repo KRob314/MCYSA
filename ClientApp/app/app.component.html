@@ -2,8 +2,16 @@
 <h3>{{title}}</h3>
 
 <section class="container">
-    <state-filter></state-filter>
-    <div class="marginT-30">
-        <team-table></team-table>
-    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <state-filter></state-filter>
+            <age-filter></age-filter>
+            <team-table></team-table>
+        </div>
+        <div class="col-md-4" style="margin-top:55px">
+            <team-detail></team-detail>
+        </div>
+    </div>    
+    
 </section>
