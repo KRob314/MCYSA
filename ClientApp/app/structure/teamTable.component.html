@@ -1,0 +1,18 @@
+﻿
+
+    <table class="table table-striped">
+        <tr>
+            <th>Team Name</th>
+            <th>Age Group</th>
+            <th>Manager First Name</th>
+            <th>Manager Last Name</th>
+            <th>State</th>
+        </tr>
+        <tr *ngFor="let team of teams">
+            <td>{{team?.teamName || 'Loading Data...'}}</td>
+            <td>{{team?.ageGroup.name || 'Loading data ...'}}</td>
+            <td>{{team?.managerFirstName}}</td>
+            <td>{{team?.managerLastName}}</td>
+            <td>{{team?.state.name}}</td>
+        </tr>
+    </table>

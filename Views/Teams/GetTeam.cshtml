@@ -1,0 +1,132 @@
+﻿@model MCYSA.Models.Team
+
+@{
+    ViewData["Title"] = "GetTeam";
+}
+
+<h2>GetTeam</h2>
+
+<div>
+    <h4>Team</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TeamName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TeamName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ManagerFirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ManagerFirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ManagerLastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ManagerLastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Street)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Street)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Zip)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Zip)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PocFirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PocFirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PocLastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PocLastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PocPhone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PocPhone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PocEmail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PocEmail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RegisteredDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RegisteredDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsVetted)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsVetted)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AgeGroup)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AgeGroup.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Country.CountryId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.State.StateId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tournament)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tournament.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

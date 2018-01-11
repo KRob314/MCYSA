@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MCYSA Registration @ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" >
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand text-white">@(ViewBag.Message ?? "MCYSA Registration")</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a runat="server" href="~/">Home</a></li>
+                    <li><a runat="server" href="/Teams">Teams</a></li>
+                    <li><a runat="server" href="~/Contact.aspx">Contact</a></li>
+                </ul>
+                
+                @*<asp:LoginView runat="server" ViewStateMode="Disabled">
+                    <RoleGroups>
+                        <asp:RoleGroup Roles="Admin">
+                            <ContentTemplate>
+                                <ul class="nav navbar-nav">
+                                    <li><a runat="server" href="/Account/Admin/Dashboard.aspx">Dashboard</a></li>
+                                    <li><a runat="server" href="/Account/Admin/AdminUsers.aspx">Users</a></li>
+                                </ul>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                                    <li>
+                                        <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                    </li>
+                                </ul>
+                            </ContentTemplate>
+                        </asp:RoleGroup>
+                        <asp:RoleGroup Roles="Manager">
+                            <ContentTemplate>
+                                <ul class="nav navbar-nav">
+                                    <li><a runat="server" href="/Account/Manager/MyTeam.aspx">My Team</a></li>
+                                    <li><a runat="server" href="/Account/Manager/MyPlayers.aspx">My Players</a></li>
+                                </ul>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a runat="server" href="~/Account/Manage.aspx" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                                    <li>
+                                        <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                    </li>
+                                </ul>
+                            </ContentTemplate>
+                        </asp:RoleGroup>
+                    </RoleGroups>
+                    <AnonymousTemplate>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a runat="server" href="~/Account/Register.aspx">Register</a></li>
+                            <li><a runat="server" href="~/Account/Login.aspx">Log in</a></li>
+                        </ul>
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a runat="server" href="~/Account/Manage.aspx" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                            <li>
+                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                            </li>
+                        </ul>
+                    </LoggedInTemplate>
+                </asp:LoginView>*@
+            </div>
+        </div>
+    </div>
+
+    <section class="container-fluid">
+        <div style="margin-top:60px;">
+            @RenderBody()
+        </div>
+    </section>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
