@@ -11,31 +11,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("../models/repository");
-var router_1 = require("@angular/router");
-var TeamTableComponent = /** @class */ (function () {
-    function TeamTableComponent(repo, router) {
+var AdminComponent = /** @class */ (function () {
+    function AdminComponent(repo) {
         this.repo = repo;
-        this.router = router;
+        repo.filter.reset();
+        repo.filter.related = true;
+        this.repo.getTeams();
     }
-    Object.defineProperty(TeamTableComponent.prototype, "teams", {
-        get: function () {
-            return this.repo.teams;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    TeamTableComponent.prototype.selectTeam = function (id) {
-        this.repo.getTeam(id);
-        this.router.navigateByUrl("/detail");
-    };
-    TeamTableComponent = __decorate([
+    AdminComponent = __decorate([
         core_1.Component({
-            selector: "team-table",
-            templateUrl: "./teamTable.component.html"
+            templateUrl: "admin.component.html"
         }),
-        __metadata("design:paramtypes", [repository_1.Repository, router_1.Router])
-    ], TeamTableComponent);
-    return TeamTableComponent;
+        __metadata("design:paramtypes", [repository_1.Repository])
+    ], AdminComponent);
+    return AdminComponent;
 }());
-exports.TeamTableComponent = TeamTableComponent;
-//# sourceMappingURL=teamTable.component.js.map
+exports.AdminComponent = AdminComponent;
+//# sourceMappingURL=admin.component.js.map

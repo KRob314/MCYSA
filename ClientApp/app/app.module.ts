@@ -9,6 +9,8 @@ import { TeamTableComponent } from "./structure/teamTable.component";
 import { StateFilterComponent } from "./structure/stateFilter.component";
 import { AgeFilterComponent } from "./structure/ageFilter.component";
 import { TeamDetailComponent } from "./structure/teamDetail.component";
+import { RoutingConfig } from "./app.routing";
+import { AdminModule } from "./admin/admin.module";
 
 @NgModule({
     declarations: [
@@ -18,7 +20,9 @@ import { TeamDetailComponent } from "./structure/teamDetail.component";
         BrowserModule,
         FormsModule,
         HttpModule,
-        ModelModule
+        ModelModule,
+        RoutingConfig, 
+        AdminModule
     ],
     providers: [],
     bootstrap: [AppComponent]

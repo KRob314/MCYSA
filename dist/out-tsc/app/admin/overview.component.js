@@ -11,25 +11,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("../models/repository");
-var TeamDetailComponent = /** @class */ (function () {
-    function TeamDetailComponent(repo) {
+var OverviewComponent = /** @class */ (function () {
+    function OverviewComponent(repo) {
         this.repo = repo;
     }
-    Object.defineProperty(TeamDetailComponent.prototype, "team", {
+    Object.defineProperty(OverviewComponent.prototype, "teams", {
         get: function () {
-            return this.repo.team;
+            return this.repo.teams;
         },
         enumerable: true,
         configurable: true
     });
-    TeamDetailComponent = __decorate([
+    OverviewComponent = __decorate([
         core_1.Component({
-            selector: "team-detail",
-            templateUrl: "teamDetail.component.html"
+            templateUrl: "overview.component.html"
         }),
         __metadata("design:paramtypes", [repository_1.Repository])
-    ], TeamDetailComponent);
-    return TeamDetailComponent;
+    ], OverviewComponent);
+    return OverviewComponent;
 }());
-exports.TeamDetailComponent = TeamDetailComponent;
-//# sourceMappingURL=teamDetails.component.js.map
+exports.OverviewComponent = OverviewComponent;
+//# sourceMappingURL=overview.component.js.map

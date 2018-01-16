@@ -48,6 +48,7 @@ namespace MCYSA
             {
                 HotModuleReplacement = true
             });
+
             //if (env.IsDevelopment())
             //{
             //    app.UseDeveloperExceptionPage();
@@ -64,6 +65,8 @@ namespace MCYSA
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapSpaFallbackRoute("angular-fallback", new { controller = "None", action = "Index" });
             });
 
             //SeedData.SeedDatabase(app.ApplicationServices.GetRequiredService<McysaContext>());

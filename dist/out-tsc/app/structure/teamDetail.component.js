@@ -12,30 +12,30 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("../models/repository");
 var router_1 = require("@angular/router");
-var TeamTableComponent = /** @class */ (function () {
-    function TeamTableComponent(repo, router) {
+var TeamDetailComponent = /** @class */ (function () {
+    function TeamDetailComponent(repo, router, activeRoute) {
         this.repo = repo;
-        this.router = router;
+        var id = Number.parseInt(activeRoute.snapshot.params["id"]);
+        if (id)
+            this.repo.getTeam(id);
+        else
+            router.navigateByUrl("/");
     }
-    Object.defineProperty(TeamTableComponent.prototype, "teams", {
+    Object.defineProperty(TeamDetailComponent.prototype, "team", {
         get: function () {
-            return this.repo.teams;
+            return this.repo.team;
         },
         enumerable: true,
         configurable: true
     });
-    TeamTableComponent.prototype.selectTeam = function (id) {
-        this.repo.getTeam(id);
-        this.router.navigateByUrl("/detail");
-    };
-    TeamTableComponent = __decorate([
+    TeamDetailComponent = __decorate([
         core_1.Component({
-            selector: "team-table",
-            templateUrl: "./teamTable.component.html"
+            selector: "team-detail",
+            templateUrl: "teamDetail.component.html"
         }),
-        __metadata("design:paramtypes", [repository_1.Repository, router_1.Router])
-    ], TeamTableComponent);
-    return TeamTableComponent;
+        __metadata("design:paramtypes", [repository_1.Repository, router_1.Router, router_1.ActivatedRoute])
+    ], TeamDetailComponent);
+    return TeamDetailComponent;
 }());
-exports.TeamTableComponent = TeamTableComponent;
-//# sourceMappingURL=teamTable.component.js.map
+exports.TeamDetailComponent = TeamDetailComponent;
+//# sourceMappingURL=teamDetail.component.js.map

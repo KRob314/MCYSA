@@ -29,7 +29,7 @@ var Repository = /** @class */ (function () {
         console.log("getTeam()");
         this.sendRequest(http_1.RequestMethod.Get, teamUrl + "/" + id)
             .subscribe(function (response) {
-            _this.team = response.json();
+            _this.team = response;
             console.log(_this.team);
         });
     };

@@ -1,6 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { Repository } from "../models/repository";
 import { Team } from "../models/team.model";
+import { Router } from "@angular/router";
 
 @Component({
     selector: "team-table",
@@ -9,7 +10,7 @@ import { Team } from "../models/team.model";
 
 export class TeamTableComponent
 {
-    constructor(private repo: Repository)
+    constructor(private repo: Repository, private router: Router)
     {
 
     }
@@ -22,6 +23,7 @@ export class TeamTableComponent
     selectTeam(id: number)
     {
        
-        return this.repo.getTeam(id);
+        this.repo.getTeam(id);
+        this.router.navigateByUrl("/detail");
     }
 }

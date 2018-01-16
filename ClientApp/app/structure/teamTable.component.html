@@ -1,20 +1,22 @@
 ﻿
 
-    <table class="table table-striped">
-        <tr>
-            <th>Team Name</th>
-            <th>Age Group</th>
-            <th>Manager First Name</th>
-            <th>Manager Last Name</th>
-            <th>State</th>
-            <th></th>
-        </tr>
-        <tr *ngFor="let team of teams">
-            <td>{{team?.teamName || 'Loading Data...'}}</td>
-            <td>{{team?.ageGroup.name || 'Loading data ...'}}</td>
-            <td>{{team?.managerFirstName}}</td>
-            <td>{{team?.managerLastName}}</td>
-            <td>{{team?.state.name}}</td>
-            <td> <button class="btn btn-default btn-sm" (click)="selectTeam(team.id)">Details</button></td>
-        </tr>
-    </table>
+<table class="table table-striped marginT-15">
+    <tr>
+        <th>Team Name</th>
+        <th>Age Group</th>
+        <th>Manager First Name</th>
+        <th>Manager Last Name</th>
+        <th>State</th>
+        <th></th>
+    </tr>
+    <tr *ngFor="let team of teams">
+        <td>{{team?.teamName || 'Loading Data...'}}</td>
+        <td>{{team?.ageGroup.name || 'Loading data ...'}}</td>
+        <td>{{team?.managerFirstName}}</td>
+        <td>{{team?.managerLastName}}</td>
+        <td>{{team?.state.name}}</td>
+        <td> <button class="btn btn-default btn-sm" [routerLink]="['/detail', team.id]">Details</button></td>
+    </tr>
+</table>
+
+<!-- (click)="selectTeam(team.id)" data-toggle="modal" data-target="#myModal"-->
