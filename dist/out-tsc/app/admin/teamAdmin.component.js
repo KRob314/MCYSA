@@ -28,6 +28,8 @@ var TeamAdminComponent = /** @class */ (function () {
         this.repo.getTeam(id);
     };
     TeamAdminComponent.prototype.saveTeam = function () {
+        console.log("saveTeam()");
+        this.repo.team.stateId = this.repo.team.state.stateId;
         console.log(this.repo.team);
         if (this.repo.team.id == null)
             this.repo.createTeam(this.repo.team);

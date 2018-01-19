@@ -108,7 +108,7 @@ export class Repository
                 managerFirstname: team.managerFirstName,
                 managerLastName: team.managerLastName,
                 ageGroupId: team.ageGroupId,
-                stateId: team.stateId,
+				stateId: team.state.stateId,
                 tournamentId: team.tournamentId
             };
 

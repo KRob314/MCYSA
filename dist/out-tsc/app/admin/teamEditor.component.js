@@ -33,6 +33,9 @@ var TeamEditorComponent = /** @class */ (function () {
         return t1 && t2 && t1.name == t2.name;
     };
     TeamEditorComponent.prototype.compareStates = function (s1, s2) {
+        //console.log("compareStates()");
+        //console.log(s1.name);
+        //console.log(s2.name);
         return s1 && s2 && s1.name == s2.name;
     };
     TeamEditorComponent = __decorate([

@@ -92,7 +92,7 @@ var Repository = /** @class */ (function () {
             managerFirstname: team.managerFirstName,
             managerLastName: team.managerLastName,
             ageGroupId: team.ageGroupId,
-            stateId: team.stateId,
+            stateId: team.state.stateId,
             tournamentId: team.tournamentId
         };
         console.log("in repo");

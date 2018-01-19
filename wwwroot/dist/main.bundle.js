@@ -494,6 +494,9 @@ var TeamEditorComponent = (function () {
         return t1 && t2 && t1.name == t2.name;
     };
     TeamEditorComponent.prototype.compareStates = function (s1, s2) {
+        //console.log("compareStates()");
+        //console.log(s1.name);
+        //console.log(s2.name);
         return s1 && s2 && s1.name == s2.name;
     };
     return TeamEditorComponent;
@@ -514,7 +517,7 @@ var _a;
 /***/ 183:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"form-group\">\r\n    <label>Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.id\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Tournament Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.tournamentId\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Tournaments</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"team.tournament\" [compareWith]=\"compareTournaments\">\r\n        <option *ngFor=\"let t of tournaments\" [ngValue]=\"t\">{{t.id}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Team Name</label>\r\n    <textarea class=\"form-control\" [(ngModel)]=\"team.teamName\"></textarea>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Manager First Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.managerFirstName\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Manager Last Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.managerLastName\" />\r\n</div>\r\n<!--<div class=\"form-group\">\r\n    <label>State</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.state.name\" />\r\n</div>-->\r\n<div class=\"form-group\">\r\n    <label>State</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"team.state\" [compareWith]=\"compareStates\">\r\n        <option *ngFor=\"let s of states\" [ngValue]=\"s.stateId\">{{s.name}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Age Group</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.agegroup\" />\r\n</div>"
+module.exports = "<div class=\"form-group\">\r\n    <label>Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.id\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Tournament Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.tournamentId\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Tournaments</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"team.tournament\" [compareWith]=\"compareTournaments\">\r\n        <option *ngFor=\"let t of tournaments\" [ngValue]=\"t\">{{t.id}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Team Name</label>\r\n    <textarea class=\"form-control\" [(ngModel)]=\"team.teamName\"></textarea>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Manager First Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.managerFirstName\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Manager Last Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.managerLastName\" />\r\n</div>\r\n<!--<div class=\"form-group\">\r\n    <label>State</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.state.name\" />\r\n</div>-->\r\n<div class=\"form-group\">\r\n    <label>State</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"team.state\" [compareWith]=\"compareStates\">\r\n        <option *ngFor=\"let s of states\" [ngValue]=\"s\">{{s.name}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Age Group</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.agegroup\" />\r\n</div>"
 
 /***/ }),
 
@@ -620,7 +623,7 @@ var Repository = (function () {
             managerFirstname: team.managerFirstName,
             managerLastName: team.managerLastName,
             ageGroupId: team.ageGroupId,
-            stateId: team.stateId,
+            stateId: team.state.stateId,
             tournamentId: team.tournamentId
         };
         console.log("in repo");
@@ -902,6 +905,8 @@ var TeamAdminComponent = (function () {
         this.repo.getTeam(id);
     };
     TeamAdminComponent.prototype.saveTeam = function () {
+        console.log("saveTeam()");
+        this.repo.team.stateId = this.repo.team.state.stateId;
         console.log(this.repo.team);
         if (this.repo.team.id == null)
             this.repo.createTeam(this.repo.team);
