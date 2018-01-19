@@ -1,5 +1,6 @@
 ﻿import { AgeGroup } from "./agegroup.model";
 import { State } from "./state.model";
+import {Tournament} from "./tournament.model";
 
 export class Team
 {
@@ -8,9 +9,10 @@ export class Team
         public tournamentId?: number, 
         public ageGroupId?: number, 
         public stateId?: string,
-        public teamname?: string,
+        public teamName?: string,
         public managerFirstName?: string, 
         public managerLastName?: string,
         public state?: State,
-        public agegroup?: AgeGroup) { }
+        public agegroup?: AgeGroup,
+		public tournament?: Tournament) { }
 }

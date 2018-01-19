@@ -30,8 +30,9 @@ namespace MCYSA.Models.BindingTargets
         public string ManagerLastName { get; set; }
 
 
-        public string State { get; set; }
-        public int AgeGroup { get; set; }
+        public State State { get; set; }
+        public AgeGroup AgeGroup { get; set; }
+        public Tournament Tournament { get; set; }
 
         public Team Team => new Team
         {

@@ -11,6 +11,7 @@ export class AdminComponent
     {
         repo.filter.reset();
         repo.filter.related = true;
-        this.repo.getTeams();
+		this.repo.getTeams();
+		this.repo.getStates();
     }
 }

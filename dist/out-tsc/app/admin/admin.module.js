@@ -13,13 +13,14 @@ var forms_1 = require("@angular/forms");
 var admin_component_1 = require("./admin.component");
 var overview_component_1 = require("./overview.component");
 var teamAdmin_component_1 = require("./teamAdmin.component");
+var teamEditor_component_1 = require("./teamEditor.component");
 var AdminModule = /** @class */ (function () {
     function AdminModule() {
     }
     AdminModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, router_1.RouterModule, forms_1.FormsModule],
-            declarations: [admin_component_1.AdminComponent, overview_component_1.OverviewComponent, teamAdmin_component_1.TeamAdminComponent]
+            declarations: [admin_component_1.AdminComponent, overview_component_1.OverviewComponent, teamAdmin_component_1.TeamAdminComponent, teamEditor_component_1.TeamEditorComponent]
         })
     ], AdminModule);
     return AdminModule;

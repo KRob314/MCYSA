@@ -1,16 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Team = /** @class */ (function () {
-    function Team(id, tournamentId, ageGroupId, stateId, teamname, managerFirstName, managerLastName, state, agegroup) {
+    function Team(id, tournamentId, ageGroupId, stateId, teamName, managerFirstName, managerLastName, state, agegroup, tournament) {
         this.id = id;
         this.tournamentId = tournamentId;
         this.ageGroupId = ageGroupId;
         this.stateId = stateId;
-        this.teamname = teamname;
+        this.teamName = teamName;
         this.managerFirstName = managerFirstName;
         this.managerLastName = managerLastName;
         this.state = state;
         this.agegroup = agegroup;
+        this.tournament = tournament;
     }
     return Team;
 }());

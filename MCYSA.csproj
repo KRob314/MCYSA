@@ -10,11 +10,13 @@
     <None Remove="ClientApp\app\admin\admin.module.ts" />
     <None Remove="ClientApp\app\admin\overview.component.ts" />
     <None Remove="ClientApp\app\admin\teamAdmin.component.ts" />
+    <None Remove="ClientApp\app\admin\teamEditor.component.ts" />
     <None Remove="ClientApp\app\app.routing.ts" />
     <None Remove="ClientApp\app\models\configClasses.repository.ts" />
     <None Remove="ClientApp\app\models\model.module.ts" />
     <None Remove="ClientApp\app\models\repository.ts" />
     <None Remove="ClientApp\app\models\state.model.ts" />
+    <None Remove="ClientApp\app\models\tournament.model.ts" />
     <None Remove="ClientApp\app\structure\stateFilter.component.ts" />
     <None Remove="ClientApp\app\structure\teamDetail.component.ts" />
     <None Remove="ClientApp\app\structure\teamTable.component.ts" />
@@ -41,11 +43,13 @@
     <TypeScriptCompile Include="ClientApp\app\admin\admin.module.ts" />
     <TypeScriptCompile Include="ClientApp\app\admin\overview.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\admin\teamAdmin.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\admin\teamEditor.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\app.routing.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\configClasses.repository.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\model.module.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\repository.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\state.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\models\tournament.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\structure\stateFilter.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\structure\teamDetail.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\structure\teamTable.component.ts" />

@@ -14,10 +14,12 @@ var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
 var configClasses_repository_1 = require("./configClasses.repository");
 var teamUrl = "/api/teams";
+var statesUrl = "/api/states";
 var Repository = /** @class */ (function () {
     function Repository(http) {
         this.http = http;
         this.filterObject = new configClasses_repository_1.Filter();
+        this.states = [];
         //this.team = JSON.parse(document.getElementById("data").textContent);
         // this.getTeam(2);
         //this.filter.state = "va";
@@ -46,6 +48,11 @@ var Repository = /** @class */ (function () {
             return _this.teams = response;
         });
     };
+    Repository.prototype.getStates = function () {
+        var _this = this;
+        console.log("get states()");
+        this.sendRequest(http_1.RequestMethod.Get, statesUrl).subscribe(function (response) { return _this.states = response; });
+    };
     Repository.prototype.sendRequest = function (verb, url, data) {
         return this.http.request(new http_1.Request({
             method: verb, url: url, body: data
@@ -63,13 +70,15 @@ var Repository = /** @class */ (function () {
     Repository.prototype.createTeam = function (team) {
         var _this = this;
         var data = {
-            teamName: team.teamname,
+            teamName: team.teamName,
             managerFirstname: team.managerFirstName,
             managerLastName: team.managerLastName,
             ageGroupId: team.ageGroupId,
             stateId: team.stateId,
             tournamentId: team.tournamentId
         };
+        console.log("createTeam");
+        console.log(data);
         this.sendRequest(http_1.RequestMethod.Post, teamUrl, data).subscribe(function (response) {
             team.id = response;
             _this.teams.push(team);
@@ -79,7 +88,7 @@ var Repository = /** @class */ (function () {
         var _this = this;
         var data = {
             id: team.id,
-            teamName: team.teamname,
+            teamName: team.teamName,
             managerFirstname: team.managerFirstName,
             managerLastName: team.managerLastName,
             ageGroupId: team.ageGroupId,

@@ -11,53 +11,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("../models/repository");
-var team_model_1 = require("../models/team.model");
-var TeamAdminComponent = /** @class */ (function () {
-    function TeamAdminComponent(repo) {
+var TeamEditorComponent = /** @class */ (function () {
+    function TeamEditorComponent(repo) {
         this.repo = repo;
-        this.tableMode = true;
     }
-    Object.defineProperty(TeamAdminComponent.prototype, "team", {
+    Object.defineProperty(TeamEditorComponent.prototype, "team", {
         get: function () {
             return this.repo.team;
         },
         enumerable: true,
         configurable: true
     });
-    TeamAdminComponent.prototype.selectTeam = function (id) {
-        this.repo.getTeam(id);
-    };
-    TeamAdminComponent.prototype.saveTeam = function () {
-        console.log(this.repo.team);
-        if (this.repo.team.id == null)
-            this.repo.createTeam(this.repo.team);
-        else
-            this.repo.replaceTeam(this.repo.team);
-        this.clearTeam();
-        this.tableMode = true;
-    };
-    //deleteTeam(id: number)
-    //{
-    //    this.repo.deleteTeam(id);
-    //}
-    TeamAdminComponent.prototype.clearTeam = function () {
-        this.repo.team = new team_model_1.Team();
-        this.tableMode = true;
-    };
-    Object.defineProperty(TeamAdminComponent.prototype, "teams", {
+    Object.defineProperty(TeamEditorComponent.prototype, "states", {
         get: function () {
-            return this.repo.teams;
+            return this.repo.states;
         },
         enumerable: true,
         configurable: true
     });
-    TeamAdminComponent = __decorate([
+    TeamEditorComponent.prototype.compareTournaments = function (t1, t2) {
+        return t1 && t2 && t1.name == t2.name;
+    };
+    TeamEditorComponent.prototype.compareStates = function (s1, s2) {
+        return s1 && s2 && s1.name == s2.name;
+    };
+    TeamEditorComponent = __decorate([
         core_1.Component({
-            templateUrl: "teamAdmin.component.html"
+            selector: "admin-team-editor",
+            templateUrl: "teamEditor.component.html"
         }),
         __metadata("design:paramtypes", [repository_1.Repository])
-    ], TeamAdminComponent);
-    return TeamAdminComponent;
+    ], TeamEditorComponent);
+    return TeamEditorComponent;
 }());
-exports.TeamAdminComponent = TeamAdminComponent;
-//# sourceMappingURL=teamAdmin.component.js.map
+exports.TeamEditorComponent = TeamEditorComponent;
+//# sourceMappingURL=teamEditor.component.js.map

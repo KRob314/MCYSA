@@ -1,15 +1,11 @@
-
-<h3>{{title}}</h3>
-
-<section class="container">
-    <state-filter></state-filter>
-    <age-filter></age-filter>
-    <router-outlet></router-outlet>
-
-
-
-    <!--<team-table></team-table>
-    <team-detail></team-detail>-->
-
-
-</section>
+<article>
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-block btn-outline-info" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"> Home</button>
+            <button class="btn btn-block btn-outline-info" routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"> Admin</button>
+        </div>
+        <div class="col-md-10">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</article>

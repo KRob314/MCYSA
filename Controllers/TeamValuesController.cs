@@ -23,7 +23,8 @@ namespace MCYSA.Controllers
         {
             Team result = context.Teams
                 .Include(t => t.AgeGroup)
-                .Include(t => t.State)
+                .Include(t => t.State).ThenInclude( s => s.Teams)
+                .Include(t => t.Tournament)
                 .First(t => t.Id == id);
 
             if (result != null)
@@ -36,7 +37,13 @@ namespace MCYSA.Controllers
                 if (result.State != null)
                 {
                     //result.State= null;
-                    result.State.Teams = null;
+                   result.State.Teams = null;
+
+                }
+
+                if(result.Tournament != null)
+                {
+                    result.Tournament.Teams = null;
                 }
             }
 
@@ -70,7 +77,7 @@ namespace MCYSA.Controllers
 
             if (related)
             {
-                query = query.Include(t => t.State).Include(t => t.AgeGroup);
+                query = query.Include(t => t.State).Include(t => t.AgeGroup).Include(t => t.Tournament);
                 List<Team> data = query.ToList();
                 data.ForEach(t =>
                 {
@@ -83,6 +90,11 @@ namespace MCYSA.Controllers
                     {
                         //result.State= null;
                         t.State.Teams = null;
+                    }
+
+                    if(t.Tournament != null)
+                    {
+                        t.Tournament.Teams = null;
                     }
                 });
 

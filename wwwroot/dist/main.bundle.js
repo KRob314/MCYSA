@@ -1,21 +1,21 @@
 webpackJsonp([1],{
 
-/***/ 102:
+/***/ 103:
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(34);
-module.exports = __webpack_require__(115);
+module.exports = __webpack_require__(116);
 
 
 /***/ }),
 
-/***/ 115:
+/***/ 116:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_app_module__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_app_module__ = __webpack_require__(131);
 
 
 var bootApplication = function () {
@@ -40,119 +40,7 @@ else {
 
 /***/ }),
 
-/***/ 12:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Repository; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(84);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(135);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__configClasses_repository__ = __webpack_require__(136);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var teamUrl = "/api/teams";
-var Repository = (function () {
-    function Repository(http) {
-        this.http = http;
-        this.filterObject = new __WEBPACK_IMPORTED_MODULE_3__configClasses_repository__["a" /* Filter */]();
-        //this.team = JSON.parse(document.getElementById("data").textContent);
-        // this.getTeam(2);
-        //this.filter.state = "va";
-        this.filter.related = true;
-        this.getTeams(true);
-    }
-    Repository.prototype.getTeam = function (id) {
-        var _this = this;
-        console.log("getTeam()");
-        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestMethod */].Get, teamUrl + "/" + id)
-            .subscribe(function (response) {
-            _this.team = response;
-            console.log(_this.team);
-        });
-    };
-    Repository.prototype.getTeams = function (related) {
-        var _this = this;
-        if (related === void 0) { related = false; }
-        console.log("get teams()");
-        var url = teamUrl + "?related=" + this.filter.related;
-        if (this.filter.state)
-            url += "&state=" + this.filter.state;
-        if (this.filter.age)
-            url += "&ageGroupId=" + this.filter.age;
-        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestMethod */].Get, url).subscribe(function (response) {
-            return _this.teams = response;
-        });
-    };
-    Repository.prototype.sendRequest = function (verb, url, data) {
-        return this.http.request(new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Request */]({
-            method: verb, url: url, body: data
-        })).map(function (response) {
-            return response.headers.get("Content-Length") != "0" ? response.json() : null;
-        });
-    };
-    Object.defineProperty(Repository.prototype, "filter", {
-        get: function () {
-            return this.filterObject;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Repository.prototype.createTeam = function (team) {
-        var _this = this;
-        var data = {
-            teamName: team.teamname,
-            managerFirstname: team.managerFirstName,
-            managerLastName: team.managerLastName,
-            ageGroupId: team.ageGroupId,
-            stateId: team.stateId,
-            tournamentId: team.tournamentId
-        };
-        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestMethod */].Post, teamUrl, data).subscribe(function (response) {
-            team.id = response;
-            _this.teams.push(team);
-        });
-    };
-    Repository.prototype.replaceTeam = function (team) {
-        var _this = this;
-        var data = {
-            id: team.id,
-            teamName: team.teamname,
-            managerFirstname: team.managerFirstName,
-            managerLastName: team.managerLastName,
-            ageGroupId: team.ageGroupId,
-            stateId: team.stateId,
-            tournamentId: team.tournamentId
-        };
-        console.log("in repo");
-        console.log(data);
-        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestMethod */].Put, teamUrl + "/" + team.id, data).subscribe(function (response) { return _this.getTeams(); });
-    };
-    return Repository;
-}());
-Repository = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
-], Repository);
-
-var _a;
-//# sourceMappingURL=repository.js.map
-
-/***/ }),
-
-/***/ 130:
+/***/ 131:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -161,12 +49,12 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(84);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(135);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_model_module__ = __webpack_require__(140);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__structure_teamTable_component__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__structure_teamTable_component__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__structure_stateFilter_component__ = __webpack_require__(172);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__structure_ageFilter_component__ = __webpack_require__(174);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__structure_teamDetail_component__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__structure_teamDetail_component__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_routing__ = __webpack_require__(177);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__admin_admin_module__ = __webpack_require__(181);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -214,14 +102,14 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 134:
+/***/ 135:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_team_model__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_team_model__ = __webpack_require__(85);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -259,7 +147,7 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.replaceTeam = function () {
         var t = this.repo.teams[0];
-        t.teamname = "Modified Team Name";
+        t.teamName = "Modified Team Name";
         console.log("in app.component");
         console.log(t);
         this.repo.replaceTeam(t);
@@ -280,7 +168,7 @@ var _a;
 
 /***/ }),
 
-/***/ 136:
+/***/ 137:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -301,34 +189,10 @@ var Filter = (function () {
 
 /***/ }),
 
-/***/ 137:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Team; });
-var Team = (function () {
-    function Team(id, tournamentId, ageGroupId, stateId, teamname, managerFirstName, managerLastName, state, agegroup) {
-        this.id = id;
-        this.tournamentId = tournamentId;
-        this.ageGroupId = ageGroupId;
-        this.stateId = stateId;
-        this.teamname = teamname;
-        this.managerFirstName = managerFirstName;
-        this.managerLastName = managerLastName;
-        this.state = state;
-        this.agegroup = agegroup;
-    }
-    return Team;
-}());
-
-//# sourceMappingURL=team.model.js.map
-
-/***/ }),
-
 /***/ 138:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<h3>{{title}}</h3>\r\n\r\n<section class=\"container\">\r\n    <state-filter></state-filter>\r\n    <age-filter></age-filter>\r\n    <router-outlet></router-outlet>\r\n\r\n\r\n\r\n    <!--<team-table></team-table>\r\n    <team-detail></team-detail>-->\r\n\r\n\r\n</section>\r\n"
+module.exports = "<article>\r\n    <div class=\"row\">\r\n        <div class=\"col-md-2\">\r\n            <button class=\"btn btn-block btn-outline-info\" routerLink=\"/\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Home</button>\r\n            <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Admin</button>\r\n        </div>\r\n        <div class=\"col-md-10\">\r\n            <router-outlet></router-outlet>\r\n        </div>\r\n    </div>\r\n</article>"
 
 /***/ }),
 
@@ -356,7 +220,7 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModelModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repository__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repository__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -383,7 +247,7 @@ ModelModule = __decorate([
 /***/ 171:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n\r\n<table class=\"table table-striped marginT-15\">\r\n    <tr>\r\n        <th>Team Name</th>\r\n        <th>Age Group</th>\r\n        <th>Manager First Name</th>\r\n        <th>Manager Last Name</th>\r\n        <th>State</th>\r\n        <th></th>\r\n    </tr>\r\n    <tr *ngFor=\"let team of teams\">\r\n        <td>{{team?.teamName || 'Loading Data...'}}</td>\r\n        <td>{{team?.ageGroup.name || 'Loading data ...'}}</td>\r\n        <td>{{team?.managerFirstName}}</td>\r\n        <td>{{team?.managerLastName}}</td>\r\n        <td>{{team?.state.name}}</td>\r\n        <td> <button class=\"btn btn-default btn-sm\" [routerLink]=\"['/detail', team.id]\">Details</button></td>\r\n    </tr>\r\n</table>\r\n\r\n<!-- (click)=\"selectTeam(team.id)\" data-toggle=\"modal\" data-target=\"#myModal\"-->"
+module.exports = "\r\n<state-filter></state-filter>\r\n<age-filter></age-filter>\r\n\r\n<table class=\"table table-striped marginT-15\">\r\n    <tr>\r\n        <th>Team Name</th>\r\n        <th>Age Group</th>\r\n        <th>Manager First Name</th>\r\n        <th>Manager Last Name</th>\r\n        <th>State</th>\r\n        <th></th>\r\n    </tr>\r\n    <tr *ngFor=\"let team of teams\">\r\n        <td>{{team?.teamName || 'Loading Data...'}}</td>\r\n        <td>{{team?.ageGroup.name || 'Loading data ...'}}</td>\r\n        <td>{{team?.managerFirstName}}</td>\r\n        <td>{{team?.managerLastName}}</td>\r\n        <td>{{team?.state.name}}</td>\r\n        <td> <button class=\"btn btn-default btn-sm\" [routerLink]=\"['/detail', team.id]\">Details</button></td>\r\n    </tr>\r\n</table>\r\n\r\n<!-- (click)=\"selectTeam(team.id)\" data-toggle=\"modal\" data-target=\"#myModal\"-->"
 
 /***/ }),
 
@@ -393,7 +257,7 @@ module.exports = "\r\n\r\n<table class=\"table table-striped marginT-15\">\r\n  
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StateFilterComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -442,7 +306,7 @@ module.exports = "\r\n<div class=\"btn-group\" role=\"group\" aria-label=\"...\"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AgeFilterComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -487,7 +351,7 @@ module.exports = "\r\n\r\n<div class=\"btn-group pull-right\" role=\"group\" ari
 /***/ 176:
 /***/ (function(module, exports) {
 
-module.exports = "<!--<div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" routerLink=\"/table\"><span aria-hidden=\"true\">&times;</span></button>\r\n                <h4 class=\"modal-title\" id=\"myModalLabel\">{{team?.teamName}} Details</h4>\r\n            </div>\r\n            <div class=\"modal-body\">-->\r\n<table class=\"table table-striped table-condensed table-responsive marginT-15\">\r\n    <tr><th>Team Name</th> <td>{{team?.teamName}}</td></tr>\r\n    <tr><th>Age Group</th> <td>{{team?.ageGroup.name }}</td></tr>\r\n    <!--<tr><th>Tournament</th></tr>-->\r\n    <tr><th>Manager First Name</th>  <td>{{team?.managerFirstName}} </td></tr>\r\n    <tr><th>Manager Last Name</th> <td>{{team?.managerLastName}}</td> </tr>\r\n    <tr><th>Email</th>  <td>{{team?.email}} </td></tr>\r\n    <tr><th>Phone </th> <td>{{team?.phone}} </td></tr>\r\n    <tr><th>Street </th> <td>{{team?.street}} </td></tr>\r\n    <tr><th>City </th><td>{{team?.city}} </td></tr>\r\n    <tr><th>State</th> <td>{{team?.state.name}}</td>  </tr>\r\n    <tr><th>Zip</th>  <td>{{team?.zip}} </td></tr>\r\n    <tr><th>POC First Name</th><td>{{team?.pocFirstName}} </td></tr>\r\n    <tr><th>POC Last Name </th> <td>{{team?.pocLastName}} </td></tr>\r\n    <tr><th>POC Email </th><td>{{team?.pocEmail}} </td></tr>\r\n    <tr><th>POC Phone </th><td>{{team?.pocPhone}} </td></tr>\r\n</table>\r\n<div class=\"text-center\">\r\n    <button class=\"btn btn-primary\" routerLink=\"/table\">Back</button>\r\n</div>\r\n<!--</div>\r\n            <div class=\"modal-footer\">\r\n                <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\" routerLink=\"/table\">Close</button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>-->\r\n"
+module.exports = "<!--<div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" routerLink=\"/table\"><span aria-hidden=\"true\">&times;</span></button>\r\n                <h4 class=\"modal-title\" id=\"myModalLabel\">{{team?.teamName}} Details</h4>\r\n            </div>\r\n            <div class=\"modal-body\">-->\r\n<table class=\"table table-striped table-condensed table-responsive marginT-15\">\r\n    <tr><th>Team Name</th> <td>{{team?.teamName}}</td></tr>\r\n    <tr><th>Age Group</th> <td>{{team?.ageGroup.name }}</td></tr>\r\n    <!--<tr><th>Tournament</th></tr>-->\r\n    <tr><th>Manager First Name</th>  <td>{{team?.managerFirstName}} </td></tr>\r\n    <tr><th>Manager Last Name</th> <td>{{team?.managerLastName}}</td> </tr>\r\n    <tr><th>Email</th>  <td>{{team?.email}} </td></tr>\r\n    <tr><th>Phone </th> <td>{{team?.phone}} </td></tr>\r\n    <tr><th>Street </th> <td>{{team?.street}} </td></tr>\r\n    <tr><th>City </th><td>{{team?.city}} </td></tr>\r\n    <tr><th>State</th> <td>{{team?.state.name}}</td>  </tr>\r\n    <tr><th>Zip</th>  <td>{{team?.zip}} </td></tr>\r\n    <tr><th>POC First Name</th><td>{{team?.pocFirstName}} </td></tr>\r\n    <tr><th>POC Last Name </th> <td>{{team?.pocLastName}} </td></tr>\r\n    <tr><th>POC Email </th><td>{{team?.pocEmail}} </td></tr>\r\n    <tr><th>POC Phone </th><td>{{team?.pocPhone}} </td></tr>\r\n</table>\r\n<div class=\"text-center\">\r\n    <button class=\"btn btn-primary\" routerLink=\"/table\">Back</button>\r\n    <button class=\"btn btn-info\" routerLink=\"/admin\">Admin</button>\r\n</div>\r\n<!--</div>\r\n            <div class=\"modal-footer\">\r\n                <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\" routerLink=\"/table\">Close</button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>-->\r\n"
 
 /***/ }),
 
@@ -497,11 +361,11 @@ module.exports = "<!--<div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" r
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RoutingConfig; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__structure_teamTable_component__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__structure_teamDetail_component__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__admin_admin_component__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__admin_overview_component__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__admin_teamAdmin_component__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__structure_teamTable_component__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__structure_teamDetail_component__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__admin_admin_component__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__admin_overview_component__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__admin_teamAdmin_component__ = __webpack_require__(90);
 
 
 
@@ -529,7 +393,7 @@ var RoutingConfig = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterM
 /***/ 178:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"navbar bg-info mb-1\">\r\n    <a class=\"navbar-brand text-white\">MCYSA Admin</a>\r\n</div>\r\n<div class=\"row no-gutters\">\r\n    <div class=\"col-3\">\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Overview</button>\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin/teams\" routerLinkActive=\"active\"> Teams </button>\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin/orders\" routerLinkActive=\"active\"> Orders</button>\r\n    </div>\r\n    <div class=\"col p-2\">\r\n        <router-outlet></router-outlet>\r\n    </div>\r\n</div>"
+module.exports = "\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-3\">\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Overview</button>\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin/teams\" routerLinkActive=\"active\"> Teams </button>\r\n    </div>\r\n    <div class=\"col p-2\">\r\n        <router-outlet></router-outlet>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -543,7 +407,7 @@ module.exports = "<table class=\"table m-1\">\r\n    <tr>\r\n        <td>There a
 /***/ 180:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<h4> Team Admin Placeholder</h4>"
+module.exports = "\r\n<h4> Team Admin Placeholder</h4>\r\n\r\n<table *ngIf=\"tableMode; else create\" class=\"table table-sm table-striped\">\r\n    <tr>\r\n        <th>ID</th>\r\n        <th>Tournament Id</th>\r\n        <th>Name</th>\r\n        <th>Tournament</th>\r\n        <th>Manager First Name</th>\r\n        <th>Manager Last Name</th>\r\n        <th>State</th>\r\n        <th>Age Group</th>\r\n        <th></th>\r\n    </tr>\r\n    <tr *ngFor=\"let t of teams\">\r\n        <ng-template [ngIf]=\"team?.id != t.id\" [ngIfElse]=\"edit\">\r\n            <td>{{t.id}}</td>\r\n            <td>{{t.tournamentId}}</td>\r\n            <td>{{t.teamName}}</td>\r\n            <td>{{t.tournament?.name || '(None)'}}</td>\r\n            <td>{{t.managerFirstName}}</td>\r\n            <td>{{t.managerLastName}}</td>\r\n            <td>{{t.state.name}}</td>\r\n            <td>{{t.agegroup}}</td>\r\n            <td>\r\n                <button class=\"btn btn-sm btn-primary\" (click)=\"selectTeam(t.id)\"> Edit</button>\r\n                <button class=\"btn btn-sm btn-danger\" (click)=\"deleteTeam(t.id)\"> Delete </button>\r\n            </td>\r\n        </ng-template>\r\n    </tr>\r\n    <tfoot>\r\n        <tr>\r\n            <td colspan=\"6\" class=\"text-center\">\r\n                <button class=\"btn btn-primary\" (click)=\"clearTeam(); tableMode = false\"> Create </button>\r\n            </td>\r\n        </tr>\r\n    </tfoot>\r\n</table>\r\n\r\n<ng-template #edit>\r\n    <td colspan=\"6\">\r\n        <admin-team-editor></admin-team-editor>\r\n        <div class=\"text-center\">\r\n            <button class=\"btn btn-sm btn-primary\" (click)=\"saveTeam()\">  Save</button>\r\n            <button class=\"btn btn-sm btn-info\" (click)=\"clearTeam()\"> Cancel</button>\r\n        </div>\r\n    </td>\r\n</ng-template>\r\n<ng-template #create>\r\n    <admin-team-editor></admin-team-editor>\r\n    <button class=\"btn btn-primary\" (click)=\"saveTeam()\">  Save </button>\r\n    <button class=\"btn btn-info\" (click)=\"clearTeam()\"> Cancel</button>\r\n</ng-template>"
 
 /***/ }),
 
@@ -556,15 +420,17 @@ module.exports = "\r\n<h4> Team Admin Placeholder</h4>"
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__admin_component__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__overview_component__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__teamAdmin_component__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__admin_component__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__overview_component__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__teamAdmin_component__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__teamEditor_component__ = __webpack_require__(182);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -580,11 +446,196 @@ var AdminModule = (function () {
 AdminModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
         imports: [__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* RouterModule */], __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */]],
-        declarations: [__WEBPACK_IMPORTED_MODULE_4__admin_component__["a" /* AdminComponent */], __WEBPACK_IMPORTED_MODULE_5__overview_component__["a" /* OverviewComponent */], __WEBPACK_IMPORTED_MODULE_6__teamAdmin_component__["a" /* TeamAdminComponent */]]
+        declarations: [__WEBPACK_IMPORTED_MODULE_4__admin_component__["a" /* AdminComponent */], __WEBPACK_IMPORTED_MODULE_5__overview_component__["a" /* OverviewComponent */], __WEBPACK_IMPORTED_MODULE_6__teamAdmin_component__["a" /* TeamAdminComponent */], __WEBPACK_IMPORTED_MODULE_7__teamEditor_component__["a" /* TeamEditorComponent */]]
     })
 ], AdminModule);
 
 //# sourceMappingURL=admin.module.js.map
+
+/***/ }),
+
+/***/ 182:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamEditorComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(7);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var TeamEditorComponent = (function () {
+    function TeamEditorComponent(repo) {
+        this.repo = repo;
+    }
+    Object.defineProperty(TeamEditorComponent.prototype, "team", {
+        get: function () {
+            return this.repo.team;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TeamEditorComponent.prototype, "states", {
+        get: function () {
+            return this.repo.states;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    TeamEditorComponent.prototype.compareTournaments = function (t1, t2) {
+        return t1 && t2 && t1.name == t2.name;
+    };
+    TeamEditorComponent.prototype.compareStates = function (s1, s2) {
+        return s1 && s2 && s1.name == s2.name;
+    };
+    return TeamEditorComponent;
+}());
+TeamEditorComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: "admin-team-editor",
+        template: __webpack_require__(183)
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
+], TeamEditorComponent);
+
+var _a;
+//# sourceMappingURL=teamEditor.component.js.map
+
+/***/ }),
+
+/***/ 183:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"form-group\">\r\n    <label>Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.id\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Tournament Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.tournamentId\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Tournaments</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"team.tournament\" [compareWith]=\"compareTournaments\">\r\n        <option *ngFor=\"let t of tournaments\" [ngValue]=\"t\">{{t.id}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Team Name</label>\r\n    <textarea class=\"form-control\" [(ngModel)]=\"team.teamName\"></textarea>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Manager First Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.managerFirstName\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Manager Last Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.managerLastName\" />\r\n</div>\r\n<!--<div class=\"form-group\">\r\n    <label>State</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.state.name\" />\r\n</div>-->\r\n<div class=\"form-group\">\r\n    <label>State</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"team.state\" [compareWith]=\"compareStates\">\r\n        <option *ngFor=\"let s of states\" [ngValue]=\"s.stateId\">{{s.name}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Age Group</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.agegroup\" />\r\n</div>"
+
+/***/ }),
+
+/***/ 7:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Repository; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__configClasses_repository__ = __webpack_require__(137);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var teamUrl = "/api/teams";
+var statesUrl = "/api/states";
+var Repository = (function () {
+    function Repository(http) {
+        this.http = http;
+        this.filterObject = new __WEBPACK_IMPORTED_MODULE_3__configClasses_repository__["a" /* Filter */]();
+        this.states = [];
+        //this.team = JSON.parse(document.getElementById("data").textContent);
+        // this.getTeam(2);
+        //this.filter.state = "va";
+        this.filter.related = true;
+        this.getTeams(true);
+    }
+    Repository.prototype.getTeam = function (id) {
+        var _this = this;
+        console.log("getTeam()");
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestMethod */].Get, teamUrl + "/" + id)
+            .subscribe(function (response) {
+            _this.team = response;
+            console.log(_this.team);
+        });
+    };
+    Repository.prototype.getTeams = function (related) {
+        var _this = this;
+        if (related === void 0) { related = false; }
+        console.log("get teams()");
+        var url = teamUrl + "?related=" + this.filter.related;
+        if (this.filter.state)
+            url += "&state=" + this.filter.state;
+        if (this.filter.age)
+            url += "&ageGroupId=" + this.filter.age;
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestMethod */].Get, url).subscribe(function (response) {
+            return _this.teams = response;
+        });
+    };
+    Repository.prototype.getStates = function () {
+        var _this = this;
+        console.log("get states()");
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestMethod */].Get, statesUrl).subscribe(function (response) { return _this.states = response; });
+    };
+    Repository.prototype.sendRequest = function (verb, url, data) {
+        return this.http.request(new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Request */]({
+            method: verb, url: url, body: data
+        })).map(function (response) {
+            return response.headers.get("Content-Length") != "0" ? response.json() : null;
+        });
+    };
+    Object.defineProperty(Repository.prototype, "filter", {
+        get: function () {
+            return this.filterObject;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Repository.prototype.createTeam = function (team) {
+        var _this = this;
+        var data = {
+            teamName: team.teamName,
+            managerFirstname: team.managerFirstName,
+            managerLastName: team.managerLastName,
+            ageGroupId: team.ageGroupId,
+            stateId: team.stateId,
+            tournamentId: team.tournamentId
+        };
+        console.log("createTeam");
+        console.log(data);
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestMethod */].Post, teamUrl, data).subscribe(function (response) {
+            team.id = response;
+            _this.teams.push(team);
+        });
+    };
+    Repository.prototype.replaceTeam = function (team) {
+        var _this = this;
+        var data = {
+            id: team.id,
+            teamName: team.teamName,
+            managerFirstname: team.managerFirstName,
+            managerLastName: team.managerLastName,
+            ageGroupId: team.ageGroupId,
+            stateId: team.stateId,
+            tournamentId: team.tournamentId
+        };
+        console.log("in repo");
+        console.log(data);
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestMethod */].Put, teamUrl + "/" + team.id, data).subscribe(function (response) { return _this.getTeams(); });
+    };
+    return Repository;
+}());
+Repository = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _a || Object])
+], Repository);
+
+var _a;
+//# sourceMappingURL=repository.js.map
 
 /***/ }),
 
@@ -609,9 +660,34 @@ webpackEmptyAsyncContext.id = 80;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Team; });
+var Team = (function () {
+    function Team(id, tournamentId, ageGroupId, stateId, teamName, managerFirstName, managerLastName, state, agegroup, tournament) {
+        this.id = id;
+        this.tournamentId = tournamentId;
+        this.ageGroupId = ageGroupId;
+        this.stateId = stateId;
+        this.teamName = teamName;
+        this.managerFirstName = managerFirstName;
+        this.managerLastName = managerLastName;
+        this.state = state;
+        this.agegroup = agegroup;
+        this.tournament = tournament;
+    }
+    return Team;
+}());
+
+//# sourceMappingURL=team.model.js.map
+
+/***/ }),
+
+/***/ 86:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamTableComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(28);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -656,13 +732,13 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 86:
+/***/ 87:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamDetailComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(28);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -707,13 +783,13 @@ var _a, _b, _c;
 
 /***/ }),
 
-/***/ 87:
+/***/ 88:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -731,6 +807,7 @@ var AdminComponent = (function () {
         repo.filter.reset();
         repo.filter.related = true;
         this.repo.getTeams();
+        this.repo.getStates();
     }
     return AdminComponent;
 }());
@@ -746,13 +823,13 @@ var _a;
 
 /***/ }),
 
-/***/ 88:
+/***/ 89:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OverviewComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -789,33 +866,78 @@ var _a;
 
 /***/ }),
 
-/***/ 89:
+/***/ 90:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamAdminComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_team_model__ = __webpack_require__(85);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
 
 var TeamAdminComponent = (function () {
-    function TeamAdminComponent() {
+    function TeamAdminComponent(repo) {
+        this.repo = repo;
+        this.tableMode = true;
     }
+    Object.defineProperty(TeamAdminComponent.prototype, "team", {
+        get: function () {
+            return this.repo.team;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    TeamAdminComponent.prototype.selectTeam = function (id) {
+        this.repo.getTeam(id);
+    };
+    TeamAdminComponent.prototype.saveTeam = function () {
+        console.log(this.repo.team);
+        if (this.repo.team.id == null)
+            this.repo.createTeam(this.repo.team);
+        else
+            this.repo.replaceTeam(this.repo.team);
+        this.clearTeam();
+        this.tableMode = true;
+    };
+    //deleteTeam(id: number)
+    //{
+    //    this.repo.deleteTeam(id);
+    //}
+    TeamAdminComponent.prototype.clearTeam = function () {
+        this.repo.team = new __WEBPACK_IMPORTED_MODULE_2__models_team_model__["a" /* Team */]();
+        this.tableMode = true;
+    };
+    Object.defineProperty(TeamAdminComponent.prototype, "teams", {
+        get: function () {
+            return this.repo.teams;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return TeamAdminComponent;
 }());
 TeamAdminComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         template: __webpack_require__(180)
-    })
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], TeamAdminComponent);
 
+var _a;
 //# sourceMappingURL=teamAdmin.component.js.map
 
 /***/ })
 
-},[102]);
+},[103]);
 //# sourceMappingURL=main.bundle.js.map

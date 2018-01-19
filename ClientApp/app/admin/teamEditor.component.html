@@ -1,0 +1,40 @@
+﻿<div class="form-group">
+    <label>Id</label>
+    <input class="form-control" [(ngModel)]="team.id" />
+</div>
+<div class="form-group">
+    <label>Tournament Id</label>
+    <input class="form-control" [(ngModel)]="team.tournamentId" />
+</div>
+<div class="form-group">
+    <label>Tournaments</label>
+    <select class="form-control" [(ngModel)]="team.tournament" [compareWith]="compareTournaments">
+        <option *ngFor="let t of tournaments" [ngValue]="t">{{t.id}}</option>
+    </select>
+</div>
+<div class="form-group">
+    <label>Team Name</label>
+    <textarea class="form-control" [(ngModel)]="team.teamName"></textarea>
+</div>
+<div class="form-group">
+    <label>Manager First Name</label>
+    <input class="form-control" [(ngModel)]="team.managerFirstName" />
+</div>
+<div class="form-group">
+    <label>Manager Last Name</label>
+    <input class="form-control" [(ngModel)]="team.managerLastName" />
+</div>
+<!--<div class="form-group">
+    <label>State</label>
+    <input class="form-control" [(ngModel)]="team.state.name" />
+</div>-->
+<div class="form-group">
+    <label>State</label>
+    <select class="form-control" [(ngModel)]="team.state" [compareWith]="compareStates">
+        <option *ngFor="let s of states" [ngValue]="s.stateId">{{s.name}}</option>
+    </select>
+</div>
+<div class="form-group">
+    <label>Age Group</label>
+    <input class="form-control" [(ngModel)]="team.agegroup" />
+</div>

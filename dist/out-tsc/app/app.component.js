@@ -37,7 +37,7 @@ var AppComponent = /** @class */ (function () {
     };
     AppComponent.prototype.replaceTeam = function () {
         var t = this.repo.teams[0];
-        t.teamname = "Modified Team Name";
+        t.teamName = "Modified Team Name";
         console.log("in app.component");
         console.log(t);
         this.repo.replaceTeam(t);

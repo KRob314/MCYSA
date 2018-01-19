@@ -17,6 +17,7 @@ var AdminComponent = /** @class */ (function () {
         repo.filter.reset();
         repo.filter.related = true;
         this.repo.getTeams();
+        this.repo.getStates();
     }
     AdminComponent = __decorate([
         core_1.Component({
