@@ -29,6 +29,13 @@ var TeamEditorComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(TeamEditorComponent.prototype, "ageGroups", {
+        get: function () {
+            return this.repo.ageGroups;
+        },
+        enumerable: true,
+        configurable: true
+    });
     TeamEditorComponent.prototype.compareTournaments = function (t1, t2) {
         return t1 && t2 && t1.name == t2.name;
     };
@@ -37,6 +44,9 @@ var TeamEditorComponent = /** @class */ (function () {
         //console.log(s1.name);
         //console.log(s2.name);
         return s1 && s2 && s1.name == s2.name;
+    };
+    TeamEditorComponent.prototype.compareAgeGroups = function (ag1, ag2) {
+        return ag1 && ag2 && ag1.age == ag2.age;
     };
     TeamEditorComponent = __decorate([
         core_1.Component({

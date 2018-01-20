@@ -3,6 +3,7 @@ import { Repository } from "../models/repository";
 import {Team} from "../models/team.model";
 import { Tournament } from "../models/tournament.model";
 import { State } from "../models/state.model";
+import { AgeGroup } from "../models/agegroup.model";
 
 @Component({
     selector: "admin-team-editor",
@@ -23,6 +24,11 @@ export class TeamEditorComponent
 		return this.repo.states;
 	}
 
+	get ageGroups(): AgeGroup[]
+	{
+		return this.repo.ageGroups;
+	}
+
 	compareTournaments(t1: Tournament, t2: Tournament )
 	{
 		return t1 && t2 && t1.name == t2.name;
@@ -35,5 +41,9 @@ export class TeamEditorComponent
 		//console.log(s2.name);
 		return s1 && s2 && s1.name == s2.name;
 	}
-    
+
+	compareAgeGroups(ag1: AgeGroup, ag2: AgeGroup)
+	{
+		return ag1 && ag2 && ag1.age == ag2.age;
+	}
 }

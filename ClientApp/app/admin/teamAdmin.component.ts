@@ -29,6 +29,9 @@ export class TeamAdminComponent
 		
 
 		this.repo.team.stateId = this.repo.team.state.stateId;
+		this.repo.team.ageGroupId = this.repo.team.ageGroup.id;
+
+		
 		console.log(this.repo.team);
 
 
@@ -41,10 +44,10 @@ export class TeamAdminComponent
         this.tableMode = true;
     }
 
-    //deleteTeam(id: number)
-    //{
-    //    this.repo.deleteTeam(id);
-    //}
+    deleteTeam(id: number)
+    {
+		this.repo.deleteTeam(id);
+    }
 
     clearTeam()
     {

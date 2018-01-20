@@ -152,5 +152,12 @@ namespace MCYSA.Controllers
                 return BadRequest(ModelState);
             }
         }
+
+        [HttpDelete("{id}")]
+        public void DeleteTeam(int id)
+        {
+            context.Teams.Remove(new Team { Id = id });
+            context.SaveChanges();
+        }
     }
 }

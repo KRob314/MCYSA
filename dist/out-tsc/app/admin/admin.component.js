@@ -18,6 +18,7 @@ var AdminComponent = /** @class */ (function () {
         repo.filter.related = true;
         this.repo.getTeams();
         this.repo.getStates();
+        this.repo.getAgeGroups();
     }
     AdminComponent = __decorate([
         core_1.Component({

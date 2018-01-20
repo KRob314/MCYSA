@@ -15,11 +15,13 @@ require("rxjs/add/operator/map");
 var configClasses_repository_1 = require("./configClasses.repository");
 var teamUrl = "/api/teams";
 var statesUrl = "/api/states";
+var ageGroupUrl = "/api/agegroups";
 var Repository = /** @class */ (function () {
     function Repository(http) {
         this.http = http;
         this.filterObject = new configClasses_repository_1.Filter();
         this.states = [];
+        this.ageGroups = [];
         //this.team = JSON.parse(document.getElementById("data").textContent);
         // this.getTeam(2);
         //this.filter.state = "va";
@@ -53,6 +55,11 @@ var Repository = /** @class */ (function () {
         console.log("get states()");
         this.sendRequest(http_1.RequestMethod.Get, statesUrl).subscribe(function (response) { return _this.states = response; });
     };
+    Repository.prototype.getAgeGroups = function () {
+        var _this = this;
+        console.log("get ageGroups()");
+        this.sendRequest(http_1.RequestMethod.Get, ageGroupUrl).subscribe(function (response) { return _this.ageGroups = response; });
+    };
     Repository.prototype.sendRequest = function (verb, url, data) {
         return this.http.request(new http_1.Request({
             method: verb, url: url, body: data
@@ -74,7 +81,7 @@ var Repository = /** @class */ (function () {
             managerFirstname: team.managerFirstName,
             managerLastName: team.managerLastName,
             ageGroupId: team.ageGroupId,
-            stateId: team.stateId,
+            stateId: team.state.stateId,
             tournamentId: team.tournamentId
         };
         console.log("createTeam");
@@ -91,13 +98,19 @@ var Repository = /** @class */ (function () {
             teamName: team.teamName,
             managerFirstname: team.managerFirstName,
             managerLastName: team.managerLastName,
-            ageGroupId: team.ageGroupId,
+            ageGroupId: team.ageGroup.id,
             stateId: team.state.stateId,
             tournamentId: team.tournamentId
         };
         console.log("in repo");
         console.log(data);
         this.sendRequest(http_1.RequestMethod.Put, teamUrl + "/" + team.id, data).subscribe(function (response) { return _this.getTeams(); });
+    };
+    Repository.prototype.deleteTeam = function (id) {
+        var _this = this;
+        this.sendRequest(http_1.RequestMethod.Delete, teamUrl + "/" + id).subscribe(function (response) {
+            return _this.getTeams();
+        });
     };
     Repository = __decorate([
         core_1.Injectable(),

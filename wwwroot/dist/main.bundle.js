@@ -407,7 +407,7 @@ module.exports = "<table class=\"table m-1\">\r\n    <tr>\r\n        <td>There a
 /***/ 180:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<h4> Team Admin Placeholder</h4>\r\n\r\n<table *ngIf=\"tableMode; else create\" class=\"table table-sm table-striped\">\r\n    <tr>\r\n        <th>ID</th>\r\n        <th>Tournament Id</th>\r\n        <th>Name</th>\r\n        <th>Tournament</th>\r\n        <th>Manager First Name</th>\r\n        <th>Manager Last Name</th>\r\n        <th>State</th>\r\n        <th>Age Group</th>\r\n        <th></th>\r\n    </tr>\r\n    <tr *ngFor=\"let t of teams\">\r\n        <ng-template [ngIf]=\"team?.id != t.id\" [ngIfElse]=\"edit\">\r\n            <td>{{t.id}}</td>\r\n            <td>{{t.tournamentId}}</td>\r\n            <td>{{t.teamName}}</td>\r\n            <td>{{t.tournament?.name || '(None)'}}</td>\r\n            <td>{{t.managerFirstName}}</td>\r\n            <td>{{t.managerLastName}}</td>\r\n            <td>{{t.state.name}}</td>\r\n            <td>{{t.agegroup}}</td>\r\n            <td>\r\n                <button class=\"btn btn-sm btn-primary\" (click)=\"selectTeam(t.id)\"> Edit</button>\r\n                <button class=\"btn btn-sm btn-danger\" (click)=\"deleteTeam(t.id)\"> Delete </button>\r\n            </td>\r\n        </ng-template>\r\n    </tr>\r\n    <tfoot>\r\n        <tr>\r\n            <td colspan=\"6\" class=\"text-center\">\r\n                <button class=\"btn btn-primary\" (click)=\"clearTeam(); tableMode = false\"> Create </button>\r\n            </td>\r\n        </tr>\r\n    </tfoot>\r\n</table>\r\n\r\n<ng-template #edit>\r\n    <td colspan=\"6\">\r\n        <admin-team-editor></admin-team-editor>\r\n        <div class=\"text-center\">\r\n            <button class=\"btn btn-sm btn-primary\" (click)=\"saveTeam()\">  Save</button>\r\n            <button class=\"btn btn-sm btn-info\" (click)=\"clearTeam()\"> Cancel</button>\r\n        </div>\r\n    </td>\r\n</ng-template>\r\n<ng-template #create>\r\n    <admin-team-editor></admin-team-editor>\r\n    <button class=\"btn btn-primary\" (click)=\"saveTeam()\">  Save </button>\r\n    <button class=\"btn btn-info\" (click)=\"clearTeam()\"> Cancel</button>\r\n</ng-template>"
+module.exports = "\r\n<h4> Team Admin Placeholder</h4>\r\n\r\n<table *ngIf=\"tableMode; else create\" class=\"table table-sm table-striped\">\r\n    <tr>\r\n        <th>ID</th>\r\n        <th>Tournament Id</th>\r\n        <th>Name</th>\r\n        <th>Tournament</th>\r\n        <th>Manager First Name</th>\r\n        <th>Manager Last Name</th>\r\n        <th>State</th>\r\n        <th>Age Group</th>\r\n        <th></th>\r\n    </tr>\r\n    <tr *ngFor=\"let t of teams\">\r\n        <ng-template [ngIf]=\"team?.id != t.id\" [ngIfElse]=\"edit\">\r\n            <td>{{t.id}}</td>\r\n            <td>{{t.tournamentId}}</td>\r\n            <td>{{t.teamName}}</td>\r\n            <td>{{t.tournament?.name || '(None)'}}</td>\r\n            <td>{{t.managerFirstName}}</td>\r\n            <td>{{t.managerLastName}}</td>\r\n            <td>{{t.state.name}}</td>\r\n            <td>{{t.ageGroup.age}}</td>\r\n            <td>\r\n                <button class=\"btn btn-sm btn-primary\" (click)=\"selectTeam(t.id)\"> Edit</button>\r\n                <button class=\"btn btn-sm btn-danger\" (click)=\"deleteTeam(t.id)\"> Delete </button>\r\n            </td>\r\n        </ng-template>\r\n    </tr>\r\n    <tfoot>\r\n        <tr>\r\n            <td colspan=\"6\" class=\"text-center\">\r\n                <button class=\"btn btn-primary\" (click)=\"clearTeam(); tableMode = false\"> Create </button>\r\n            </td>\r\n        </tr>\r\n    </tfoot>\r\n</table>\r\n\r\n<ng-template #edit>\r\n    <td colspan=\"6\">\r\n        <admin-team-editor></admin-team-editor>\r\n        <div class=\"text-center\">\r\n            <button class=\"btn btn-sm btn-primary\" (click)=\"saveTeam()\">  Save</button>\r\n            <button class=\"btn btn-sm btn-info\" (click)=\"clearTeam()\"> Cancel</button>\r\n        </div>\r\n    </td>\r\n</ng-template>\r\n<ng-template #create>\r\n    <admin-team-editor></admin-team-editor>\r\n    <button class=\"btn btn-primary\" (click)=\"saveTeam()\">  Save </button>\r\n    <button class=\"btn btn-info\" (click)=\"clearTeam()\"> Cancel</button>\r\n</ng-template>"
 
 /***/ }),
 
@@ -490,6 +490,13 @@ var TeamEditorComponent = (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(TeamEditorComponent.prototype, "ageGroups", {
+        get: function () {
+            return this.repo.ageGroups;
+        },
+        enumerable: true,
+        configurable: true
+    });
     TeamEditorComponent.prototype.compareTournaments = function (t1, t2) {
         return t1 && t2 && t1.name == t2.name;
     };
@@ -498,6 +505,9 @@ var TeamEditorComponent = (function () {
         //console.log(s1.name);
         //console.log(s2.name);
         return s1 && s2 && s1.name == s2.name;
+    };
+    TeamEditorComponent.prototype.compareAgeGroups = function (ag1, ag2) {
+        return ag1 && ag2 && ag1.age == ag2.age;
     };
     return TeamEditorComponent;
 }());
@@ -517,7 +527,7 @@ var _a;
 /***/ 183:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"form-group\">\r\n    <label>Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.id\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Tournament Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.tournamentId\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Tournaments</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"team.tournament\" [compareWith]=\"compareTournaments\">\r\n        <option *ngFor=\"let t of tournaments\" [ngValue]=\"t\">{{t.id}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Team Name</label>\r\n    <textarea class=\"form-control\" [(ngModel)]=\"team.teamName\"></textarea>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Manager First Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.managerFirstName\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Manager Last Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.managerLastName\" />\r\n</div>\r\n<!--<div class=\"form-group\">\r\n    <label>State</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.state.name\" />\r\n</div>-->\r\n<div class=\"form-group\">\r\n    <label>State</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"team.state\" [compareWith]=\"compareStates\">\r\n        <option *ngFor=\"let s of states\" [ngValue]=\"s\">{{s.name}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Age Group</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.agegroup\" />\r\n</div>"
+module.exports = "<div class=\"form-group\">\r\n    <label>Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.id\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Tournament Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.tournamentId\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Tournaments</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"team.tournament\" [compareWith]=\"compareTournaments\">\r\n        <option *ngFor=\"let t of tournaments\" [ngValue]=\"t\">{{t.id}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Team Name</label>\r\n    <textarea class=\"form-control\" [(ngModel)]=\"team.teamName\"></textarea>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Manager First Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.managerFirstName\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Manager Last Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.managerLastName\" />\r\n</div>\r\n<!--<div class=\"form-group\">\r\n    <label>State</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.state.name\" />\r\n</div>-->\r\n<div class=\"form-group\">\r\n    <label>State</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"team.state\" [compareWith]=\"compareStates\">\r\n        <option *ngFor=\"let s of states\" [ngValue]=\"s\">{{s.name}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Age Group</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"team.ageGroup\" [compareWith]=\"compareAgeGroups\">\r\n        <option *ngFor=\"let a of ageGroups\" [ngValue]=\"a\">{{a.age}}</option>\r\n    </select>\r\n</div>"
 
 /***/ }),
 
@@ -546,11 +556,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var teamUrl = "/api/teams";
 var statesUrl = "/api/states";
+var ageGroupUrl = "/api/agegroups";
 var Repository = (function () {
     function Repository(http) {
         this.http = http;
         this.filterObject = new __WEBPACK_IMPORTED_MODULE_3__configClasses_repository__["a" /* Filter */]();
         this.states = [];
+        this.ageGroups = [];
         //this.team = JSON.parse(document.getElementById("data").textContent);
         // this.getTeam(2);
         //this.filter.state = "va";
@@ -584,6 +596,11 @@ var Repository = (function () {
         console.log("get states()");
         this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestMethod */].Get, statesUrl).subscribe(function (response) { return _this.states = response; });
     };
+    Repository.prototype.getAgeGroups = function () {
+        var _this = this;
+        console.log("get ageGroups()");
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestMethod */].Get, ageGroupUrl).subscribe(function (response) { return _this.ageGroups = response; });
+    };
     Repository.prototype.sendRequest = function (verb, url, data) {
         return this.http.request(new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Request */]({
             method: verb, url: url, body: data
@@ -605,7 +622,7 @@ var Repository = (function () {
             managerFirstname: team.managerFirstName,
             managerLastName: team.managerLastName,
             ageGroupId: team.ageGroupId,
-            stateId: team.stateId,
+            stateId: team.state.stateId,
             tournamentId: team.tournamentId
         };
         console.log("createTeam");
@@ -622,13 +639,19 @@ var Repository = (function () {
             teamName: team.teamName,
             managerFirstname: team.managerFirstName,
             managerLastName: team.managerLastName,
-            ageGroupId: team.ageGroupId,
+            ageGroupId: team.ageGroup.id,
             stateId: team.state.stateId,
             tournamentId: team.tournamentId
         };
         console.log("in repo");
         console.log(data);
         this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestMethod */].Put, teamUrl + "/" + team.id, data).subscribe(function (response) { return _this.getTeams(); });
+    };
+    Repository.prototype.deleteTeam = function (id) {
+        var _this = this;
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestMethod */].Delete, teamUrl + "/" + id).subscribe(function (response) {
+            return _this.getTeams();
+        });
     };
     return Repository;
 }());
@@ -665,7 +688,7 @@ webpackEmptyAsyncContext.id = 80;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Team; });
 var Team = (function () {
-    function Team(id, tournamentId, ageGroupId, stateId, teamName, managerFirstName, managerLastName, state, agegroup, tournament) {
+    function Team(id, tournamentId, ageGroupId, stateId, teamName, managerFirstName, managerLastName, state, ageGroup, tournament) {
         this.id = id;
         this.tournamentId = tournamentId;
         this.ageGroupId = ageGroupId;
@@ -674,7 +697,7 @@ var Team = (function () {
         this.managerFirstName = managerFirstName;
         this.managerLastName = managerLastName;
         this.state = state;
-        this.agegroup = agegroup;
+        this.ageGroup = ageGroup;
         this.tournament = tournament;
     }
     return Team;
@@ -811,6 +834,7 @@ var AdminComponent = (function () {
         repo.filter.related = true;
         this.repo.getTeams();
         this.repo.getStates();
+        this.repo.getAgeGroups();
     }
     return AdminComponent;
 }());
@@ -907,6 +931,7 @@ var TeamAdminComponent = (function () {
     TeamAdminComponent.prototype.saveTeam = function () {
         console.log("saveTeam()");
         this.repo.team.stateId = this.repo.team.state.stateId;
+        this.repo.team.ageGroupId = this.repo.team.ageGroup.id;
         console.log(this.repo.team);
         if (this.repo.team.id == null)
             this.repo.createTeam(this.repo.team);
@@ -915,10 +940,9 @@ var TeamAdminComponent = (function () {
         this.clearTeam();
         this.tableMode = true;
     };
-    //deleteTeam(id: number)
-    //{
-    //    this.repo.deleteTeam(id);
-    //}
+    TeamAdminComponent.prototype.deleteTeam = function (id) {
+        this.repo.deleteTeam(id);
+    };
     TeamAdminComponent.prototype.clearTeam = function () {
         this.repo.team = new __WEBPACK_IMPORTED_MODULE_2__models_team_model__["a" /* Team */]();
         this.tableMode = true;

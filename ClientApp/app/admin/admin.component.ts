@@ -13,5 +13,6 @@ export class AdminComponent
         repo.filter.related = true;
 		this.repo.getTeams();
 		this.repo.getStates();
+		this.repo.getAgeGroups();
     }
 }

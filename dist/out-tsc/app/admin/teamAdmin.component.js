@@ -30,6 +30,7 @@ var TeamAdminComponent = /** @class */ (function () {
     TeamAdminComponent.prototype.saveTeam = function () {
         console.log("saveTeam()");
         this.repo.team.stateId = this.repo.team.state.stateId;
+        this.repo.team.ageGroupId = this.repo.team.ageGroup.id;
         console.log(this.repo.team);
         if (this.repo.team.id == null)
             this.repo.createTeam(this.repo.team);
@@ -38,10 +39,9 @@ var TeamAdminComponent = /** @class */ (function () {
         this.clearTeam();
         this.tableMode = true;
     };
-    //deleteTeam(id: number)
-    //{
-    //    this.repo.deleteTeam(id);
-    //}
+    TeamAdminComponent.prototype.deleteTeam = function (id) {
+        this.repo.deleteTeam(id);
+    };
     TeamAdminComponent.prototype.clearTeam = function () {
         this.repo.team = new team_model_1.Team();
         this.tableMode = true;

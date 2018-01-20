@@ -1,5 +1,6 @@
 ﻿import { Team } from "./team.model";
 import { State } from "./state.model";
+import { AgeGroup } from "./agegroup.model";
 import { Injectable } from "@angular/core";
 import { Http, RequestMethod, Request, Response} from "@angular/http";
 import { Observable } from "rxjs/Observable";
@@ -8,6 +9,7 @@ import { Filter } from "./configClasses.repository";
 
 const teamUrl = "/api/teams";
 const statesUrl = "/api/states";
+const ageGroupUrl = "/api/agegroups";
 
 @Injectable()
 export class Repository
@@ -16,6 +18,8 @@ export class Repository
      team: Team;
 	 teams: Team[];
 	 states: State[] = [];
+	 ageGroups: AgeGroup[] = [];
+
 
     constructor(private http: Http)
     {
@@ -62,6 +66,12 @@ export class Repository
 		this.sendRequest(RequestMethod.Get, statesUrl).subscribe(response => this.states = response);
 	}
 
+	getAgeGroups()
+	{
+		console.log("get ageGroups()");
+		this.sendRequest(RequestMethod.Get, ageGroupUrl).subscribe(response => this.ageGroups = response);
+	}
+
     private sendRequest(verb: RequestMethod, url: string, data?: any): Observable<any>
     {
         return this.http.request(new Request({
@@ -85,7 +95,7 @@ export class Repository
                 managerFirstname: team.managerFirstName,
                 managerLastName: team.managerLastName,
                 ageGroupId: team.ageGroupId,
-                stateId: team.stateId,
+                stateId: team.state.stateId,
                 tournamentId: team.tournamentId
 			};
 
@@ -107,7 +117,7 @@ export class Repository
                 teamName: team.teamName,
                 managerFirstname: team.managerFirstName,
                 managerLastName: team.managerLastName,
-                ageGroupId: team.ageGroupId,
+                ageGroupId: team.ageGroup.id,
 				stateId: team.state.stateId,
                 tournamentId: team.tournamentId
             };
@@ -116,7 +126,13 @@ export class Repository
         console.log(data);
 
         this.sendRequest(RequestMethod.Put, teamUrl + "/" + team.id, data).subscribe(response => this.getTeams());
-    }
+	}
+
+	deleteTeam(id: number)
+	{
+		this.sendRequest(RequestMethod.Delete, teamUrl + "/" + id).subscribe(response =>
+			this.getTeams());
+	}
 
     //get team(): Team
     //{

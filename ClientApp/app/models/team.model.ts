@@ -13,6 +13,6 @@ export class Team
         public managerFirstName?: string, 
         public managerLastName?: string,
         public state?: State,
-        public agegroup?: AgeGroup,
+        public ageGroup?: AgeGroup,
 		public tournament?: Tournament) { }
 }
