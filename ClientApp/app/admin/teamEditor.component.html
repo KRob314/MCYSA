@@ -3,13 +3,9 @@
     <input class="form-control" [(ngModel)]="team.id" />
 </div>
 <div class="form-group">
-    <label>Tournament Id</label>
-    <input class="form-control" [(ngModel)]="team.tournamentId" />
-</div>
-<div class="form-group">
     <label>Tournaments</label>
     <select class="form-control" [(ngModel)]="team.tournament" [compareWith]="compareTournaments">
-        <option *ngFor="let t of tournaments" [ngValue]="t">{{t.id}}</option>
+        <option *ngFor="let t of tournaments" [ngValue]="t">{{t.name}}</option>
     </select>
 </div>
 <div class="form-group">

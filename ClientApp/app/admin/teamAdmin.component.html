@@ -4,7 +4,6 @@
 <table *ngIf="tableMode; else create" class="table table-sm table-striped">
     <tr>
         <th>ID</th>
-        <th>Tournament Id</th>
         <th>Name</th>
         <th>Tournament</th>
         <th>Manager First Name</th>
@@ -16,9 +15,8 @@
     <tr *ngFor="let t of teams">
         <ng-template [ngIf]="team?.id != t.id" [ngIfElse]="edit">
             <td>{{t.id}}</td>
-            <td>{{t.tournamentId}}</td>
             <td>{{t.teamName}}</td>
-            <td>{{t.tournament?.name || '(None)'}}</td>
+            <td>{{t.tournament.name || '(None)'}}</td>
             <td>{{t.managerFirstName}}</td>
             <td>{{t.managerLastName}}</td>
             <td>{{t.state.name}}</td>

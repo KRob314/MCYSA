@@ -16,12 +16,14 @@ var configClasses_repository_1 = require("./configClasses.repository");
 var teamUrl = "/api/teams";
 var statesUrl = "/api/states";
 var ageGroupUrl = "/api/agegroups";
+var tournamentUrl = "api/tournaments";
 var Repository = /** @class */ (function () {
     function Repository(http) {
         this.http = http;
         this.filterObject = new configClasses_repository_1.Filter();
         this.states = [];
         this.ageGroups = [];
+        this.tournaments = [];
         //this.team = JSON.parse(document.getElementById("data").textContent);
         // this.getTeam(2);
         //this.filter.state = "va";
@@ -60,6 +62,15 @@ var Repository = /** @class */ (function () {
         console.log("get ageGroups()");
         this.sendRequest(http_1.RequestMethod.Get, ageGroupUrl).subscribe(function (response) { return _this.ageGroups = response; });
     };
+    Repository.prototype.getTournaments = function () {
+        var _this = this;
+        console.log("getTournaments()");
+        this.sendRequest(http_1.RequestMethod.Get, tournamentUrl).subscribe(function (response) { return _this.tournaments = response; });
+    };
+    Repository.prototype.getTournament = function (id) {
+        var _this = this;
+        this.sendRequest(http_1.RequestMethod.Get, tournamentUrl + "/" + id).subscribe(function (response) { return _this.tournament = response; });
+    };
     Repository.prototype.sendRequest = function (verb, url, data) {
         return this.http.request(new http_1.Request({
             method: verb, url: url, body: data
@@ -82,7 +93,7 @@ var Repository = /** @class */ (function () {
             managerLastName: team.managerLastName,
             ageGroupId: team.ageGroupId,
             stateId: team.state.stateId,
-            tournamentId: team.tournamentId
+            tournamentId: team.tournament.id
         };
         console.log("createTeam");
         console.log(data);

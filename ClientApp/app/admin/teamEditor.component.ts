@@ -29,6 +29,11 @@ export class TeamEditorComponent
 		return this.repo.ageGroups;
 	}
 
+	get tournaments(): Tournament[]
+	{
+		return this.repo.tournaments;
+	}
+
 	compareTournaments(t1: Tournament, t2: Tournament )
 	{
 		return t1 && t2 && t1.name == t2.name;

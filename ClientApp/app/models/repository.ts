@@ -1,6 +1,7 @@
 ﻿import { Team } from "./team.model";
 import { State } from "./state.model";
 import { AgeGroup } from "./agegroup.model";
+import { Tournament } from "./tournament.model";
 import { Injectable } from "@angular/core";
 import { Http, RequestMethod, Request, Response} from "@angular/http";
 import { Observable } from "rxjs/Observable";
@@ -10,6 +11,7 @@ import { Filter } from "./configClasses.repository";
 const teamUrl = "/api/teams";
 const statesUrl = "/api/states";
 const ageGroupUrl = "/api/agegroups";
+const tournamentUrl = "api/tournaments";
 
 @Injectable()
 export class Repository
@@ -19,7 +21,8 @@ export class Repository
 	 teams: Team[];
 	 states: State[] = [];
 	 ageGroups: AgeGroup[] = [];
-
+	 tournament: Tournament;
+	 tournaments: Tournament[] = [];
 
     constructor(private http: Http)
     {
@@ -72,6 +75,17 @@ export class Repository
 		this.sendRequest(RequestMethod.Get, ageGroupUrl).subscribe(response => this.ageGroups = response);
 	}
 
+	getTournaments()
+	{
+		console.log("getTournaments()");
+		this.sendRequest(RequestMethod.Get, tournamentUrl).subscribe(response => this.tournaments = response);
+	}
+
+	getTournament(id: number)
+	{
+		this.sendRequest(RequestMethod.Get, tournamentUrl + "/" + id).subscribe(response => this.tournament = response);
+	}
+
     private sendRequest(verb: RequestMethod, url: string, data?: any): Observable<any>
     {
         return this.http.request(new Request({
@@ -96,7 +110,7 @@ export class Repository
                 managerLastName: team.managerLastName,
                 ageGroupId: team.ageGroupId,
                 stateId: team.state.stateId,
-                tournamentId: team.tournamentId
+                tournamentId: team.tournament.id
 			};
 
 		console.log("createTeam");

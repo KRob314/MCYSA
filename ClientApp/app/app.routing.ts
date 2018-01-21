@@ -4,7 +4,7 @@ import { TeamDetailComponent } from "./structure/teamDetail.component";
 import { AdminComponent } from "./admin/admin.component";
 import { OverviewComponent } from "./admin/overview.component";
 import { TeamAdminComponent } from "./admin/teamAdmin.component";
-
+import { TournamentAdminComponent } from "./admin/tournamentAdmin.component";
 
 const routes: Routes = 
     [
@@ -12,7 +12,8 @@ const routes: Routes =
             path: "admin", component: AdminComponent,
             children: [
                 { path: "teams", component: TeamAdminComponent },
-                {path: "overview", component: OverviewComponent}
+				{ path: "overview", component: OverviewComponent },
+				{path: "tournaments", component: TournamentAdminComponent}
             ]
         },
         { path: "table", component: TeamTableComponent },

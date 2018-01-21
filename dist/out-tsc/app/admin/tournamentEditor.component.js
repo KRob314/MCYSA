@@ -11,23 +11,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("../models/repository");
-var AdminComponent = /** @class */ (function () {
-    function AdminComponent(repo) {
+var TournamentEditorComponent = /** @class */ (function () {
+    function TournamentEditorComponent(repo) {
         this.repo = repo;
-        repo.filter.reset();
-        repo.filter.related = true;
-        this.repo.getTeams();
-        this.repo.getStates();
-        this.repo.getAgeGroups();
-        this.repo.getTournaments();
     }
-    AdminComponent = __decorate([
+    Object.defineProperty(TournamentEditorComponent.prototype, "tournament", {
+        get: function () {
+            return this.repo.tournament;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    TournamentEditorComponent = __decorate([
         core_1.Component({
-            templateUrl: "admin.component.html"
+            selector: "admin-tournament-editor",
+            templateUrl: "tournamentEditor.component.html"
         }),
         __metadata("design:paramtypes", [repository_1.Repository])
-    ], AdminComponent);
-    return AdminComponent;
+    ], TournamentEditorComponent);
+    return TournamentEditorComponent;
 }());
-exports.AdminComponent = AdminComponent;
-//# sourceMappingURL=admin.component.js.map
+exports.TournamentEditorComponent = TournamentEditorComponent;
+//# sourceMappingURL=tournamentEditor.component.js.map

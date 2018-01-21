@@ -1,21 +1,21 @@
 webpackJsonp([1],{
 
-/***/ 103:
+/***/ 104:
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(34);
-module.exports = __webpack_require__(116);
+module.exports = __webpack_require__(117);
 
 
 /***/ }),
 
-/***/ 116:
+/***/ 117:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_app_module__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_app_module__ = __webpack_require__(132);
 
 
 var bootApplication = function () {
@@ -40,7 +40,7 @@ else {
 
 /***/ }),
 
-/***/ 131:
+/***/ 132:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49,14 +49,14 @@ else {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(84);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(135);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_model_module__ = __webpack_require__(140);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_model_module__ = __webpack_require__(141);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__structure_teamTable_component__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__structure_stateFilter_component__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__structure_ageFilter_component__ = __webpack_require__(174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__structure_stateFilter_component__ = __webpack_require__(173);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__structure_ageFilter_component__ = __webpack_require__(175);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__structure_teamDetail_component__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_routing__ = __webpack_require__(177);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__admin_admin_module__ = __webpack_require__(181);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_routing__ = __webpack_require__(178);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__admin_admin_module__ = __webpack_require__(184);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -102,13 +102,13 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 135:
+/***/ 136:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_team_model__ = __webpack_require__(85);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -157,8 +157,8 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-root',
-        template: __webpack_require__(138),
-        styles: [__webpack_require__(139)]
+        template: __webpack_require__(139),
+        styles: [__webpack_require__(140)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], AppComponent);
@@ -168,7 +168,7 @@ var _a;
 
 /***/ }),
 
-/***/ 137:
+/***/ 138:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -189,14 +189,14 @@ var Filter = (function () {
 
 /***/ }),
 
-/***/ 138:
+/***/ 139:
 /***/ (function(module, exports) {
 
 module.exports = "<article>\r\n    <div class=\"row\">\r\n        <div class=\"col-md-2\">\r\n            <button class=\"btn btn-block btn-outline-info\" routerLink=\"/\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Home</button>\r\n            <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Admin</button>\r\n        </div>\r\n        <div class=\"col-md-10\">\r\n            <router-outlet></router-outlet>\r\n        </div>\r\n    </div>\r\n</article>"
 
 /***/ }),
 
-/***/ 139:
+/***/ 140:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(46)(false);
@@ -214,13 +214,13 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 140:
+/***/ 141:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModelModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repository__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repository__ = __webpack_require__(6);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -244,20 +244,20 @@ ModelModule = __decorate([
 
 /***/ }),
 
-/***/ 171:
+/***/ 172:
 /***/ (function(module, exports) {
 
 module.exports = "\r\n<state-filter></state-filter>\r\n<age-filter></age-filter>\r\n\r\n<table class=\"table table-striped marginT-15\">\r\n    <tr>\r\n        <th>Team Name</th>\r\n        <th>Age Group</th>\r\n        <th>Manager First Name</th>\r\n        <th>Manager Last Name</th>\r\n        <th>State</th>\r\n        <th></th>\r\n    </tr>\r\n    <tr *ngFor=\"let team of teams\">\r\n        <td>{{team?.teamName || 'Loading Data...'}}</td>\r\n        <td>{{team?.ageGroup.name || 'Loading data ...'}}</td>\r\n        <td>{{team?.managerFirstName}}</td>\r\n        <td>{{team?.managerLastName}}</td>\r\n        <td>{{team?.state.name}}</td>\r\n        <td> <button class=\"btn btn-default btn-sm\" [routerLink]=\"['/detail', team.id]\">Details</button></td>\r\n    </tr>\r\n</table>\r\n\r\n<!-- (click)=\"selectTeam(team.id)\" data-toggle=\"modal\" data-target=\"#myModal\"-->"
 
 /***/ }),
 
-/***/ 172:
+/***/ 173:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StateFilterComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(6);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -283,7 +283,7 @@ var StateFilterComponent = (function () {
 StateFilterComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: "state-filter",
-        template: __webpack_require__(173)
+        template: __webpack_require__(174)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], StateFilterComponent);
@@ -293,20 +293,20 @@ var _a;
 
 /***/ }),
 
-/***/ 173:
+/***/ 174:
 /***/ (function(module, exports) {
 
 module.exports = "\r\n<div class=\"btn-group\" role=\"group\" aria-label=\"...\" >\r\n    <button class=\"btn btn-info\" (click)=\"setState('va')\">VA</button>\r\n    <button class=\"btn btn-info\" (click)=\"setState('md')\">MD</button>\r\n    <button class=\"btn btn-info\" (click)=\"setState(null)\">All</button>\r\n</div>"
 
 /***/ }),
 
-/***/ 174:
+/***/ 175:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AgeFilterComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(6);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -331,7 +331,7 @@ var AgeFilterComponent = (function () {
 AgeFilterComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: "age-filter",
-        template: __webpack_require__(175)
+        template: __webpack_require__(176)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], AgeFilterComponent);
@@ -341,21 +341,21 @@ var _a;
 
 /***/ }),
 
-/***/ 175:
+/***/ 176:
 /***/ (function(module, exports) {
 
 module.exports = "\r\n\r\n<div class=\"btn-group pull-right\" role=\"group\" aria-label=\"...\" >\r\n    <button class=\"btn btn-info\" (click)=\"setAge(1)\">11u</button>\r\n    <button class=\"btn btn-info\" (click)=\"setAge(2)\">12u</button>\r\n    <button class=\"btn btn-info\" (click)=\"setAge(null)\">All</button>\r\n</div>"
 
 /***/ }),
 
-/***/ 176:
+/***/ 177:
 /***/ (function(module, exports) {
 
 module.exports = "<!--<div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" routerLink=\"/table\"><span aria-hidden=\"true\">&times;</span></button>\r\n                <h4 class=\"modal-title\" id=\"myModalLabel\">{{team?.teamName}} Details</h4>\r\n            </div>\r\n            <div class=\"modal-body\">-->\r\n<table class=\"table table-striped table-condensed table-responsive marginT-15\">\r\n    <tr><th>Team Name</th> <td>{{team?.teamName}}</td></tr>\r\n    <tr><th>Age Group</th> <td>{{team?.ageGroup.name }}</td></tr>\r\n    <!--<tr><th>Tournament</th></tr>-->\r\n    <tr><th>Manager First Name</th>  <td>{{team?.managerFirstName}} </td></tr>\r\n    <tr><th>Manager Last Name</th> <td>{{team?.managerLastName}}</td> </tr>\r\n    <tr><th>Email</th>  <td>{{team?.email}} </td></tr>\r\n    <tr><th>Phone </th> <td>{{team?.phone}} </td></tr>\r\n    <tr><th>Street </th> <td>{{team?.street}} </td></tr>\r\n    <tr><th>City </th><td>{{team?.city}} </td></tr>\r\n    <tr><th>State</th> <td>{{team?.state.name}}</td>  </tr>\r\n    <tr><th>Zip</th>  <td>{{team?.zip}} </td></tr>\r\n    <tr><th>POC First Name</th><td>{{team?.pocFirstName}} </td></tr>\r\n    <tr><th>POC Last Name </th> <td>{{team?.pocLastName}} </td></tr>\r\n    <tr><th>POC Email </th><td>{{team?.pocEmail}} </td></tr>\r\n    <tr><th>POC Phone </th><td>{{team?.pocPhone}} </td></tr>\r\n</table>\r\n<div class=\"text-center\">\r\n    <button class=\"btn btn-primary\" routerLink=\"/table\">Back</button>\r\n    <button class=\"btn btn-info\" routerLink=\"/admin\">Admin</button>\r\n</div>\r\n<!--</div>\r\n            <div class=\"modal-footer\">\r\n                <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\" routerLink=\"/table\">Close</button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>-->\r\n"
 
 /***/ }),
 
-/***/ 177:
+/***/ 178:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -366,6 +366,8 @@ module.exports = "<!--<div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" r
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__admin_admin_component__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__admin_overview_component__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__admin_teamAdmin_component__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__admin_tournamentAdmin_component__ = __webpack_require__(91);
+
 
 
 
@@ -377,7 +379,8 @@ var routes = [
         path: "admin", component: __WEBPACK_IMPORTED_MODULE_3__admin_admin_component__["a" /* AdminComponent */],
         children: [
             { path: "teams", component: __WEBPACK_IMPORTED_MODULE_5__admin_teamAdmin_component__["a" /* TeamAdminComponent */] },
-            { path: "overview", component: __WEBPACK_IMPORTED_MODULE_4__admin_overview_component__["a" /* OverviewComponent */] }
+            { path: "overview", component: __WEBPACK_IMPORTED_MODULE_4__admin_overview_component__["a" /* OverviewComponent */] },
+            { path: "tournaments", component: __WEBPACK_IMPORTED_MODULE_6__admin_tournamentAdmin_component__["a" /* TournamentAdminComponent */] }
         ]
     },
     { path: "table", component: __WEBPACK_IMPORTED_MODULE_1__structure_teamTable_component__["a" /* TeamTableComponent */] },
@@ -390,28 +393,55 @@ var RoutingConfig = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterM
 
 /***/ }),
 
-/***/ 178:
-/***/ (function(module, exports) {
-
-module.exports = "\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-3\">\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Overview</button>\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin/teams\" routerLinkActive=\"active\"> Teams </button>\r\n    </div>\r\n    <div class=\"col p-2\">\r\n        <router-outlet></router-outlet>\r\n    </div>\r\n</div>"
-
-/***/ }),
-
 /***/ 179:
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table m-1\">\r\n    <tr>\r\n        <td>There are {{teams?.length || 0}} Teams</td>\r\n        <td>\r\n            <button class=\"btn btn-sm btn-info btn-block\" routerLink=\"/admin/teams\"> Manage Teams</button>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td>There are  orders</td>\r\n        <td>\r\n            <button class=\"btn btn-sm btn-info btn-block\"\r\n                    routerLink=\"/admin/orders\">\r\n                Manage Orders\r\n            </button>\r\n        </td>\r\n    </tr>\r\n</table>"
+module.exports = "\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-3\">\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Overview</button>\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin/teams\" routerLinkActive=\"active\"> Teams </button>\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin/tournaments\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\">Tournaments</button>\r\n    </div>\r\n    <div class=\"col p-2\">\r\n        <router-outlet></router-outlet>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
 /***/ 180:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<h4> Team Admin Placeholder</h4>\r\n\r\n<table *ngIf=\"tableMode; else create\" class=\"table table-sm table-striped\">\r\n    <tr>\r\n        <th>ID</th>\r\n        <th>Tournament Id</th>\r\n        <th>Name</th>\r\n        <th>Tournament</th>\r\n        <th>Manager First Name</th>\r\n        <th>Manager Last Name</th>\r\n        <th>State</th>\r\n        <th>Age Group</th>\r\n        <th></th>\r\n    </tr>\r\n    <tr *ngFor=\"let t of teams\">\r\n        <ng-template [ngIf]=\"team?.id != t.id\" [ngIfElse]=\"edit\">\r\n            <td>{{t.id}}</td>\r\n            <td>{{t.tournamentId}}</td>\r\n            <td>{{t.teamName}}</td>\r\n            <td>{{t.tournament?.name || '(None)'}}</td>\r\n            <td>{{t.managerFirstName}}</td>\r\n            <td>{{t.managerLastName}}</td>\r\n            <td>{{t.state.name}}</td>\r\n            <td>{{t.ageGroup.age}}</td>\r\n            <td>\r\n                <button class=\"btn btn-sm btn-primary\" (click)=\"selectTeam(t.id)\"> Edit</button>\r\n                <button class=\"btn btn-sm btn-danger\" (click)=\"deleteTeam(t.id)\"> Delete </button>\r\n            </td>\r\n        </ng-template>\r\n    </tr>\r\n    <tfoot>\r\n        <tr>\r\n            <td colspan=\"6\" class=\"text-center\">\r\n                <button class=\"btn btn-primary\" (click)=\"clearTeam(); tableMode = false\"> Create </button>\r\n            </td>\r\n        </tr>\r\n    </tfoot>\r\n</table>\r\n\r\n<ng-template #edit>\r\n    <td colspan=\"6\">\r\n        <admin-team-editor></admin-team-editor>\r\n        <div class=\"text-center\">\r\n            <button class=\"btn btn-sm btn-primary\" (click)=\"saveTeam()\">  Save</button>\r\n            <button class=\"btn btn-sm btn-info\" (click)=\"clearTeam()\"> Cancel</button>\r\n        </div>\r\n    </td>\r\n</ng-template>\r\n<ng-template #create>\r\n    <admin-team-editor></admin-team-editor>\r\n    <button class=\"btn btn-primary\" (click)=\"saveTeam()\">  Save </button>\r\n    <button class=\"btn btn-info\" (click)=\"clearTeam()\"> Cancel</button>\r\n</ng-template>"
+module.exports = "<table class=\"table m-1\">\r\n    <tr>\r\n        <td>There are {{teams?.length || 0}} Teams</td>\r\n        <td>\r\n            <button class=\"btn btn-sm btn-info btn-block\" routerLink=\"/admin/teams\"> Manage Teams</button>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td>There are  orders</td>\r\n        <td>\r\n            <button class=\"btn btn-sm btn-info btn-block\"\r\n                    routerLink=\"/admin/orders\">\r\n                Manage Orders\r\n            </button>\r\n        </td>\r\n    </tr>\r\n</table>"
 
 /***/ }),
 
 /***/ 181:
+/***/ (function(module, exports) {
+
+module.exports = "\r\n<h4> Team Admin Placeholder</h4>\r\n\r\n<table *ngIf=\"tableMode; else create\" class=\"table table-sm table-striped\">\r\n    <tr>\r\n        <th>ID</th>\r\n        <th>Name</th>\r\n        <th>Tournament</th>\r\n        <th>Manager First Name</th>\r\n        <th>Manager Last Name</th>\r\n        <th>State</th>\r\n        <th>Age Group</th>\r\n        <th></th>\r\n    </tr>\r\n    <tr *ngFor=\"let t of teams\">\r\n        <ng-template [ngIf]=\"team?.id != t.id\" [ngIfElse]=\"edit\">\r\n            <td>{{t.id}}</td>\r\n            <td>{{t.teamName}}</td>\r\n            <td>{{t.tournament.name || '(None)'}}</td>\r\n            <td>{{t.managerFirstName}}</td>\r\n            <td>{{t.managerLastName}}</td>\r\n            <td>{{t.state.name}}</td>\r\n            <td>{{t.ageGroup.age}}</td>\r\n            <td>\r\n                <button class=\"btn btn-sm btn-primary\" (click)=\"selectTeam(t.id)\"> Edit</button>\r\n                <button class=\"btn btn-sm btn-danger\" (click)=\"deleteTeam(t.id)\"> Delete </button>\r\n            </td>\r\n        </ng-template>\r\n    </tr>\r\n    <tfoot>\r\n        <tr>\r\n            <td colspan=\"6\" class=\"text-center\">\r\n                <button class=\"btn btn-primary\" (click)=\"clearTeam(); tableMode = false\"> Create </button>\r\n            </td>\r\n        </tr>\r\n    </tfoot>\r\n</table>\r\n\r\n<ng-template #edit>\r\n    <td colspan=\"6\">\r\n        <admin-team-editor></admin-team-editor>\r\n        <div class=\"text-center\">\r\n            <button class=\"btn btn-sm btn-primary\" (click)=\"saveTeam()\">  Save</button>\r\n            <button class=\"btn btn-sm btn-info\" (click)=\"clearTeam()\"> Cancel</button>\r\n        </div>\r\n    </td>\r\n</ng-template>\r\n<ng-template #create>\r\n    <admin-team-editor></admin-team-editor>\r\n    <button class=\"btn btn-primary\" (click)=\"saveTeam()\">  Save </button>\r\n    <button class=\"btn btn-info\" (click)=\"clearTeam()\"> Cancel</button>\r\n</ng-template>"
+
+/***/ }),
+
+/***/ 182:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Tournament; });
+var Tournament = (function () {
+    function Tournament(id, name, startDate, endDate, isCurrent) {
+        this.id = id;
+        this.name = name;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.isCurrent = isCurrent;
+    }
+    return Tournament;
+}());
+
+//# sourceMappingURL=tournament.model.js.map
+
+/***/ }),
+
+/***/ 183:
+/***/ (function(module, exports) {
+
+module.exports = "\r\n<h4> Team Admin Placeholder</h4>\r\n\r\n<table *ngIf=\"tableMode; else create\" class=\"table table-sm table-striped\">\r\n    <tr>\r\n        <th>ID</th>\r\n        <th>Name</th>\r\n        <th>Start Date</th>\r\n        <th>End Date</th>\r\n        <th></th>\r\n    </tr>\r\n    <tr *ngFor=\"let t of tournaments\">\r\n        <ng-template [ngIf]=\"tournament?.id != t.id\" [ngIfElse]=\"edit\">\r\n            <td>{{t.id}}</td>\r\n            <td>{{t.name}}</td>\r\n            <td>{{t.startDate}}</td>\r\n            <td>{{t.endDate}}</td>\r\n            <td>\r\n                <button class=\"btn btn-sm btn-primary\" (click)=\"selectTeam(t.id)\"> Edit</button>\r\n                <button class=\"btn btn-sm btn-danger\" (click)=\"deleteTournament(t.id)\"> Delete </button>\r\n            </td>\r\n        </ng-template>\r\n    </tr>\r\n    <tfoot>\r\n        <tr>\r\n            <td colspan=\"6\" class=\"text-center\">\r\n                <button class=\"btn btn-primary\" (click)=\"clearTournament(); tableMode = false\"> Create </button>\r\n            </td>\r\n        </tr>\r\n    </tfoot>\r\n</table>\r\n\r\n<ng-template #edit>\r\n    <td colspan=\"6\">\r\n        <admin-tournament-editor></admin-tournament-editor>\r\n        <div class=\"text-center\">\r\n            <button class=\"btn btn-sm btn-primary\" (click)=\"saveTournament()\">  Save</button>\r\n            <button class=\"btn btn-sm btn-info\" (click)=\"clearTournament()\"> Cancel</button>\r\n        </div>\r\n    </td>\r\n</ng-template>\r\n<ng-template #create>\r\n    <admin-tournament-editor></admin-tournament-editor>\r\n    <button class=\"btn btn-primary\" (click)=\"saveTournament()\">  Save </button>\r\n    <button class=\"btn btn-info\" (click)=\"clearTournament()\"> Cancel</button>\r\n</ng-template>"
+
+/***/ }),
+
+/***/ 184:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -423,13 +453,17 @@ module.exports = "\r\n<h4> Team Admin Placeholder</h4>\r\n\r\n<table *ngIf=\"tab
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__admin_component__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__overview_component__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__teamAdmin_component__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__teamEditor_component__ = __webpack_require__(182);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__teamEditor_component__ = __webpack_require__(185);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__tournamentEditor_component__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__tournamentAdmin_component__ = __webpack_require__(91);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -446,7 +480,7 @@ var AdminModule = (function () {
 AdminModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
         imports: [__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* RouterModule */], __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */]],
-        declarations: [__WEBPACK_IMPORTED_MODULE_4__admin_component__["a" /* AdminComponent */], __WEBPACK_IMPORTED_MODULE_5__overview_component__["a" /* OverviewComponent */], __WEBPACK_IMPORTED_MODULE_6__teamAdmin_component__["a" /* TeamAdminComponent */], __WEBPACK_IMPORTED_MODULE_7__teamEditor_component__["a" /* TeamEditorComponent */]]
+        declarations: [__WEBPACK_IMPORTED_MODULE_4__admin_component__["a" /* AdminComponent */], __WEBPACK_IMPORTED_MODULE_5__overview_component__["a" /* OverviewComponent */], __WEBPACK_IMPORTED_MODULE_6__teamAdmin_component__["a" /* TeamAdminComponent */], __WEBPACK_IMPORTED_MODULE_7__teamEditor_component__["a" /* TeamEditorComponent */], __WEBPACK_IMPORTED_MODULE_8__tournamentEditor_component__["a" /* TournamentEditorComponent */], __WEBPACK_IMPORTED_MODULE_9__tournamentAdmin_component__["a" /* TournamentAdminComponent */]]
     })
 ], AdminModule);
 
@@ -454,13 +488,13 @@ AdminModule = __decorate([
 
 /***/ }),
 
-/***/ 182:
+/***/ 185:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamEditorComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(6);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -497,6 +531,13 @@ var TeamEditorComponent = (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(TeamEditorComponent.prototype, "tournaments", {
+        get: function () {
+            return this.repo.tournaments;
+        },
+        enumerable: true,
+        configurable: true
+    });
     TeamEditorComponent.prototype.compareTournaments = function (t1, t2) {
         return t1 && t2 && t1.name == t2.name;
     };
@@ -514,7 +555,7 @@ var TeamEditorComponent = (function () {
 TeamEditorComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: "admin-team-editor",
-        template: __webpack_require__(183)
+        template: __webpack_require__(186)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], TeamEditorComponent);
@@ -524,23 +565,74 @@ var _a;
 
 /***/ }),
 
-/***/ 183:
+/***/ 186:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"form-group\">\r\n    <label>Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.id\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Tournament Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.tournamentId\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Tournaments</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"team.tournament\" [compareWith]=\"compareTournaments\">\r\n        <option *ngFor=\"let t of tournaments\" [ngValue]=\"t\">{{t.id}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Team Name</label>\r\n    <textarea class=\"form-control\" [(ngModel)]=\"team.teamName\"></textarea>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Manager First Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.managerFirstName\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Manager Last Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.managerLastName\" />\r\n</div>\r\n<!--<div class=\"form-group\">\r\n    <label>State</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.state.name\" />\r\n</div>-->\r\n<div class=\"form-group\">\r\n    <label>State</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"team.state\" [compareWith]=\"compareStates\">\r\n        <option *ngFor=\"let s of states\" [ngValue]=\"s\">{{s.name}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Age Group</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"team.ageGroup\" [compareWith]=\"compareAgeGroups\">\r\n        <option *ngFor=\"let a of ageGroups\" [ngValue]=\"a\">{{a.age}}</option>\r\n    </select>\r\n</div>"
+module.exports = "<div class=\"form-group\">\r\n    <label>Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.id\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Tournaments</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"team.tournament\" [compareWith]=\"compareTournaments\">\r\n        <option *ngFor=\"let t of tournaments\" [ngValue]=\"t\">{{t.name}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Team Name</label>\r\n    <textarea class=\"form-control\" [(ngModel)]=\"team.teamName\"></textarea>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Manager First Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.managerFirstName\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Manager Last Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.managerLastName\" />\r\n</div>\r\n<!--<div class=\"form-group\">\r\n    <label>State</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.state.name\" />\r\n</div>-->\r\n<div class=\"form-group\">\r\n    <label>State</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"team.state\" [compareWith]=\"compareStates\">\r\n        <option *ngFor=\"let s of states\" [ngValue]=\"s\">{{s.name}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Age Group</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"team.ageGroup\" [compareWith]=\"compareAgeGroups\">\r\n        <option *ngFor=\"let a of ageGroups\" [ngValue]=\"a\">{{a.age}}</option>\r\n    </select>\r\n</div>"
 
 /***/ }),
 
-/***/ 7:
+/***/ 187:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TournamentEditorComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(6);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var TournamentEditorComponent = (function () {
+    function TournamentEditorComponent(repo) {
+        this.repo = repo;
+    }
+    Object.defineProperty(TournamentEditorComponent.prototype, "tournament", {
+        get: function () {
+            return this.repo.tournament;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return TournamentEditorComponent;
+}());
+TournamentEditorComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: "admin-tournament-editor",
+        template: __webpack_require__(188)
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
+], TournamentEditorComponent);
+
+var _a;
+//# sourceMappingURL=tournamentEditor.component.js.map
+
+/***/ }),
+
+/***/ 188:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"form-group\">\r\n    <label>Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"tournament.id\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"tournament.name\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Start Date</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"tournament.startDate\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>End Date</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"tournament.endDate\" />\r\n</div>"
+
+/***/ }),
+
+/***/ 6:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Repository; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(84);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(137);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__configClasses_repository__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__configClasses_repository__ = __webpack_require__(138);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -557,12 +649,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var teamUrl = "/api/teams";
 var statesUrl = "/api/states";
 var ageGroupUrl = "/api/agegroups";
+var tournamentUrl = "api/tournaments";
 var Repository = (function () {
     function Repository(http) {
         this.http = http;
         this.filterObject = new __WEBPACK_IMPORTED_MODULE_3__configClasses_repository__["a" /* Filter */]();
         this.states = [];
         this.ageGroups = [];
+        this.tournaments = [];
         //this.team = JSON.parse(document.getElementById("data").textContent);
         // this.getTeam(2);
         //this.filter.state = "va";
@@ -601,6 +695,15 @@ var Repository = (function () {
         console.log("get ageGroups()");
         this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestMethod */].Get, ageGroupUrl).subscribe(function (response) { return _this.ageGroups = response; });
     };
+    Repository.prototype.getTournaments = function () {
+        var _this = this;
+        console.log("getTournaments()");
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestMethod */].Get, tournamentUrl).subscribe(function (response) { return _this.tournaments = response; });
+    };
+    Repository.prototype.getTournament = function (id) {
+        var _this = this;
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestMethod */].Get, tournamentUrl + "/" + id).subscribe(function (response) { return _this.tournament = response; });
+    };
     Repository.prototype.sendRequest = function (verb, url, data) {
         return this.http.request(new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Request */]({
             method: verb, url: url, body: data
@@ -623,7 +726,7 @@ var Repository = (function () {
             managerLastName: team.managerLastName,
             ageGroupId: team.ageGroupId,
             stateId: team.state.stateId,
-            tournamentId: team.tournamentId
+            tournamentId: team.tournament.id
         };
         console.log("createTeam");
         console.log(data);
@@ -713,7 +816,7 @@ var Team = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamTableComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(28);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -748,7 +851,7 @@ var TeamTableComponent = (function () {
 TeamTableComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: "team-table",
-        template: __webpack_require__(171)
+        template: __webpack_require__(172)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object])
 ], TeamTableComponent);
@@ -764,7 +867,7 @@ var _a, _b;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamDetailComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(28);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -799,7 +902,7 @@ var TeamDetailComponent = (function () {
 TeamDetailComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: "team-detail",
-        template: __webpack_require__(176)
+        template: __webpack_require__(177)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
 ], TeamDetailComponent);
@@ -815,7 +918,7 @@ var _a, _b, _c;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(6);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -835,12 +938,13 @@ var AdminComponent = (function () {
         this.repo.getTeams();
         this.repo.getStates();
         this.repo.getAgeGroups();
+        this.repo.getTournaments();
     }
     return AdminComponent;
 }());
 AdminComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        template: __webpack_require__(178)
+        template: __webpack_require__(179)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], AdminComponent);
@@ -856,7 +960,7 @@ var _a;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OverviewComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(6);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -883,7 +987,7 @@ var OverviewComponent = (function () {
 }());
 OverviewComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        template: __webpack_require__(179)
+        template: __webpack_require__(180)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], OverviewComponent);
@@ -899,7 +1003,7 @@ var _a;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamAdminComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_team_model__ = __webpack_require__(85);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -958,7 +1062,7 @@ var TeamAdminComponent = (function () {
 }());
 TeamAdminComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        template: __webpack_require__(180)
+        template: __webpack_require__(181)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], TeamAdminComponent);
@@ -966,7 +1070,67 @@ TeamAdminComponent = __decorate([
 var _a;
 //# sourceMappingURL=teamAdmin.component.js.map
 
+/***/ }),
+
+/***/ 91:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TournamentAdminComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_tournament_model__ = __webpack_require__(182);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var TournamentAdminComponent = (function () {
+    function TournamentAdminComponent(repo) {
+        this.repo = repo;
+        this.tableMode = true;
+    }
+    Object.defineProperty(TournamentAdminComponent.prototype, "tournament", {
+        get: function () {
+            return this.repo.tournament;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TournamentAdminComponent.prototype, "tournaments", {
+        get: function () {
+            return this.repo.tournaments;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    TournamentAdminComponent.prototype.selectTournament = function (id) {
+        this.repo.getTournament(id);
+    };
+    TournamentAdminComponent.prototype.clearTournament = function () {
+        this.repo.tournament = new __WEBPACK_IMPORTED_MODULE_2__models_tournament_model__["a" /* Tournament */]();
+        this.tableMode = true;
+    };
+    return TournamentAdminComponent;
+}());
+TournamentAdminComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        template: __webpack_require__(183)
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
+], TournamentAdminComponent);
+
+var _a;
+//# sourceMappingURL=tournamentAdmin.component.js.map
+
 /***/ })
 
-},[103]);
+},[104]);
 //# sourceMappingURL=main.bundle.js.map

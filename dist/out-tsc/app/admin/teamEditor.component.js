@@ -36,6 +36,13 @@ var TeamEditorComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(TeamEditorComponent.prototype, "tournaments", {
+        get: function () {
+            return this.repo.tournaments;
+        },
+        enumerable: true,
+        configurable: true
+    });
     TeamEditorComponent.prototype.compareTournaments = function (t1, t2) {
         return t1 && t2 && t1.name == t2.name;
     };
