@@ -399,7 +399,7 @@ var RoutingConfig = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterM
 /***/ 180:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-3\">\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Overview</button>\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin/teams\" routerLinkActive=\"active\"> Teams </button>\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin/tournaments\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\">Tournaments</button>\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin/ballparks\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Ballparks </button>\r\n\r\n    </div>\r\n    <div class=\"col p-2\">\r\n        <router-outlet></router-outlet>\r\n    </div>\r\n</div>"
+module.exports = "\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-3\">\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Overview</button>\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin/teams\" routerLinkActive=\"active\"> Teams </button>\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin/tournaments\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\">Tournaments</button>\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin/ballparks\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Ballparks </button>\r\n    </div>\r\n    <div class=\"col p-2\">\r\n        <router-outlet></router-outlet>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -681,6 +681,13 @@ var BallparkEditorComponent = (function () {
     function BallparkEditorComponent(repo) {
         this.repo = repo;
     }
+    Object.defineProperty(BallparkEditorComponent.prototype, "ballpark", {
+        get: function () {
+            return this.repo.ballpark;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(BallparkEditorComponent.prototype, "states", {
         get: function () {
             return this.repo.states;
@@ -712,7 +719,7 @@ var _a;
 /***/ 193:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"form-group\">\r\n    <label>Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"ballpark.id\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Name</label>\r\n    <textarea class=\"form-control\" [(ngModel)]=\"ballpark.name\"></textarea>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Street</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"ballpark.street\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>City</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"ballpark.city\" />\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n    <label>State</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"team.state\" [compareWith]=\"compareStates\">\r\n        <option *ngFor=\"let s of states\" [ngValue]=\"s\">{{s.name}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Zip</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"ballpark.zip\" />\r\n</div>\r\n"
+module.exports = "<div class=\"form-group\">\r\n    <label>Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"ballpark.id\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Name</label>\r\n    <textarea class=\"form-control\" [(ngModel)]=\"ballpark.name\"></textarea>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Street</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"ballpark.street\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>City</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"ballpark.city\" />\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n    <label>State</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"ballpark.state\" [compareWith]=\"compareStates\">\r\n        <option *ngFor=\"let s of states\" [ngValue]=\"s\">{{s.name}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Zip</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"ballpark.zip\" />\r\n</div>\r\n"
 
 /***/ }),
 

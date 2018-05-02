@@ -73,11 +73,11 @@ namespace MCYSA.Models
                     var b1 = new Ballpark()
                     {
                         Id = 1,
-                        Name = "Falls Church High School",
-                        City = "Falls Church",
-                        Street = "1 FCHS Drive",
+                        Name = "Annandale High School",
+                        City = "Annandale",
+                        Street = "4700 Medford Drive",
                         StateId = "VA",
-                        Zip = "22204"
+                        Zip = "22003"
                     };
 
                     context.Add(b1);

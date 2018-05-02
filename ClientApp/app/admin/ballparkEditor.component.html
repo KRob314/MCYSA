@@ -17,7 +17,7 @@
 
 <div class="form-group">
     <label>State</label>
-    <select class="form-control" [(ngModel)]="team.state" [compareWith]="compareStates">
+    <select class="form-control" [(ngModel)]="ballpark.state" [compareWith]="compareStates">
         <option *ngFor="let s of states" [ngValue]="s">{{s.name}}</option>
     </select>
 </div>

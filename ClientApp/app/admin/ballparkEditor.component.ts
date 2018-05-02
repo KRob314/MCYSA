@@ -1,6 +1,7 @@
 ﻿import { Component } from "@angular/core";
 import { Repository } from "../models/repository";
 import { State } from "../models/state.model";
+import { Ballpark } from "../models/ballpark.model";
 
 
 @Component({
@@ -11,6 +12,11 @@ import { State } from "../models/state.model";
 export class BallparkEditorComponent
 {
 	constructor(private repo: Repository) { }
+
+	get ballpark(): Ballpark
+	{
+		return this.repo.ballpark;
+	}
 
 	get states(): State[]
 	{

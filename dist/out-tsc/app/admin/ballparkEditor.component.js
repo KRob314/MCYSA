@@ -15,6 +15,13 @@ var BallparkEditorComponent = /** @class */ (function () {
     function BallparkEditorComponent(repo) {
         this.repo = repo;
     }
+    Object.defineProperty(BallparkEditorComponent.prototype, "ballpark", {
+        get: function () {
+            return this.repo.ballpark;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(BallparkEditorComponent.prototype, "states", {
         get: function () {
             return this.repo.states;
