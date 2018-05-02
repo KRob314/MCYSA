@@ -17,6 +17,7 @@ var teamUrl = "/api/teams";
 var statesUrl = "/api/states";
 var ageGroupUrl = "/api/agegroups";
 var tournamentUrl = "api/tournaments";
+var ballparkUrl = "api/ballparks";
 var Repository = /** @class */ (function () {
     function Repository(http) {
         this.http = http;
@@ -50,6 +51,23 @@ var Repository = /** @class */ (function () {
             url += "&ageGroupId=" + this.filter.age;
         this.sendRequest(http_1.RequestMethod.Get, url).subscribe(function (response) {
             return _this.teams = response;
+        });
+    };
+    Repository.prototype.getBallpark = function (id) {
+        var _this = this;
+        console.log("getBallpark()");
+        this.sendRequest(http_1.RequestMethod.Get, ballparkUrl + "/" + id).subscribe(function (response) {
+            _this.ballpark = response;
+            console.log(_this.ballpark);
+        });
+    };
+    Repository.prototype.getBallparks = function (related) {
+        var _this = this;
+        if (related === void 0) { related = false; }
+        console.log("getBallparks()");
+        var url = ballparkUrl + "?related=" + this.filter.related;
+        this.sendRequest(http_1.RequestMethod.Get, url).subscribe(function (response) {
+            return _this.ballparks = response;
         });
     };
     Repository.prototype.getStates = function () {
@@ -122,6 +140,64 @@ var Repository = /** @class */ (function () {
         this.sendRequest(http_1.RequestMethod.Delete, teamUrl + "/" + id).subscribe(function (response) {
             return _this.getTeams();
         });
+    };
+    Repository.prototype.createBallpark = function (ballpark) {
+        var _this = this;
+        var data = {
+            name: ballpark.name,
+            street: ballpark.street,
+            city: ballpark.city,
+            stateId: ballpark.state.stateId,
+            zip: ballpark.zip
+        };
+        console.log("createBallpark()");
+        console.log(data);
+        this.sendRequest(http_1.RequestMethod.Post, ballparkUrl, data).subscribe(function (response) {
+            ballpark.id = response;
+            _this.ballparks.push(ballpark);
+        });
+    };
+    Repository.prototype.replaceBallpark = function (ballpark) {
+        var _this = this;
+        var data = {
+            name: ballpark.name,
+            street: ballpark.street,
+            city: ballpark.city,
+            stateId: ballpark.state.stateId,
+            zip: ballpark.zip
+        };
+        this.sendRequest(http_1.RequestMethod.Put, ballparkUrl + "/" + ballpark.id, data).subscribe(function (response) { return _this.getBallparks(); });
+    };
+    Repository.prototype.deleteBallpark = function (id) {
+        var _this = this;
+        this.sendRequest(http_1.RequestMethod.Delete, ballparkUrl + "/" + id).subscribe(function (response) { return _this.getBallparks(); });
+    };
+    Repository.prototype.createTournament = function (tournament) {
+        var _this = this;
+        var data = {
+            id: tournament.id,
+            startDate: tournament.startDate,
+            endDate: tournament.endDate,
+            isCurrent: tournament.isCurrent,
+            name: tournament.name
+        };
+        console.log("createTournament()");
+        console.log(tournament);
+        this.sendRequest(http_1.RequestMethod.Post, tournamentUrl, data).subscribe(function (response) {
+            tournament.id = response;
+            _this.tournaments.push(tournament);
+        });
+    };
+    Repository.prototype.replaceTournament = function (tournament) {
+        var _this = this;
+        var data = {
+            id: tournament.id,
+            startDate: tournament.startDate,
+            endDate: tournament.endDate,
+            isCurrent: true,
+            name: tournament.name
+        };
+        this.sendRequest(http_1.RequestMethod.Put, tournamentUrl + "/" + tournament.id, data).subscribe(function (response) { return _this.getTournaments(); });
     };
     Repository = __decorate([
         core_1.Injectable(),

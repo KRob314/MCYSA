@@ -11,24 +11,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("../models/repository");
-var AdminComponent = /** @class */ (function () {
-    function AdminComponent(repo) {
+var BallparkEditorComponent = /** @class */ (function () {
+    function BallparkEditorComponent(repo) {
         this.repo = repo;
-        repo.filter.reset();
-        repo.filter.related = true;
-        this.repo.getTeams();
-        this.repo.getStates();
-        this.repo.getAgeGroups();
-        this.repo.getTournaments();
-        this.repo.getBallparks();
     }
-    AdminComponent = __decorate([
+    Object.defineProperty(BallparkEditorComponent.prototype, "states", {
+        get: function () {
+            return this.repo.states;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    BallparkEditorComponent.prototype.compareStates = function (s1, s2) {
+        //console.log("compareStates()");
+        //console.log(s1.name);
+        //console.log(s2.name);
+        return s1 && s2 && s1.name == s2.name;
+    };
+    BallparkEditorComponent = __decorate([
         core_1.Component({
-            templateUrl: "admin.component.html"
+            selector: "admin-ballpark-editor",
+            templateUrl: "ballparkEditor.component.html"
         }),
         __metadata("design:paramtypes", [repository_1.Repository])
-    ], AdminComponent);
-    return AdminComponent;
+    ], BallparkEditorComponent);
+    return BallparkEditorComponent;
 }());
-exports.AdminComponent = AdminComponent;
-//# sourceMappingURL=admin.component.js.map
+exports.BallparkEditorComponent = BallparkEditorComponent;
+//# sourceMappingURL=ballparkEditor.component.js.map

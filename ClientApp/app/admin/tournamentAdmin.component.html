@@ -1,5 +1,5 @@
 ﻿
-<h4> Team Admin Placeholder</h4>
+<h4> Tournament Admin</h4>
 
 <table *ngIf="tableMode; else create" class="table table-sm table-striped">
     <tr>
@@ -16,7 +16,7 @@
             <td>{{t.startDate}}</td>
             <td>{{t.endDate}}</td>
             <td>
-                <button class="btn btn-sm btn-primary" (click)="selectTeam(t.id)"> Edit</button>
+                <button class="btn btn-sm btn-primary" (click)="selectTournament(t.id)"> Edit</button>
                 <button class="btn btn-sm btn-danger" (click)="deleteTournament(t.id)"> Delete </button>
             </td>
         </ng-template>

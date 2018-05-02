@@ -1,4 +1,5 @@
 ﻿import { Team } from "./team.model";
+import { Ballpark } from "./ballpark.model";
 import { State } from "./state.model";
 import { AgeGroup } from "./agegroup.model";
 import { Tournament } from "./tournament.model";
@@ -12,6 +13,7 @@ const teamUrl = "/api/teams";
 const statesUrl = "/api/states";
 const ageGroupUrl = "/api/agegroups";
 const tournamentUrl = "api/tournaments";
+const ballparkUrl = "api/ballparks";
 
 @Injectable()
 export class Repository
@@ -22,7 +24,9 @@ export class Repository
 	 states: State[] = [];
 	 ageGroups: AgeGroup[] = [];
 	 tournament: Tournament;
-	 tournaments: Tournament[] = [];
+	tournaments: Tournament[] = [];
+	ballpark: Ballpark;
+	ballparks: Ballpark[];
 
     constructor(private http: Http)
     {
@@ -60,6 +64,28 @@ export class Repository
 
         this.sendRequest(RequestMethod.Get, url).subscribe(response =>
             this.teams = response);
+	}
+
+	getBallpark(id: number)
+	{
+		console.log("getBallpark()");
+
+		this.sendRequest(RequestMethod.Get, ballparkUrl + "/" + id).subscribe(response =>
+		{
+			this.ballpark = response;
+			console.log(this.ballpark);
+		})
+	}
+
+	getBallparks(related = false)
+	{
+		console.log("getBallparks()");
+
+		let url = ballparkUrl + "?related=" + this.filter.related;
+
+		this.sendRequest(RequestMethod.Get, url).subscribe(response =>
+			this.ballparks = response);
+		
 	}
 
 	getStates()
@@ -146,6 +172,81 @@ export class Repository
 	{
 		this.sendRequest(RequestMethod.Delete, teamUrl + "/" + id).subscribe(response =>
 			this.getTeams());
+	}
+
+	createBallpark(ballpark: Ballpark)
+	{
+		let data =
+			{
+				name: ballpark.name,
+				street: ballpark.street,
+				city: ballpark.city,
+				stateId: ballpark.state.stateId,
+				zip: ballpark.zip
+			};
+
+		console.log("createBallpark()");
+		console.log(data);
+
+		this.sendRequest(RequestMethod.Post, ballparkUrl, data).subscribe(response =>
+		{
+			ballpark.id = response;
+			this.ballparks.push(ballpark);
+		})
+	}
+
+	replaceBallpark(ballpark: Ballpark)
+	{
+		let data =
+			{
+				name: ballpark.name,
+				street: ballpark.street,
+				city: ballpark.city,
+				stateId: ballpark.state.stateId,
+				zip: ballpark.zip
+			};
+
+		this.sendRequest(RequestMethod.Put, ballparkUrl + "/" + ballpark.id, data).subscribe(response => this.getBallparks());
+	}
+
+	deleteBallpark(id: number)
+	{
+		this.sendRequest(RequestMethod.Delete, ballparkUrl + "/" + id).subscribe(response => this.getBallparks());
+	}
+
+	createTournament(tournament: Tournament)
+	{
+		let data =
+			{
+				id: tournament.id,
+				startDate: tournament.startDate,
+				endDate: tournament.endDate,
+				isCurrent: tournament.isCurrent,
+				name: tournament.name
+			};
+
+		console.log("createTournament()");
+		console.log(tournament);
+
+		this.sendRequest(RequestMethod.Post, tournamentUrl, data).subscribe(response =>
+		{
+			tournament.id = response;
+			this.tournaments.push(tournament);
+		});
+	}
+
+	replaceTournament(tournament: Tournament)
+	{
+		let data =
+			{
+				id: tournament.id,
+				startDate: tournament.startDate,
+				endDate: tournament.endDate,
+				isCurrent: true,
+				name: tournament.name
+			};
+
+		this.sendRequest(RequestMethod.Put, tournamentUrl + "/" + tournament.id, data).subscribe(response => this.getTournaments());
 	}
 
     //get team(): Team

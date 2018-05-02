@@ -38,6 +38,16 @@ var TournamentAdminComponent = /** @class */ (function () {
         this.repo.tournament = new tournament_model_1.Tournament();
         this.tableMode = true;
     };
+    TournamentAdminComponent.prototype.saveTournament = function () {
+        console.log("saveTournament()");
+        console.log(this.repo.tournament);
+        if (this.repo.tournament.id == null)
+            this.repo.createTournament(this.repo.tournament);
+        else
+            this.repo.replaceTeam(this.repo.team);
+        this.clearTournament();
+        this.tableMode = true;
+    };
     TournamentAdminComponent = __decorate([
         core_1.Component({
             templateUrl: "tournamentAdmin.component.html"

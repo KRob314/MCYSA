@@ -15,5 +15,6 @@ export class AdminComponent
 		this.repo.getStates();
 		this.repo.getAgeGroups();
 		this.repo.getTournaments();
+		this.repo.getBallparks();
     }
 }

@@ -10,11 +10,20 @@ export class StateFilterComponent
 {
     //public state = "va";
 
-    constructor(private repo: Repository) { }
+
+	constructor(private repo: Repository)
+	{
+	}
 
     setState(state: string)
     {
         this.repo.filter.state = state;
-        this.repo.getTeams();
-    }
+		this.repo.getTeams();
+
+	}
+
+	//get states()
+	//{
+	//	this.states = this.repo.states;
+	//}
 }

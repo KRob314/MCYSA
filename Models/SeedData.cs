@@ -67,6 +67,22 @@ namespace MCYSA.Models
                     context.Add(t2);
                     context.SaveChanges();
                 }
+
+                if(context.Ballparks.Count() == 0)
+                {
+                    var b1 = new Ballpark()
+                    {
+                        Id = 1,
+                        Name = "Falls Church High School",
+                        City = "Falls Church",
+                        Street = "1 FCHS Drive",
+                        StateId = "VA",
+                        Zip = "22204"
+                    };
+
+                    context.Add(b1);
+                    context.SaveChanges();
+                }
             }
         }
     }

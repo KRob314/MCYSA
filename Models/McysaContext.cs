@@ -26,6 +26,7 @@ namespace MCYSA.Models
         public virtual DbSet<State> States { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
         public virtual DbSet<Tournament> Tournaments { get; set; }
+        public virtual DbSet<Ballpark> Ballparks { get; set; }
         //public virtual DbSet<VerificationEmail> VerificationEmails { get; set; }
         public virtual DbSet<Waiver_Medical> Waiver_Medical { get; set; }
     }

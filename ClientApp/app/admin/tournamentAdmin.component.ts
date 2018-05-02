@@ -33,4 +33,21 @@ export class TournamentAdminComponent
 		this.repo.tournament = new Tournament();
 		this.tableMode = true;
 	}
+
+	saveTournament()
+	{
+		console.log("saveTournament()");
+
+		console.log(this.repo.tournament);
+
+
+		if (this.repo.tournament.id == null)
+			this.repo.createTournament(this.repo.tournament);
+		else
+			this.repo.replaceTeam(this.repo.team);
+
+		this.clearTournament();
+		this.tableMode = true;
+	}
+
 }

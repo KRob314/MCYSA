@@ -1,0 +1,48 @@
+﻿
+<h4> Ballpark Admin </h4>
+
+<table *ngIf="tableMode; else create" class="table table-sm table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip </th>
+        <th></th>
+    </tr>
+    <tr *ngFor="let b of ballparks">
+        <ng-template [ngIf]="ballpark?.id != b.id" [ngIfElse]="edit">
+            <td>{{b.id}}</td>
+            <td>{{b.name}}</td>
+            <td>{{b.city}}</td>
+            <td>{{b.stateId}}</td>
+            <td>{{b.zip}}</td>
+            <td>
+                <button class="btn btn-sm btn-primary" (click)="selectBallpark(b.id)"> Edit</button>
+                <button class="btn btn-sm btn-danger" (click)="deleteBallpark(b.id)"> Delete </button>
+            </td>
+        </ng-template>
+    </tr>
+    <tfoot>
+        <tr>
+            <td colspan="6" class="text-center">
+                <button class="btn btn-primary" (click)="clearBallpark(); tableMode = false"> Create </button>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<ng-template #edit>
+    <td colspan="6">
+        <admin-ballpark-editor></admin-ballpark-editor>
+        <div class="text-center">
+            <button class="btn btn-sm btn-primary" (click)="saveBallpark()">  Save</button>
+            <button class="btn btn-sm btn-info" (click)="clearBallpark()"> Cancel</button>
+        </div>
+    </td>
+</ng-template>
+<ng-template #create>
+    <admin-ballpark-editor></admin-ballpark-editor>
+    <button class="btn btn-primary" (click)="saveBallpark()">  Save </button>
+    <button class="btn btn-info" (click)="clearBallpark()"> Cancel</button>
+</ng-template>

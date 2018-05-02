@@ -16,13 +16,15 @@ var teamAdmin_component_1 = require("./teamAdmin.component");
 var teamEditor_component_1 = require("./teamEditor.component");
 var tournamentEditor_component_1 = require("./tournamentEditor.component");
 var tournamentAdmin_component_1 = require("./tournamentAdmin.component");
+var ballparkAdmin_component_1 = require("./ballparkAdmin.component");
+var ballparkEditor_component_1 = require("./ballparkEditor.component");
 var AdminModule = /** @class */ (function () {
     function AdminModule() {
     }
     AdminModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, router_1.RouterModule, forms_1.FormsModule],
-            declarations: [admin_component_1.AdminComponent, overview_component_1.OverviewComponent, teamAdmin_component_1.TeamAdminComponent, teamEditor_component_1.TeamEditorComponent, tournamentEditor_component_1.TournamentEditorComponent, tournamentAdmin_component_1.TournamentAdminComponent]
+            declarations: [admin_component_1.AdminComponent, overview_component_1.OverviewComponent, teamAdmin_component_1.TeamAdminComponent, teamEditor_component_1.TeamEditorComponent, tournamentEditor_component_1.TournamentEditorComponent, tournamentAdmin_component_1.TournamentAdminComponent, ballparkAdmin_component_1.BallparkAdminComponent, ballparkEditor_component_1.BallparkEditorComponent]
         })
     ], AdminModule);
     return AdminModule;
