@@ -1,0 +1,47 @@
+﻿<!--<div class="form-group">
+    <label>Id</label>
+    <input class="form-control" [(ngModel)]="game.id" />
+</div>-->
+<div class="form-group">
+    <label>Home Team</label>
+    <select class="form-control" [(ngModel)]="game.homeTeamId" [compareWith]="compareTeams">
+        <option *ngFor="let t of teams" [ngValue]="t.id">{{t.teamName}}</option>
+    </select>
+</div>
+<div class="form-group">
+    <label>Away Team</label>
+    <select class="form-control" [(ngModel)]="game.awayTeamId" [compareWith]="compareTeams">
+        <option *ngFor="let t of teams" [ngValue]="t.id">{{t.teamName}}</option>
+    </select>
+</div>
+<!--<div class="form-group">
+    <label>Home Team Name</label>
+    <input class="form-control" [(ngModel)]="game.homeTeamId" />
+</div>
+<div class="form-group">
+    <label>Away Team Name</label>
+    <input class="form-control" [(ngModel)]="game.awayTeamId" />
+</div>-->
+<!--<div class="form-group">
+    <label>Ballpark</label>
+    <input class="form-control" [(ngModel)]="game.ballpark.name" />
+</div>-->
+<div class="form-group">
+    <label>Ballpark</label>
+    <select class="form-control" [(ngModel)]="game.ballparkId" [compareWith]="compareBallparks">
+        <option *ngFor="let b of ballparks" [ngValue]="b.id">{{b.name}}</option>
+    </select>
+</div>
+<div class="form-group">
+    <label>Game Date</label>
+    <input class="form-control" [(ngModel)]="game.gameDate" />
+</div>
+<div class="form-group">
+    <label>Home Team Runs</label>
+    <input class="form-control" [(ngModel)]="game.homeTeamRuns" />
+</div>
+<div class="form-group">
+    <label>Away Team Runs</label>
+    <input class="form-control" [(ngModel)]="game.awayTeamRuns" />
+</div>
+

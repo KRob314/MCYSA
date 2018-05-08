@@ -25,9 +25,6 @@ export class BallparkEditorComponent
 
 	compareStates(s1: State, s2: State)
 	{
-		//console.log("compareStates()");
-		//console.log(s1.name);
-		//console.log(s2.name);
 		return s1 && s2 && s1.name == s2.name;
 	}
 

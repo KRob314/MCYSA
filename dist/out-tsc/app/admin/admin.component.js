@@ -21,6 +21,7 @@ var AdminComponent = /** @class */ (function () {
         this.repo.getAgeGroups();
         this.repo.getTournaments();
         this.repo.getBallparks();
+        this.repo.getGames();
     }
     AdminComponent = __decorate([
         core_1.Component({

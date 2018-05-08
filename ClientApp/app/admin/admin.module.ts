@@ -10,10 +10,13 @@ import { TournamentEditorComponent } from "./tournamentEditor.component";
 import { TournamentAdminComponent } from "./tournamentAdmin.component";
 import { BallparkAdminComponent } from "./ballparkAdmin.component";
 import { BallparkEditorComponent } from "./ballparkEditor.component";
+import { GameAdminComponent } from "./gameAdmin.component";
+import { GameEditorComponent } from "./gameEditor.component";
 
 @NgModule({
     imports: [BrowserModule, RouterModule, FormsModule],
-    declarations: [AdminComponent, OverviewComponent, TeamAdminComponent, TeamEditorComponent, TournamentEditorComponent, TournamentAdminComponent, BallparkAdminComponent, BallparkEditorComponent]
+	declarations: [AdminComponent, OverviewComponent, TeamAdminComponent, TeamEditorComponent, TournamentEditorComponent, TournamentAdminComponent, BallparkAdminComponent, BallparkEditorComponent,
+	GameAdminComponent, GameEditorComponent]
 })
 
 export class AdminModule { }

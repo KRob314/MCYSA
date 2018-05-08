@@ -11,9 +11,10 @@ using System;
 namespace MCYSA.Migrations
 {
     [DbContext(typeof(McysaContext))]
-    partial class McysaContextModelSnapshot : ModelSnapshot
+    [Migration("20180503200400_addGames")]
+    partial class addGames
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,36 +67,6 @@ namespace MCYSA.Migrations
                     b.HasKey("CountryId");
 
                     b.ToTable("Countries");
-                });
-
-            modelBuilder.Entity("MCYSA.Models.Game", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("AwayTeamId");
-
-                    b.Property<int>("AwayTeamRuns");
-
-                    b.Property<int>("BallparkId");
-
-                    b.Property<DateTime>("GameDate");
-
-                    b.Property<int?>("HomeTeamId");
-
-                    b.Property<int>("HomeTeamRuns");
-
-                    b.Property<int>("SeasonId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AwayTeamId");
-
-                    b.HasIndex("BallparkId");
-
-                    b.HasIndex("HomeTeamId");
-
-                    b.ToTable("Games");
                 });
 
             modelBuilder.Entity("MCYSA.Models.Player", b =>
@@ -299,22 +270,6 @@ namespace MCYSA.Migrations
                     b.HasOne("MCYSA.Models.State", "State")
                         .WithMany()
                         .HasForeignKey("StateId");
-                });
-
-            modelBuilder.Entity("MCYSA.Models.Game", b =>
-                {
-                    b.HasOne("MCYSA.Models.Team", "AwayTeam")
-                        .WithMany()
-                        .HasForeignKey("AwayTeamId");
-
-                    b.HasOne("MCYSA.Models.Ballpark", "Ballpark")
-                        .WithMany()
-                        .HasForeignKey("BallparkId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("MCYSA.Models.Team", "HomeTeam")
-                        .WithMany()
-                        .HasForeignKey("HomeTeamId");
                 });
 
             modelBuilder.Entity("MCYSA.Models.Player", b =>

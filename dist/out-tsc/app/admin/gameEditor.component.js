@@ -11,35 +11,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("../models/repository");
-var BallparkEditorComponent = /** @class */ (function () {
-    function BallparkEditorComponent(repo) {
+var GameEditorComponent = /** @class */ (function () {
+    function GameEditorComponent(repo) {
         this.repo = repo;
     }
-    Object.defineProperty(BallparkEditorComponent.prototype, "ballpark", {
+    Object.defineProperty(GameEditorComponent.prototype, "game", {
         get: function () {
-            return this.repo.ballpark;
+            return this.repo.game;
         },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(BallparkEditorComponent.prototype, "states", {
+    Object.defineProperty(GameEditorComponent.prototype, "ballparks", {
         get: function () {
-            return this.repo.states;
+            return this.repo.ballparks;
         },
         enumerable: true,
         configurable: true
     });
-    BallparkEditorComponent.prototype.compareStates = function (s1, s2) {
-        return s1 && s2 && s1.name == s2.name;
+    Object.defineProperty(GameEditorComponent.prototype, "teams", {
+        get: function () {
+            return this.repo.teams;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    GameEditorComponent.prototype.compareTeams = function (t1, t2) {
+        return t1 && t2 && t1.teamName == t2.teamName;
     };
-    BallparkEditorComponent = __decorate([
+    GameEditorComponent.prototype.compareBallparks = function (b1, b2) {
+        return b1 && b2 && b1.name == b2.name;
+    };
+    GameEditorComponent = __decorate([
         core_1.Component({
-            selector: "admin-ballpark-editor",
-            templateUrl: "ballparkEditor.component.html"
+            selector: "admin-game-editor",
+            templateUrl: "gameEditor.component.html"
         }),
         __metadata("design:paramtypes", [repository_1.Repository])
-    ], BallparkEditorComponent);
-    return BallparkEditorComponent;
+    ], GameEditorComponent);
+    return GameEditorComponent;
 }());
-exports.BallparkEditorComponent = BallparkEditorComponent;
-//# sourceMappingURL=ballparkEditor.component.js.map
+exports.GameEditorComponent = GameEditorComponent;
+//# sourceMappingURL=gameEditor.component.js.map

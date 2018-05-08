@@ -8,6 +8,7 @@ var overview_component_1 = require("./admin/overview.component");
 var teamAdmin_component_1 = require("./admin/teamAdmin.component");
 var tournamentAdmin_component_1 = require("./admin/tournamentAdmin.component");
 var ballparkAdmin_component_1 = require("./admin/ballparkAdmin.component");
+var gameAdmin_component_1 = require("./admin/gameAdmin.component");
 var routes = [
     {
         path: "admin", component: admin_component_1.AdminComponent,
@@ -15,7 +16,8 @@ var routes = [
             { path: "teams", component: teamAdmin_component_1.TeamAdminComponent },
             { path: "overview", component: overview_component_1.OverviewComponent },
             { path: "tournaments", component: tournamentAdmin_component_1.TournamentAdminComponent },
-            { path: "ballparks", component: ballparkAdmin_component_1.BallparkAdminComponent }
+            { path: "ballparks", component: ballparkAdmin_component_1.BallparkAdminComponent },
+            { path: "games", component: gameAdmin_component_1.GameAdminComponent }
         ]
     },
     { path: "table", component: teamTable_component_1.TeamTableComponent },

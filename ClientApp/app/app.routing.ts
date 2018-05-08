@@ -6,6 +6,7 @@ import { OverviewComponent } from "./admin/overview.component";
 import { TeamAdminComponent } from "./admin/teamAdmin.component";
 import { TournamentAdminComponent } from "./admin/tournamentAdmin.component";
 import { BallparkAdminComponent } from "./admin/ballparkAdmin.component";
+import { GameAdminComponent } from "./admin/gameAdmin.component";
 
 const routes: Routes = 
     [
@@ -15,7 +16,8 @@ const routes: Routes =
                 { path: "teams", component: TeamAdminComponent },
 				{ path: "overview", component: OverviewComponent },
 				{ path: "tournaments", component: TournamentAdminComponent }, 
-				{path: "ballparks", component: BallparkAdminComponent}
+				{ path: "ballparks", component: BallparkAdminComponent }, 
+				{ path: "games", component: GameAdminComponent }
             ]
         },
         { path: "table", component: TeamTableComponent },

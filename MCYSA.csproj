@@ -6,10 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20180503203556_Games3.cs" />
+    <Compile Remove="Migrations\20180503203556_Games3.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="ClientApp\app\admin\admin.component.ts" />
     <None Remove="ClientApp\app\admin\admin.module.ts" />
     <None Remove="ClientApp\app\admin\ballparkAdmin.component.ts" />
     <None Remove="ClientApp\app\admin\ballparkEditor.component.ts" />
+    <None Remove="ClientApp\app\admin\gameAdmin.component.ts" />
+    <None Remove="ClientApp\app\admin\gameEditor.component.ts" />
     <None Remove="ClientApp\app\admin\overview.component.ts" />
     <None Remove="ClientApp\app\admin\teamAdmin.component.ts" />
     <None Remove="ClientApp\app\admin\teamEditor.component.ts" />
@@ -18,6 +25,7 @@
     <None Remove="ClientApp\app\app.routing.ts" />
     <None Remove="ClientApp\app\models\ballpark.model.ts" />
     <None Remove="ClientApp\app\models\configClasses.repository.ts" />
+    <None Remove="ClientApp\app\models\game.model.ts" />
     <None Remove="ClientApp\app\models\model.module.ts" />
     <None Remove="ClientApp\app\models\repository.ts" />
     <None Remove="ClientApp\app\models\state.model.ts" />
@@ -48,6 +56,8 @@
     <TypeScriptCompile Include="ClientApp\app\admin\admin.module.ts" />
     <TypeScriptCompile Include="ClientApp\app\admin\ballparkAdmin.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\admin\ballparkEditor.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\admin\gameAdmin.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\admin\gameEditor.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\admin\overview.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\admin\teamAdmin.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\admin\teamEditor.component.ts" />
@@ -56,6 +66,7 @@
     <TypeScriptCompile Include="ClientApp\app\app.routing.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\ballpark.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\configClasses.repository.ts" />
+    <TypeScriptCompile Include="ClientApp\app\models\game.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\model.module.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\repository.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\state.model.ts" />

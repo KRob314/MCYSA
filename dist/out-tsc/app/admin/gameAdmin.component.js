@@ -11,55 +11,57 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("../models/repository");
-var TeamEditorComponent = /** @class */ (function () {
-    function TeamEditorComponent(repo) {
+var game_model_1 = require("../models/game.model");
+var GameAdminComponent = /** @class */ (function () {
+    function GameAdminComponent(repo) {
         this.repo = repo;
+        this.tableMode = true;
     }
-    Object.defineProperty(TeamEditorComponent.prototype, "team", {
+    Object.defineProperty(GameAdminComponent.prototype, "game", {
         get: function () {
-            return this.repo.team;
+            return this.repo.game;
         },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(TeamEditorComponent.prototype, "states", {
+    Object.defineProperty(GameAdminComponent.prototype, "ballpark", {
         get: function () {
-            return this.repo.states;
+            return this.repo.ballpark;
         },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(TeamEditorComponent.prototype, "ageGroups", {
-        get: function () {
-            return this.repo.ageGroups;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(TeamEditorComponent.prototype, "tournaments", {
-        get: function () {
-            return this.repo.tournaments;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    TeamEditorComponent.prototype.compareTournaments = function (t1, t2) {
-        return t1 && t2 && t1.name == t2.name;
+    GameAdminComponent.prototype.selectGame = function (id) {
+        this.repo.getGame(id);
     };
-    TeamEditorComponent.prototype.compareStates = function (s1, s2) {
-        return s1 && s2 && s1.name == s2.name;
+    GameAdminComponent.prototype.saveGame = function () {
+        console.log("saveGame()");
+        console.log(this.repo.game);
+        if (this.repo.game.id == null)
+            this.repo.createGame(this.repo.game);
+        else
+            this.repo.replaceGame(this.repo.game);
+        this.clearGame();
+        this.tableMode = true;
     };
-    TeamEditorComponent.prototype.compareAgeGroups = function (ag1, ag2) {
-        return ag1 && ag2 && ag1.age == ag2.age;
+    GameAdminComponent.prototype.clearGame = function () {
+        this.repo.game = new game_model_1.Game();
+        this.tableMode = true;
     };
-    TeamEditorComponent = __decorate([
+    Object.defineProperty(GameAdminComponent.prototype, "games", {
+        get: function () {
+            return this.repo.games;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    GameAdminComponent = __decorate([
         core_1.Component({
-            selector: "admin-team-editor",
-            templateUrl: "teamEditor.component.html"
+            templateUrl: "gameAdmin.component.html"
         }),
         __metadata("design:paramtypes", [repository_1.Repository])
-    ], TeamEditorComponent);
-    return TeamEditorComponent;
+    ], GameAdminComponent);
+    return GameAdminComponent;
 }());
-exports.TeamEditorComponent = TeamEditorComponent;
-//# sourceMappingURL=teamEditor.component.js.map
+exports.GameAdminComponent = GameAdminComponent;
+//# sourceMappingURL=gameAdmin.component.js.map

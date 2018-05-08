@@ -11,9 +11,10 @@ using System;
 namespace MCYSA.Migrations
 {
     [DbContext(typeof(McysaContext))]
-    partial class McysaContextModelSnapshot : ModelSnapshot
+    [Migration("20180503225559_Games1")]
+    partial class Games1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,7 +84,7 @@ namespace MCYSA.Migrations
 
                     b.Property<int?>("HomeTeamId");
 
-                    b.Property<int>("HomeTeamRuns");
+                    b.Property<int>("HomeTeamsRuns");
 
                     b.Property<int>("SeasonId");
 

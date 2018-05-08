@@ -1,0 +1,52 @@
+﻿
+<h4> Game Admin </h4>
+
+<table *ngIf="tableMode; else create" class="table table-sm table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Home Team</th>
+        <th>Away Team</th>
+        <th>Ballpark</th>
+        <th>Game Time </th>
+        <th>Home Team Runs</th>
+        <th>Away Team Runs</th>
+        <th></th>
+    </tr>
+    <tr *ngFor="let g of games">
+        <ng-template [ngIf]="game?.id != g.id" [ngIfElse]="edit">
+            <td>{{g.id}}</td>
+            <td>{{g.homeTeam.teamName}}</td>
+            <td>{{g.awayTeam.teamName}}</td>
+            <td>{{g.ballpark.name}}</td>
+            <td>{{g.gameDate}}</td>
+            <td>{{g.homeTeamRuns}}</td>
+            <td>{{g.awayTeamRuns}}</td>
+            <td>
+                <button class="btn btn-sm btn-primary" (click)="selectGame(g.id)"> Edit</button>
+                <button class="btn btn-sm btn-danger" (click)="deleteGame(g.id)"> Delete </button>
+            </td>
+        </ng-template>
+    </tr>
+    <tfoot>
+        <tr>
+            <td colspan="6" class="text-center">
+                <button class="btn btn-primary" (click)="clearGame(); tableMode = false"> Create </button>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<ng-template #edit>
+    <td colspan="6">
+        <admin-game-editor></admin-game-editor>
+        <div class="text-center">
+            <button class="btn btn-sm btn-primary" (click)="saveGame()">  Save</button>
+            <button class="btn btn-sm btn-info" (click)="clearGame()"> Cancel</button>
+        </div>
+    </td>
+</ng-template>
+<ng-template #create>
+    <admin-game-editor></admin-game-editor>
+    <button class="btn btn-primary" (click)="saveGame()">  Save </button>
+    <button class="btn btn-info" (click)="clearGame()"> Cancel</button>
+</ng-template>

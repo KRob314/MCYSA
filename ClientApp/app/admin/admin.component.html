@@ -1,11 +1,34 @@
-﻿
-
-<div class="row">
+﻿<!--<div class="row">
     <div class="col-3">
         <button class="btn btn-block btn-outline-info" routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"> Overview</button>
         <button class="btn btn-block btn-outline-info" routerLink="/admin/teams" routerLinkActive="active"> Teams </button>
         <button class="btn btn-block btn-outline-info" routerLink="/admin/tournaments" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Tournaments</button>
         <button class="btn btn-block btn-outline-info" routerLink="/admin/ballparks" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"> Ballparks </button>
+    </div>
+    <div class="col p-2">
+        <router-outlet></router-outlet>
+    </div>
+</div>-->
+
+<div class="row">
+    <div class="col">
+    <ul class="nav nav-pills nav-fill">
+            <li class="nav-item">
+                <a class="nav-link active" href="#" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Overview</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/admin/ballparks" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Ballparks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/admin/teams" routerLinkActive="active">Teams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/admin/tournaments" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Tournaments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" routerLink="/admin/games" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Games</a>
+            </li>
+        </ul>
     </div>
     <div class="col p-2">
         <router-outlet></router-outlet>
