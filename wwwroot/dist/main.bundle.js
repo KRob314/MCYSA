@@ -1,18 +1,16 @@
 webpackJsonp([1],[
 /* 0 */,
 /* 1 */,
-/* 2 */,
-/* 3 */,
-/* 4 */
+/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Repository; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(84);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(141);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__configClasses_repository__ = __webpack_require__(140);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__configClasses_repository__ = __webpack_require__(142);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -44,6 +42,7 @@ var Repository = (function () {
         //this.filter.state = "va";
         this.filter.related = true;
         this.getTeams(true);
+        this.getGames(false);
     }
     Repository.prototype.getTeam = function (id) {
         var _this = this;
@@ -276,6 +275,8 @@ var _a;
 //# sourceMappingURL=repository.js.map
 
 /***/ }),
+/* 3 */,
+/* 4 */,
 /* 5 */,
 /* 6 */,
 /* 7 */,
@@ -400,9 +401,9 @@ var Team = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamTableComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(18);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -436,7 +437,7 @@ var TeamTableComponent = (function () {
 TeamTableComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: "team-table",
-        template: __webpack_require__(174)
+        template: __webpack_require__(176)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object])
 ], TeamTableComponent);
@@ -450,9 +451,9 @@ var _a, _b;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamDetailComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(18);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -486,7 +487,7 @@ var TeamDetailComponent = (function () {
 TeamDetailComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: "team-detail",
-        template: __webpack_require__(179)
+        template: __webpack_require__(181)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
 ], TeamDetailComponent);
@@ -499,9 +500,116 @@ var _a, _b, _c;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GameTableComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(18);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var GameTableComponent = (function () {
+    function GameTableComponent(repo, router) {
+        this.repo = repo;
+        this.router = router;
+    }
+    Object.defineProperty(GameTableComponent.prototype, "teams", {
+        get: function () {
+            return this.repo.teams;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(GameTableComponent.prototype, "games", {
+        get: function () {
+            return this.repo.games;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    GameTableComponent.prototype.selectGame = function (id) {
+        this.repo.getGame(id);
+        //this.router.navigateByUrl("/detail");
+    };
+    return GameTableComponent;
+}());
+GameTableComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: "game-table",
+        template: __webpack_require__(182)
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object])
+], GameTableComponent);
+
+var _a, _b;
+//# sourceMappingURL=gameTable.component.js.map
+
+/***/ }),
+/* 89 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BallparkDetailComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(18);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var BallparkDetailComponent = (function () {
+    function BallparkDetailComponent(repo, router, activeRoute) {
+        this.repo = repo;
+        var id = Number.parseInt(activeRoute.snapshot.params["id"]);
+        if (id)
+            this.repo.getBallpark(id);
+        else
+            router.navigateByUrl("/");
+    }
+    Object.defineProperty(BallparkDetailComponent.prototype, "ballpark", {
+        get: function () {
+            return this.repo.ballpark;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return BallparkDetailComponent;
+}());
+BallparkDetailComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: "ballpark-detail",
+        template: __webpack_require__(183)
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
+], BallparkDetailComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=ballparkDetail.component.js.map
+
+/***/ }),
+/* 90 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(2);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -529,7 +637,7 @@ var AdminComponent = (function () {
 }());
 AdminComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        template: __webpack_require__(181)
+        template: __webpack_require__(185)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], AdminComponent);
@@ -538,13 +646,13 @@ var _a;
 //# sourceMappingURL=admin.component.js.map
 
 /***/ }),
-/* 89 */
+/* 91 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OverviewComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(2);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -571,7 +679,7 @@ var OverviewComponent = (function () {
 }());
 OverviewComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        template: __webpack_require__(182)
+        template: __webpack_require__(186)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], OverviewComponent);
@@ -580,13 +688,13 @@ var _a;
 //# sourceMappingURL=overview.component.js.map
 
 /***/ }),
-/* 90 */
+/* 92 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamAdminComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_team_model__ = __webpack_require__(85);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -645,7 +753,7 @@ var TeamAdminComponent = (function () {
 }());
 TeamAdminComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        template: __webpack_require__(183)
+        template: __webpack_require__(187)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], TeamAdminComponent);
@@ -654,14 +762,14 @@ var _a;
 //# sourceMappingURL=teamAdmin.component.js.map
 
 /***/ }),
-/* 91 */
+/* 93 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TournamentAdminComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_tournament_model__ = __webpack_require__(184);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_tournament_model__ = __webpack_require__(188);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -714,7 +822,7 @@ var TournamentAdminComponent = (function () {
 }());
 TournamentAdminComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        template: __webpack_require__(185)
+        template: __webpack_require__(189)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], TournamentAdminComponent);
@@ -723,14 +831,14 @@ var _a;
 //# sourceMappingURL=tournamentAdmin.component.js.map
 
 /***/ }),
-/* 92 */
+/* 94 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BallparkAdminComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_ballpark_model__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_ballpark_model__ = __webpack_require__(190);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -783,7 +891,7 @@ var BallparkAdminComponent = (function () {
 }());
 BallparkAdminComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        template: __webpack_require__(187)
+        template: __webpack_require__(191)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], BallparkAdminComponent);
@@ -792,14 +900,14 @@ var _a;
 //# sourceMappingURL=ballparkAdmin.component.js.map
 
 /***/ }),
-/* 93 */
+/* 95 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GameAdminComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_game_model__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_game_model__ = __webpack_require__(192);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -859,7 +967,7 @@ var GameAdminComponent = (function () {
 }());
 GameAdminComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        template: __webpack_require__(189)
+        template: __webpack_require__(193)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], GameAdminComponent);
@@ -868,8 +976,6 @@ var _a;
 //# sourceMappingURL=gameAdmin.component.js.map
 
 /***/ }),
-/* 94 */,
-/* 95 */,
 /* 96 */,
 /* 97 */,
 /* 98 */,
@@ -880,16 +986,16 @@ var _a;
 /* 103 */,
 /* 104 */,
 /* 105 */,
-/* 106 */
+/* 106 */,
+/* 107 */,
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(34);
-module.exports = __webpack_require__(119);
+module.exports = __webpack_require__(121);
 
 
 /***/ }),
-/* 107 */,
-/* 108 */,
 /* 109 */,
 /* 110 */,
 /* 111 */,
@@ -900,13 +1006,15 @@ module.exports = __webpack_require__(119);
 /* 116 */,
 /* 117 */,
 /* 118 */,
-/* 119 */
+/* 119 */,
+/* 120 */,
+/* 121 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_app_module__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_app_module__ = __webpack_require__(136);
 
 
 var bootApplication = function () {
@@ -930,8 +1038,6 @@ else {
 //# sourceMappingURL=boot.js.map
 
 /***/ }),
-/* 120 */,
-/* 121 */,
 /* 122 */,
 /* 123 */,
 /* 124 */,
@@ -944,29 +1050,35 @@ else {
 /* 131 */,
 /* 132 */,
 /* 133 */,
-/* 134 */
+/* 134 */,
+/* 135 */,
+/* 136 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(84);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(138);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_model_module__ = __webpack_require__(143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(140);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_model_module__ = __webpack_require__(145);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__structure_teamTable_component__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__structure_stateFilter_component__ = __webpack_require__(175);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__structure_ageFilter_component__ = __webpack_require__(177);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__structure_stateFilter_component__ = __webpack_require__(177);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__structure_ageFilter_component__ = __webpack_require__(179);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__structure_teamDetail_component__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_routing__ = __webpack_require__(180);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__admin_admin_module__ = __webpack_require__(190);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__structure_gameTable_component__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__structure_ballparkDetail_component__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_routing__ = __webpack_require__(184);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__admin_admin_module__ = __webpack_require__(194);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -987,15 +1099,15 @@ var AppModule = (function () {
 AppModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["M" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_6__structure_teamTable_component__["a" /* TeamTableComponent */], __WEBPACK_IMPORTED_MODULE_7__structure_stateFilter_component__["a" /* StateFilterComponent */], __WEBPACK_IMPORTED_MODULE_8__structure_ageFilter_component__["a" /* AgeFilterComponent */], __WEBPACK_IMPORTED_MODULE_9__structure_teamDetail_component__["a" /* TeamDetailComponent */]
+            __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_6__structure_teamTable_component__["a" /* TeamTableComponent */], __WEBPACK_IMPORTED_MODULE_7__structure_stateFilter_component__["a" /* StateFilterComponent */], __WEBPACK_IMPORTED_MODULE_8__structure_ageFilter_component__["a" /* AgeFilterComponent */], __WEBPACK_IMPORTED_MODULE_9__structure_teamDetail_component__["a" /* TeamDetailComponent */], __WEBPACK_IMPORTED_MODULE_10__structure_gameTable_component__["a" /* GameTableComponent */], __WEBPACK_IMPORTED_MODULE_11__structure_ballparkDetail_component__["a" /* BallparkDetailComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_5__models_model_module__["a" /* ModelModule */],
-            __WEBPACK_IMPORTED_MODULE_10__app_routing__["a" /* RoutingConfig */],
-            __WEBPACK_IMPORTED_MODULE_11__admin_admin_module__["a" /* AdminModule */]
+            __WEBPACK_IMPORTED_MODULE_12__app_routing__["a" /* RoutingConfig */],
+            __WEBPACK_IMPORTED_MODULE_13__admin_admin_module__["a" /* AdminModule */]
         ],
         providers: [],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
@@ -1005,16 +1117,16 @@ AppModule = __decorate([
 //# sourceMappingURL=app.module.js.map
 
 /***/ }),
-/* 135 */,
-/* 136 */,
 /* 137 */,
-/* 138 */
+/* 138 */,
+/* 139 */,
+/* 140 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_team_model__ = __webpack_require__(85);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1063,8 +1175,8 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-root',
-        template: __webpack_require__(141),
-        styles: [__webpack_require__(142)]
+        template: __webpack_require__(143),
+        styles: [__webpack_require__(144)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], AppComponent);
@@ -1073,8 +1185,8 @@ var _a;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
-/* 139 */,
-/* 140 */
+/* 141 */,
+/* 142 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1094,13 +1206,13 @@ var Filter = (function () {
 //# sourceMappingURL=configClasses.repository.js.map
 
 /***/ }),
-/* 141 */
+/* 143 */
 /***/ (function(module, exports) {
 
-module.exports = "<article>\r\n    <div class=\"row\">\r\n        <div class=\"col-md-2\">\r\n            <button class=\"btn btn-block btn-outline-info\" routerLink=\"/\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Home</button>\r\n            <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Admin</button>\r\n        </div>\r\n        <div class=\"col-md-10\">\r\n            <router-outlet></router-outlet>\r\n        </div>\r\n    </div>\r\n</article>"
+module.exports = "<article>\r\n    <div class=\"row\">\r\n        <div class=\"col-md-2\">\r\n            <button class=\"btn btn-block btn-outline-info\" routerLink=\"/\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Teams</button>\r\n            <button class=\"btn btn-block btn-outline-info\" routerLink=\"/games\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Games</button>\r\n            <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Admin</button>\r\n        </div>\r\n        <div class=\"col-md-10\">\r\n            <router-outlet></router-outlet>\r\n        </div>\r\n    </div>\r\n</article>"
 
 /***/ }),
-/* 142 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(46)(false);
@@ -1117,13 +1229,13 @@ exports.push([module.i, "", ""]);
 module.exports = module.exports.toString();
 
 /***/ }),
-/* 143 */
+/* 145 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModelModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repository__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repository__ = __webpack_require__(2);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1146,8 +1258,6 @@ ModelModule = __decorate([
 //# sourceMappingURL=model.module.js.map
 
 /***/ }),
-/* 144 */,
-/* 145 */,
 /* 146 */,
 /* 147 */,
 /* 148 */,
@@ -1176,19 +1286,21 @@ ModelModule = __decorate([
 /* 171 */,
 /* 172 */,
 /* 173 */,
-/* 174 */
+/* 174 */,
+/* 175 */,
+/* 176 */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<state-filter></state-filter>\r\n<age-filter></age-filter>\r\n\r\n<table class=\"table table-striped marginT-15\">\r\n    <tr>\r\n        <th>Team Name</th>\r\n        <th>Age Group</th>\r\n        <th>Manager First Name</th>\r\n        <th>Manager Last Name</th>\r\n        <th>State</th>\r\n        <th></th>\r\n    </tr>\r\n    <tr *ngFor=\"let team of teams\">\r\n        <td>{{team?.teamName || 'Loading Data...'}}</td>\r\n        <td>{{team?.ageGroup.name || 'Loading data ...'}}</td>\r\n        <td>{{team?.managerFirstName}}</td>\r\n        <td>{{team?.managerLastName}}</td>\r\n        <td>{{team?.state.name}}</td>\r\n        <td> <button class=\"btn btn-default btn-sm\" [routerLink]=\"['/detail', team.id]\">Details</button></td>\r\n    </tr>\r\n</table>\r\n\r\n<!-- (click)=\"selectTeam(team.id)\" data-toggle=\"modal\" data-target=\"#myModal\"-->"
+module.exports = "\r\n<state-filter></state-filter>\r\n<age-filter></age-filter>\r\n\r\n<table class=\"table table-striped marginT-15\">\r\n    <tr>\r\n        <th>Team Name</th>\r\n        <th>Age Group</th>\r\n        <th>Manager First Name</th>\r\n        <th>Manager Last Name</th>\r\n        <th>State</th>\r\n        <th></th>\r\n    </tr>\r\n    <tr *ngFor=\"let team of teams\">\r\n        <td>{{team?.teamName || 'Loading Data...'}}</td>\r\n        <td>{{team?.ageGroup.name || 'Loading data ...'}}</td>\r\n        <td>{{team?.managerFirstName}}</td>\r\n        <td>{{team?.managerLastName}}</td>\r\n        <td>{{team?.state.name}}</td>\r\n        <td> <button class=\"btn btn-default btn-sm\" [routerLink]=\"['/teamDetail', team.id]\">Details</button></td>\r\n    </tr>\r\n</table>\r\n\r\n<!-- (click)=\"selectTeam(team.id)\" data-toggle=\"modal\" data-target=\"#myModal\"-->"
 
 /***/ }),
-/* 175 */
+/* 177 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StateFilterComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(2);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1214,7 +1326,7 @@ var StateFilterComponent = (function () {
 StateFilterComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: "state-filter",
-        template: __webpack_require__(176)
+        template: __webpack_require__(178)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], StateFilterComponent);
@@ -1223,19 +1335,19 @@ var _a;
 //# sourceMappingURL=stateFilter.component.js.map
 
 /***/ }),
-/* 176 */
+/* 178 */
 /***/ (function(module, exports) {
 
 module.exports = "\r\n<div class=\"btn-group\" role=\"group\" aria-label=\"...\" >\r\n    <button class=\"btn btn-info\" (click)=\"setState('va')\">VA</button>\r\n    <button class=\"btn btn-info\" (click)=\"setState('md')\">MD</button>\r\n    <button class=\"btn btn-info\" (click)=\"setState(null)\">All</button>\r\n\r\n</div>\r\n\r\n"
 
 /***/ }),
-/* 177 */
+/* 179 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AgeFilterComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(2);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1260,7 +1372,7 @@ var AgeFilterComponent = (function () {
 AgeFilterComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: "age-filter",
-        template: __webpack_require__(178)
+        template: __webpack_require__(180)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], AgeFilterComponent);
@@ -1269,32 +1381,48 @@ var _a;
 //# sourceMappingURL=ageFilter.component.js.map
 
 /***/ }),
-/* 178 */
+/* 180 */
 /***/ (function(module, exports) {
 
 module.exports = "\r\n\r\n<div class=\"btn-group pull-right\" role=\"group\" aria-label=\"...\" >\r\n    <button class=\"btn btn-info\" (click)=\"setAge(1)\">11u</button>\r\n    <button class=\"btn btn-info\" (click)=\"setAge(2)\">12u</button>\r\n    <button class=\"btn btn-info\" (click)=\"setAge(null)\">All</button>\r\n</div>"
 
 /***/ }),
-/* 179 */
+/* 181 */
 /***/ (function(module, exports) {
 
 module.exports = "<!--<div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" routerLink=\"/table\"><span aria-hidden=\"true\">&times;</span></button>\r\n                <h4 class=\"modal-title\" id=\"myModalLabel\">{{team?.teamName}} Details</h4>\r\n            </div>\r\n            <div class=\"modal-body\">-->\r\n<table class=\"table table-striped table-condensed table-responsive marginT-15\">\r\n    <tr><th>Team Name</th> <td>{{team?.teamName}}</td></tr>\r\n    <tr><th>Age Group</th> <td>{{team?.ageGroup.name }}</td></tr>\r\n    <!--<tr><th>Tournament</th></tr>-->\r\n    <tr><th>Manager First Name</th>  <td>{{team?.managerFirstName}} </td></tr>\r\n    <tr><th>Manager Last Name</th> <td>{{team?.managerLastName}}</td> </tr>\r\n    <tr><th>Email</th>  <td>{{team?.email}} </td></tr>\r\n    <tr><th>Phone </th> <td>{{team?.phone}} </td></tr>\r\n    <tr><th>Street </th> <td>{{team?.street}} </td></tr>\r\n    <tr><th>City </th><td>{{team?.city}} </td></tr>\r\n    <tr><th>State</th> <td>{{team?.state.name}}</td>  </tr>\r\n    <tr><th>Zip</th>  <td>{{team?.zip}} </td></tr>\r\n    <tr><th>POC First Name</th><td>{{team?.pocFirstName}} </td></tr>\r\n    <tr><th>POC Last Name </th> <td>{{team?.pocLastName}} </td></tr>\r\n    <tr><th>POC Email </th><td>{{team?.pocEmail}} </td></tr>\r\n    <tr><th>POC Phone </th><td>{{team?.pocPhone}} </td></tr>\r\n</table>\r\n<div class=\"text-center\">\r\n    <button class=\"btn btn-primary\" routerLink=\"/table\">Back</button>\r\n    <button class=\"btn btn-info\" routerLink=\"/admin\">Admin</button>\r\n</div>\r\n<!--</div>\r\n            <div class=\"modal-footer\">\r\n                <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\" routerLink=\"/table\">Close</button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>-->\r\n"
 
 /***/ }),
-/* 180 */
+/* 182 */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n<!--<state-filter></state-filter>\r\n<age-filter></age-filter>-->\r\n\r\n<table class=\"table table-striped marginT-15\">\r\n    <tr>\r\n        <th>Home Team</th>\r\n        <th>Away Team</th>\r\n        <th>Ballpark</th>\r\n        <th>Game Date</th>\r\n        <th>Home Team Runs</th>\r\n        <th>Away Team Runs</th>\r\n        <th></th>\r\n    </tr>\r\n    <tr *ngFor=\"let game of games\">\r\n        <td>{{game?.homeTeam.teamName || 'Loading Data...'}}</td>\r\n        <td>{{game?.awayTeam.teamName || 'Loading data ...'}}</td>\r\n        <td><button class=\"btn btn-sm\" [routerLink]=\"['/ballparkDetail', game.ballparkId]\"> {{game?.ballpark.name}}</button></td>\r\n        <td>{{game?.gameDate}}</td>\r\n        <td>{{game?.homeTeamRuns}}</td>\r\n        <td>{{game?.awayTeamRuns}}</td>\r\n        <td> <button class=\"btn btn-default btn-sm\" [routerLink]=\"['/gameDetail', game.id]\">Details</button></td>\r\n    </tr>\r\n</table>\r\n\r\n<!-- (click)=\"selectTeam(team.id)\" data-toggle=\"modal\" data-target=\"#myModal\"-->"
+
+/***/ }),
+/* 183 */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n<table class=\"table table-striped table-condensed table-responsive marginT-15\">\r\n    <tr><th>Ballpark</th> <td>{{ballpark?.name}}</td></tr>\r\n    <tr><th>Street </th> <td>{{ballpark?.street}} </td></tr>\r\n    <tr><th>City </th><td>{{ballpark?.city}} </td></tr>\r\n    <tr><th>State</th> <td>{{ballpark?.stateId}}</td>  </tr>\r\n    <tr><th>Zip</th>  <td>{{ballpark?.zip}} </td></tr>\r\n</table>\r\n<div class=\"text-center\">\r\n    <button class=\"btn btn-primary\" routerLink=\"/games\">Back</button>\r\n    <button class=\"btn btn-info\" routerLink=\"/admin\">Admin</button>\r\n</div>\r\n"
+
+/***/ }),
+/* 184 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RoutingConfig; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__structure_teamTable_component__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__structure_teamDetail_component__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__admin_admin_component__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__admin_overview_component__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__admin_teamAdmin_component__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__admin_tournamentAdmin_component__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__admin_ballparkAdmin_component__ = __webpack_require__(92);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__admin_gameAdmin_component__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__structure_gameTable_component__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__admin_admin_component__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__admin_overview_component__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__admin_teamAdmin_component__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__admin_tournamentAdmin_component__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__admin_ballparkAdmin_component__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__admin_gameAdmin_component__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__structure_ballparkDetail_component__ = __webpack_require__(89);
+
+
 
 
 
@@ -1306,43 +1434,45 @@ module.exports = "<!--<div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" r
 
 var routes = [
     {
-        path: "admin", component: __WEBPACK_IMPORTED_MODULE_3__admin_admin_component__["a" /* AdminComponent */],
+        path: "admin", component: __WEBPACK_IMPORTED_MODULE_4__admin_admin_component__["a" /* AdminComponent */],
         children: [
-            { path: "teams", component: __WEBPACK_IMPORTED_MODULE_5__admin_teamAdmin_component__["a" /* TeamAdminComponent */] },
-            { path: "overview", component: __WEBPACK_IMPORTED_MODULE_4__admin_overview_component__["a" /* OverviewComponent */] },
-            { path: "tournaments", component: __WEBPACK_IMPORTED_MODULE_6__admin_tournamentAdmin_component__["a" /* TournamentAdminComponent */] },
-            { path: "ballparks", component: __WEBPACK_IMPORTED_MODULE_7__admin_ballparkAdmin_component__["a" /* BallparkAdminComponent */] },
-            { path: "games", component: __WEBPACK_IMPORTED_MODULE_8__admin_gameAdmin_component__["a" /* GameAdminComponent */] }
+            { path: "teams", component: __WEBPACK_IMPORTED_MODULE_6__admin_teamAdmin_component__["a" /* TeamAdminComponent */] },
+            { path: "overview", component: __WEBPACK_IMPORTED_MODULE_5__admin_overview_component__["a" /* OverviewComponent */] },
+            { path: "tournaments", component: __WEBPACK_IMPORTED_MODULE_7__admin_tournamentAdmin_component__["a" /* TournamentAdminComponent */] },
+            { path: "ballparks", component: __WEBPACK_IMPORTED_MODULE_8__admin_ballparkAdmin_component__["a" /* BallparkAdminComponent */] },
+            { path: "games", component: __WEBPACK_IMPORTED_MODULE_9__admin_gameAdmin_component__["a" /* GameAdminComponent */] }
         ]
     },
-    { path: "table", component: __WEBPACK_IMPORTED_MODULE_1__structure_teamTable_component__["a" /* TeamTableComponent */] },
-    { path: "detail/:id", component: __WEBPACK_IMPORTED_MODULE_2__structure_teamDetail_component__["a" /* TeamDetailComponent */] },
-    { path: "detail", component: __WEBPACK_IMPORTED_MODULE_2__structure_teamDetail_component__["a" /* TeamDetailComponent */] },
-    { path: "", component: __WEBPACK_IMPORTED_MODULE_1__structure_teamTable_component__["a" /* TeamTableComponent */] }
+    { path: "teamTable", component: __WEBPACK_IMPORTED_MODULE_1__structure_teamTable_component__["a" /* TeamTableComponent */] },
+    { path: "teamDetail/:id", component: __WEBPACK_IMPORTED_MODULE_2__structure_teamDetail_component__["a" /* TeamDetailComponent */] },
+    { path: "teamDetail", component: __WEBPACK_IMPORTED_MODULE_2__structure_teamDetail_component__["a" /* TeamDetailComponent */] },
+    { path: "", component: __WEBPACK_IMPORTED_MODULE_1__structure_teamTable_component__["a" /* TeamTableComponent */] },
+    { path: "games", component: __WEBPACK_IMPORTED_MODULE_3__structure_gameTable_component__["a" /* GameTableComponent */] },
+    { path: "ballparkDetail/:id", component: __WEBPACK_IMPORTED_MODULE_10__structure_ballparkDetail_component__["a" /* BallparkDetailComponent */] }
 ];
 var RoutingConfig = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule */].forRoot(routes);
 //# sourceMappingURL=app.routing.js.map
 
 /***/ }),
-/* 181 */
+/* 185 */
 /***/ (function(module, exports) {
 
 module.exports = "<!--<div class=\"row\">\r\n    <div class=\"col-3\">\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Overview</button>\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin/teams\" routerLinkActive=\"active\"> Teams </button>\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin/tournaments\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\">Tournaments</button>\r\n        <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin/ballparks\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Ballparks </button>\r\n    </div>\r\n    <div class=\"col p-2\">\r\n        <router-outlet></router-outlet>\r\n    </div>\r\n</div>-->\r\n\r\n<div class=\"row\">\r\n    <div class=\"col\">\r\n    <ul class=\"nav nav-pills nav-fill\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link active\" href=\"#\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\">Overview</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" href=\"#\" routerLink=\"/admin/ballparks\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\">Ballparks</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" href=\"#\" routerLink=\"/admin/teams\" routerLinkActive=\"active\">Teams</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" href=\"#\" routerLink=\"/admin/tournaments\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\">Tournaments</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" href=\"#\" routerLink=\"/admin/games\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\">Games</a>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n    <div class=\"col p-2\">\r\n        <router-outlet></router-outlet>\r\n    </div>\r\n</div>"
 
 /***/ }),
-/* 182 */
+/* 186 */
 /***/ (function(module, exports) {
 
 module.exports = "<table class=\"table m-1\">\r\n    <tr>\r\n        <td>There are {{teams?.length || 0}} Teams</td>\r\n        <td>\r\n            <button class=\"btn btn-sm btn-info btn-block\" routerLink=\"/admin/teams\"> Manage Teams</button>\r\n        </td>\r\n    </tr>\r\n    <tr>\r\n        <td>There are  orders</td>\r\n        <td>\r\n            <button class=\"btn btn-sm btn-info btn-block\"\r\n                    routerLink=\"/admin/orders\">\r\n                Manage Orders\r\n            </button>\r\n        </td>\r\n    </tr>\r\n</table>"
 
 /***/ }),
-/* 183 */
+/* 187 */
 /***/ (function(module, exports) {
 
 module.exports = "\r\n<h4> Team Admin </h4>\r\n\r\n<table *ngIf=\"tableMode; else create\" class=\"table table-sm table-striped\">\r\n    <tr>\r\n        <th>ID</th>\r\n        <th>Name</th>\r\n        <th>Tournament</th>\r\n        <th>Manager First Name</th>\r\n        <th>Manager Last Name</th>\r\n        <th>State</th>\r\n        <th>Age Group</th>\r\n        <th></th>\r\n    </tr>\r\n    <tr *ngFor=\"let t of teams\">\r\n        <ng-template [ngIf]=\"team?.id != t.id\" [ngIfElse]=\"edit\">\r\n            <td>{{t.id}}</td>\r\n            <td>{{t.teamName}}</td>\r\n            <td>{{t.tournament.name || '(None)'}}</td>\r\n            <td>{{t.managerFirstName}}</td>\r\n            <td>{{t.managerLastName}}</td>\r\n            <td>{{t.state.name}}</td>\r\n            <td>{{t.ageGroup.age}}</td>\r\n            <td>\r\n                <button class=\"btn btn-sm btn-primary\" (click)=\"selectTeam(t.id)\"> Edit</button>\r\n                <button class=\"btn btn-sm btn-danger\" (click)=\"deleteTeam(t.id)\"> Delete </button>\r\n            </td>\r\n        </ng-template>\r\n    </tr>\r\n    <tfoot>\r\n        <tr>\r\n            <td colspan=\"6\" class=\"text-center\">\r\n                <button class=\"btn btn-primary\" (click)=\"clearTeam(); tableMode = false\"> Create </button>\r\n            </td>\r\n        </tr>\r\n    </tfoot>\r\n</table>\r\n\r\n<ng-template #edit>\r\n    <td colspan=\"6\">\r\n        <admin-team-editor></admin-team-editor>\r\n        <div class=\"text-center\">\r\n            <button class=\"btn btn-sm btn-primary\" (click)=\"saveTeam()\">  Save</button>\r\n            <button class=\"btn btn-sm btn-info\" (click)=\"clearTeam()\"> Cancel</button>\r\n        </div>\r\n    </td>\r\n</ng-template>\r\n<ng-template #create>\r\n    <admin-team-editor></admin-team-editor>\r\n    <button class=\"btn btn-primary\" (click)=\"saveTeam()\">  Save </button>\r\n    <button class=\"btn btn-info\" (click)=\"clearTeam()\"> Cancel</button>\r\n</ng-template>"
 
 /***/ }),
-/* 184 */
+/* 188 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1361,13 +1491,13 @@ var Tournament = (function () {
 //# sourceMappingURL=tournament.model.js.map
 
 /***/ }),
-/* 185 */
+/* 189 */
 /***/ (function(module, exports) {
 
 module.exports = "\r\n<h4> Tournament Admin</h4>\r\n\r\n<table *ngIf=\"tableMode; else create\" class=\"table table-sm table-striped\">\r\n    <tr>\r\n        <th>ID</th>\r\n        <th>Name</th>\r\n        <th>Start Date</th>\r\n        <th>End Date</th>\r\n        <th></th>\r\n    </tr>\r\n    <tr *ngFor=\"let t of tournaments\">\r\n        <ng-template [ngIf]=\"tournament?.id != t.id\" [ngIfElse]=\"edit\">\r\n            <td>{{t.id}}</td>\r\n            <td>{{t.name}}</td>\r\n            <td>{{t.startDate}}</td>\r\n            <td>{{t.endDate}}</td>\r\n            <td>\r\n                <button class=\"btn btn-sm btn-primary\" (click)=\"selectTournament(t.id)\"> Edit</button>\r\n                <button class=\"btn btn-sm btn-danger\" (click)=\"deleteTournament(t.id)\"> Delete </button>\r\n            </td>\r\n        </ng-template>\r\n    </tr>\r\n    <tfoot>\r\n        <tr>\r\n            <td colspan=\"6\" class=\"text-center\">\r\n                <button class=\"btn btn-primary\" (click)=\"clearTournament(); tableMode = false\"> Create </button>\r\n            </td>\r\n        </tr>\r\n    </tfoot>\r\n</table>\r\n\r\n<ng-template #edit>\r\n    <td colspan=\"6\">\r\n        <admin-tournament-editor></admin-tournament-editor>\r\n        <div class=\"text-center\">\r\n            <button class=\"btn btn-sm btn-primary\" (click)=\"saveTournament()\">  Save</button>\r\n            <button class=\"btn btn-sm btn-info\" (click)=\"clearTournament()\"> Cancel</button>\r\n        </div>\r\n    </td>\r\n</ng-template>\r\n<ng-template #create>\r\n    <admin-tournament-editor></admin-tournament-editor>\r\n    <button class=\"btn btn-primary\" (click)=\"saveTournament()\">  Save </button>\r\n    <button class=\"btn btn-info\" (click)=\"clearTournament()\"> Cancel</button>\r\n</ng-template>"
 
 /***/ }),
-/* 186 */
+/* 190 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1388,13 +1518,13 @@ var Ballpark = (function () {
 //# sourceMappingURL=ballpark.model.js.map
 
 /***/ }),
-/* 187 */
+/* 191 */
 /***/ (function(module, exports) {
 
 module.exports = "\r\n<h4> Ballpark Admin </h4>\r\n\r\n<table *ngIf=\"tableMode; else create\" class=\"table table-sm table-striped\">\r\n    <tr>\r\n        <th>ID</th>\r\n        <th>Name</th>\r\n        <th>City</th>\r\n        <th>State</th>\r\n        <th>Zip </th>\r\n        <th></th>\r\n    </tr>\r\n    <tr *ngFor=\"let b of ballparks\">\r\n        <ng-template [ngIf]=\"ballpark?.id != b.id\" [ngIfElse]=\"edit\">\r\n            <td>{{b.id}}</td>\r\n            <td>{{b.name}}</td>\r\n            <td>{{b.city}}</td>\r\n            <td>{{b.stateId}}</td>\r\n            <td>{{b.zip}}</td>\r\n            <td>\r\n                <button class=\"btn btn-sm btn-primary\" (click)=\"selectBallpark(b.id)\"> Edit</button>\r\n                <button class=\"btn btn-sm btn-danger\" (click)=\"deleteBallpark(b.id)\"> Delete </button>\r\n            </td>\r\n        </ng-template>\r\n    </tr>\r\n    <tfoot>\r\n        <tr>\r\n            <td colspan=\"6\" class=\"text-center\">\r\n                <button class=\"btn btn-primary\" (click)=\"clearBallpark(); tableMode = false\"> Create </button>\r\n            </td>\r\n        </tr>\r\n    </tfoot>\r\n</table>\r\n\r\n<ng-template #edit>\r\n    <td colspan=\"6\">\r\n        <admin-ballpark-editor></admin-ballpark-editor>\r\n        <div class=\"text-center\">\r\n            <button class=\"btn btn-sm btn-primary\" (click)=\"saveBallpark()\">  Save</button>\r\n            <button class=\"btn btn-sm btn-info\" (click)=\"clearBallpark()\"> Cancel</button>\r\n        </div>\r\n    </td>\r\n</ng-template>\r\n<ng-template #create>\r\n    <admin-ballpark-editor></admin-ballpark-editor>\r\n    <button class=\"btn btn-primary\" (click)=\"saveBallpark()\">  Save </button>\r\n    <button class=\"btn btn-info\" (click)=\"clearBallpark()\"> Cancel</button>\r\n</ng-template>"
 
 /***/ }),
-/* 188 */
+/* 192 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1418,31 +1548,31 @@ var Game = (function () {
 //# sourceMappingURL=game.model.js.map
 
 /***/ }),
-/* 189 */
+/* 193 */
 /***/ (function(module, exports) {
 
 module.exports = "\r\n<h4> Game Admin </h4>\r\n\r\n<table *ngIf=\"tableMode; else create\" class=\"table table-sm table-striped\">\r\n    <tr>\r\n        <th>ID</th>\r\n        <th>Home Team</th>\r\n        <th>Away Team</th>\r\n        <th>Ballpark</th>\r\n        <th>Game Time </th>\r\n        <th>Home Team Runs</th>\r\n        <th>Away Team Runs</th>\r\n        <th></th>\r\n    </tr>\r\n    <tr *ngFor=\"let g of games\">\r\n        <ng-template [ngIf]=\"game?.id != g.id\" [ngIfElse]=\"edit\">\r\n            <td>{{g.id}}</td>\r\n            <td>{{g.homeTeam.teamName}}</td>\r\n            <td>{{g.awayTeam.teamName}}</td>\r\n            <td>{{g.ballpark.name}}</td>\r\n            <td>{{g.gameDate}}</td>\r\n            <td>{{g.homeTeamRuns}}</td>\r\n            <td>{{g.awayTeamRuns}}</td>\r\n            <td>\r\n                <button class=\"btn btn-sm btn-primary\" (click)=\"selectGame(g.id)\"> Edit</button>\r\n                <button class=\"btn btn-sm btn-danger\" (click)=\"deleteGame(g.id)\"> Delete </button>\r\n            </td>\r\n        </ng-template>\r\n    </tr>\r\n    <tfoot>\r\n        <tr>\r\n            <td colspan=\"6\" class=\"text-center\">\r\n                <button class=\"btn btn-primary\" (click)=\"clearGame(); tableMode = false\"> Create </button>\r\n            </td>\r\n        </tr>\r\n    </tfoot>\r\n</table>\r\n\r\n<ng-template #edit>\r\n    <td colspan=\"6\">\r\n        <admin-game-editor></admin-game-editor>\r\n        <div class=\"text-center\">\r\n            <button class=\"btn btn-sm btn-primary\" (click)=\"saveGame()\">  Save</button>\r\n            <button class=\"btn btn-sm btn-info\" (click)=\"clearGame()\"> Cancel</button>\r\n        </div>\r\n    </td>\r\n</ng-template>\r\n<ng-template #create>\r\n    <admin-game-editor></admin-game-editor>\r\n    <button class=\"btn btn-primary\" (click)=\"saveGame()\">  Save </button>\r\n    <button class=\"btn btn-info\" (click)=\"clearGame()\"> Cancel</button>\r\n</ng-template>"
 
 /***/ }),
-/* 190 */
+/* 194 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__admin_component__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__overview_component__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__teamAdmin_component__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__teamEditor_component__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__tournamentEditor_component__ = __webpack_require__(193);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__tournamentAdmin_component__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ballparkAdmin_component__ = __webpack_require__(92);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ballparkEditor_component__ = __webpack_require__(195);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__gameAdmin_component__ = __webpack_require__(93);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__gameEditor_component__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__admin_component__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__overview_component__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__teamAdmin_component__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__teamEditor_component__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__tournamentEditor_component__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__tournamentAdmin_component__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ballparkAdmin_component__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ballparkEditor_component__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__gameAdmin_component__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__gameEditor_component__ = __webpack_require__(201);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1479,13 +1609,13 @@ AdminModule = __decorate([
 //# sourceMappingURL=admin.module.js.map
 
 /***/ }),
-/* 191 */
+/* 195 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamEditorComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(2);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1543,7 +1673,7 @@ var TeamEditorComponent = (function () {
 TeamEditorComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: "admin-team-editor",
-        template: __webpack_require__(192)
+        template: __webpack_require__(196)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], TeamEditorComponent);
@@ -1552,19 +1682,19 @@ var _a;
 //# sourceMappingURL=teamEditor.component.js.map
 
 /***/ }),
-/* 192 */
+/* 196 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"form-group\">\r\n    <label>Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.id\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Tournaments</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"team.tournament\" [compareWith]=\"compareTournaments\">\r\n        <option *ngFor=\"let t of tournaments\" [ngValue]=\"t\">{{t.name}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Team Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.teamName\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Manager First Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.managerFirstName\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Manager Last Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.managerLastName\" />\r\n</div>\r\n<!--<div class=\"form-group\">\r\n    <label>State</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"team.state.name\" />\r\n</div>-->\r\n<div class=\"form-group\">\r\n    <label>State</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"team.state\" [compareWith]=\"compareStates\">\r\n        <option *ngFor=\"let s of states\" [ngValue]=\"s\">{{s.name}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Age Group</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"team.ageGroup\" [compareWith]=\"compareAgeGroups\">\r\n        <option *ngFor=\"let a of ageGroups\" [ngValue]=\"a\">{{a.age}}</option>\r\n    </select>\r\n</div>"
 
 /***/ }),
-/* 193 */
+/* 197 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TournamentEditorComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(2);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1592,7 +1722,7 @@ var TournamentEditorComponent = (function () {
 TournamentEditorComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: "admin-tournament-editor",
-        template: __webpack_require__(194)
+        template: __webpack_require__(198)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], TournamentEditorComponent);
@@ -1601,19 +1731,19 @@ var _a;
 //# sourceMappingURL=tournamentEditor.component.js.map
 
 /***/ }),
-/* 194 */
+/* 198 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"form-group\">\r\n    <label>Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"tournament.id\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"tournament.name\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Start Date</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"tournament.startDate\" type=\"date\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>End Date</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"tournament.endDate\" type=\"date\" />\r\n</div>"
 
 /***/ }),
-/* 195 */
+/* 199 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BallparkEditorComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(2);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1651,7 +1781,7 @@ var BallparkEditorComponent = (function () {
 BallparkEditorComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: "admin-ballpark-editor",
-        template: __webpack_require__(196)
+        template: __webpack_require__(200)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], BallparkEditorComponent);
@@ -1660,19 +1790,19 @@ var _a;
 //# sourceMappingURL=ballparkEditor.component.js.map
 
 /***/ }),
-/* 196 */
+/* 200 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"form-group\">\r\n    <label>Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"ballpark.id\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"ballpark.name\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Street</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"ballpark.street\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>City</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"ballpark.city\" />\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n    <label>State</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"ballpark.state\" [compareWith]=\"compareStates\">\r\n        <option *ngFor=\"let s of states\" [ngValue]=\"s\">{{s.name}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Zip</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"ballpark.zip\" />\r\n</div>\r\n"
+module.exports = "<!--<div class=\"form-group\">\r\n    <label>Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"ballpark.id\" />\r\n</div>-->\r\n<div class=\"form-group\">\r\n    <label>Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"ballpark.name\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Street</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"ballpark.street\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>City</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"ballpark.city\" />\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n    <label>State</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"ballpark.state\" [compareWith]=\"compareStates\">\r\n        <option *ngFor=\"let s of states\" [ngValue]=\"s\">{{s.name}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Zip</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"ballpark.zip\" />\r\n</div>\r\n"
 
 /***/ }),
-/* 197 */
+/* 201 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GameEditorComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(2);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1720,7 +1850,7 @@ var GameEditorComponent = (function () {
 GameEditorComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: "admin-game-editor",
-        template: __webpack_require__(198)
+        template: __webpack_require__(202)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], GameEditorComponent);
@@ -1729,11 +1859,11 @@ var _a;
 //# sourceMappingURL=gameEditor.component.js.map
 
 /***/ }),
-/* 198 */
+/* 202 */
 /***/ (function(module, exports) {
 
 module.exports = "<!--<div class=\"form-group\">\r\n    <label>Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.id\" />\r\n</div>-->\r\n<div class=\"form-group\">\r\n    <label>Home Team</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"game.homeTeamId\" [compareWith]=\"compareTeams\">\r\n        <option *ngFor=\"let t of teams\" [ngValue]=\"t.id\">{{t.teamName}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Away Team</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"game.awayTeamId\" [compareWith]=\"compareTeams\">\r\n        <option *ngFor=\"let t of teams\" [ngValue]=\"t.id\">{{t.teamName}}</option>\r\n    </select>\r\n</div>\r\n<!--<div class=\"form-group\">\r\n    <label>Home Team Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.homeTeamId\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Away Team Name</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.awayTeamId\" />\r\n</div>-->\r\n<!--<div class=\"form-group\">\r\n    <label>Ballpark</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.ballpark.name\" />\r\n</div>-->\r\n<div class=\"form-group\">\r\n    <label>Ballpark</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"game.ballparkId\" [compareWith]=\"compareBallparks\">\r\n        <option *ngFor=\"let b of ballparks\" [ngValue]=\"b.id\">{{b.name}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Game Date</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.gameDate\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Home Team Runs</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.homeTeamRuns\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Away Team Runs</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.awayTeamRuns\" />\r\n</div>\r\n\r\n"
 
 /***/ })
-],[106]);
+],[108]);
 //# sourceMappingURL=main.bundle.js.map

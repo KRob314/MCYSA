@@ -1,0 +1,26 @@
+﻿
+<!--<state-filter></state-filter>
+<age-filter></age-filter>-->
+
+<table class="table table-striped marginT-15">
+    <tr>
+        <th>Home Team</th>
+        <th>Away Team</th>
+        <th>Ballpark</th>
+        <th>Game Date</th>
+        <th>Home Team Runs</th>
+        <th>Away Team Runs</th>
+        <th></th>
+    </tr>
+    <tr *ngFor="let game of games">
+        <td>{{game?.homeTeam.teamName || 'Loading Data...'}}</td>
+        <td>{{game?.awayTeam.teamName || 'Loading data ...'}}</td>
+        <td><button class="btn btn-sm" [routerLink]="['/ballparkDetail', game.ballparkId]"> {{game?.ballpark.name}}</button></td>
+        <td>{{game?.gameDate}}</td>
+        <td>{{game?.homeTeamRuns}}</td>
+        <td>{{game?.awayTeamRuns}}</td>
+        <td> <button class="btn btn-default btn-sm" [routerLink]="['/gameDetail', game.id]">Details</button></td>
+    </tr>
+</table>
+
+<!-- (click)="selectTeam(team.id)" data-toggle="modal" data-target="#myModal"-->

@@ -38,7 +38,8 @@ export class Repository
        // this.getTeam(2);
         //this.filter.state = "va";
         this.filter.related = true;
-        this.getTeams(true);
+		this.getTeams(true);
+		this.getGames(false);
     }
 
     getTeam(id: number)

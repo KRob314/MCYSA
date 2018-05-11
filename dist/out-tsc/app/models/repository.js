@@ -31,6 +31,7 @@ var Repository = /** @class */ (function () {
         //this.filter.state = "va";
         this.filter.related = true;
         this.getTeams(true);
+        this.getGames(false);
     }
     Repository.prototype.getTeam = function (id) {
         var _this = this;

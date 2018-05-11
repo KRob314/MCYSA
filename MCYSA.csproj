@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <TypeScriptToolsVersion>2.6</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,6 +30,7 @@
     <None Remove="ClientApp\app\models\repository.ts" />
     <None Remove="ClientApp\app\models\state.model.ts" />
     <None Remove="ClientApp\app\models\tournament.model.ts" />
+    <None Remove="ClientApp\app\structure\ballparkDetail.component.ts" />
     <None Remove="ClientApp\app\structure\stateFilter.component.ts" />
     <None Remove="ClientApp\app\structure\teamDetail.component.ts" />
     <None Remove="ClientApp\app\structure\teamTable.component.ts" />
@@ -71,6 +72,7 @@
     <TypeScriptCompile Include="ClientApp\app\models\repository.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\state.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\tournament.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\structure\ballparkDetail.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\structure\stateFilter.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\structure\teamDetail.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\structure\teamTable.component.ts" />

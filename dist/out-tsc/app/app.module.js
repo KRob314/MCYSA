@@ -16,6 +16,8 @@ var teamTable_component_1 = require("./structure/teamTable.component");
 var stateFilter_component_1 = require("./structure/stateFilter.component");
 var ageFilter_component_1 = require("./structure/ageFilter.component");
 var teamDetail_component_1 = require("./structure/teamDetail.component");
+var gameTable_component_1 = require("./structure/gameTable.component");
+var ballparkDetail_component_1 = require("./structure/ballparkDetail.component");
 var app_routing_1 = require("./app.routing");
 var admin_module_1 = require("./admin/admin.module");
 var AppModule = /** @class */ (function () {
@@ -24,7 +26,7 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         core_1.NgModule({
             declarations: [
-                app_component_1.AppComponent, teamTable_component_1.TeamTableComponent, stateFilter_component_1.StateFilterComponent, ageFilter_component_1.AgeFilterComponent, teamDetail_component_1.TeamDetailComponent
+                app_component_1.AppComponent, teamTable_component_1.TeamTableComponent, stateFilter_component_1.StateFilterComponent, ageFilter_component_1.AgeFilterComponent, teamDetail_component_1.TeamDetailComponent, gameTable_component_1.GameTableComponent, ballparkDetail_component_1.BallparkDetailComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
