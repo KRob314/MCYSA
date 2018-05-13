@@ -10,7 +10,7 @@ export class Game
 		public ballparkId?: number,
 		public homeTeamRuns?: number,
 		public awayTeamRuns?: number,
-		public gameDate?: string,
+		public gameDate?: Date,
 		public homeTeam?: Team,
 		public awayTeam?: Team,
 		public ballpark?: Ballpark) { }

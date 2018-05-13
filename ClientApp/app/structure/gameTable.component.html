@@ -10,7 +10,7 @@
         <th>Game Date</th>
         <th>Home Team Runs</th>
         <th>Away Team Runs</th>
-        <th></th>
+        <!--<th></th>-->
     </tr>
     <tr *ngFor="let game of games">
         <td>{{game?.homeTeam.teamName || 'Loading Data...'}}</td>
@@ -19,7 +19,7 @@
         <td>{{game?.gameDate}}</td>
         <td>{{game?.homeTeamRuns}}</td>
         <td>{{game?.awayTeamRuns}}</td>
-        <td> <button class="btn btn-default btn-sm" [routerLink]="['/gameDetail', game.id]">Details</button></td>
+        <!--<td> <button class="btn btn-default btn-sm" [routerLink]="['/gameDetail', game.id]">Details</button></td>-->
     </tr>
 </table>
 

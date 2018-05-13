@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,6 +15,8 @@ namespace MCYSA.Models
         public int SeasonId { get; set; }
         public int HomeTeamRuns { get; set; }
         public int AwayTeamRuns { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime GameDate { get; set; }
 
         public virtual Team HomeTeam { get; set; }
