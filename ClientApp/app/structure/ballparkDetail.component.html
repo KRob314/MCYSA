@@ -7,6 +7,7 @@
         <tr><th>City </th><td>{{ballpark?.city}} </td></tr>
         <tr><th>State</th> <td>{{ballpark?.stateId}}</td>  </tr>
         <tr><th>Zip</th>  <td>{{ballpark?.zip}} </td></tr>
+        <tr><th>Google Maps</th> <td><a href="https://www.google.com/maps/search/{{ballpark.name}} {{ballpark.city}} {{ballpark.stateId}}" target="_blank"><img src="/images/Maps-icon.png" height="45" /></a></td></tr>
     </table>
     <div class="text-center">
         <button class="btn btn-primary" routerLink="/games">Back</button>
