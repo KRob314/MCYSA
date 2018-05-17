@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  mcysa:
+    image: ${DOCKER_REGISTRY}mcysa
+    build:
+      context: .
+      dockerfile: Dockerfile

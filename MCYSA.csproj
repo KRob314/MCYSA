@@ -3,11 +3,16 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
+    <DockerComposeProjectPath>docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="Migrations\20180503203556_Games3.cs" />
     <Compile Remove="Migrations\20180503203556_Games3.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\js\file.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -77,6 +82,11 @@
     <TypeScriptCompile Include="ClientApp\app\structure\teamDetail.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\structure\teamTable.component.ts" />
     <TypeScriptCompile Include="ClientApp\boot.ts" />
+    <TypeScriptCompile Include="wwwroot\js\file.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="dist\" />
   </ItemGroup>
 
 </Project>
