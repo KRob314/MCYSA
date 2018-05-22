@@ -4,6 +4,7 @@ import { State } from "./state.model";
 import { AgeGroup } from "./agegroup.model";
 import { Tournament } from "./tournament.model";
 import { Game } from "./game.model";
+import { Player } from "./player.model";
 import { Injectable } from "@angular/core";
 import { Http, RequestMethod, Request, Response} from "@angular/http";
 import { Observable } from "rxjs/Observable";
@@ -16,6 +17,7 @@ const ageGroupUrl = "/api/agegroups";
 const tournamentUrl = "api/tournaments";
 const ballparkUrl = "api/ballparks";
 const gameUrl = "api/games";
+const playerUrl = "api/players";
 
 @Injectable()
 export class Repository
@@ -31,6 +33,8 @@ export class Repository
 	ballparks: Ballpark[];
 	game: Game;
 	games: Game[];
+	player: Player;
+	players: Player[];
 
     constructor(private http: Http)
     {
@@ -65,10 +69,37 @@ export class Repository
             url += "&state=" + this.filter.state;
 
         if (this.filter.age)
-            url += "&ageGroupId=" + this.filter.age;
+			url += "&ageGroupId=" + this.filter.age;
+
+		if (this.filter.tournamentId != null)
+			url += "&tournamentId=" + this.filter.tournamentId;
 
         this.sendRequest(RequestMethod.Get, url).subscribe(response =>
             this.teams = response);
+	}
+
+	getPlayer(id: number)
+	{
+		console.log("getPlayer()");
+
+		this.sendRequest(RequestMethod.Get, playerUrl + "/" + id).subscribe(response =>
+		{
+			this.player = response;
+			console.log(this.player);
+		});
+	}
+
+	getPlayers(teamId : number)
+	{
+		console.log("getPlayers()");
+
+		let url = playerUrl; 
+
+		if (teamId != 0)
+			url += "?teamId=" + teamId;
+
+		this.sendRequest(RequestMethod.Get, url).subscribe(response =>
+			this.players = response);
 	}
 
 	getBallpark(id: number)
@@ -184,7 +215,7 @@ export class Repository
                 managerLastName: team.managerLastName,
                 ageGroupId: team.ageGroup.id,
 				stateId: team.state.stateId,
-                tournamentId: team.tournamentId
+                tournamentId: team.tournament.id
             };
 
         console.log("in repo");
@@ -314,11 +345,19 @@ export class Repository
 				id: tournament.id,
 				startDate: tournament.startDate,
 				endDate: tournament.endDate,
-				isCurrent: true,
+				isCurrent: tournament.isCurrent,
 				name: tournament.name
 			};
 
 		this.sendRequest(RequestMethod.Put, tournamentUrl + "/" + tournament.id, data).subscribe(response => this.getTournaments());
+	}
+
+	deleteTournament(id: number)
+	{
+		if (confirm("Are you sure you want to delete this?"))
+		{
+			this.sendRequest(RequestMethod.Delete, tournamentUrl + "/" + id).subscribe(response => this.getTournaments());
+		}
 	}
 
     //get team(): Team

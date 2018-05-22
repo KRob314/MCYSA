@@ -1,14 +1,16 @@
 ﻿export class Filter
 {
     state?: string;
-    age?: number;
+	age?: number;
+	tournamentId?: number;
     search?: string;
     related: boolean = false;
 
     reset()
     {
         this.state = this.search = null;
-        this.age = null;
+		this.age = null;
+		this.tournamentId = null;
         this.related = false;
     }
 }

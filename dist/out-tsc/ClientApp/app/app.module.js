@@ -10,23 +10,24 @@ var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
-var app_component_1 = require("./app.component");
+var admin_module_1 = require("./admin/admin.module");
 var model_module_1 = require("./models/model.module");
+var app_component_1 = require("./app.component");
 var teamTable_component_1 = require("./structure/teamTable.component");
 var stateFilter_component_1 = require("./structure/stateFilter.component");
 var ageFilter_component_1 = require("./structure/ageFilter.component");
+//import { TournamentFilterComponent } from "./structure/tournamentFilter.component";
 var teamDetail_component_1 = require("./structure/teamDetail.component");
 var gameTable_component_1 = require("./structure/gameTable.component");
 var ballparkDetail_component_1 = require("./structure/ballparkDetail.component");
 var app_routing_1 = require("./app.routing");
-var admin_module_1 = require("./admin/admin.module");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             declarations: [
-                app_component_1.AppComponent, teamTable_component_1.TeamTableComponent, stateFilter_component_1.StateFilterComponent, ageFilter_component_1.AgeFilterComponent, teamDetail_component_1.TeamDetailComponent, gameTable_component_1.GameTableComponent, ballparkDetail_component_1.BallparkDetailComponent
+                app_component_1.AppComponent, teamTable_component_1.TeamTableComponent, stateFilter_component_1.StateFilterComponent, ageFilter_component_1.AgeFilterComponent, teamDetail_component_1.TeamDetailComponent, gameTable_component_1.GameTableComponent, ballparkDetail_component_1.BallparkDetailComponent //, TournamentFilterComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,

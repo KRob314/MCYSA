@@ -23,6 +23,8 @@
     <None Remove="ClientApp\app\admin\gameAdmin.component.ts" />
     <None Remove="ClientApp\app\admin\gameEditor.component.ts" />
     <None Remove="ClientApp\app\admin\overview.component.ts" />
+    <None Remove="ClientApp\app\admin\playerAdmin.component.ts" />
+    <None Remove="ClientApp\app\admin\playerEditor.component.ts" />
     <None Remove="ClientApp\app\admin\teamAdmin.component.ts" />
     <None Remove="ClientApp\app\admin\teamEditor.component.ts" />
     <None Remove="ClientApp\app\admin\tournamentAdmin.component.ts" />
@@ -32,6 +34,7 @@
     <None Remove="ClientApp\app\models\configClasses.repository.ts" />
     <None Remove="ClientApp\app\models\game.model.ts" />
     <None Remove="ClientApp\app\models\model.module.ts" />
+    <None Remove="ClientApp\app\models\player.model.ts" />
     <None Remove="ClientApp\app\models\repository.ts" />
     <None Remove="ClientApp\app\models\state.model.ts" />
     <None Remove="ClientApp\app\models\tournament.model.ts" />
@@ -39,6 +42,7 @@
     <None Remove="ClientApp\app\structure\stateFilter.component.ts" />
     <None Remove="ClientApp\app\structure\teamDetail.component.ts" />
     <None Remove="ClientApp\app\structure\teamTable.component.ts" />
+    <None Remove="ClientApp\app\structure\tournamentFilter.component.ts" />
     <None Remove="ClientApp\boot.ts" />
   </ItemGroup>
 
@@ -65,6 +69,8 @@
     <TypeScriptCompile Include="ClientApp\app\admin\gameAdmin.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\admin\gameEditor.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\admin\overview.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\admin\playerAdmin.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\admin\playerEditor.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\admin\teamAdmin.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\admin\teamEditor.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\admin\tournamentAdmin.component.ts" />
@@ -74,6 +80,7 @@
     <TypeScriptCompile Include="ClientApp\app\models\configClasses.repository.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\game.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\model.module.ts" />
+    <TypeScriptCompile Include="ClientApp\app\models\player.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\repository.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\state.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\tournament.model.ts" />
@@ -81,6 +88,7 @@
     <TypeScriptCompile Include="ClientApp\app\structure\stateFilter.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\structure\teamDetail.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\structure\teamTable.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\structure\tournamentFilter.component.ts" />
     <TypeScriptCompile Include="ClientApp\boot.ts" />
     <TypeScriptCompile Include="wwwroot\js\file.ts" />
   </ItemGroup>

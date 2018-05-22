@@ -7,6 +7,7 @@ var Filter = /** @class */ (function () {
     Filter.prototype.reset = function () {
         this.state = this.search = null;
         this.age = null;
+        this.tournamentId = null;
         this.related = false;
     };
     return Filter;

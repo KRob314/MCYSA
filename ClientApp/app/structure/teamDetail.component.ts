@@ -2,6 +2,8 @@
 import { Repository } from "../models/repository";
 import { Team } from "../models/team.model";
 import { Router, ActivatedRoute } from "@angular/router";
+import { DatePipe } from "@angular/common";
+
 
 @Component({
     selector: "team-detail",
@@ -21,7 +23,8 @@ export class TeamDetailComponent
     }
 
     get team(): Team
-    {
+	{
+	
         return this.repo.team;
     }
 }

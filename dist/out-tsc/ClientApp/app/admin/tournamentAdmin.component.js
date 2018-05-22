@@ -44,9 +44,12 @@ var TournamentAdminComponent = /** @class */ (function () {
         if (this.repo.tournament.id == null)
             this.repo.createTournament(this.repo.tournament);
         else
-            this.repo.replaceTeam(this.repo.team);
+            this.repo.replaceTournament(this.repo.tournament);
         this.clearTournament();
         this.tableMode = true;
+    };
+    TournamentAdminComponent.prototype.deleteTournament = function (id) {
+        this.repo.deleteTournament(id);
     };
     TournamentAdminComponent = __decorate([
         core_1.Component({

@@ -16,7 +16,7 @@
         <td>{{game?.homeTeam.teamName || 'Loading Data...'}}</td>
         <td>{{game?.awayTeam.teamName || 'Loading data ...'}}</td>
         <td><button class="btn btn-sm" [routerLink]="['/ballparkDetail', game.ballparkId]"> {{game?.ballpark.name}}</button></td>
-        <td>{{game?.gameDate}}</td>
+        <td>{{game?.gameDate | date:'short'}}</td>
         <td>{{game?.homeTeamRuns}}</td>
         <td>{{game?.awayTeamRuns}}</td>
         <!--<td> <button class="btn btn-default btn-sm" [routerLink]="['/gameDetail', game.id]">Details</button></td>-->

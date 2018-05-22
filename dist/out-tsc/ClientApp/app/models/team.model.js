@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Team = /** @class */ (function () {
-    function Team(id, tournamentId, ageGroupId, stateId, teamName, managerFirstName, managerLastName, state, ageGroup, tournament) {
+    function Team(id, tournamentId, ageGroupId, stateId, teamName, managerFirstName, managerLastName, state, ageGroup, tournament, players) {
         this.id = id;
         this.tournamentId = tournamentId;
         this.ageGroupId = ageGroupId;
@@ -12,6 +12,7 @@ var Team = /** @class */ (function () {
         this.state = state;
         this.ageGroup = ageGroup;
         this.tournament = tournament;
+        this.players = players;
     }
     return Team;
 }());

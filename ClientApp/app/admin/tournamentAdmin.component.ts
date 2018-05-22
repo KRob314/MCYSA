@@ -1,6 +1,7 @@
 ﻿import { Component } from "@angular/core";
 import { Repository } from "../models/repository";
 import { Tournament } from "../models/tournament.model";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -44,10 +45,14 @@ export class TournamentAdminComponent
 		if (this.repo.tournament.id == null)
 			this.repo.createTournament(this.repo.tournament);
 		else
-			this.repo.replaceTeam(this.repo.team);
+			this.repo.replaceTournament(this.repo.tournament);
 
 		this.clearTournament();
 		this.tableMode = true;
 	}
 
+	deleteTournament(id: number)
+	{
+		this.repo.deleteTournament(id);
+	}
 }

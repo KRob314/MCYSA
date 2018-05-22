@@ -22,6 +22,7 @@ namespace MCYSA.Controllers
         public Team GetTeam(int id)
         {
             Team result = context.Teams
+                .Include(t => t.Players)
                 .Include(t => t.AgeGroup)
                 .Include(t => t.State).ThenInclude( s => s.Teams)
                 .Include(t => t.Tournament)
@@ -61,9 +62,9 @@ namespace MCYSA.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Team> GetTeams(string state, int ageGroupId, bool related = false)
+        public IEnumerable<Team> GetTeams(string state, int ageGroupId, int tournamentId, bool related = false)
         {
-            IQueryable<Team> query = context.Teams;
+            IQueryable<Team> query = context.Teams; //.Where(t => t.TournamentId == context.Tournaments.First(tourney => tourney.IsCurrent).Id);
 
             if (!string.IsNullOrWhiteSpace(state))
             {
@@ -73,6 +74,11 @@ namespace MCYSA.Controllers
             if (ageGroupId != 0)
             {
                 query = query.Where(t => t.AgeGroupId == ageGroupId);
+            }
+
+            if(tournamentId != 0)
+            {
+                query = query.Where(t => t.TournamentId == tournamentId);
             }
 
             if (related)

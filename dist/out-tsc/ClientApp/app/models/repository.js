@@ -19,6 +19,7 @@ var ageGroupUrl = "/api/agegroups";
 var tournamentUrl = "api/tournaments";
 var ballparkUrl = "api/ballparks";
 var gameUrl = "api/games";
+var playerUrl = "api/players";
 var Repository = /** @class */ (function () {
     function Repository(http) {
         this.http = http;
@@ -51,8 +52,28 @@ var Repository = /** @class */ (function () {
             url += "&state=" + this.filter.state;
         if (this.filter.age)
             url += "&ageGroupId=" + this.filter.age;
+        if (this.filter.tournamentId != null)
+            url += "&tournamentId=" + this.filter.tournamentId;
         this.sendRequest(http_1.RequestMethod.Get, url).subscribe(function (response) {
             return _this.teams = response;
+        });
+    };
+    Repository.prototype.getPlayer = function (id) {
+        var _this = this;
+        console.log("getPlayer()");
+        this.sendRequest(http_1.RequestMethod.Get, playerUrl + "/" + id).subscribe(function (response) {
+            _this.player = response;
+            console.log(_this.player);
+        });
+    };
+    Repository.prototype.getPlayers = function (teamId) {
+        var _this = this;
+        console.log("getPlayers()");
+        var url = playerUrl;
+        if (teamId != 0)
+            url += "?teamId=" + teamId;
+        this.sendRequest(http_1.RequestMethod.Get, url).subscribe(function (response) {
+            return _this.players = response;
         });
     };
     Repository.prototype.getBallpark = function (id) {
@@ -146,7 +167,7 @@ var Repository = /** @class */ (function () {
             managerLastName: team.managerLastName,
             ageGroupId: team.ageGroup.id,
             stateId: team.state.stateId,
-            tournamentId: team.tournamentId
+            tournamentId: team.tournament.id
         };
         console.log("in repo");
         console.log(data);
@@ -248,10 +269,16 @@ var Repository = /** @class */ (function () {
             id: tournament.id,
             startDate: tournament.startDate,
             endDate: tournament.endDate,
-            isCurrent: true,
+            isCurrent: tournament.isCurrent,
             name: tournament.name
         };
         this.sendRequest(http_1.RequestMethod.Put, tournamentUrl + "/" + tournament.id, data).subscribe(function (response) { return _this.getTournaments(); });
+    };
+    Repository.prototype.deleteTournament = function (id) {
+        var _this = this;
+        if (confirm("Are you sure you want to delete this?")) {
+            this.sendRequest(http_1.RequestMethod.Delete, tournamentUrl + "/" + id).subscribe(function (response) { return _this.getTournaments(); });
+        }
     };
     Repository = __decorate([
         core_1.Injectable(),
