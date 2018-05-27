@@ -1,30 +1,32 @@
 ﻿
-<h4> Player Admin </h4>
-<tournament-filter></tournament-filter>
+<h4> Players</h4>
+
 <table *ngIf="tableMode; else create" class="table table-sm table-striped">
     <tr>
-        <th>ID</th>
+        <!--<th>ID</th>-->
         <th>Team</th>
         <th>First Name</th>
         <th>Last Name</th>
+        <th>Date of Birth</th>
         <th></th>
     </tr>
-    <tr *ngFor="let t of teams">
-        <ng-template [ngIf]="team?.id != t.id" [ngIfElse]="edit">
-            <td>{{t.players.id}}</td>
-            <td>{{t.Name}}</td>
-            <td>{{t.players.firstName}}</td>
-            <td>{{t.players.lastName}}</td>
+    <tr *ngFor="let p of players">
+        <ng-template [ngIf]="player?.id != p.id" [ngIfElse]="edit">
+            <!--<td>{{p.id}}</td>-->
+            <td>{{p.team.teamName}}</td>
+            <td>{{p.firstName}}</td>
+            <td>{{p.lastName}}</td>
+            <td>{{p.dob | date:'short'}}</td>
             <td>
-                <button class="btn btn-sm btn-primary" (click)="selectPlayer(t.players.id)"> Edit</button>
-                <button class="btn btn-sm btn-danger" (click)="deletePlayer(t.players.id)"> Delete </button>
+                <button class="btn btn-sm btn-primary" (click)="selectPlayer(p.id)"> Edit</button>
+                <button class="btn btn-sm btn-danger" (click)="deletePlayer(p.id)"> Delete </button>
             </td>
         </ng-template>
     </tr>
     <tfoot>
         <tr>
             <td colspan="6" class="text-center">
-                <button class="btn btn-primary" (click)="clearPlayer(); tableMode = false"> Create </button>
+                <button class="btn btn-primary" (click)="clearPlayer(); tableMode = false"> Create Player</button>
             </td>
         </tr>
     </tfoot>
@@ -32,15 +34,15 @@
 
 <ng-template #edit>
     <td colspan="6">
-        <admin-Player-editor></admin-Player-editor>
+        <admin-player-editor></admin-player-editor>
         <div class="text-center">
-            <button class="btn btn-sm btn-primary" (click)="savePlayer()">  Save</button>
+            <button class="btn btn-sm btn-primary" (click)="savePlayer()">  Save Player</button>
             <button class="btn btn-sm btn-info" (click)="clearPlayer()"> Cancel</button>
         </div>
     </td>
 </ng-template>
 <ng-template #create>
-    <admin-Player-editor></admin-Player-editor>
-    <button class="btn btn-primary" (click)="savePlayer()">  Save </button>
+    <admin-player-editor></admin-player-editor>
+    <button class="btn btn-primary" (click)="savePlayer()">  Save Player</button>
     <button class="btn btn-info" (click)="clearPlayer()"> Cancel</button>
 </ng-template>

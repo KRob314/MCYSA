@@ -89,14 +89,16 @@ export class Repository
 		});
 	}
 
-	getPlayers(teamId : number)
+	getPlayers(teamId : number = 0, related: boolean = true)
 	{
 		console.log("getPlayers()");
+		console.log("team selected");
+		console.log(this.team);
 
-		let url = playerUrl; 
+		let url = playerUrl + "?related=" + related;
 
 		if (teamId != 0)
-			url += "?teamId=" + teamId;
+			url += "&teamId=" + teamId;
 
 		this.sendRequest(RequestMethod.Get, url).subscribe(response =>
 			this.players = response);
@@ -228,6 +230,50 @@ export class Repository
 	{
 		this.sendRequest(RequestMethod.Delete, teamUrl + "/" + id).subscribe(response =>
 			this.getTeams());
+	}
+
+	createPlayer(player: Player)
+	{
+		let data =
+			{
+				firstName: player.firstName,
+				lastName: player.lastName,
+				dob: player.dob, 
+				stateId: player.stateId,
+				teamId: player.teamId
+			};
+
+		console.log("createPlayer()");
+		console.log(data);
+
+		this.sendRequest(RequestMethod.Post, playerUrl, data).subscribe(response =>
+		{
+			player.id = response;
+			this.players.push(player);
+		})
+	}
+
+	replacePlayer(player: Player)
+	{
+		let data =
+			{
+				id: player.id,
+				firstName: player.firstName,
+				lastName: player.lastName,
+				dob: player.dob,
+				teamId: player.teamId
+			};
+
+		console.log("replacePlayer()");
+		console.log(data);
+		console.log(player);
+
+		this.sendRequest(RequestMethod.Put, playerUrl + "/" + player.id, data).subscribe(response => this.getPlayers(data.teamId));
+	}
+
+	deletePlayer(id: number)
+	{
+		this.sendRequest(RequestMethod.Delete, playerUrl + "/" + id).subscribe(response => this.getPlayers()); //TODO: get teamid
 	}
 
 	createBallpark(ballpark: Ballpark)

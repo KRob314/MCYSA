@@ -66,12 +66,16 @@ var Repository = /** @class */ (function () {
             console.log(_this.player);
         });
     };
-    Repository.prototype.getPlayers = function (teamId) {
+    Repository.prototype.getPlayers = function (teamId, related) {
         var _this = this;
+        if (teamId === void 0) { teamId = 0; }
+        if (related === void 0) { related = true; }
         console.log("getPlayers()");
-        var url = playerUrl;
+        console.log("team selected");
+        console.log(this.team);
+        var url = playerUrl + "?related=" + related;
         if (teamId != 0)
-            url += "?teamId=" + teamId;
+            url += "&teamId=" + teamId;
         this.sendRequest(http_1.RequestMethod.Get, url).subscribe(function (response) {
             return _this.players = response;
         });
@@ -178,6 +182,40 @@ var Repository = /** @class */ (function () {
         this.sendRequest(http_1.RequestMethod.Delete, teamUrl + "/" + id).subscribe(function (response) {
             return _this.getTeams();
         });
+    };
+    Repository.prototype.createPlayer = function (player) {
+        var _this = this;
+        var data = {
+            firstName: player.firstName,
+            lastName: player.lastName,
+            dob: player.dob,
+            stateId: player.stateId,
+            teamId: player.teamId
+        };
+        console.log("createPlayer()");
+        console.log(data);
+        this.sendRequest(http_1.RequestMethod.Post, playerUrl, data).subscribe(function (response) {
+            player.id = response;
+            _this.players.push(player);
+        });
+    };
+    Repository.prototype.replacePlayer = function (player) {
+        var _this = this;
+        var data = {
+            id: player.id,
+            firstName: player.firstName,
+            lastName: player.lastName,
+            dob: player.dob,
+            teamId: player.teamId
+        };
+        console.log("replacePlayer()");
+        console.log(data);
+        console.log(player);
+        this.sendRequest(http_1.RequestMethod.Put, playerUrl + "/" + player.id, data).subscribe(function (response) { return _this.getPlayers(data.teamId); });
+    };
+    Repository.prototype.deletePlayer = function (id) {
+        var _this = this;
+        this.sendRequest(http_1.RequestMethod.Delete, playerUrl + "/" + id).subscribe(function (response) { return _this.getPlayers(); }); //TODO: get teamid
     };
     Repository.prototype.createBallpark = function (ballpark) {
         var _this = this;

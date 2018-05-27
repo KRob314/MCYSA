@@ -30,7 +30,7 @@
     <tfoot>
         <tr>
             <td colspan="6" class="text-center">
-                <button class="btn btn-primary" (click)="clearTeam(); tableMode = false"> Create </button>
+                <button class="btn btn-primary" (click)="clearTeam(); tableMode = false"> Create Team</button>
             </td>
         </tr>
     </tfoot>
@@ -40,13 +40,15 @@
     <td colspan="6">
         <admin-team-editor></admin-team-editor>
         <div class="text-center">
-            <button class="btn btn-sm btn-primary" (click)="saveTeam()">  Save</button>
+            <button class="btn btn-sm btn-primary" (click)="saveTeam()">  Save Team</button>
             <button class="btn btn-sm btn-info" (click)="clearTeam()"> Cancel</button>
         </div>
     </td>
 </ng-template>
 <ng-template #create>
     <admin-team-editor></admin-team-editor>
-    <button class="btn btn-primary" (click)="saveTeam()">  Save </button>
+    <button class="btn btn-primary" (click)="saveTeam()">  Save Team</button>
     <button class="btn btn-info" (click)="clearTeam()"> Cancel</button>
 </ng-template>
+
+<!--<admin-player></admin-player>-->

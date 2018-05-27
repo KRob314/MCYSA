@@ -56,7 +56,10 @@ export class TeamAdminComponent
     }
 
     get teams(): Team[] 
-    {
+	{
+		console.log("getTeams() teamAdmin.component")
+		console.log(this.repo.teams);
+
         return this.repo.teams;
     }
 }

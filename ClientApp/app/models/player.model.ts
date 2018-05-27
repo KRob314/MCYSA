@@ -11,6 +11,7 @@ export class Player
 		public firstName?: string,
 		public lastName?: string,
 		public stateId?: string,
+		public dob?: string,
 		public state?: State,
 		public team?: Team)
 	{ }

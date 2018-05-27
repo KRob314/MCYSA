@@ -5,6 +5,7 @@ import { GameTableComponent } from "./structure/gameTable.component";
 import { AdminComponent } from "./admin/admin.component";
 import { OverviewComponent } from "./admin/overview.component";
 import { TeamAdminComponent } from "./admin/teamAdmin.component";
+import { PlayerAdminComponent } from "./admin/playerAdmin.component";
 import { TournamentAdminComponent } from "./admin/tournamentAdmin.component";
 import { BallparkAdminComponent } from "./admin/ballparkAdmin.component";
 import { GameAdminComponent } from "./admin/gameAdmin.component";
@@ -15,7 +16,8 @@ const routes: Routes =
         {
             path: "admin", component: AdminComponent,
             children: [
-                { path: "teams", component: TeamAdminComponent },
+				{ path: "teams", component: TeamAdminComponent },
+				{ path: "players", component: PlayerAdminComponent },
 				{ path: "overview", component: OverviewComponent },
 				{ path: "tournaments", component: TournamentAdminComponent }, 
 				{ path: "ballparks", component: BallparkAdminComponent }, 

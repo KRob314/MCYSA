@@ -1,10 +1,55 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+﻿<h3>Player editor</h3>
+<!--<div class="form-group">
+    <label>Id</label>
+    <input class="form-control" [(ngModel)]="player.id" />
+</div>-->
+<section style="padding-bottom:20px;">
+    <div class="row">
+        <div class="col-md-3">
+            <label>First Name</label>
+            <input class="form-control" [(ngModel)]="player.firstName" />
+        </div>
+        <div class="col-md-3">
+            <label>Last Name</label>
+            <input class="form-control" [(ngModel)]="player.lastName" />
+        </div>
+        <div class="col-md-3">
+            <label>Email</label>
+            <input class="form-control" type="email" [(ngModel)]="player.email" />
+        </div>
+        <div class="col-md-3">
+            <label>Date of Birth</label>
+            <input class="form-control" type="date" [(ngModel)]="player.dob" #myDate /> <!--[value]="player.dob | date:'yyyy-MM-dd'" (input)="player.dob=parseDate($event.target.value)"-->
+        </div>
+    </div>
+    <!--<div class="row">
+        <div class="col-md-3">
+            <label>Street</label>
+            <input class="form-control" [(ngModel)]="player.street" />
+        </div>
+        <div class="col-md-3">
+            <label>City</label>
+            <input class="form-control" [(ngModel)]="player.city" />
+        </div>
+        <div class="col-md-3">
+            <label>State</label>
+            <select class="form-control" [(ngModel)]="player.stateId" [compareWith]="compareStates">
+                <option *ngFor="let s of states" [ngValue]="s.id">{{s.name}}</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label>Zip</label>
+            <input class="form-control" [(ngModel)]="player.zip" />
+        </div>
+    </div>-->
+    <div class="row">
+        <div class="col-md-12">
+            <label>Team</label>
+            <select class="form-control" [(ngModel)]="player.teamId" [compareWith]="compareTeams">
+                <option *ngFor="let t of teams" [ngValue]="t.id">{{t.teamName}}</option>
+            </select>
+        </div>
+    </div>
 
-</body>
-</html>
+</section>
+

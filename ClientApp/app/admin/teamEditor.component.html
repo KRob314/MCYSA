@@ -1,38 +1,47 @@
-﻿<div class="form-group">
+﻿<!--<div class="form-group">
     <label>Id</label>
     <input class="form-control" [(ngModel)]="team.id" />
-</div>
-<div class="form-group">
-    <label>Tournaments</label>
-    <select class="form-control" [(ngModel)]="team.tournament" [compareWith]="compareTournaments">
-        <option *ngFor="let t of tournaments" [ngValue]="t">{{t.name}}</option>
-    </select>
-</div>
-<div class="form-group">
-    <label>Team Name</label>
-    <input class="form-control" [(ngModel)]="team.teamName" />
-</div>
-<div class="form-group">
-    <label>Manager First Name</label>
-    <input class="form-control" [(ngModel)]="team.managerFirstName" />
-</div>
-<div class="form-group">
-    <label>Manager Last Name</label>
-    <input class="form-control" [(ngModel)]="team.managerLastName" />
-</div>
-<!--<div class="form-group">
-    <label>State</label>
-    <input class="form-control" [(ngModel)]="team.state.name" />
 </div>-->
-<div class="form-group">
-    <label>State</label>
-    <select class="form-control" [(ngModel)]="team.state" [compareWith]="compareStates">
-        <option *ngFor="let s of states" [ngValue]="s">{{s.name}}</option>
-    </select>
-</div>
-<div class="form-group">
-    <label>Age Group</label>
-    <select class="form-control" [(ngModel)]="team.ageGroup" [compareWith]="compareAgeGroups">
-        <option *ngFor="let a of ageGroups" [ngValue]="a">{{a.age}}</option>
-    </select>
-</div>
+<section style="padding-bottom:20px;">
+    <div class="row">
+        <div class="col-md-6">
+            <label>Tournaments</label>
+            <select class="form-control" [(ngModel)]="team.tournament" [compareWith]="compareTournaments">
+                <option *ngFor="let t of tournaments" [ngValue]="t">{{t.name}}</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label>Team Name</label>
+            <input class="form-control" [(ngModel)]="team.teamName" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>Manager First Name</label>
+            <input class="form-control" [(ngModel)]="team.managerFirstName" />
+        </div>
+        <div class="col-md-6">
+            <label>Manager Last Name</label>
+            <input class="form-control" [(ngModel)]="team.managerLastName" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label>State</label>
+            <select class="form-control" [(ngModel)]="team.state" [compareWith]="compareStates">
+                <option *ngFor="let s of states" [ngValue]="s">{{s.name}}</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label>Age Group</label>
+            <select class="form-control" [(ngModel)]="team.ageGroup" [compareWith]="compareAgeGroups">
+                <option *ngFor="let a of ageGroups" [ngValue]="a">{{a.age}}</option>
+            </select>
+        </div>
+    </div>
+
+</section>
+
+
+
+<admin-player></admin-player>

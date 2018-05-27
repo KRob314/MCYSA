@@ -11,26 +11,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("../models/repository");
-var AdminComponent = /** @class */ (function () {
-    function AdminComponent(repo) {
+var router_1 = require("@angular/router");
+var PlayerTableComponent = /** @class */ (function () {
+    function PlayerTableComponent(repo, router) {
         this.repo = repo;
-        repo.filter.reset();
-        repo.filter.related = true;
-        this.repo.getTeams();
-        this.repo.getStates();
-        this.repo.getAgeGroups();
-        this.repo.getTournaments();
-        this.repo.getBallparks();
-        this.repo.getGames();
-        this.repo.getPlayers(0);
+        this.router = router;
     }
-    AdminComponent = __decorate([
+    Object.defineProperty(PlayerTableComponent.prototype, "players", {
+        get: function () {
+            return this.repo.players;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    PlayerTableComponent.prototype.selectPlayer = function (id) {
+        this.repo.getPlayer(id);
+        //this.router.navigateByUrl("/detail");
+    };
+    PlayerTableComponent = __decorate([
         core_1.Component({
-            templateUrl: "admin.component.html"
+            selector: "player-table",
+            templateUrl: "./playerTable.component.html"
         }),
-        __metadata("design:paramtypes", [repository_1.Repository])
-    ], AdminComponent);
-    return AdminComponent;
+        __metadata("design:paramtypes", [repository_1.Repository, router_1.Router])
+    ], PlayerTableComponent);
+    return PlayerTableComponent;
 }());
-exports.AdminComponent = AdminComponent;
-//# sourceMappingURL=admin.component.js.map
+exports.PlayerTableComponent = PlayerTableComponent;
+//# sourceMappingURL=playerTable.component.js.map

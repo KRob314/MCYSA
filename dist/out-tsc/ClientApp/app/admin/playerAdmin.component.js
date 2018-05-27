@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("../models/repository");
-var team_model_1 = require("../models/team.model");
+var player_model_1 = require("../models/player.model");
 var PlayerAdminComponent = /** @class */ (function () {
     function PlayerAdminComponent(repo) {
         this.repo = repo;
@@ -27,25 +27,6 @@ var PlayerAdminComponent = /** @class */ (function () {
     PlayerAdminComponent.prototype.selectTeam = function (id) {
         this.repo.getTeam(id);
     };
-    PlayerAdminComponent.prototype.saveTeam = function () {
-        console.log("saveTeam()");
-        this.repo.team.stateId = this.repo.team.state.stateId;
-        this.repo.team.ageGroupId = this.repo.team.ageGroup.id;
-        console.log(this.repo.team);
-        if (this.repo.team.id == null)
-            this.repo.createTeam(this.repo.team);
-        else
-            this.repo.replaceTeam(this.repo.team);
-        this.clearTeam();
-        this.tableMode = true;
-    };
-    PlayerAdminComponent.prototype.deleteTeam = function (id) {
-        this.repo.deleteTeam(id);
-    };
-    PlayerAdminComponent.prototype.clearTeam = function () {
-        this.repo.team = new team_model_1.Team();
-        this.tableMode = true;
-    };
     Object.defineProperty(PlayerAdminComponent.prototype, "teams", {
         get: function () {
             return this.repo.teams;
@@ -53,9 +34,54 @@ var PlayerAdminComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(PlayerAdminComponent.prototype, "player", {
+        get: function () {
+            return this.repo.player;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PlayerAdminComponent.prototype, "players", {
+        get: function () {
+            var _this = this;
+            console.log("getPlayers() playerAdmin.component");
+            console.log(this.repo.players);
+            console.log("table mode: " + this.tableMode);
+            var data = this.repo.players;
+            if (this.repo.team) {
+                data = data.filter(function (p) { return p.teamId == _this.repo.team.id; });
+            }
+            return data;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    PlayerAdminComponent.prototype.selectPlayer = function (id) {
+        return this.repo.getPlayer(id);
+    };
+    PlayerAdminComponent.prototype.deletePlayer = function (id) {
+        this.repo.deletePlayer(id);
+    };
+    PlayerAdminComponent.prototype.savePlayer = function () {
+        console.log("savePlayer()");
+        console.log(this.repo.player);
+        if (this.repo.player.id == null)
+            this.repo.createPlayer(this.repo.player);
+        else
+            this.repo.replacePlayer(this.repo.player);
+        this.clearPlayer();
+    };
+    PlayerAdminComponent.prototype.clearPlayer = function () {
+        this.repo.player = new player_model_1.Player();
+        this.tableMode = true;
+    };
+    PlayerAdminComponent.prototype.compareTeams = function (t1, t2) {
+        return t1 && t2 && t1.teamName == t2.teamName;
+    };
     PlayerAdminComponent = __decorate([
         core_1.Component({
-            templateUrl: "playerAdmin.component.html"
+            templateUrl: "playerAdmin.component.html",
+            selector: "admin-player"
         }),
         __metadata("design:paramtypes", [repository_1.Repository])
     ], PlayerAdminComponent);

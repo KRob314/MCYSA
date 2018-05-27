@@ -6,6 +6,8 @@ import { AdminComponent } from "./admin.component";
 import { OverviewComponent } from "./overview.component";
 import { TeamAdminComponent } from "./teamAdmin.component";
 import { TeamEditorComponent } from "./teamEditor.component";
+import { PlayerAdminComponent } from "./playerAdmin.component";
+import { PlayerEditorComponent } from "./playerEditor.component";
 import { TournamentEditorComponent } from "./tournamentEditor.component";
 import { TournamentAdminComponent } from "./tournamentAdmin.component";
 import { BallparkAdminComponent } from "./ballparkAdmin.component";
@@ -16,7 +18,11 @@ import { TournamentFilterComponent } from "../structure/tournamentFilter.compone
 
 @NgModule({
     imports: [BrowserModule, RouterModule, FormsModule],
-	declarations: [AdminComponent, OverviewComponent, TeamAdminComponent, TeamEditorComponent, TournamentEditorComponent, TournamentAdminComponent, BallparkAdminComponent, BallparkEditorComponent,
+	declarations: [AdminComponent, OverviewComponent,
+		TeamAdminComponent, TeamEditorComponent,
+		PlayerAdminComponent, PlayerEditorComponent,
+		TournamentEditorComponent, TournamentAdminComponent,
+		BallparkAdminComponent, BallparkEditorComponent,
 	GameAdminComponent, GameEditorComponent, TournamentFilterComponent]
 })
 

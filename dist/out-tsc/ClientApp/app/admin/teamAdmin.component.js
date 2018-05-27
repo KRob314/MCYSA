@@ -48,6 +48,8 @@ var TeamAdminComponent = /** @class */ (function () {
     };
     Object.defineProperty(TeamAdminComponent.prototype, "teams", {
         get: function () {
+            console.log("getTeams() teamAdmin.component");
+            console.log(this.repo.teams);
             return this.repo.teams;
         },
         enumerable: true,
