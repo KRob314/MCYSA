@@ -10,6 +10,7 @@ namespace MCYSA.Controllers
 {
     [Produces("application/json")]
     [Route("api/Games")]
+    [ValidateAntiForgeryToken]
     public class GameValuesController : Controller
     {
         private McysaContext context;
@@ -75,6 +76,8 @@ namespace MCYSA.Controllers
                 context.Update(game);
                 context.SaveChanges();
 
+                UpdateTeamRecord(gameData);
+
                 return Ok();
             }
             else
@@ -88,6 +91,53 @@ namespace MCYSA.Controllers
         {
             context.Games.Remove(new Game { Id = id });
             context.SaveChanges();
+        }
+
+        public void UpdateTeamRecord(GameData gameData)
+        {
+            List<Game> homeTeamGames = context.Games.Where(g => g.HomeTeamId == gameData.HomeTeamId || g.AwayTeamId == gameData.HomeTeamId).ToList();
+            List<Game> awayTeamGames = context.Games.Where(g => g.HomeTeamId == gameData.AwayTeamId || g.AwayTeamId == gameData.AwayTeamId).ToList();
+            int homeTeamWins = 0;
+            int homeTeamLosses = 0;
+            int awayTeamWins = 0;
+            int awayTeamLosses = 0;
+
+            foreach(var game in homeTeamGames)
+            {
+                if(game.HomeTeamRuns > game.AwayTeamRuns)
+                {
+                    homeTeamWins += 1;
+                }
+                else if(game.AwayTeamRuns > game.HomeTeamRuns)
+                {
+                    homeTeamLosses += 1;
+                }
+            }
+           
+            foreach(var game in awayTeamGames)
+            {
+                if(game.AwayTeamRuns > game.HomeTeamRuns)
+                {
+                    awayTeamWins += 1;
+                }
+                else if(game.HomeTeamRuns != 0 && game.AwayTeamRuns != 0 && game.HomeTeamRuns > game.AwayTeamRuns)
+                {
+                    awayTeamLosses += 1;
+                }
+            }
+
+            Team homeTeam = context.Teams.Find(gameData.HomeTeamId);
+            Team awayTeam = context.Teams.Find(gameData.AwayTeamId);
+
+            homeTeam.Wins = homeTeamWins;
+            homeTeam.Losses = homeTeamLosses;
+            awayTeam.Wins = awayTeamWins;
+            awayTeam.Losses = awayTeamLosses;
+
+            context.Update(homeTeam);
+            context.Update(awayTeam);
+            context.SaveChanges();
+
         }
     }
 }

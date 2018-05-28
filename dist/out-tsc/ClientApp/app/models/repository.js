@@ -240,7 +240,7 @@ var Repository = /** @class */ (function () {
             name: ballpark.name,
             street: ballpark.street,
             city: ballpark.city,
-            stateId: ballpark.state.stateId,
+            stateId: ballpark.stateId,
             zip: ballpark.zip
         };
         this.sendRequest(http_1.RequestMethod.Put, ballparkUrl + "/" + ballpark.id, data).subscribe(function (response) { return _this.getBallparks(); });

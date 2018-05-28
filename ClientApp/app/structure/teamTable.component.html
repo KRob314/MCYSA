@@ -11,6 +11,7 @@
 <table class="table table-striped marginT-15">
     <tr>
         <th>Team Name</th>
+        <th>Record</th>
         <th>Age Group</th>
         <th>Manager First Name</th>
         <th>Manager Last Name</th>
@@ -19,6 +20,7 @@
     </tr>
     <tr *ngFor="let team of teams">
         <td>{{team?.teamName || 'Loading Data...'}}</td>
+        <td>{{team?.record}}</td>
         <td>{{team?.ageGroup.name || 'Loading data ...'}}</td>
         <td>{{team?.managerFirstName}}</td>
         <td>{{team?.managerLastName}}</td>

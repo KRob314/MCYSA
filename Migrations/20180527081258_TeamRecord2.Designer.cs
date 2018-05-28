@@ -11,9 +11,10 @@ using System;
 namespace MCYSA.Migrations
 {
     [DbContext(typeof(McysaContext))]
-    partial class McysaContextModelSnapshot : ModelSnapshot
+    [Migration("20180527081258_TeamRecord2")]
+    partial class TeamRecord2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -37,6 +37,10 @@ var GameEditorComponent = /** @class */ (function () {
         configurable: true
     });
     GameEditorComponent.prototype.compareTeams = function (t1, t2) {
+        console.log("compareTeam() ");
+        console.log(t1);
+        console.log(t2);
+        console.log(t1 && t2 && t1.teamName == t2.teamName);
         return t1 && t2 && t1.teamName == t2.teamName;
     };
     GameEditorComponent.prototype.compareBallparks = function (b1, b2) {

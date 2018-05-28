@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using MCYSA.Models;
@@ -11,6 +12,7 @@ namespace MCYSA.Controllers
 {
     [Produces("application/json")]
     [Route("api/ballparks")]
+    [ValidateAntiForgeryToken]
     public class BallparkValuesController : Controller
     {
         private McysaContext context;
@@ -23,7 +25,10 @@ namespace MCYSA.Controllers
         [HttpGet("{id}")]
         public Ballpark GetBallpark(int id)
         {
-            Ballpark result = context.Ballparks.First(b => b.Id == id);
+            Ballpark result = context.Ballparks
+                .Include(b => b.State).First(b => b.Id == id);
+                
+                
 
             return result;
         }

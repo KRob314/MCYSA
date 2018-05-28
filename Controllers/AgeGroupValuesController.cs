@@ -9,6 +9,7 @@ using MCYSA.Models;
 namespace MCYSA.Controllers
 {
     [Route("api/agegroups")]
+    [ValidateAntiForgeryToken]
     public class AgeGroupValuesController : Controller
     {
         private McysaContext context;

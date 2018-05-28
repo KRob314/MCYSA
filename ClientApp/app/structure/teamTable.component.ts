@@ -24,6 +24,6 @@ export class TeamTableComponent
     {
        
         this.repo.getTeam(id);
-        this.router.navigateByUrl("/detail");
+        this.router.navigateByUrl("/teamDetail/" + id);
     }
 }

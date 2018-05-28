@@ -12,9 +12,15 @@ export class Team
         public stateId?: string,
         public teamName?: string,
         public managerFirstName?: string, 
-        public managerLastName?: string,
+		public managerLastName?: string,
+		public wins?: number, 
+		public losses?: number,
+		public record?: string,
         public state?: State,
         public ageGroup?: AgeGroup,
 		public tournament?: Tournament,
-	    public players?: Player) { }
+		public players?: Player)
+	{
+		record = wins + "-" + losses;
+	}
 }

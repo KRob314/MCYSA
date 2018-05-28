@@ -26,7 +26,7 @@ var TeamTableComponent = /** @class */ (function () {
     });
     TeamTableComponent.prototype.selectTeam = function (id) {
         this.repo.getTeam(id);
-        this.router.navigateByUrl("/detail");
+        this.router.navigateByUrl("/teamDetail/" + id);
     };
     TeamTableComponent = __decorate([
         core_1.Component({

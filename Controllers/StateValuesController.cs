@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace MCYSA.Controllers
 {
     [Route("api/states")]
+    [ValidateAntiForgeryToken]
     public class StateValuesController : Controller
     {
         private McysaContext context;

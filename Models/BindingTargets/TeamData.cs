@@ -29,6 +29,14 @@ namespace MCYSA.Models.BindingTargets
         [Required]
         public string ManagerLastName { get; set; }
 
+        public int Wins { get; set; }
+        public int Losses { get; set; }
+        public string Record
+        {
+            get { return Wins + "=" + Losses; }
+            
+        }
+        
 
         public State State { get; set; }
         public AgeGroup AgeGroup { get; set; }

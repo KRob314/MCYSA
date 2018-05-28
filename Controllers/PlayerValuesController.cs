@@ -12,6 +12,7 @@ namespace MCYSA.Controllers
 {
     //[Produces("application/json")]
     [Route("api/players")]
+    [ValidateAntiForgeryToken]
     public class PlayerValuesController : Controller
     {
         private McysaContext context;

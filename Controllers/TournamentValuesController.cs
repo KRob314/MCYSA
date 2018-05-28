@@ -9,6 +9,7 @@ using MCYSA.Models.BindingTargets;
 namespace MCYSA.Controllers
 {
     [Route("api/tournaments")]
+    [ValidateAntiForgeryToken]
     public class TournamentValuesController : Controller
     {
         private McysaContext context;

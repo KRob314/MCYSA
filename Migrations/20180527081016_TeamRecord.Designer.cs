@@ -11,9 +11,10 @@ using System;
 namespace MCYSA.Migrations
 {
     [DbContext(typeof(McysaContext))]
-    partial class McysaContextModelSnapshot : ModelSnapshot
+    [Migration("20180527081016_TeamRecord")]
+    partial class TeamRecord
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -177,8 +178,6 @@ namespace MCYSA.Migrations
 
                     b.Property<bool>("IsVetted");
 
-                    b.Property<int>("Losses");
-
                     b.Property<string>("ManagerFirstName");
 
                     b.Property<string>("ManagerLastName");
@@ -204,8 +203,6 @@ namespace MCYSA.Migrations
                     b.Property<int>("TournamentId");
 
                     b.Property<string>("UserId");
-
-                    b.Property<int>("Wins");
 
                     b.Property<string>("Zip");
 

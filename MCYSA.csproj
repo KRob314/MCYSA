@@ -30,6 +30,7 @@
     <None Remove="ClientApp\app\admin\tournamentAdmin.component.ts" />
     <None Remove="ClientApp\app\admin\tournamentEditor.component.ts" />
     <None Remove="ClientApp\app\app.routing.ts" />
+    <None Remove="ClientApp\app\errorHandler.service.ts" />
     <None Remove="ClientApp\app\models\ballpark.model.ts" />
     <None Remove="ClientApp\app\models\configClasses.repository.ts" />
     <None Remove="ClientApp\app\models\game.model.ts" />
@@ -78,6 +79,7 @@
     <TypeScriptCompile Include="ClientApp\app\admin\tournamentAdmin.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\admin\tournamentEditor.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\app.routing.ts" />
+    <TypeScriptCompile Include="ClientApp\app\errorHandler.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\ballpark.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\configClasses.repository.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\game.model.ts" />

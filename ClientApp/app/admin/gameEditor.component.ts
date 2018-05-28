@@ -30,6 +30,11 @@ export class GameEditorComponent
 
 	compareTeams(t1: Team, t2: Team)
 	{
+		console.log("compareTeam() ")
+		console.log(t1);
+		console.log(t2);
+		console.log(t1 && t2 && t1.teamName == t2.teamName);
+
 		return t1 && t2 && t1.teamName == t2.teamName;
 	}
 

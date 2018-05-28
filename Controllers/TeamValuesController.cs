@@ -9,6 +9,7 @@ using System;
 namespace MCYSA.Controllers
 {
     [Route("api/teams")]
+    [ValidateAntiForgeryToken]
     public class TeamValuesController : Controller
     {
         private McysaContext context;

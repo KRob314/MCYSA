@@ -27,6 +27,12 @@ namespace MCYSA.Models
         public string PocEmail { get; set; }
         public System.DateTime RegisteredDate { get; set; }
         public bool IsVetted { get; set; }
+        public int Wins { get; set; }
+        public int Losses { get; set; }
+        public string Record
+        {
+            get { return Wins + "-" + Losses; }
+        }
 
         public virtual AgeGroup AgeGroup { get; set; }
        // public virtual AspNetUser AspNetUser { get; set; }
