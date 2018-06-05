@@ -25,14 +25,14 @@ export class TeamAdminComponent
 
     saveTeam()
 	{
-		console.log("saveTeam()");
+		//console.log("saveTeam()");
 		
 
 		this.repo.team.stateId = this.repo.team.state.stateId;
 		this.repo.team.ageGroupId = this.repo.team.ageGroup.id;
 
 		
-		console.log(this.repo.team);
+		//console.log(this.repo.team);
 
 
         if(this.repo.team.id == null)
@@ -57,8 +57,8 @@ export class TeamAdminComponent
 
     get teams(): Team[] 
 	{
-		console.log("getTeams() teamAdmin.component")
-		console.log(this.repo.teams);
+		//console.log("getTeams() teamAdmin.component")
+		//console.log(this.repo.teams);
 
         return this.repo.teams;
     }

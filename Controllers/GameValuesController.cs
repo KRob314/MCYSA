@@ -95,49 +95,63 @@ namespace MCYSA.Controllers
 
         public void UpdateTeamRecord(GameData gameData)
         {
-            List<Game> homeTeamGames = context.Games.Where(g => g.HomeTeamId == gameData.HomeTeamId || g.AwayTeamId == gameData.HomeTeamId).ToList();
-            List<Game> awayTeamGames = context.Games.Where(g => g.HomeTeamId == gameData.AwayTeamId || g.AwayTeamId == gameData.AwayTeamId).ToList();
-            int homeTeamWins = 0;
-            int homeTeamLosses = 0;
-            int awayTeamWins = 0;
-            int awayTeamLosses = 0;
-
-            foreach(var game in homeTeamGames)
-            {
-                if(game.HomeTeamRuns > game.AwayTeamRuns)
-                {
-                    homeTeamWins += 1;
-                }
-                else if(game.AwayTeamRuns > game.HomeTeamRuns)
-                {
-                    homeTeamLosses += 1;
-                }
-            }
-           
-            foreach(var game in awayTeamGames)
-            {
-                if(game.AwayTeamRuns > game.HomeTeamRuns)
-                {
-                    awayTeamWins += 1;
-                }
-                else if(game.HomeTeamRuns != 0 && game.AwayTeamRuns != 0 && game.HomeTeamRuns > game.AwayTeamRuns)
-                {
-                    awayTeamLosses += 1;
-                }
-            }
-
+            TeamRecord homeTeamRecord = new TeamRecord { TeamId = gameData.HomeTeamId.Value };
+            TeamRecord awayTeamRecord = new TeamRecord { TeamId = gameData.AwayTeamId.Value };                    
             Team homeTeam = context.Teams.Find(gameData.HomeTeamId);
             Team awayTeam = context.Teams.Find(gameData.AwayTeamId);
 
-            homeTeam.Wins = homeTeamWins;
-            homeTeam.Losses = homeTeamLosses;
-            awayTeam.Wins = awayTeamWins;
-            awayTeam.Losses = awayTeamLosses;
+            GetTeamRecord(homeTeamRecord);
+            GetTeamRecord(awayTeamRecord);
+            homeTeam.Wins = homeTeamRecord.GamesWon;
+            homeTeam.Losses = homeTeamRecord.GamesLost;
+            awayTeam.Wins = awayTeamRecord.GamesWon;
+            awayTeam.Losses = awayTeamRecord.GamesLost;
 
             context.Update(homeTeam);
             context.Update(awayTeam);
             context.SaveChanges();
 
+        }
+
+        public void GetTeamRecord(TeamRecord record)
+        {
+            GetHomeGameRecord(record);
+            GetAwayGameRecord(record);
+        }
+
+        public void GetHomeGameRecord(TeamRecord record)
+        {            
+            List<Game> games = context.Games.Where(g => g.HomeTeamId == record.TeamId).ToList();
+
+            foreach(var game in games)
+            {
+                if (game.HomeTeamRuns > game.AwayTeamRuns)
+                {
+                    record.GamesWon += 1;
+                }
+                else if (game.AwayTeamRuns > game.HomeTeamRuns)
+                {
+                    record.GamesLost += 1;
+                }
+            }
+
+        }
+
+        public void GetAwayGameRecord(TeamRecord record)
+        {
+            List<Game> games = context.Games.Where(g => g.AwayTeamId == record.TeamId).ToList();
+
+            foreach (var game in games)
+            {
+                if (game.HomeTeamRuns > game.AwayTeamRuns)
+                {
+                    record.GamesLost += 1;
+                }
+                else if (game.AwayTeamRuns > game.HomeTeamRuns)
+                {
+                    record.GamesWon += 1;
+                }
+            }
         }
     }
 }

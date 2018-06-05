@@ -261,14 +261,15 @@ export class Repository
 				firstName: player.firstName,
 				lastName: player.lastName,
 				dob: player.dob,
-				teamId: player.teamId
+				teamId: player.teamId,
+				email: player.email
 			};
 
 		console.log("replacePlayer()");
 		console.log(data);
 		console.log(player);
 
-		this.sendRequest(RequestMethod.Put, playerUrl + "/" + player.id, data).subscribe(response => this.getPlayers(data.teamId));
+		this.sendRequest(RequestMethod.Put, playerUrl + "/" + player.id, data).subscribe(response => this.getPlayers());
 	}
 
 	deletePlayer(id: number)

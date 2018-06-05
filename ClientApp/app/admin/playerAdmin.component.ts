@@ -1,4 +1,4 @@
-﻿import { Component } from "@angular/core";
+﻿import { Component} from "@angular/core";
 import { Repository } from "../models/repository";
 import { Team } from "../models/team.model";
 import { Player } from "../models/player.model";
@@ -9,9 +9,13 @@ import { Player } from "../models/player.model";
 	selector: "admin-player"
 })
 
-export class PlayerAdminComponent
+export class PlayerAdminComponent 
 {
-	constructor(private repo: Repository) { }
+
+	constructor(private repo: Repository)
+	{
+		this.init();		
+	}
 
 	tableMode: boolean = true;
 
@@ -36,11 +40,9 @@ export class PlayerAdminComponent
 	}
 
 	get players(): Player[]
-	{
-		
-		console.log("getPlayers() playerAdmin.component");
-		console.log(this.repo.players);
-		console.log("table mode: " + this.tableMode);
+	{		
+		//console.log("getPlayers() playerAdmin.component");
+		//console.log(this.repo.players);
 
 		var data = this.repo.players;
 
@@ -52,6 +54,16 @@ export class PlayerAdminComponent
 		return data;
 	}
 
+	init() //if on players view, clear selected team to view all players
+	{
+		var url = window.location.href;
+
+		if (url.indexOf("players") > -1)
+		{
+			this.repo.team = undefined;
+		}
+	}
+
 	selectPlayer(id: number)
 	{
 		return this.repo.getPlayer(id);
@@ -60,6 +72,7 @@ export class PlayerAdminComponent
 	deletePlayer(id: number)
 	{
 		this.repo.deletePlayer(id);
+
 	}
 
 	savePlayer()
@@ -80,6 +93,7 @@ export class PlayerAdminComponent
 		this.repo.player = new Player();
 		this.tableMode = true;
 	}
+
 
 	compareTeams(t1: Team, t2: Team)
 	{

@@ -28,10 +28,10 @@ var TeamAdminComponent = /** @class */ (function () {
         this.repo.getTeam(id);
     };
     TeamAdminComponent.prototype.saveTeam = function () {
-        console.log("saveTeam()");
+        //console.log("saveTeam()");
         this.repo.team.stateId = this.repo.team.state.stateId;
         this.repo.team.ageGroupId = this.repo.team.ageGroup.id;
-        console.log(this.repo.team);
+        //console.log(this.repo.team);
         if (this.repo.team.id == null)
             this.repo.createTeam(this.repo.team);
         else
@@ -48,8 +48,8 @@ var TeamAdminComponent = /** @class */ (function () {
     };
     Object.defineProperty(TeamAdminComponent.prototype, "teams", {
         get: function () {
-            console.log("getTeams() teamAdmin.component");
-            console.log(this.repo.teams);
+            //console.log("getTeams() teamAdmin.component")
+            //console.log(this.repo.teams);
             return this.repo.teams;
         },
         enumerable: true,

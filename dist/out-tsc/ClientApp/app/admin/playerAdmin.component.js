@@ -16,6 +16,7 @@ var PlayerAdminComponent = /** @class */ (function () {
     function PlayerAdminComponent(repo) {
         this.repo = repo;
         this.tableMode = true;
+        this.init();
     }
     Object.defineProperty(PlayerAdminComponent.prototype, "team", {
         get: function () {
@@ -43,10 +44,9 @@ var PlayerAdminComponent = /** @class */ (function () {
     });
     Object.defineProperty(PlayerAdminComponent.prototype, "players", {
         get: function () {
+            //console.log("getPlayers() playerAdmin.component");
+            //console.log(this.repo.players);
             var _this = this;
-            console.log("getPlayers() playerAdmin.component");
-            console.log(this.repo.players);
-            console.log("table mode: " + this.tableMode);
             var data = this.repo.players;
             if (this.repo.team) {
                 data = data.filter(function (p) { return p.teamId == _this.repo.team.id; });
@@ -56,6 +56,12 @@ var PlayerAdminComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    PlayerAdminComponent.prototype.init = function () {
+        var url = window.location.href;
+        if (url.indexOf("players") > -1) {
+            this.repo.team = undefined;
+        }
+    };
     PlayerAdminComponent.prototype.selectPlayer = function (id) {
         return this.repo.getPlayer(id);
     };

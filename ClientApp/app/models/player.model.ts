@@ -12,6 +12,7 @@ export class Player
 		public lastName?: string,
 		public stateId?: string,
 		public dob?: string,
+		public email?: string,
 		public state?: State,
 		public team?: Team)
 	{ }

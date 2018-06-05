@@ -206,12 +206,13 @@ var Repository = /** @class */ (function () {
             firstName: player.firstName,
             lastName: player.lastName,
             dob: player.dob,
-            teamId: player.teamId
+            teamId: player.teamId,
+            email: player.email
         };
         console.log("replacePlayer()");
         console.log(data);
         console.log(player);
-        this.sendRequest(http_1.RequestMethod.Put, playerUrl + "/" + player.id, data).subscribe(function (response) { return _this.getPlayers(data.teamId); });
+        this.sendRequest(http_1.RequestMethod.Put, playerUrl + "/" + player.id, data).subscribe(function (response) { return _this.getPlayers(); });
     };
     Repository.prototype.deletePlayer = function (id) {
         var _this = this;

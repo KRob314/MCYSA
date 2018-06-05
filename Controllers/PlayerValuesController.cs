@@ -82,6 +82,8 @@ namespace MCYSA.Controllers
             {
                 Player p = playerData.player;
                 p.Id = playerData.Id;
+                p.Email = playerData.Email;
+                p.TeamId = playerData.TeamId;
                 context.Update(p);
                 context.SaveChanges();
 
