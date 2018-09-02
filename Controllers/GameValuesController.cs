@@ -46,7 +46,7 @@ namespace MCYSA.Controllers
                     .Include(g => g.Ballpark);
             }
 
-            return games;
+            return games.OrderBy(g => g.GameDate);
         }
 
         [HttpPost]

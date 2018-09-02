@@ -49,7 +49,15 @@ namespace MCYSA.Controllers
                 Ballpark ballpark = ballparkData.ballpark;
 
                 context.Add(ballpark);
-                context.SaveChanges();
+
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch(Exception ex)
+                {
+                    var a = ex.Message;
+                }
 
                 return Ok(ballpark.Id);
             }

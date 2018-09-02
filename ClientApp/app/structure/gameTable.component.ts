@@ -32,4 +32,16 @@ export class GameTableComponent
 		this.repo.getGame(id);
 		//this.router.navigateByUrl("/detail");
 	}
+
+	setStyle(game: Game)
+	{
+		//mute games that have already been played
+		var today = new Date();
+		var gameDate = new Date(game.gameDate);
+
+		if (gameDate < today)
+		{
+			return "text-muted";
+		}
+	}
 }

@@ -235,7 +235,7 @@ var Repository = (function () {
             name: ballpark.name,
             street: ballpark.street,
             city: ballpark.city,
-            stateId: ballpark.state.stateId,
+            stateId: ballpark.stateId,
             zip: ballpark.zip
         };
         console.log("createBallpark()");
@@ -1095,6 +1095,14 @@ var GameTableComponent = (function () {
         this.repo.getGame(id);
         //this.router.navigateByUrl("/detail");
     };
+    GameTableComponent.prototype.setStyle = function (game) {
+        //mute games that have already been played
+        var today = new Date();
+        var gameDate = new Date(game.gameDate);
+        if (gameDate < today) {
+            return "text-muted";
+        }
+    };
     return GameTableComponent;
 }());
 GameTableComponent = __decorate([
@@ -1896,7 +1904,7 @@ var _a;
 /* 194 */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<div class=\"form-group\">\r\n    <label>Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.id\" />\r\n</div>-->\r\n<div class=\"form-group\">\r\n    <label>Home Team</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"game.homeTeamId\" >\r\n        <option *ngFor=\"let t of teams\" [ngValue]=\"t.id\">{{t.teamName}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Away Team</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"game.awayTeamId\" >\r\n        <option *ngFor=\"let t of teams\" [ngValue]=\"t.id\">{{t.teamName}}</option>\r\n    </select>\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n    <label>Ballpark</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"game.ballparkId\" >\r\n        <option *ngFor=\"let b of ballparks\" [ngValue]=\"b.id\">{{b.name}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Game Date</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.gameDate\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Home Team Runs</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.homeTeamRuns\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Away Team Runs</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.awayTeamRuns\" />\r\n</div>\r\n\r\n"
+module.exports = "<!--<div class=\"form-group\">\r\n    <label>Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.id\" />\r\n</div>-->\r\n<div class=\"form-group\">\r\n    <label>Home Team</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"game.homeTeamId\" >\r\n        <option *ngFor=\"let t of teams\" [ngValue]=\"t.id\">{{t.teamName}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Away Team</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"game.awayTeamId\" >\r\n        <option *ngFor=\"let t of teams\" [ngValue]=\"t.id\">{{t.teamName}}</option>\r\n    </select>\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n    <label>Ballpark</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"game.ballparkId\" >\r\n        <option *ngFor=\"let b of ballparks\" [ngValue]=\"b.id\">{{b.name}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Game Date</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.gameDate\" type=\"date\"/>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Home Team Runs</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.homeTeamRuns\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Away Team Runs</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.awayTeamRuns\" />\r\n</div>\r\n\r\n"
 
 /***/ }),
 /* 195 */
@@ -2158,7 +2166,7 @@ var _a;
 /* 205 */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n\r\n<div class=\"btn-group pull-right\" role=\"group\" aria-label=\"...\" >\r\n    <button class=\"btn btn-info\" (click)=\"setAge(1)\">11u</button>\r\n    <button class=\"btn btn-info\" (click)=\"setAge(2)\">12u</button>\r\n    <button class=\"btn btn-info\" (click)=\"setAge(null)\">All</button>\r\n</div>"
+module.exports = "\r\n\r\n<div class=\"btn-group pull-right\" role=\"group\" aria-label=\"...\" >\r\n    <button class=\"btn btn-info\" (click)=\"setAge(11)\">11u</button>\r\n    <button class=\"btn btn-info\" (click)=\"setAge(12)\">12u</button>\r\n    <button class=\"btn btn-info\" (click)=\"setAge(null)\">All</button>\r\n</div>"
 
 /***/ }),
 /* 206 */
@@ -2170,7 +2178,7 @@ module.exports = "\r\n<article class=\"container\">\r\n    <section>\r\n        
 /* 207 */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<!--<state-filter></state-filter>\r\n<age-filter></age-filter>-->\r\n\r\n<table class=\"table table-striped marginT-15\">\r\n    <tr>\r\n        <th>Home Team</th>\r\n        <th>Away Team</th>\r\n        <th>Ballpark</th>\r\n        <th>Game Date</th>\r\n        <th>Home Team Runs</th>\r\n        <th>Away Team Runs</th>\r\n        <!--<th></th>-->\r\n    </tr>\r\n    <tr *ngFor=\"let game of games\">\r\n        <td>{{game?.homeTeam.teamName || 'Loading Data...'}}</td>\r\n        <td>{{game?.awayTeam.teamName || 'Loading data ...'}}</td>\r\n        <td><button class=\"btn btn-sm\" [routerLink]=\"['/ballparkDetail', game.ballparkId]\"> {{game?.ballpark.name}}</button></td>\r\n        <td>{{game?.gameDate | date:'short'}}</td>\r\n        <td>{{game?.homeTeamRuns}}</td>\r\n        <td>{{game?.awayTeamRuns}}</td>\r\n        <!--<td> <button class=\"btn btn-default btn-sm\" [routerLink]=\"['/gameDetail', game.id]\">Details</button></td>-->\r\n    </tr>\r\n</table>\r\n\r\n<!-- (click)=\"selectTeam(team.id)\" data-toggle=\"modal\" data-target=\"#myModal\"-->"
+module.exports = "\r\n<!--<state-filter></state-filter>\r\n<age-filter></age-filter>-->\r\n\r\n<table class=\"table table-striped marginT-15\">\r\n    <tr>\r\n        <th >Home Team</th>\r\n        <th>Away Team</th>\r\n        <th>Ballpark</th>\r\n        <th>Game Date</th>\r\n        <th>Home Team Runs</th>\r\n        <th>Away Team Runs</th>\r\n        <!--<th></th>-->\r\n    </tr>\r\n    <tr *ngFor=\"let game of games\" [ngClass]=\"setStyle(game)\" >\r\n        <td>{{game?.homeTeam.teamName || 'Loading Data...'}}</td>\r\n        <td>{{game?.awayTeam.teamName || 'Loading data ...'}}</td>\r\n        <td><button class=\"btn btn-sm\" [routerLink]=\"['/ballparkDetail', game.ballparkId]\"> {{game?.ballpark.name}}</button></td>\r\n        <td>{{game?.gameDate | date:'short'}}</td>\r\n        <td>{{game?.homeTeamRuns}}</td>\r\n        <td>{{game?.awayTeamRuns}}</td>\r\n        <!--<td> <button class=\"btn btn-default btn-sm\" [routerLink]=\"['/gameDetail', game.id]\">Details</button></td>-->\r\n    </tr>\r\n</table>\r\n\r\n<!-- (click)=\"selectTeam(team.id)\" data-toggle=\"modal\" data-target=\"#myModal\"-->"
 
 /***/ }),
 /* 208 */

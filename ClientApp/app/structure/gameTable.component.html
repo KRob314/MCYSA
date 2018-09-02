@@ -4,7 +4,7 @@
 
 <table class="table table-striped marginT-15">
     <tr>
-        <th>Home Team</th>
+        <th >Home Team</th>
         <th>Away Team</th>
         <th>Ballpark</th>
         <th>Game Date</th>
@@ -12,7 +12,7 @@
         <th>Away Team Runs</th>
         <!--<th></th>-->
     </tr>
-    <tr *ngFor="let game of games">
+    <tr *ngFor="let game of games" [ngClass]="setStyle(game)" >
         <td>{{game?.homeTeam.teamName || 'Loading Data...'}}</td>
         <td>{{game?.awayTeam.teamName || 'Loading data ...'}}</td>
         <td><button class="btn btn-sm" [routerLink]="['/ballparkDetail', game.ballparkId]"> {{game?.ballpark.name}}</button></td>

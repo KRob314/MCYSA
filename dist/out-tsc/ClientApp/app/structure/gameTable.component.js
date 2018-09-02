@@ -35,6 +35,14 @@ var GameTableComponent = /** @class */ (function () {
         this.repo.getGame(id);
         //this.router.navigateByUrl("/detail");
     };
+    GameTableComponent.prototype.setStyle = function (game) {
+        //mute games that have already been played
+        var today = new Date();
+        var gameDate = new Date(game.gameDate);
+        if (gameDate < today) {
+            return "text-muted";
+        }
+    };
     GameTableComponent = __decorate([
         core_1.Component({
             selector: "game-table",

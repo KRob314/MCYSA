@@ -20,6 +20,14 @@ namespace MCYSA.Models
                     return;
                 }
 
+                if (context.Tournaments.Count() == 0)
+                {
+                    var tourney1 = new Tournament { StartDate = DateTime.Parse("6-6-2018"), EndDate = DateTime.Parse("7-6-2018"), Name = "MCYSA 2018", IsCurrent = true };
+
+                    context.Add(tourney1);
+                    context.SaveChanges();
+                }
+
                 if (context.Teams.Count() == 0)
                 {
                     var age11 = new AgeGroup { Id = 11, Name = "11u" };
@@ -27,6 +35,7 @@ namespace MCYSA.Models
 
                     var t1 = new Team
                     {
+                         TournamentId = 1,
                         TeamName = "Crystal Lake Bombers",
                         AgeGroup = age11,
                         City = "Crystal Lake",
@@ -43,9 +52,9 @@ namespace MCYSA.Models
                         PocPhone = "314.651.9805",
                         Street = "4301 Columbia Pike",
                     };
-
                     var t2 = new Team
                     {
+                        TournamentId = 1,
                         TeamName = "Washington Cardinals",
                         AgeGroup = age11,
                         City = "Crystal Lake",
@@ -63,6 +72,8 @@ namespace MCYSA.Models
                         Street = "4301 Columbia Pike",
                     };
 
+                    context.Add(age11);
+                    context.Add(age12);
                     context.Add(t1);
                     context.Add(t2);
                     context.SaveChanges();
@@ -72,7 +83,6 @@ namespace MCYSA.Models
                 {
                     var b1 = new Ballpark()
                     {
-                        Id = 1,
                         Name = "Annandale High School",
                         City = "Annandale",
                         Street = "4700 Medford Drive",
@@ -80,9 +90,29 @@ namespace MCYSA.Models
                         Zip = "22003"
                     };
 
+                    var b2 = new Ballpark()
+                    {
+                        Name = "Washington High School",
+                        City = "Washington",
+                        StateId = "MO",
+                        Zip = "63090"
+                    };
+
+                    var b3 = new Ballpark()
+                    {
+                        Name = "Atholton HS",
+                        City = "Atholton",
+                        StateId = "MD", 
+                        Zip = "20814"
+                    };
+
                     context.Add(b1);
+                    context.Add(b2);
+                    context.Add(b3);
                     context.SaveChanges();
                 }
+
+
             }
         }
     }

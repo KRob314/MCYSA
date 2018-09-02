@@ -224,7 +224,7 @@ var Repository = /** @class */ (function () {
             name: ballpark.name,
             street: ballpark.street,
             city: ballpark.city,
-            stateId: ballpark.state.stateId,
+            stateId: ballpark.stateId,
             zip: ballpark.zip
         };
         console.log("createBallpark()");
