@@ -11,6 +11,7 @@ using MCYSA.Models;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Antiforgery;
+using MCYSA.Services;
 
 
 namespace MCYSA
@@ -27,9 +28,10 @@ namespace MCYSA
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<McysaContext>(options =>
-            options.UseSqlServer(Configuration["Data:MCYSA:ConnectionString"]));
-
+            services.AddDbContext<McysaContext>(options => options.UseSqlServer(Configuration["Data:MCYSA:ConnectionString"]));         
+            services.AddScoped<IGamesRepository, GamesRepository>();
+            services.AddScoped<IPlayerRepository, PlayerRepository>();
+            services.AddScoped<IBallparkRepository, BallparkRepository>();
             //services.AddMvc();
             //services.AddMvc().AddJsonOptions(opts =>
             //opts.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);

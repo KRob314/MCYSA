@@ -1,6 +1,7 @@
 ﻿
 <h4> Team Admin </h4>
 <tournament-filter></tournament-filter>
+
 <table *ngIf="tableMode; else create" class="table table-sm table-striped">
     <tr>
         <th>ID</th>
@@ -12,8 +13,8 @@
         <th>Age Group</th>
         <th></th>
     </tr>
-    <tr *ngFor="let t of teams">
-        <ng-template [ngIf]="team?.id != t.id" [ngIfElse]="edit">
+    <tr *ngFor="let t of teams"  >
+        <ng-template [ngIf]="team?.id != t.id" [ngIfElse]="edit" >
             <td>{{t.id}}</td>
             <td>{{t.teamName}}</td>
             <td>{{t.tournament.name || '(None)'}}</td>

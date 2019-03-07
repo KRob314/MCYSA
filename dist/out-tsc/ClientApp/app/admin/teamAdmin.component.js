@@ -26,6 +26,7 @@ var TeamAdminComponent = /** @class */ (function () {
     });
     TeamAdminComponent.prototype.selectTeam = function (id) {
         this.repo.getTeam(id);
+        this.onlyShowSelectedTeam(id);
     };
     TeamAdminComponent.prototype.saveTeam = function () {
         //console.log("saveTeam()");
@@ -55,6 +56,24 @@ var TeamAdminComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    TeamAdminComponent.prototype.onlyShowSelectedTeam = function (id) {
+        console.log("onlyShowSelectedTeam()");
+        //function FindByAttributeValue(attribute, value, element_type)
+        //{
+        var element_type = "td";
+        var attribute = "data-teamid";
+        var value = id;
+        element_type = element_type || "*";
+        var All = document.getElementsByTagName(element_type);
+        for (var i = 0; i < All.length; i++) {
+            console.log(All[i].getAttribute(attribute));
+            if (All[i].getAttribute(attribute) == value) {
+                //return All[i];
+                console.log(All[i]);
+            }
+        }
+        //}
+    };
     TeamAdminComponent = __decorate([
         core_1.Component({
             templateUrl: "teamAdmin.component.html"

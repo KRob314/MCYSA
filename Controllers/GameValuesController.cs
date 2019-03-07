@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Collections.Generic;
 using System;
+using MCYSA.Services;
 
 namespace MCYSA.Controllers
 {
@@ -13,21 +14,25 @@ namespace MCYSA.Controllers
     [ValidateAntiForgeryToken]
     public class GameValuesController : Controller
     {
-        private McysaContext context;
+        //private McysaContext context;
+        private IGamesRepository gamesRepo;
 
-        public GameValuesController(McysaContext context)
+        public GameValuesController(IGamesRepository gamesRepository)
         {
-            this.context = context;
+            //this.context = context;
+            this.gamesRepo = gamesRepository;
         }
 
         [HttpGet("{id}")]
         public Game GetGame(int id)
         {
-            Game game = context.Games
-                .Include(g => g.HomeTeam)
-                .Include(g => g.AwayTeam)
-                .Include(g => g.Ballpark)
-                .First(g => g.Id == id);
+            //Game game = context.Games
+            //    .Include(g => g.HomeTeam)
+            //    .Include(g => g.AwayTeam)
+            //    .Include(g => g.Ballpark)
+            //    .First(g => g.Id == id);
+
+            Game game = gamesRepo.GetWhere(g => g.Id == id).FirstOrDefault();
 
             return game;
      
@@ -36,17 +41,21 @@ namespace MCYSA.Controllers
         [HttpGet]
         public IEnumerable<Game> GetGames(bool related = false)
         {
-            IQueryable<Game> games = context.Games;
+            //IQueryable<Game> games = context.Games;
 
-            if(related == true)
-            {
-                games = games
-                    .Include(g => g.AwayTeam)
-                    .Include(g => g.HomeTeam)
-                    .Include(g => g.Ballpark);
-            }
+            //if(related == true)
+            //{
+            //    games = games
+            //        .Include(g => g.AwayTeam)
+            //        .Include(g => g.HomeTeam)
+            //        .Include(g => g.Ballpark);
+            //}
 
-            return games.OrderBy(g => g.GameDate);
+            //return games.OrderBy(g => g.GameDate);
+
+            IEnumerable<Game> games = gamesRepo.GetAll().OrderBy(g => g.GameDate);
+
+            return games;
         }
 
         [HttpPost]
@@ -55,8 +64,10 @@ namespace MCYSA.Controllers
             if (ModelState.IsValid)
             {
                 Game game = gameData.game;
-                context.Add(game);
-                context.SaveChanges();
+                gamesRepo.Create(game);
+                gamesRepo.Save();
+                ////context.Add(game);
+                ////context.SaveChanges();
 
                 return Ok(game.Id);
             }
@@ -73,8 +84,10 @@ namespace MCYSA.Controllers
             {
                 Game game = gameData.game;
                 game.Id = gameData.Id;
-                context.Update(game);
-                context.SaveChanges();
+                gamesRepo.Update(game);
+                gamesRepo.Save();
+                //context.Update(game);
+                //context.SaveChanges();
 
                 UpdateTeamRecord(gameData);
 
@@ -89,27 +102,30 @@ namespace MCYSA.Controllers
         [HttpDelete]
         public void DeleteGame(int id)
         {
-            context.Games.Remove(new Game { Id = id });
-            context.SaveChanges();
+            gamesRepo.Delete(new Game { Id = id });
+            gamesRepo.Save();
+            //context.Games.Remove(new Game { Id = id });
+            //context.SaveChanges();
         }
 
         public void UpdateTeamRecord(GameData gameData)
         {
-            TeamRecord homeTeamRecord = new TeamRecord { TeamId = gameData.HomeTeamId.Value };
-            TeamRecord awayTeamRecord = new TeamRecord { TeamId = gameData.AwayTeamId.Value };                    
-            Team homeTeam = context.Teams.Find(gameData.HomeTeamId);
-            Team awayTeam = context.Teams.Find(gameData.AwayTeamId);
+            //TeamRecord homeTeamRecord = new TeamRecord { TeamId = gameData.HomeTeamId.Value };
+            //TeamRecord awayTeamRecord = new TeamRecord { TeamId = gameData.AwayTeamId.Value };
+            ////Team homeTeam = context.Teams.Find(gameData.HomeTeamId);
+            ////Team awayTeam = context.Teams.Find(gameData.AwayTeamId
+            
 
-            GetTeamRecord(homeTeamRecord);
-            GetTeamRecord(awayTeamRecord);
-            homeTeam.Wins = homeTeamRecord.GamesWon;
-            homeTeam.Losses = homeTeamRecord.GamesLost;
-            awayTeam.Wins = awayTeamRecord.GamesWon;
-            awayTeam.Losses = awayTeamRecord.GamesLost;
+            //GetTeamRecord(homeTeamRecord);
+            //GetTeamRecord(awayTeamRecord);
+            //homeTeam.Wins = homeTeamRecord.GamesWon;
+            //homeTeam.Losses = homeTeamRecord.GamesLost;
+            //awayTeam.Wins = awayTeamRecord.GamesWon;
+            //awayTeam.Losses = awayTeamRecord.GamesLost;
 
-            context.Update(homeTeam);
-            context.Update(awayTeam);
-            context.SaveChanges();
+            //context.Update(homeTeam);
+            //context.Update(awayTeam);
+            //context.SaveChanges();
 
         }
 
@@ -121,37 +137,37 @@ namespace MCYSA.Controllers
 
         public void GetHomeGameRecord(TeamRecord record)
         {            
-            List<Game> games = context.Games.Where(g => g.HomeTeamId == record.TeamId).ToList();
+            //List<Game> games = context.Games.Where(g => g.HomeTeamId == record.TeamId).ToList();
 
-            foreach(var game in games)
-            {
-                if (game.HomeTeamRuns > game.AwayTeamRuns)
-                {
-                    record.GamesWon += 1;
-                }
-                else if (game.AwayTeamRuns > game.HomeTeamRuns)
-                {
-                    record.GamesLost += 1;
-                }
-            }
+            //foreach(var game in games)
+            //{
+            //    if (game.HomeTeamRuns > game.AwayTeamRuns)
+            //    {
+            //        record.GamesWon += 1;
+            //    }
+            //    else if (game.AwayTeamRuns > game.HomeTeamRuns)
+            //    {
+            //        record.GamesLost += 1;
+            //    }
+            //}
 
         }
 
         public void GetAwayGameRecord(TeamRecord record)
         {
-            List<Game> games = context.Games.Where(g => g.AwayTeamId == record.TeamId).ToList();
+            //List<Game> games = context.Games.Where(g => g.AwayTeamId == record.TeamId).ToList();
 
-            foreach (var game in games)
-            {
-                if (game.HomeTeamRuns > game.AwayTeamRuns)
-                {
-                    record.GamesLost += 1;
-                }
-                else if (game.AwayTeamRuns > game.HomeTeamRuns)
-                {
-                    record.GamesWon += 1;
-                }
-            }
+            //foreach (var game in games)
+            //{
+            //    if (game.HomeTeamRuns > game.AwayTeamRuns)
+            //    {
+            //        record.GamesLost += 1;
+            //    }
+            //    else if (game.AwayTeamRuns > game.HomeTeamRuns)
+            //    {
+            //        record.GamesWon += 1;
+            //    }
+            //}
         }
     }
 }

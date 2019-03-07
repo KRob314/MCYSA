@@ -44,6 +44,7 @@
     <None Remove="ClientApp\app\structure\playerTable.component.ts" />
     <None Remove="ClientApp\app\structure\stateFilter.component.ts" />
     <None Remove="ClientApp\app\structure\teamDetail.component.ts" />
+    <None Remove="ClientApp\app\structure\teamTable.component.spec.ts" />
     <None Remove="ClientApp\app\structure\teamTable.component.ts" />
     <None Remove="ClientApp\app\structure\tournamentFilter.component.ts" />
     <None Remove="ClientApp\boot.ts" />
@@ -93,6 +94,7 @@
     <TypeScriptCompile Include="ClientApp\app\structure\playerTable.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\structure\stateFilter.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\structure\teamDetail.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\structure\teamTable.component.spec.ts" />
     <TypeScriptCompile Include="ClientApp\app\structure\teamTable.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\structure\tournamentFilter.component.ts" />
     <TypeScriptCompile Include="ClientApp\boot.ts" />
@@ -101,6 +103,10 @@
 
   <ItemGroup>
     <Folder Include="dist\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="docker-compose.dcproj" />
   </ItemGroup>
 
 </Project>

@@ -8,6 +8,8 @@ namespace MCYSA.Models
 {
     public class McysaContext: DbContext
     {
+        //public McysaContext() { }
+
         public McysaContext(DbContextOptions<McysaContext> opts) : base(opts) { }
 
         public virtual DbSet<AgeGroup> AgeGroups { get; set; }

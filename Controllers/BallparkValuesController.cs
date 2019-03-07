@@ -7,6 +7,7 @@ using MCYSA.Models;
 using MCYSA.Models.BindingTargets;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MCYSA.Services;
 
 namespace MCYSA.Controllers
 {
@@ -15,20 +16,18 @@ namespace MCYSA.Controllers
     [ValidateAntiForgeryToken]
     public class BallparkValuesController : Controller
     {
-        private McysaContext context;
+        private IBallparkRepository repo;
+     
 
-        public BallparkValuesController(McysaContext context)
+        public BallparkValuesController(IBallparkRepository repository)
         {
-            this.context = context;
+            this.repo = repository;
         }
 
         [HttpGet("{id}")]
         public Ballpark GetBallpark(int id)
         {
-            Ballpark result = context.Ballparks
-                .Include(b => b.State).First(b => b.Id == id);
-                
-                
+            Ballpark result = repo.GetWhere(b => b.Id == id).FirstOrDefault();            
 
             return result;
         }
@@ -36,9 +35,9 @@ namespace MCYSA.Controllers
         [HttpGet]
         public IEnumerable<Ballpark> GetBallparks(bool related = false)
         {
-            IQueryable<Ballpark> query = context.Ballparks;
+            var result = repo.GetAll();
 
-            return query;
+            return result;
         }
 
         [HttpPost]
@@ -47,17 +46,8 @@ namespace MCYSA.Controllers
             if(ModelState.IsValid)
             {
                 Ballpark ballpark = ballparkData.ballpark;
-
-                context.Add(ballpark);
-
-                try
-                {
-                    context.SaveChanges();
-                }
-                catch(Exception ex)
-                {
-                    var a = ex.Message;
-                }
+                repo.Create(ballpark);
+                repo.Save();
 
                 return Ok(ballpark.Id);
             }
@@ -65,7 +55,6 @@ namespace MCYSA.Controllers
             {
                 return BadRequest(ModelState);
             }
-
             
         }
 
@@ -76,8 +65,7 @@ namespace MCYSA.Controllers
             {
                 Ballpark ballpark = ballparkData.ballpark;
                 ballpark.Id = ballparkData.Id;
-                context.Update(ballpark);
-                context.SaveChanges();
+                repo.Update(ballpark);
                 return Ok();
             }
             else
@@ -89,8 +77,7 @@ namespace MCYSA.Controllers
         [HttpDelete("{id}")]
         public void DeleteBallpark(int id)
         {
-            context.Ballparks.Remove(new Ballpark { Id = id });
-            context.SaveChanges();
+            repo.Delete(new Ballpark { Id = id });
         }
 
     }
