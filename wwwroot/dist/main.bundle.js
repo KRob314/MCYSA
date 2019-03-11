@@ -121,6 +121,9 @@ var Repository = (function () {
         if (related === void 0) { related = false; }
         console.log("getGames()");
         var url = gameUrl + "?related=" + this.filter.related;
+        if (this.filter.tournamentId != null)
+            url += "&tournamentId=" + this.filter.tournamentId;
+        console.log("getGames() url: " + url);
         this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestMethod */].Get, url).subscribe(function (response) { return _this.games = response; });
     };
     Repository.prototype.getStates = function () {
@@ -269,7 +272,8 @@ var Repository = (function () {
             homeTeamRuns: game.homeTeamRuns,
             awayTeamRuns: game.awayTeamRuns,
             gameDate: game.gameDate,
-            ballparkId: game.ballparkId
+            ballparkId: game.ballparkId,
+            tournamentId: game.tournamentId
         };
         console.log("createGame()");
         console.log(data);
@@ -287,7 +291,8 @@ var Repository = (function () {
             homeTeamRuns: game.homeTeamRuns,
             awayTeamRuns: game.awayTeamRuns,
             gameDate: game.gameDate,
-            ballparkId: game.ballparkId
+            ballparkId: game.ballparkId,
+            tournamentId: game.tournamentId
         };
         console.log("replaceGame()");
         console.log(data);
@@ -1464,7 +1469,7 @@ module.exports = "<table class=\"table m-1\">\r\n    <tr>\r\n        <td>There a
 /* 176 */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<h4> Team Admin </h4>\r\n<tournament-filter></tournament-filter>\r\n\r\n<table *ngIf=\"tableMode; else create\" class=\"table table-sm table-striped\">\r\n    <tr>\r\n        <th>ID</th>\r\n        <th>Name</th>\r\n        <th>Tournament</th>\r\n        <th>Manager First Name</th>\r\n        <th>Manager Last Name</th>\r\n        <th>State</th>\r\n        <th>Age Group</th>\r\n        <th></th>\r\n    </tr>\r\n    <tr *ngFor=\"let t of teams\"  >\r\n        <ng-template [ngIf]=\"team?.id != t.id\" [ngIfElse]=\"edit\" >\r\n            <td>{{t.id}}</td>\r\n            <td>{{t.teamName}}</td>\r\n            <td>{{t.tournament.name || '(None)'}}</td>\r\n            <td>{{t.managerFirstName}}</td>\r\n            <td>{{t.managerLastName}}</td>\r\n            <td>{{t.state.name}}</td>\r\n            <td>{{t.ageGroup.age}}</td>\r\n            <td>\r\n                <button class=\"btn btn-sm btn-primary\" (click)=\"selectTeam(t.id)\"> Edit</button>\r\n                <button class=\"btn btn-sm btn-danger\" (click)=\"deleteTeam(t.id)\"> Delete </button>\r\n            </td>\r\n        </ng-template>\r\n    </tr>\r\n    <tfoot>\r\n        <tr>\r\n            <td colspan=\"6\" class=\"text-center\">\r\n                <button class=\"btn btn-primary\" (click)=\"clearTeam(); tableMode = false\"> Create Team</button>\r\n            </td>\r\n        </tr>\r\n    </tfoot>\r\n</table>\r\n\r\n<ng-template #edit>\r\n    <td colspan=\"6\">\r\n        <admin-team-editor></admin-team-editor>\r\n        <div class=\"text-center\">\r\n            <button class=\"btn btn-sm btn-primary\" (click)=\"saveTeam()\">  Save Team</button>\r\n            <button class=\"btn btn-sm btn-info\" (click)=\"clearTeam()\"> Cancel</button>\r\n        </div>\r\n    </td>\r\n</ng-template>\r\n<ng-template #create>\r\n    <admin-team-editor></admin-team-editor>\r\n    <button class=\"btn btn-primary\" (click)=\"saveTeam()\">  Save Team</button>\r\n    <button class=\"btn btn-info\" (click)=\"clearTeam()\"> Cancel</button>\r\n</ng-template>\r\n\r\n<!--<admin-player></admin-player>-->"
+module.exports = "\r\n<h4> Team Admin </h4>\r\n<tournament-filter></tournament-filter>\r\n\r\n<table *ngIf=\"tableMode; else create\" class=\"table table-sm table-striped  marginT-15\">\r\n    <tr>\r\n        <th>ID</th>\r\n        <th>Name</th>\r\n        <th>Tournament</th>\r\n        <th>Manager First Name</th>\r\n        <th>Manager Last Name</th>\r\n        <th>State</th>\r\n        <th>Age Group</th>\r\n        <th></th>\r\n    </tr>\r\n    <tr *ngFor=\"let t of teams\"  >\r\n        <ng-template [ngIf]=\"team?.id != t.id\" [ngIfElse]=\"edit\" >\r\n            <td>{{t.id}}</td>\r\n            <td>{{t.teamName}}</td>\r\n            <td>{{t.tournament.name || '(None)'}}</td>\r\n            <td>{{t.managerFirstName}}</td>\r\n            <td>{{t.managerLastName}}</td>\r\n            <td>{{t.state.name}}</td>\r\n            <td>{{t.ageGroup.age}}</td>\r\n            <td>\r\n                <button class=\"btn btn-sm btn-primary\" (click)=\"selectTeam(t.id)\"> Edit</button>\r\n                <button class=\"btn btn-sm btn-danger\" (click)=\"deleteTeam(t.id)\"> Delete </button>\r\n            </td>\r\n        </ng-template>\r\n    </tr>\r\n    <tfoot>\r\n        <tr>\r\n            <td colspan=\"6\" class=\"text-center\">\r\n                <button class=\"btn btn-primary  marginT-15\" (click)=\"clearTeam(); tableMode = false\"> Create Team</button>\r\n            </td>\r\n        </tr>\r\n    </tfoot>\r\n</table>\r\n\r\n<ng-template #edit>\r\n    <td colspan=\"6\">\r\n        <admin-team-editor></admin-team-editor>\r\n        <div class=\"text-center\">\r\n            <button class=\"btn btn-sm btn-primary\" (click)=\"saveTeam()\">  Save Team</button>\r\n            <button class=\"btn btn-sm btn-info\" (click)=\"clearTeam()\"> Cancel</button>\r\n        </div>\r\n    </td>\r\n</ng-template>\r\n<ng-template #create>\r\n    <admin-team-editor></admin-team-editor>\r\n    <button class=\"btn btn-primary\" (click)=\"saveTeam()\">  Save Team</button>\r\n    <button class=\"btn btn-info\" (click)=\"clearTeam()\"> Cancel</button>\r\n</ng-template>\r\n\r\n<!--<admin-player></admin-player>-->"
 
 /***/ }),
 /* 177 */
@@ -1829,8 +1834,9 @@ module.exports = "<!--<div class=\"form-group\">\r\n    <label>Id</label>\r\n   
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Game; });
 var Game = (function () {
-    function Game(id, homeTeamId, awayTeamId, ballparkId, homeTeamRuns, awayTeamRuns, gameDate, homeTeam, awayTeam, ballpark) {
+    function Game(id, tournamentId, homeTeamId, awayTeamId, ballparkId, homeTeamRuns, awayTeamRuns, gameDate, homeTeam, awayTeam, ballpark) {
         this.id = id;
+        this.tournamentId = tournamentId;
         this.homeTeamId = homeTeamId;
         this.awayTeamId = awayTeamId;
         this.ballparkId = ballparkId;
@@ -1850,7 +1856,7 @@ var Game = (function () {
 /* 192 */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<h4> Game Admin </h4>\r\n\r\n<table *ngIf=\"tableMode; else create\" class=\"table table-sm table-striped\">\r\n    <tr>\r\n        <th>ID</th>\r\n        <th>Home Team</th>\r\n        <th>Away Team</th>\r\n        <th>Ballpark</th>\r\n        <th>Game Time </th>\r\n        <th>Home Team Runs</th>\r\n        <th>Away Team Runs</th>\r\n        <th></th>\r\n    </tr>\r\n    <tr *ngFor=\"let g of games\">\r\n        <ng-template [ngIf]=\"game?.id != g.id\" [ngIfElse]=\"edit\">\r\n            <td>{{g.id}}</td>\r\n            <td>{{g.homeTeam.teamName}}</td>\r\n            <td>{{g.awayTeam.teamName}}</td>\r\n            <td>{{g.ballpark.name}}</td>\r\n            <td>{{g.gameDate}}</td>\r\n            <td>{{g.homeTeamRuns}}</td>\r\n            <td>{{g.awayTeamRuns}}</td>\r\n            <td>\r\n                <button class=\"btn btn-sm btn-primary\" (click)=\"selectGame(g.id)\"> Edit</button>\r\n                <button class=\"btn btn-sm btn-danger\" (click)=\"deleteGame(g.id)\"> Delete </button>\r\n            </td>\r\n        </ng-template>\r\n    </tr>\r\n    <tfoot>\r\n        <tr>\r\n            <td colspan=\"6\" class=\"text-center\">\r\n                <button class=\"btn btn-primary\" (click)=\"clearGame(); tableMode = false\"> Create </button>\r\n            </td>\r\n        </tr>\r\n    </tfoot>\r\n</table>\r\n\r\n<ng-template #edit>\r\n    <td colspan=\"6\">\r\n        <admin-game-editor></admin-game-editor>\r\n        <div class=\"text-center\">\r\n            <button class=\"btn btn-sm btn-primary\" (click)=\"saveGame()\">  Save</button>\r\n            <button class=\"btn btn-sm btn-info\" (click)=\"clearGame()\"> Cancel</button>\r\n        </div>\r\n    </td>\r\n</ng-template>\r\n<ng-template #create>\r\n    <admin-game-editor></admin-game-editor>\r\n    <button class=\"btn btn-primary\" (click)=\"saveGame()\">  Save </button>\r\n    <button class=\"btn btn-info\" (click)=\"clearGame()\"> Cancel</button>\r\n</ng-template>"
+module.exports = "\r\n<h4> Game Admin </h4>\r\n<tournament-filter></tournament-filter>\r\n\r\n<table *ngIf=\"tableMode; else create\" class=\"table table-sm table-striped\">\r\n    <tr>\r\n        <th>ID</th>\r\n        <th>Tournament Id</th>\r\n        <th>Home Team</th>\r\n        <th>Away Team</th>\r\n        <th>Ballpark</th>\r\n        <th>Game Time </th>\r\n        <th>Home Team Runs</th>\r\n        <th>Away Team Runs</th>\r\n        <th></th>\r\n    </tr>\r\n    <tr *ngFor=\"let g of games\">\r\n        <ng-template [ngIf]=\"game?.id != g.id\" [ngIfElse]=\"edit\">\r\n            <td>{{g.id}}</td>\r\n            <td>{{g.tournamentId}}</td>\r\n            <td>{{g.homeTeam.teamName}}</td>\r\n            <td>{{g.awayTeam.teamName}}</td>\r\n            <td>{{g.ballpark.name}}</td>\r\n            <td>{{g.gameDate}}</td>\r\n            <td>{{g.homeTeamRuns}}</td>\r\n            <td>{{g.awayTeamRuns}}</td>\r\n            <td>\r\n                <button class=\"btn btn-sm btn-primary\" (click)=\"selectGame(g.id)\"> Edit</button>\r\n                <button class=\"btn btn-sm btn-danger\" (click)=\"deleteGame(g.id)\"> Delete </button>\r\n            </td>\r\n        </ng-template>\r\n    </tr>\r\n    <tfoot>\r\n        <tr>\r\n            <td colspan=\"6\" class=\"text-center\">\r\n                <button class=\"btn btn-primary\" (click)=\"clearGame(); tableMode = false\"> Create </button>\r\n            </td>\r\n        </tr>\r\n    </tfoot>\r\n</table>\r\n\r\n<ng-template #edit>\r\n    <td colspan=\"6\">\r\n        <admin-game-editor></admin-game-editor>\r\n        <div class=\"text-center\">\r\n            <button class=\"btn btn-sm btn-primary\" (click)=\"saveGame()\">  Save</button>\r\n            <button class=\"btn btn-sm btn-info\" (click)=\"clearGame()\"> Cancel</button>\r\n        </div>\r\n    </td>\r\n</ng-template>\r\n<ng-template #create>\r\n    <admin-game-editor></admin-game-editor>\r\n    <button class=\"btn btn-primary\" (click)=\"saveGame()\">  Save </button>\r\n    <button class=\"btn btn-info\" (click)=\"clearGame()\"> Cancel</button>\r\n</ng-template>"
 
 /***/ }),
 /* 193 */
@@ -1896,6 +1902,13 @@ var GameEditorComponent = (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(GameEditorComponent.prototype, "tournaments", {
+        get: function () {
+            return this.repo.tournaments;
+        },
+        enumerable: true,
+        configurable: true
+    });
     GameEditorComponent.prototype.compareTeams = function (t1, t2) {
         console.log("compareTeam() ");
         console.log(t1);
@@ -1923,7 +1936,7 @@ var _a;
 /* 194 */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<div class=\"form-group\">\r\n    <label>Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.id\" />\r\n</div>-->\r\n<div class=\"form-group\">\r\n    <label>Home Team</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"game.homeTeamId\" >\r\n        <option *ngFor=\"let t of teams\" [ngValue]=\"t.id\">{{t.teamName}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Away Team</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"game.awayTeamId\" >\r\n        <option *ngFor=\"let t of teams\" [ngValue]=\"t.id\">{{t.teamName}}</option>\r\n    </select>\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n    <label>Ballpark</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"game.ballparkId\" >\r\n        <option *ngFor=\"let b of ballparks\" [ngValue]=\"b.id\">{{b.name}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Game Date</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.gameDate\" type=\"date\"/>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Home Team Runs</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.homeTeamRuns\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Away Team Runs</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.awayTeamRuns\" />\r\n</div>\r\n\r\n"
+module.exports = "<!--<div class=\"form-group\">\r\n    <label>Id</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.id\" />\r\n</div>-->\r\n<div class=\"form-group\">\r\n    <label>Tournament</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"game.tournamentId\">\r\n        <option *ngFor=\"let t of tournaments\" [ngValue]=\"t.id\">{{t.name}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Home Team</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"game.homeTeamId\" >\r\n        <option *ngFor=\"let t of teams\" [ngValue]=\"t.id\">{{t.teamName}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Away Team</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"game.awayTeamId\" >\r\n        <option *ngFor=\"let t of teams\" [ngValue]=\"t.id\">{{t.teamName}}</option>\r\n    </select>\r\n</div>\r\n\r\n<div class=\"form-group\">\r\n    <label>Ballpark</label>\r\n    <select class=\"form-control\" [(ngModel)]=\"game.ballparkId\" >\r\n        <option *ngFor=\"let b of ballparks\" [ngValue]=\"b.id\">{{b.name}}</option>\r\n    </select>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Game Date</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.gameDate\" type=\"date\"/>\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Home Team Runs</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.homeTeamRuns\" />\r\n</div>\r\n<div class=\"form-group\">\r\n    <label>Away Team Runs</label>\r\n    <input class=\"form-control\" [(ngModel)]=\"game.awayTeamRuns\" />\r\n</div>\r\n\r\n"
 
 /***/ }),
 /* 195 */
@@ -1951,6 +1964,7 @@ var TournamentFilterComponent = (function () {
     TournamentFilterComponent.prototype.setTournament = function (id) {
         this.repo.filter.tournamentId = id;
         this.repo.getTeams();
+        this.repo.getGames();
     };
     return TournamentFilterComponent;
 }());
@@ -1969,7 +1983,7 @@ var _a;
 /* 196 */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n\r\n<div class=\"btn-group pull-right\" role=\"group\" aria-label=\"...\">\r\n    <button class=\"btn btn-info\" (click)=\"setTournament(1)\">MCYSA 2017</button>\r\n    <button class=\"btn btn-info\" (click)=\"setTournament(2)\">MCYSA 2018</button>\r\n    <button class=\"btn btn-info\" (click)=\"setTournament(null)\">All</button>\r\n</div>"
+module.exports = "\r\n\r\n<div class=\"btn-group pull-right\" role=\"group\" aria-label=\"...\">\r\n    <div *ngFor=\"let t of repo.tournaments\">\r\n        <button class=\"btn btn-info\" (click)=\"setTournament(t.id)\">{{t.name}}  </button> &nbsp;\r\n    </div>\r\n    <button class=\"btn btn-info\" (click)=\"setTournament(null)\">All</button>\r\n</div>\r\n\r\n"
 
 /***/ }),
 /* 197 */
@@ -2197,7 +2211,7 @@ module.exports = "\r\n<article class=\"container\">\r\n    <section>\r\n        
 /* 207 */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<!--<state-filter></state-filter>\r\n<age-filter></age-filter>-->\r\n\r\n<table class=\"table table-striped marginT-15\">\r\n    <tr>\r\n        <th >Home Team</th>\r\n        <th>Away Team</th>\r\n        <th>Ballpark</th>\r\n        <th>Game Date</th>\r\n        <th>Home Team Runs</th>\r\n        <th>Away Team Runs</th>\r\n        <!--<th></th>-->\r\n    </tr>\r\n    <tr *ngFor=\"let game of games\" [ngClass]=\"setStyle(game)\" >\r\n        <td>{{game?.homeTeam.teamName || 'Loading Data...'}}</td>\r\n        <td>{{game?.awayTeam.teamName || 'Loading data ...'}}</td>\r\n        <td><button class=\"btn btn-sm\" [routerLink]=\"['/ballparkDetail', game.ballparkId]\"> {{game?.ballpark.name}}</button></td>\r\n        <td>{{game?.gameDate | date:'short'}}</td>\r\n        <td>{{game?.homeTeamRuns}}</td>\r\n        <td>{{game?.awayTeamRuns}}</td>\r\n        <!--<td> <button class=\"btn btn-default btn-sm\" [routerLink]=\"['/gameDetail', game.id]\">Details</button></td>-->\r\n    </tr>\r\n</table>\r\n\r\n<!-- (click)=\"selectTeam(team.id)\" data-toggle=\"modal\" data-target=\"#myModal\"-->"
+module.exports = "\r\n<!--<state-filter></state-filter>\r\n<age-filter></age-filter>-->\r\n\r\n\r\n<table class=\"table table-striped marginT-15\">\r\n    <tr>\r\n        <th >Home Team</th>\r\n        <th>Away Team</th>\r\n        <th>Ballpark</th>\r\n        <th>Game Date</th>\r\n        <th>Home Team Runs</th>\r\n        <th>Away Team Runs</th>\r\n        <!--<th></th>-->\r\n    </tr>\r\n    <tr *ngFor=\"let game of games\" [ngClass]=\"setStyle(game)\" >\r\n        <td>{{game?.homeTeam.teamName || 'Loading Data...'}}</td>\r\n        <td>{{game?.awayTeam.teamName || 'Loading data ...'}}</td>\r\n        <td><button class=\"btn btn-sm\" [routerLink]=\"['/ballparkDetail', game.ballparkId]\"> {{game?.ballpark.name}}</button></td>\r\n        <td>{{game?.gameDate | date:'short'}}</td>\r\n        <td>{{game?.homeTeamRuns}}</td>\r\n        <td>{{game?.awayTeamRuns}}</td>\r\n        <!--<td> <button class=\"btn btn-default btn-sm\" [routerLink]=\"['/gameDetail', game.id]\">Details</button></td>-->\r\n    </tr>\r\n</table>\r\n\r\n<!-- (click)=\"selectTeam(team.id)\" data-toggle=\"modal\" data-target=\"#myModal\"-->"
 
 /***/ }),
 /* 208 */

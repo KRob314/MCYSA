@@ -2,7 +2,7 @@
 <h4> Team Admin </h4>
 <tournament-filter></tournament-filter>
 
-<table *ngIf="tableMode; else create" class="table table-sm table-striped">
+<table *ngIf="tableMode; else create" class="table table-sm table-striped  marginT-15">
     <tr>
         <th>ID</th>
         <th>Name</th>
@@ -31,7 +31,7 @@
     <tfoot>
         <tr>
             <td colspan="6" class="text-center">
-                <button class="btn btn-primary" (click)="clearTeam(); tableMode = false"> Create Team</button>
+                <button class="btn btn-primary  marginT-15" (click)="clearTeam(); tableMode = false"> Create Team</button>
             </td>
         </tr>
     </tfoot>

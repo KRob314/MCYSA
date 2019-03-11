@@ -5,6 +5,7 @@ export class Game
 {
 	constructor(
 		public id?: number,
+		public tournamentId? : number,
 		public homeTeamId?: number,
 		public awayTeamId?: number,
 		public ballparkId?: number,

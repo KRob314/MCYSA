@@ -36,6 +36,13 @@ var GameEditorComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(GameEditorComponent.prototype, "tournaments", {
+        get: function () {
+            return this.repo.tournaments;
+        },
+        enumerable: true,
+        configurable: true
+    });
     GameEditorComponent.prototype.compareTeams = function (t1, t2) {
         console.log("compareTeam() ");
         console.log(t1);

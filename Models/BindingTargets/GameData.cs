@@ -19,8 +19,10 @@ namespace MCYSA.Models.BindingTargets
         [Required]
         public int BallparkId { get; set; }
 
+        [Required]
+        public int TournamentId { get; set; }
      
-        public int SeasonId { get; set; }
+        //public int SeasonId { get; set; }
   
         public int HomeTeamRuns { get; set; }
 
@@ -43,7 +45,8 @@ namespace MCYSA.Models.BindingTargets
             HomeTeamRuns = HomeTeamRuns,
             AwayTeamRuns = AwayTeamRuns,
             BallparkId = BallparkId,
-            GameDate = GameDate
+            GameDate = GameDate,
+            TournamentId = TournamentId
         };
     }
 

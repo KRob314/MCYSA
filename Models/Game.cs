@@ -12,7 +12,8 @@ namespace MCYSA.Models
         public int? HomeTeamId { get; set; }
         public int? AwayTeamId { get; set; }
         public int BallparkId { get; set; }
-        public int SeasonId { get; set; }
+        //public int SeasonId { get; set; }
+        public int TournamentId { get; set; }
         public int HomeTeamRuns { get; set; }
         public int AwayTeamRuns { get; set; }
 
@@ -22,6 +23,7 @@ namespace MCYSA.Models
         public virtual Team HomeTeam { get; set; }
         public virtual Team AwayTeam { get; set; }
         public virtual Ballpark Ballpark { get; set; }
+        public virtual Tournament Tournament { get; set; }
        
 
     }

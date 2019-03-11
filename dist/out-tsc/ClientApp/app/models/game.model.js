@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Game = /** @class */ (function () {
-    function Game(id, homeTeamId, awayTeamId, ballparkId, homeTeamRuns, awayTeamRuns, gameDate, homeTeam, awayTeam, ballpark) {
+    function Game(id, tournamentId, homeTeamId, awayTeamId, ballparkId, homeTeamRuns, awayTeamRuns, gameDate, homeTeam, awayTeam, ballpark) {
         this.id = id;
+        this.tournamentId = tournamentId;
         this.homeTeamId = homeTeamId;
         this.awayTeamId = awayTeamId;
         this.ballparkId = ballparkId;

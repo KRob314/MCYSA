@@ -18,6 +18,7 @@ var TournamentFilterComponent = /** @class */ (function () {
     TournamentFilterComponent.prototype.setTournament = function (id) {
         this.repo.filter.tournamentId = id;
         this.repo.getTeams();
+        this.repo.getGames();
     };
     TournamentFilterComponent = __decorate([
         core_1.Component({

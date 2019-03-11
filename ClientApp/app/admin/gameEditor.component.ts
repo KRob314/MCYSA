@@ -3,6 +3,7 @@ import { Repository } from "../models/repository";
 import { Game } from "../models/game.model";
 import { Ballpark } from "../models/ballpark.model";
 import { Team } from "../models/team.model";
+import { Tournament } from "../models/tournament.model";
 
 @Component({
 	selector: "admin-game-editor",
@@ -26,6 +27,11 @@ export class GameEditorComponent
 	get teams(): Team[]
 	{
 		return this.repo.teams;
+	}
+
+	get tournaments(): Tournament[]
+	{
+		return this.repo.tournaments;
 	}
 
 	compareTeams(t1: Team, t2: Team)

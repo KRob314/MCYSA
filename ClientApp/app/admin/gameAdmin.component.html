@@ -1,9 +1,11 @@
 ﻿
 <h4> Game Admin </h4>
+<tournament-filter></tournament-filter>
 
 <table *ngIf="tableMode; else create" class="table table-sm table-striped">
     <tr>
         <th>ID</th>
+        <th>Tournament Id</th>
         <th>Home Team</th>
         <th>Away Team</th>
         <th>Ballpark</th>
@@ -15,6 +17,7 @@
     <tr *ngFor="let g of games">
         <ng-template [ngIf]="game?.id != g.id" [ngIfElse]="edit">
             <td>{{g.id}}</td>
+            <td>{{g.tournamentId}}</td>
             <td>{{g.homeTeam.teamName}}</td>
             <td>{{g.awayTeam.teamName}}</td>
             <td>{{g.ballpark.name}}</td>

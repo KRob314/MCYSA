@@ -22,7 +22,8 @@ namespace MCYSA.Models
 
                 if (context.Tournaments.Count() == 0)
                 {
-                    var tourney1 = new Tournament { StartDate = DateTime.Parse("6-6-2018"), EndDate = DateTime.Parse("7-6-2018"), Name = "MCYSA 2018", IsCurrent = true };
+                    var tourney1 = new Tournament { StartDate = DateTime.Parse("6-6-2018"), EndDate = DateTime.Parse("7-6-2018"), Name = "MCYSA 2018", IsCurrent = false };
+                    var tourney2 = new Tournament { StartDate = DateTime.Parse("6-6-2019"), EndDate = DateTime.Parse("7-6-2019"), Name = "MCYSA 2019", IsCurrent = true };
 
                     context.Add(tourney1);
                     context.SaveChanges();
@@ -109,6 +110,45 @@ namespace MCYSA.Models
                     context.Add(b1);
                     context.Add(b2);
                     context.Add(b3);
+                    context.SaveChanges();
+                }
+
+                if(context.Games.Count() == 0)
+                {
+                    var g1 = new Game()
+                    {
+                        AwayTeamId = 1,
+                        HomeTeamId = 2,
+                        AwayTeamRuns = 3,
+                        HomeTeamRuns = 1,
+                        GameDate = DateTime.Parse("6/17/2018"),
+                        BallparkId = 1,
+                        TournamentId = 1
+                    };
+
+                    var g2 = new Game()
+                    {
+                        AwayTeamId = 1,
+                        HomeTeamId = 2,
+                        AwayTeamRuns = 5,
+                        HomeTeamRuns = 0,
+                        GameDate = DateTime.Parse("6/20/2018"),
+                        BallparkId = 1,
+                        TournamentId = 1
+                    };
+
+                    var g3 = new Game()
+                    {
+                        AwayTeamId = 1,
+                        HomeTeamId = 2,
+                        AwayTeamRuns = 0,
+                        HomeTeamRuns = 0,
+                        GameDate = DateTime.Parse("6/30/2019"),
+                        BallparkId = 1,
+                        TournamentId = 1
+                    };
+
+                    context.Add(g1);
                     context.SaveChanges();
                 }
 

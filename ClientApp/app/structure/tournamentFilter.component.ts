@@ -15,5 +15,6 @@ export class TournamentFilterComponent
 	{
 		this.repo.filter.tournamentId = id;
 		this.repo.getTeams();
+		this.repo.getGames();
 	}
 }

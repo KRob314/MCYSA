@@ -39,7 +39,7 @@ namespace MCYSA.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Game> GetGames(bool related = false)
+        public IEnumerable<Game> GetGames(bool related = false, int tournamentId =0 )
         {
             //IQueryable<Game> games = context.Games;
 
@@ -53,9 +53,18 @@ namespace MCYSA.Controllers
 
             //return games.OrderBy(g => g.GameDate);
 
-            IEnumerable<Game> games = gamesRepo.GetAll().OrderBy(g => g.GameDate);
+            IQueryable<Game> games = gamesRepo.GetWhere(g => g.Tournament.IsCurrent == true);
 
-            return games;
+
+           // IEnumerable<Game> games = gamesRepo.GetAll().OrderBy(g => g.GameDate);
+          
+
+            if (tournamentId != 0)
+            {
+                games = games.Where(t => t.TournamentId == tournamentId);
+            }
+
+            return games.OrderBy(g => g.GameDate);
         }
 
         [HttpPost]
@@ -66,8 +75,16 @@ namespace MCYSA.Controllers
                 Game game = gameData.game;
                 gamesRepo.Create(game);
                 gamesRepo.Save();
-                ////context.Add(game);
-                ////context.SaveChanges();
+
+                //try
+                //{
+                //    gamesRepo.Save();
+                //}
+                //catch (Exception ex)
+                //{
+                //    var a = ex;
+                //}
+
 
                 return Ok(game.Id);
             }

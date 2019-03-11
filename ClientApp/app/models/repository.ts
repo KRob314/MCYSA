@@ -143,6 +143,11 @@ export class Repository
 
 		let url = gameUrl + "?related=" + this.filter.related;
 
+		if (this.filter.tournamentId != null)
+			url += "&tournamentId=" + this.filter.tournamentId;
+
+		console.log("getGames() url: " + url);
+
 		this.sendRequest(RequestMethod.Get, url).subscribe(response => this.games = response);
 	}
 
@@ -327,7 +332,8 @@ export class Repository
 				homeTeamRuns: game.homeTeamRuns,
 				awayTeamRuns: game.awayTeamRuns,
 				gameDate: game.gameDate,
-				ballparkId: game.ballparkId
+				ballparkId: game.ballparkId,
+				tournamentId: game.tournamentId
 			};
 
 		console.log("createGame()");
@@ -350,7 +356,8 @@ export class Repository
 				homeTeamRuns: game.homeTeamRuns,
 				awayTeamRuns: game.awayTeamRuns,
 				gameDate: game.gameDate,
-				ballparkId: game.ballparkId
+				ballparkId: game.ballparkId,
+				tournamentId: game.tournamentId
 			};
 
 		console.log("replaceGame()");

@@ -110,6 +110,9 @@ var Repository = /** @class */ (function () {
         if (related === void 0) { related = false; }
         console.log("getGames()");
         var url = gameUrl + "?related=" + this.filter.related;
+        if (this.filter.tournamentId != null)
+            url += "&tournamentId=" + this.filter.tournamentId;
+        console.log("getGames() url: " + url);
         this.sendRequest(http_1.RequestMethod.Get, url).subscribe(function (response) { return _this.games = response; });
     };
     Repository.prototype.getStates = function () {
@@ -258,7 +261,8 @@ var Repository = /** @class */ (function () {
             homeTeamRuns: game.homeTeamRuns,
             awayTeamRuns: game.awayTeamRuns,
             gameDate: game.gameDate,
-            ballparkId: game.ballparkId
+            ballparkId: game.ballparkId,
+            tournamentId: game.tournamentId
         };
         console.log("createGame()");
         console.log(data);
@@ -276,7 +280,8 @@ var Repository = /** @class */ (function () {
             homeTeamRuns: game.homeTeamRuns,
             awayTeamRuns: game.awayTeamRuns,
             gameDate: game.gameDate,
-            ballparkId: game.ballparkId
+            ballparkId: game.ballparkId,
+            tournamentId: game.tournamentId
         };
         console.log("replaceGame()");
         console.log(data);
