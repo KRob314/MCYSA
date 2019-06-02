@@ -9,6 +9,7 @@ var Filter = /** @class */ (function () {
         this.age = null;
         this.tournamentId = null;
         this.related = false;
+        this.teamId = null;
     };
     return Filter;
 }());

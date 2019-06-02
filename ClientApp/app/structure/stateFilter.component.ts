@@ -1,15 +1,18 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { Repository } from "../models/repository";
+import { State } from '../models/state.model';
 
 @Component({
     selector: "state-filter",
     templateUrl: "stateFilter.component.html"
 })
 
-export class StateFilterComponent
+export class StateFilterComponent implements OnInit
 {
-    //public state = "va";
 
+    ngOnInit(): void {
+		this.repo.getStates();
+	}
 
 	constructor(private repo: Repository)
 	{
@@ -20,6 +23,11 @@ export class StateFilterComponent
         this.repo.filter.state = state;
 		this.repo.getTeams();
 
+	}
+
+	compareStates(s1: State, s2: State)
+	{
+		return s1 && s2 && s1.stateId == s2.stateId;
 	}
 
 	//get states()

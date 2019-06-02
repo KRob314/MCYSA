@@ -12,13 +12,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("../models/repository");
 var StateFilterComponent = /** @class */ (function () {
-    //public state = "va";
     function StateFilterComponent(repo) {
         this.repo = repo;
     }
+    StateFilterComponent.prototype.ngOnInit = function () {
+        this.repo.getStates();
+    };
     StateFilterComponent.prototype.setState = function (state) {
         this.repo.filter.state = state;
         this.repo.getTeams();
+    };
+    StateFilterComponent.prototype.compareStates = function (s1, s2) {
+        return s1 && s2 && s1.stateId == s2.stateId;
     };
     StateFilterComponent = __decorate([
         core_1.Component({

@@ -8,6 +8,7 @@ namespace MCYSA.Models
 {
     public class Game
     {
+        [Key]
         public int Id { get; set; }
         public int? HomeTeamId { get; set; }
         public int? AwayTeamId { get; set; }

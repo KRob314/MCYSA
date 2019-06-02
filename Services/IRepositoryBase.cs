@@ -10,7 +10,7 @@ namespace MCYSA.Services
     {
         IEnumerable<T> GetAll();
         IQueryable<T> GetWhere(Expression<Func<T, bool>> expression);
-        void Create(T entity);
+         void Create(T entity);
         void Update(T entity);
         void Delete(T entity);
         void Save();

@@ -1,7 +1,13 @@
-﻿
-
-<div class="btn-group pull-right" role="group" aria-label="..." >
+﻿<!--<div class="btn-group pull-right" role="group" aria-label="...">
     <button class="btn btn-info" (click)="setAge(11)">11u</button>
     <button class="btn btn-info" (click)="setAge(12)">12u</button>
     <button class="btn btn-info" (click)="setAge(null)">All</button>
+</div>-->
+
+
+<div class="btn-group pull-right" role="group" aria-label="...">
+    <div *ngFor="let a of repo.ageGroups">
+        <button class="btn btn-info" (click)="setAge(a.id)">{{a.name}}  </button> &nbsp;
+    </div>
 </div>
+

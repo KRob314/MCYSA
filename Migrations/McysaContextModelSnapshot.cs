@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
 namespace MCYSA.Migrations
@@ -83,7 +85,7 @@ namespace MCYSA.Migrations
 
                     b.Property<int>("HomeTeamRuns");
 
-                    b.Property<int>("SeasonId");
+                    b.Property<int>("TournamentId");
 
                     b.HasKey("Id");
 
@@ -92,6 +94,8 @@ namespace MCYSA.Migrations
                     b.HasIndex("BallparkId");
 
                     b.HasIndex("HomeTeamId");
+
+                    b.HasIndex("TournamentId");
 
                     b.ToTable("Games");
                 });
@@ -158,6 +162,37 @@ namespace MCYSA.Migrations
                     b.HasIndex("CountryId");
 
                     b.ToTable("States");
+                });
+
+            modelBuilder.Entity("MCYSA.Models.Stats_Hitting", b =>
+                {
+                    b.Property<int>("GameId");
+
+                    b.Property<int>("PlayerId");
+
+                    b.Property<int>("AB");
+
+                    b.Property<int>("BB");
+
+                    b.Property<decimal>("BattingAverage");
+
+                    b.Property<int>("Doubles");
+
+                    b.Property<int>("HBP");
+
+                    b.Property<int>("Homeruns");
+
+                    b.Property<int>("PA");
+
+                    b.Property<int>("Singles");
+
+                    b.Property<int>("Triples");
+
+                    b.HasKey("GameId", "PlayerId");
+
+                    b.HasIndex("PlayerId");
+
+                    b.ToTable("Stats_Hitting");
                 });
 
             modelBuilder.Entity("MCYSA.Models.Team", b =>
@@ -317,6 +352,11 @@ namespace MCYSA.Migrations
                     b.HasOne("MCYSA.Models.Team", "HomeTeam")
                         .WithMany()
                         .HasForeignKey("HomeTeamId");
+
+                    b.HasOne("MCYSA.Models.Tournament", "Tournament")
+                        .WithMany()
+                        .HasForeignKey("TournamentId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("MCYSA.Models.Player", b =>
@@ -340,6 +380,19 @@ namespace MCYSA.Migrations
                     b.HasOne("MCYSA.Models.Country", "Country")
                         .WithMany("States")
                         .HasForeignKey("CountryId");
+                });
+
+            modelBuilder.Entity("MCYSA.Models.Stats_Hitting", b =>
+                {
+                    b.HasOne("MCYSA.Models.Game", "Game")
+                        .WithMany()
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MCYSA.Models.Player", "Player")
+                        .WithMany("Stats_Hitting")
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("MCYSA.Models.Team", b =>

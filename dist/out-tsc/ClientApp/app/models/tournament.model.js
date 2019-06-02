@@ -1,8 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Tournament = /** @class */ (function () {
-    function Tournament(id, name, startDate, endDate, isCurrent) {
+    function Tournament(id, teamId, gameId, name, startDate, endDate, isCurrent) {
         this.id = id;
+        this.teamId = teamId;
+        this.gameId = gameId;
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;

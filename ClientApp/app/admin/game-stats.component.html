@@ -1,0 +1,19 @@
+<h3>Player Game Stats</h3>
+<div class="row">
+    <div class="col-md-4">
+        <label>Team</label>
+        <select class="form-control" [ngModel]="team" (ngModelChange)="setTeam($event)">
+            <option *ngFor="let t of teams" [ngValue]="t.id">{{t.teamName}}</option>
+        </select>
+    </div>
+    <div class="col-md-4">
+        <label>Game</label>
+        <select class="form-control" [ngModel]="games" (ngModelChange)="setGame($event)">
+            <option *ngFor="let g of games" [ngValue]="g.id">{{g.gameDate}}</option>
+        </select>
+    </div>
+</div>
+
+
+<player-game-stats >
+</player-game-stats>

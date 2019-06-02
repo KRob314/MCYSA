@@ -10,6 +10,7 @@ import { TournamentAdminComponent } from "./admin/tournamentAdmin.component";
 import { BallparkAdminComponent } from "./admin/ballparkAdmin.component";
 import { GameAdminComponent } from "./admin/gameAdmin.component";
 import { BallparkDetailComponent } from "./structure/ballparkDetail.component";
+import { GameStatsComponent } from "./admin/game-stats.component";
 
 const routes: Routes = 
     [
@@ -21,7 +22,8 @@ const routes: Routes =
 				{ path: "overview", component: OverviewComponent },
 				{ path: "tournaments", component: TournamentAdminComponent }, 
 				{ path: "ballparks", component: BallparkAdminComponent }, 
-				{ path: "games", component: GameAdminComponent }
+                { path: "games", component: GameAdminComponent },
+                {path: "stats", component: GameStatsComponent}
             ]
         },
         { path: "teamTable", component: TeamTableComponent },

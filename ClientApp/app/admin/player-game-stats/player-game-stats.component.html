@@ -1,0 +1,29 @@
+
+
+<table class="table table-sm table-striped marginT-30"> 
+    <tr>
+        <th>Player</th>
+        <th>PA</th>
+        <th>AB</th>
+        <th>Singles</th>
+        <th>Doubles </th>
+        <th>Triples </th>
+        <th>HR </th>
+        <th>HBP </th>
+        <th>BB </th>
+        <th>Avg </th>
+    </tr>
+    <tr *ngFor="let s of gameStatsHitting">
+        <td> <input [(ngModel)]="s.player.firstName" class="form-control" /> </td>
+        <td> <input [(ngModel)]="s.pa" class="form-control" /> </td>
+        <td><input [(ngModel)]="s.ab" class="form-control" /> </td>
+        <td><input [(ngModel)]="s.singles" class="form-control" /> </td>
+        <td> <input [(ngModel)]="s.doubles" class="form-control" /> </td>
+        <td><input [(ngModel)]="s.triples" class="form-control" /> </td>
+        <td><input [(ngModel)]="s.homeruns" class="form-control" /> </td>
+        <td> <input [(ngModel)]="s.hbp" class="form-control" /></td>
+        <td><input [(ngModel)]="s.bb" class="form-control" /> </td>
+        <td> <input [(ngModel)]="s.battingAverage" class="form-control" /></td>
+    </tr>
+
+    </table>

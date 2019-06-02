@@ -1,8 +1,14 @@
-﻿
-<div class="btn-group" role="group" aria-label="..." >
+﻿<!--<div class="btn-group" role="group" aria-label="..." >
     <button class="btn btn-info" (click)="setState('va')">VA</button>
     <button class="btn btn-info" (click)="setState('md')">MD</button>
     <button class="btn btn-info" (click)="setState(null)">All</button>
+</div>-->
 
+<div class="btn-group pull-right" role="group" aria-label="...">
+    <div *ngFor="let s of repo.teams | filterUniqueStates">
+        <button class="btn btn-info" (click)="setState(s)">{{s}}  </button> &nbsp;
+    </div>
+    <button class="btn btn-info" (click)="setState()" value="All">All</button>
 </div>
 
+<!--*ngIf="i<5;"  let i=index-->

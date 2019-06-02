@@ -22,19 +22,22 @@ var ballparkAdmin_component_1 = require("./ballparkAdmin.component");
 var ballparkEditor_component_1 = require("./ballparkEditor.component");
 var gameAdmin_component_1 = require("./gameAdmin.component");
 var gameEditor_component_1 = require("./gameEditor.component");
-var tournamentFilter_component_1 = require("../structure/tournamentFilter.component");
+//import { TournamentFilterComponent } from "../structure/tournamentFilter.component";
+var shared_module_1 = require("../shared.module");
+var game_stats_component_1 = require("./game-stats.component");
+var player_game_stats_component_1 = require("./player-game-stats/player-game-stats.component");
 var AdminModule = /** @class */ (function () {
     function AdminModule() {
     }
     AdminModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, router_1.RouterModule, forms_1.FormsModule],
+            imports: [platform_browser_1.BrowserModule, router_1.RouterModule, forms_1.FormsModule, shared_module_1.SharedModule],
             declarations: [admin_component_1.AdminComponent, overview_component_1.OverviewComponent,
                 teamAdmin_component_1.TeamAdminComponent, teamEditor_component_1.TeamEditorComponent,
                 playerAdmin_component_1.PlayerAdminComponent, playerEditor_component_1.PlayerEditorComponent,
                 tournamentEditor_component_1.TournamentEditorComponent, tournamentAdmin_component_1.TournamentAdminComponent,
                 ballparkAdmin_component_1.BallparkAdminComponent, ballparkEditor_component_1.BallparkEditorComponent,
-                gameAdmin_component_1.GameAdminComponent, gameEditor_component_1.GameEditorComponent, tournamentFilter_component_1.TournamentFilterComponent]
+                gameAdmin_component_1.GameAdminComponent, gameEditor_component_1.GameEditorComponent, game_stats_component_1.GameStatsComponent, player_game_stats_component_1.PlayerGameStatsComponent] //, TournamentFilterComponent]
         })
     ], AdminModule);
     return AdminModule;

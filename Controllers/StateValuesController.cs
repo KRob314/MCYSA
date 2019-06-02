@@ -19,11 +19,48 @@ namespace MCYSA.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<State> GetStates()
+        public IEnumerable<State> GetStates(bool getTeamStatesOnly =false)
         {
-            return context.States;
+           if(getTeamStatesOnly == false)
+                return context.States;
+
+            var teams = context.Teams.ToList();
+            List<State> states = new List<State>();
+
+            foreach (var t in teams)
+            {
+                var state = t.State;
+
+                if (states.Contains(state) == false)
+                {
+                    states.Add(state);
+                }
+            }
+
+            IEnumerable<State> s = states;
+
+            return s.OrderBy(st => st.StateId);
+
         }
 
+        //[HttpGet]
+        //public IEnumerable<State> GetTeamStates()
+        //{
+        //    var teams = context.Teams.ToList();
+        //    List<State> states = new List<State>();
+
+        //    foreach(var t in teams)
+        //    {
+        //        var state = t.State;
+               
+        //        if(states.Contains(state) == false)
+        //        {
+        //            states.Add(state);
+        //        }
+        //    }
+
+        //    return states.OrderBy(s => s.StateId);
+        //}
         
 
     }

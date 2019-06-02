@@ -26,10 +26,25 @@
                 <!--<button class="btn btn-block btn-outline-info" routerLink="/games" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"> Games</button>-->
                 <a class="nav-link" href="#" routerLink="/games" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Games</a>
             </li>
-            <li class="nav-item">
-                <!--<button class="btn btn-block btn-outline-info" routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"> Admin</button>-->
+
+            <!--<li class="nav-item">
                 <a class="nav-link" href="#" routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Admin</a>
+            </li>-->
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"  role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#" routerLink="/admin/ballparks" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Ballparks</a>
+                    <a class="dropdown-item" href="#" routerLink="/admin/teams" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Teams</a>
+                    <a class="dropdown-item" href="#" routerLink="/admin/players" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Players</a>
+                    <a class="dropdown-item" href="#" routerLink="/admin/tournaments" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Tournaments</a>
+                    <a class="dropdown-item" href="#" routerLink="/admin/games" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Games</a>
+                    <a class="dropdown-item" href="#" routerLink="/admin/stats" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Stats</a>
+                    <!--<div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>-->
+                </div>
             </li>
+
         </ul>
         <!--<form class="form-inline mt-2 mt-md-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">

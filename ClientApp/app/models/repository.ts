@@ -10,6 +10,7 @@ import { Http, RequestMethod, Request, Response} from "@angular/http";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
 import { Filter } from "./configClasses.repository";
+import { StatsHitting} from "./statsHitting.model";
 
 const teamUrl = "/api/teams";
 const statesUrl = "/api/states";
@@ -18,6 +19,7 @@ const tournamentUrl = "api/tournaments";
 const ballparkUrl = "api/ballparks";
 const gameUrl = "api/games";
 const playerUrl = "api/players";
+const statsHittingUrl = "api/StatsHittingValues";
 
 @Injectable()
 export class Repository
@@ -34,7 +36,8 @@ export class Repository
 	game: Game;
 	games: Game[];
 	player: Player;
-	players: Player[];
+    players: Player[];
+    gameStatsHitting: StatsHitting[];
 
     constructor(private http: Http)
     {
@@ -143,17 +146,35 @@ export class Repository
 
 		let url = gameUrl + "?related=" + this.filter.related;
 
+		if (this.filter.state)
+			url += "&state=" + this.filter.state;
+
+		if (this.filter.age)
+			url += "&ageGroupId=" + this.filter.age;
+
 		if (this.filter.tournamentId != null)
-			url += "&tournamentId=" + this.filter.tournamentId;
+            url += "&tournamentId=" + this.filter.tournamentId;
+
+        if (this.filter.teamId != null)
+            url += "&teamId=" + this.filter.teamId;
 
 		console.log("getGames() url: " + url);
 
 		this.sendRequest(RequestMethod.Get, url).subscribe(response => this.games = response);
-	}
+    }
+
+    getTeamGames(teamId: number)
+    {
+        console.log('getTeamGames');
+        this.sendRequest(RequestMethod.Get, gameUrl + "/GetTeamGames/" + teamId).subscribe(response => this.games = response);
+    }
 
 	getStates()
 	{
 		console.log("get states()");
+
+		let url = statesUrl + "?getTeamStatesOnly=true";
+
 
 		this.sendRequest(RequestMethod.Get, statesUrl).subscribe(response => this.states = response);
 	}
@@ -171,9 +192,18 @@ export class Repository
 	}
 
 	getTournament(id: number)
-	{
-		this.sendRequest(RequestMethod.Get, tournamentUrl + "/" + id).subscribe(response => this.tournament = response);
-	}
+    {
+        let url = tournamentUrl + "?related=" + this.filter.related;
+
+		this.sendRequest(RequestMethod.Get, url + "/" + id).subscribe(response => this.tournament = response);
+    }
+
+    getGameStatsHitting( gameId: number, teamId: number)
+    {
+        let url = statsHittingUrl + "?gameId=" + gameId + "&teamId=" + teamId;
+
+        this.sendRequest(RequestMethod.Get, url).subscribe(response => this.gameStatsHitting = response);
+    }
 
     private sendRequest(verb: RequestMethod, url: string, data?: any): Observable<any>
     {

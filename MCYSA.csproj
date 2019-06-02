@@ -38,11 +38,14 @@
     <None Remove="ClientApp\app\models\player.model.ts" />
     <None Remove="ClientApp\app\models\repository.ts" />
     <None Remove="ClientApp\app\models\state.model.ts" />
+    <None Remove="ClientApp\app\models\statsHitting.model.ts" />
     <None Remove="ClientApp\app\models\tournament.model.ts" />
+    <None Remove="ClientApp\app\shared.module.ts" />
     <None Remove="ClientApp\app\structure\ballparkDetail.component.ts" />
     <None Remove="ClientApp\app\structure\playerDetail.component.ts" />
     <None Remove="ClientApp\app\structure\playerTable.component.ts" />
     <None Remove="ClientApp\app\structure\stateFilter.component.ts" />
+    <None Remove="ClientApp\app\structure\stateFilter.pipe.ts" />
     <None Remove="ClientApp\app\structure\teamDetail.component.ts" />
     <None Remove="ClientApp\app\structure\teamTable.component.spec.ts" />
     <None Remove="ClientApp\app\structure\teamTable.component.ts" />
@@ -56,7 +59,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" />
     <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="1.0.172" />
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
@@ -89,11 +92,14 @@
     <TypeScriptCompile Include="ClientApp\app\models\player.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\repository.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\state.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\models\statsHitting.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\tournament.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared.module.ts" />
     <TypeScriptCompile Include="ClientApp\app\structure\ballparkDetail.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\structure\playerDetail.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\structure\playerTable.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\structure\stateFilter.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\structure\stateFilter.pipe.ts" />
     <TypeScriptCompile Include="ClientApp\app\structure\teamDetail.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\structure\teamTable.component.spec.ts" />
     <TypeScriptCompile Include="ClientApp\app\structure\teamTable.component.ts" />

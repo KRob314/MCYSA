@@ -39,5 +39,35 @@ namespace MCYSA.Services
 
             return games;
         }
+
+        public override void Create(Game entity)
+        {
+            base.Create(entity);
+
+            var teamPlayers = context.Players.Where(p => p.TeamId == entity.HomeTeamId || p.TeamId == entity.AwayTeamId);
+
+            foreach(var p in teamPlayers)
+            {
+                Stats_Hitting stats_Hitting = new Stats_Hitting()
+                {
+                    PlayerId = p.Id,
+                    GameId = entity.Id,
+                    PA = 0,
+                    AB = 0,
+                    Singles = 0,
+                    Doubles = 0,
+                    Triples = 0,
+                    Homeruns = 0,
+                    HBP = 0,
+                    BB = 0,
+                    BattingAverage = .000M
+                };
+
+                context.Stats_Hitting.Add(stats_Hitting);
+            }
+
+            context.SaveChanges();
+
+        }
     }
 }

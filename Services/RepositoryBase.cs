@@ -17,7 +17,7 @@ namespace MCYSA.Services
             this.context = Context;
         }
 
-        public void Create(T entity)
+        public virtual void Create(T entity)
         {
             context.Set<T>().Add(entity);
         }

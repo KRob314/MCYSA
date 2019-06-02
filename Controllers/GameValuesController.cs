@@ -39,7 +39,7 @@ namespace MCYSA.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Game> GetGames(bool related = false, int tournamentId =0 )
+        public IEnumerable<Game> GetGames(bool related = false, int tournamentId =0 , string state = "", int ageGroupId = 0, int teamId = 0)
         {
             //IQueryable<Game> games = context.Games;
 
@@ -56,7 +56,15 @@ namespace MCYSA.Controllers
             IQueryable<Game> games = gamesRepo.GetWhere(g => g.Tournament.IsCurrent == true);
 
 
-           // IEnumerable<Game> games = gamesRepo.GetAll().OrderBy(g => g.GameDate);
+           if(ageGroupId != 0)
+            {
+                games = games.Where(g => g.AwayTeam.AgeGroupId == ageGroupId);
+            }
+
+           if(string.IsNullOrWhiteSpace(state) == false)
+            {
+                games = games.Where(g => g.HomeTeam.StateId == state || g.AwayTeam.StateId == state);
+            }
           
 
             if (tournamentId != 0)
@@ -64,7 +72,19 @@ namespace MCYSA.Controllers
                 games = games.Where(t => t.TournamentId == tournamentId);
             }
 
+            if(teamId != 0)
+            {
+                games = games.Where(g => g.AwayTeamId == teamId || g.HomeTeamId == teamId);
+            }
+
             return games.OrderBy(g => g.GameDate);
+        }
+
+        [HttpGet("{teamId}")]
+        [Route("api/Games/GetTeamGames")]
+        public IEnumerable<Game> GetTeamGames(int teamId)
+        {
+            return gamesRepo.GetWhere(g => g.AwayTeamId == teamId || g.HomeTeamId == teamId);
         }
 
         [HttpPost]

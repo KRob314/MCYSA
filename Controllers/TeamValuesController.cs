@@ -66,6 +66,7 @@ namespace MCYSA.Controllers
         public IEnumerable<Team> GetTeams(string state, int ageGroupId, int tournamentId, bool related = false)
         {
             IQueryable<Team> query = context.Teams; //.Where(t => t.TournamentId == context.Tournaments.First(tourney => tourney.IsCurrent).Id);
+          
 
             if (!string.IsNullOrWhiteSpace(state))
             {
@@ -80,6 +81,10 @@ namespace MCYSA.Controllers
             if(tournamentId != 0)
             {
                 query = query.Where(t => t.TournamentId == tournamentId);
+            }
+            else
+            {
+                query = query.Where(t => t.Tournament.IsCurrent == true);
             }
 
             if (related)

@@ -22,13 +22,15 @@ var teamDetail_component_1 = require("./structure/teamDetail.component");
 var gameTable_component_1 = require("./structure/gameTable.component");
 var ballparkDetail_component_1 = require("./structure/ballparkDetail.component");
 var app_routing_1 = require("./app.routing");
+var shared_module_1 = require("./shared.module");
+var stateFilter_pipe_1 = require("./structure/stateFilter.pipe");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             declarations: [
-                app_component_1.AppComponent, teamTable_component_1.TeamTableComponent, stateFilter_component_1.StateFilterComponent, ageFilter_component_1.AgeFilterComponent, teamDetail_component_1.TeamDetailComponent, gameTable_component_1.GameTableComponent, ballparkDetail_component_1.BallparkDetailComponent //, PlayerTableComponent //, TournamentFilterComponent
+                app_component_1.AppComponent, teamTable_component_1.TeamTableComponent, stateFilter_component_1.StateFilterComponent, ageFilter_component_1.AgeFilterComponent, teamDetail_component_1.TeamDetailComponent, gameTable_component_1.GameTableComponent, ballparkDetail_component_1.BallparkDetailComponent, stateFilter_pipe_1.StateFilterPipe //, TournamentFilterComponent  //, PlayerTableComponent //
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -36,10 +38,12 @@ var AppModule = /** @class */ (function () {
                 http_1.HttpModule,
                 model_module_1.ModelModule,
                 app_routing_1.RoutingConfig,
-                admin_module_1.AdminModule
+                admin_module_1.AdminModule,
+                shared_module_1.SharedModule
             ],
             providers: [],
-            bootstrap: [app_component_1.AppComponent]
+            bootstrap: [app_component_1.AppComponent],
+            exports: [shared_module_1.SharedModule]
         })
     ], AppModule);
     return AppModule;

@@ -13,7 +13,7 @@ namespace MCYSA.Models
         {
             using (var context = new McysaContext(serviceProvider.GetRequiredService<DbContextOptions<McysaContext>>()))
             {
-              //  context.Database.Migrate();
+                context.Database.Migrate();
 
                 if(context.Teams.Any())
                 {

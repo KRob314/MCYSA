@@ -15,9 +15,13 @@ var AgeFilterComponent = /** @class */ (function () {
     function AgeFilterComponent(repo) {
         this.repo = repo;
     }
+    AgeFilterComponent.prototype.ngOnInit = function () {
+        this.repo.getAgeGroups();
+    };
     AgeFilterComponent.prototype.setAge = function (age) {
         this.repo.filter.age = age;
         this.repo.getTeams();
+        this.repo.getGames();
     };
     AgeFilterComponent = __decorate([
         core_1.Component({

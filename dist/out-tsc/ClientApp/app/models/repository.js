@@ -20,6 +20,7 @@ var tournamentUrl = "api/tournaments";
 var ballparkUrl = "api/ballparks";
 var gameUrl = "api/games";
 var playerUrl = "api/players";
+var statsHittingUrl = "api/StatsHittingValues";
 var Repository = /** @class */ (function () {
     function Repository(http) {
         this.http = http;
@@ -110,14 +111,26 @@ var Repository = /** @class */ (function () {
         if (related === void 0) { related = false; }
         console.log("getGames()");
         var url = gameUrl + "?related=" + this.filter.related;
+        if (this.filter.state)
+            url += "&state=" + this.filter.state;
+        if (this.filter.age)
+            url += "&ageGroupId=" + this.filter.age;
         if (this.filter.tournamentId != null)
             url += "&tournamentId=" + this.filter.tournamentId;
+        if (this.filter.teamId != null)
+            url += "&teamId=" + this.filter.teamId;
         console.log("getGames() url: " + url);
         this.sendRequest(http_1.RequestMethod.Get, url).subscribe(function (response) { return _this.games = response; });
+    };
+    Repository.prototype.getTeamGames = function (teamId) {
+        var _this = this;
+        console.log('getTeamGames');
+        this.sendRequest(http_1.RequestMethod.Get, gameUrl + "/GetTeamGames/" + teamId).subscribe(function (response) { return _this.games = response; });
     };
     Repository.prototype.getStates = function () {
         var _this = this;
         console.log("get states()");
+        var url = statesUrl + "?getTeamStatesOnly=true";
         this.sendRequest(http_1.RequestMethod.Get, statesUrl).subscribe(function (response) { return _this.states = response; });
     };
     Repository.prototype.getAgeGroups = function () {
@@ -132,7 +145,13 @@ var Repository = /** @class */ (function () {
     };
     Repository.prototype.getTournament = function (id) {
         var _this = this;
-        this.sendRequest(http_1.RequestMethod.Get, tournamentUrl + "/" + id).subscribe(function (response) { return _this.tournament = response; });
+        var url = tournamentUrl + "?related=" + this.filter.related;
+        this.sendRequest(http_1.RequestMethod.Get, url + "/" + id).subscribe(function (response) { return _this.tournament = response; });
+    };
+    Repository.prototype.getGameStatsHitting = function (gameId, teamId) {
+        var _this = this;
+        var url = statsHittingUrl + "?gameId=" + gameId + "&teamId=" + teamId;
+        this.sendRequest(http_1.RequestMethod.Get, url).subscribe(function (response) { return _this.gameStatsHitting = response; });
     };
     Repository.prototype.sendRequest = function (verb, url, data) {
         return this.http.request(new http_1.Request({

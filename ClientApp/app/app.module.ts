@@ -15,11 +15,13 @@ import { TeamDetailComponent } from "./structure/teamDetail.component";
 import { GameTableComponent } from "./structure/gameTable.component";
 import { BallparkDetailComponent } from "./structure/ballparkDetail.component";
 import { RoutingConfig } from "./app.routing";
+import { SharedModule } from "./shared.module";
 
+import { StateFilterPipe } from "./structure/stateFilter.pipe";
 
 @NgModule({
     declarations: [
-        AppComponent, TeamTableComponent, StateFilterComponent, AgeFilterComponent, TeamDetailComponent, GameTableComponent, BallparkDetailComponent  //, PlayerTableComponent //, TournamentFilterComponent
+		AppComponent, TeamTableComponent, StateFilterComponent, AgeFilterComponent, TeamDetailComponent, GameTableComponent, BallparkDetailComponent, StateFilterPipe   //, TournamentFilterComponent  //, PlayerTableComponent //
     ],
     imports: [
         BrowserModule,
@@ -27,9 +29,11 @@ import { RoutingConfig } from "./app.routing";
         HttpModule,
         ModelModule,
         RoutingConfig, 
-        AdminModule
+		AdminModule,
+		SharedModule
     ],
     providers: [],
-    bootstrap: [AppComponent]
+	bootstrap: [AppComponent],
+	exports: [SharedModule]
 })
 export class AppModule { }
