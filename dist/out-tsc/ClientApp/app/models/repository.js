@@ -150,8 +150,26 @@ var Repository = /** @class */ (function () {
     };
     Repository.prototype.getGameStatsHitting = function (gameId, teamId) {
         var _this = this;
-        var url = statsHittingUrl + "?gameId=" + gameId + "&teamId=" + teamId;
+        // let url = statsHittingUrl + "?gameId=" + gameId + "&teamId=" + teamId;
+        var url = statsHittingUrl + "/" + gameId + "/" + teamId;
         this.sendRequest(http_1.RequestMethod.Get, url).subscribe(function (response) { return _this.gameStatsHitting = response; });
+    };
+    Repository.prototype.getHittingStatsByGame = function (playerId, gameId) {
+        var _this = this;
+        console.log('getHittingStatsByGame()');
+        var url = statsHittingUrl + "/GetByPlayer/" + playerId + "/" + gameId;
+        //try
+        //{
+        this.sendRequest(http_1.RequestMethod.Get, url).subscribe(function (response) {
+            console.log(response);
+            _this.playerHittingStats = response;
+        });
+        //}
+        //catch (error)
+        //{
+        //console.log("getHittingStatsByGame() Error");
+        //console.log(error.message);
+        //}
     };
     Repository.prototype.sendRequest = function (verb, url, data) {
         return this.http.request(new http_1.Request({
@@ -342,6 +360,25 @@ var Repository = /** @class */ (function () {
         if (confirm("Are you sure you want to delete this?")) {
             this.sendRequest(http_1.RequestMethod.Delete, tournamentUrl + "/" + id).subscribe(function (response) { return _this.getTournaments(); });
         }
+    };
+    Repository.prototype.updateHittingStats = function (stats) {
+        var _this = this;
+        console.log('updateHittingStats()');
+        var data = {
+            playerId: stats.playerId,
+            gameId: stats.gameId,
+            pa: stats.pa,
+            ab: stats.ab,
+            singles: stats.singles,
+            doubles: stats.doubles,
+            triples: stats.triples,
+            homeruns: stats.homeruns,
+            hbp: stats.hbp,
+            bb: stats.bb,
+            battingAverage: stats.battingAverage
+        };
+        console.log(data);
+        this.sendRequest(http_1.RequestMethod.Put, statsHittingUrl + "/UpdatePlayerHittingStats/" + data.playerId + "/" + data.gameId, data).subscribe(function (response) { return _this.playerHittingStats; });
     };
     Repository = __decorate([
         core_1.Injectable(),

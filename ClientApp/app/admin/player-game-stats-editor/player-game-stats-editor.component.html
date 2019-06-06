@@ -1,0 +1,49 @@
+
+<div class="row">
+    <div class="col-md-2">
+        <label>Player</label>
+        <input class="form-control" [(ngModel)]="playerHittingStats.playerId" readonly="readonly" />
+    </div>
+    <div class="col-md-2">
+        <label>PA</label>
+        <input class="form-control" [(ngModel)]="playerHittingStats.pa" type="number"/>
+    </div>
+    <div class="col-md-2">
+        <label>AB</label>
+        <input class="form-control" [(ngModel)]="playerHittingStats.ab" type="number"/>
+    </div>
+    <div class="col-md-2">
+        <label>HBP</label>
+        <input class="form-control" [(ngModel)]="playerHittingStats.hbp" type="number"/>
+    </div>
+    <div class="col-md-2">
+        <label>BB</label>
+        <input class="form-control" [(ngModel)]="playerHittingStats.bb" type="number"/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <label>Singles</label>
+        <input class="form-control" [(ngModel)]="playerHittingStats.singles" type="number"/>
+    </div>
+    <div class="col-md-2">
+        <label>Doubles</label>
+        <input class="form-control" [(ngModel)]="playerHittingStats.doubles" type="number"/>
+    </div>
+    <div class="col-md-2">
+        <label>Triples</label>
+        <input class="form-control" [(ngModel)]="playerHittingStats.triples" type="number"/>
+    </div>
+    <div class="col-md-2">
+        <label>HR</label>
+        <input class="form-control" [(ngModel)]="playerHittingStats.homeruns" type="number" />
+    </div>
+    <div class="col-md-2">
+        <label>BA</label>
+        <input class="form-control" [(ngModel)]="playerHittingStats.battingAverage" 
+               value="{{((playerHittingStats.singles + playerHittingStats.doubles + playerHittingStats.triples + playerHittingStats.homeruns) / playerHittingStats.ab) | number : '1.3' }}" />
+    </div>
+
+</div>
+
+

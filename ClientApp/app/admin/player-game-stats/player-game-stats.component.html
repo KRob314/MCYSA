@@ -1,6 +1,6 @@
 
 
-<table class="table table-sm table-striped marginT-30"> 
+<table *ngIf="tableMode; else create" class="table table-sm table-striped marginT-30"> 
     <tr>
         <th>Player</th>
         <th>PA</th>
@@ -12,18 +12,43 @@
         <th>HBP </th>
         <th>BB </th>
         <th>Avg </th>
+        <th>Edit</th>
     </tr>
     <tr *ngFor="let s of gameStatsHitting">
-        <td> <input [(ngModel)]="s.player.firstName" class="form-control" /> </td>
-        <td> <input [(ngModel)]="s.pa" class="form-control" /> </td>
-        <td><input [(ngModel)]="s.ab" class="form-control" /> </td>
-        <td><input [(ngModel)]="s.singles" class="form-control" /> </td>
-        <td> <input [(ngModel)]="s.doubles" class="form-control" /> </td>
-        <td><input [(ngModel)]="s.triples" class="form-control" /> </td>
-        <td><input [(ngModel)]="s.homeruns" class="form-control" /> </td>
-        <td> <input [(ngModel)]="s.hbp" class="form-control" /></td>
-        <td><input [(ngModel)]="s.bb" class="form-control" /> </td>
-        <td> <input [(ngModel)]="s.battingAverage" class="form-control" /></td>
+        <ng-template [ngIf]="playerHittingStats?.playerId != s.playerId" [ngIfElse]="edit">
+            <td> {{s.player.firstName}} {{s.player.lastName}} </td>
+            <td> {{s.pa }}</td>
+            <td> {{s.ab }}</td>
+            <td> {{s.singles }}</td>
+            <td> {{s.doubles}}</td>
+            <td> {{s.triples}}</td>
+            <td> {{s.homeruns }}</td>
+            <td> {{s.hbp }}</td>
+            <td> {{s.bb }}</td>
+            <td> {{s.battingAverage }}</td>
+            <!--<td> <input [(ngModel)]="s.player.firstName" class="form-control" /> </td>
+    <td> <input [(ngModel)]="s.pa" class="form-control" /> </td>
+    <td><input [(ngModel)]="s.ab" class="form-control" /> </td>
+    <td><input [(ngModel)]="s.singles" class="form-control" /> </td>
+    <td> <input [(ngModel)]="s.doubles" class="form-control" /> </td>
+    <td><input [(ngModel)]="s.triples" class="form-control" /> </td>
+    <td><input [(ngModel)]="s.homeruns" class="form-control" /> </td>
+    <td> <input [(ngModel)]="s.hbp" class="form-control" /></td>
+    <td><input [(ngModel)]="s.bb" class="form-control" /> </td>
+    <td> <input [(ngModel)]="s.battingAverage" class="form-control" /></td>-->
+            <td> <button class="btn btn-sm btn-dark" (click)="selectHittingStats(s.playerId, s.gameId)">Edit</button> </td>
+        </ng-template>
     </tr>
 
     </table>
+
+
+<ng-template #edit>
+    <td colspan="6">
+        <player-game-stats-editor></player-game-stats-editor>
+        <div class="text-center marginT-15">
+            <button class="btn btn-sm btn-primary" (click)="saveHittingStats()">  Save</button>
+            <button class="btn btn-sm btn-info" (click)="clearHittingStats()"> Cancel</button>
+        </div>
+    </td>
+</ng-template>

@@ -26,7 +26,7 @@ export class GameStatsComponent implements OnInit {
 
     get games(): Game[]
     {
-        console.log("get games");
+        //console.log("get games");
         console.log(this.repo.games);
 
         return this.repo.games;
@@ -40,8 +40,8 @@ export class GameStatsComponent implements OnInit {
 
     get teams(): Team[]
     {
-        console.log('selected team');
-        console.log(this.repo.teams);
+       // console.log('selected team');
+        //console.log(this.repo.teams);
         return this.repo.teams;
     }
 

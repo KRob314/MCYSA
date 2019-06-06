@@ -26,6 +26,7 @@ var gameEditor_component_1 = require("./gameEditor.component");
 var shared_module_1 = require("../shared.module");
 var game_stats_component_1 = require("./game-stats.component");
 var player_game_stats_component_1 = require("./player-game-stats/player-game-stats.component");
+var player_game_stats_editor_component_1 = require("./player-game-stats-editor/player-game-stats-editor.component");
 var AdminModule = /** @class */ (function () {
     function AdminModule() {
     }
@@ -37,7 +38,7 @@ var AdminModule = /** @class */ (function () {
                 playerAdmin_component_1.PlayerAdminComponent, playerEditor_component_1.PlayerEditorComponent,
                 tournamentEditor_component_1.TournamentEditorComponent, tournamentAdmin_component_1.TournamentAdminComponent,
                 ballparkAdmin_component_1.BallparkAdminComponent, ballparkEditor_component_1.BallparkEditorComponent,
-                gameAdmin_component_1.GameAdminComponent, gameEditor_component_1.GameEditorComponent, game_stats_component_1.GameStatsComponent, player_game_stats_component_1.PlayerGameStatsComponent] //, TournamentFilterComponent]
+                gameAdmin_component_1.GameAdminComponent, gameEditor_component_1.GameEditorComponent, game_stats_component_1.GameStatsComponent, player_game_stats_component_1.PlayerGameStatsComponent, player_game_stats_editor_component_1.PlayerGameStatsEditorComponent] //, TournamentFilterComponent]
         })
     ], AdminModule);
     return AdminModule;

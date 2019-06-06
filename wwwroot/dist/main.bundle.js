@@ -161,8 +161,26 @@ var Repository = (function () {
     };
     Repository.prototype.getGameStatsHitting = function (gameId, teamId) {
         var _this = this;
-        var url = statsHittingUrl + "?gameId=" + gameId + "&teamId=" + teamId;
+        // let url = statsHittingUrl + "?gameId=" + gameId + "&teamId=" + teamId;
+        var url = statsHittingUrl + "/" + gameId + "/" + teamId;
         this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestMethod */].Get, url).subscribe(function (response) { return _this.gameStatsHitting = response; });
+    };
+    Repository.prototype.getHittingStatsByGame = function (playerId, gameId) {
+        var _this = this;
+        console.log('getHittingStatsByGame()');
+        var url = statsHittingUrl + "/GetByPlayer/" + playerId + "/" + gameId;
+        //try
+        //{
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestMethod */].Get, url).subscribe(function (response) {
+            console.log(response);
+            _this.playerHittingStats = response;
+        });
+        //}
+        //catch (error)
+        //{
+        //console.log("getHittingStatsByGame() Error");
+        //console.log(error.message);
+        //}
     };
     Repository.prototype.sendRequest = function (verb, url, data) {
         return this.http.request(new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Request */]({
@@ -353,6 +371,25 @@ var Repository = (function () {
         if (confirm("Are you sure you want to delete this?")) {
             this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestMethod */].Delete, tournamentUrl + "/" + id).subscribe(function (response) { return _this.getTournaments(); });
         }
+    };
+    Repository.prototype.updateHittingStats = function (stats) {
+        var _this = this;
+        console.log('updateHittingStats()');
+        var data = {
+            playerId: stats.playerId,
+            gameId: stats.gameId,
+            pa: stats.pa,
+            ab: stats.ab,
+            singles: stats.singles,
+            doubles: stats.doubles,
+            triples: stats.triples,
+            homeruns: stats.homeruns,
+            hbp: stats.hbp,
+            bb: stats.bb,
+            battingAverage: stats.battingAverage
+        };
+        console.log(data);
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestMethod */].Put, statsHittingUrl + "/UpdatePlayerHittingStats/" + data.playerId + "/" + data.gameId, data).subscribe(function (response) { return _this.playerHittingStats; });
     };
     return Repository;
 }());
@@ -1063,7 +1100,7 @@ var GameStatsComponent = (function () {
     });
     Object.defineProperty(GameStatsComponent.prototype, "games", {
         get: function () {
-            console.log("get games");
+            //console.log("get games");
             console.log(this.repo.games);
             return this.repo.games;
         },
@@ -1079,8 +1116,8 @@ var GameStatsComponent = (function () {
     });
     Object.defineProperty(GameStatsComponent.prototype, "teams", {
         get: function () {
-            console.log('selected team');
-            console.log(this.repo.teams);
+            // console.log('selected team');
+            //console.log(this.repo.teams);
             return this.repo.teams;
         },
         enumerable: true,
@@ -1158,7 +1195,7 @@ var TeamTableComponent = (function () {
 TeamTableComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: "team-table",
-        template: __webpack_require__(208)
+        template: __webpack_require__(212)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object])
 ], TeamTableComponent);
@@ -1208,7 +1245,7 @@ var TeamDetailComponent = (function () {
 TeamDetailComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: "team-detail",
-        template: __webpack_require__(213)
+        template: __webpack_require__(217)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
 ], TeamDetailComponent);
@@ -1273,7 +1310,7 @@ var GameTableComponent = (function () {
 GameTableComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: "game-table",
-        template: __webpack_require__(214)
+        template: __webpack_require__(218)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object])
 ], GameTableComponent);
@@ -1323,7 +1360,7 @@ var BallparkDetailComponent = (function () {
 BallparkDetailComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: "ballpark-detail",
-        template: __webpack_require__(215)
+        template: __webpack_require__(219)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
 ], BallparkDetailComponent);
@@ -1418,17 +1455,17 @@ else {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__admin_admin_module__ = __webpack_require__(143);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_model_module__ = __webpack_require__(204);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(205);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_model_module__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(209);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__structure_teamTable_component__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__structure_stateFilter_component__ = __webpack_require__(209);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__structure_ageFilter_component__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__structure_stateFilter_component__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__structure_ageFilter_component__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__structure_teamDetail_component__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__structure_gameTable_component__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__structure_ballparkDetail_component__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__app_routing__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__app_routing__ = __webpack_require__(220);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__shared_module__ = __webpack_require__(93);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__structure_stateFilter_pipe__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__structure_stateFilter_pipe__ = __webpack_require__(221);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1508,6 +1545,7 @@ AppModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__shared_module__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__game_stats_component__ = __webpack_require__(94);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__player_game_stats_player_game_stats_component__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__player_game_stats_editor_player_game_stats_editor_component__ = __webpack_require__(205);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1534,6 +1572,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var AdminModule = (function () {
     function AdminModule() {
     }
@@ -1547,7 +1586,7 @@ AdminModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_8__playerAdmin_component__["a" /* PlayerAdminComponent */], __WEBPACK_IMPORTED_MODULE_9__playerEditor_component__["a" /* PlayerEditorComponent */],
             __WEBPACK_IMPORTED_MODULE_10__tournamentEditor_component__["a" /* TournamentEditorComponent */], __WEBPACK_IMPORTED_MODULE_11__tournamentAdmin_component__["a" /* TournamentAdminComponent */],
             __WEBPACK_IMPORTED_MODULE_12__ballparkAdmin_component__["a" /* BallparkAdminComponent */], __WEBPACK_IMPORTED_MODULE_13__ballparkEditor_component__["a" /* BallparkEditorComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__gameAdmin_component__["a" /* GameAdminComponent */], __WEBPACK_IMPORTED_MODULE_15__gameEditor_component__["a" /* GameEditorComponent */], __WEBPACK_IMPORTED_MODULE_17__game_stats_component__["a" /* GameStatsComponent */], __WEBPACK_IMPORTED_MODULE_18__player_game_stats_player_game_stats_component__["a" /* PlayerGameStatsComponent */]] //, TournamentFilterComponent]
+            __WEBPACK_IMPORTED_MODULE_14__gameAdmin_component__["a" /* GameAdminComponent */], __WEBPACK_IMPORTED_MODULE_15__gameEditor_component__["a" /* GameEditorComponent */], __WEBPACK_IMPORTED_MODULE_17__game_stats_component__["a" /* GameStatsComponent */], __WEBPACK_IMPORTED_MODULE_18__player_game_stats_player_game_stats_component__["a" /* PlayerGameStatsComponent */], __WEBPACK_IMPORTED_MODULE_19__player_game_stats_editor_player_game_stats_editor_component__["a" /* PlayerGameStatsEditorComponent */]] //, TournamentFilterComponent]
     })
 ], AdminModule);
 
@@ -2150,7 +2189,7 @@ module.exports = "<h3>Player Game Stats</h3>\r\n<div class=\"row\">\r\n    <div 
 /* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(21)(false);
+exports = module.exports = __webpack_require__(19)(false);
 // imports
 
 
@@ -2171,6 +2210,7 @@ module.exports = module.exports.toString();
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PlayerGameStatsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_statsHitting_model__ = __webpack_require__(202);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2182,28 +2222,59 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var PlayerGameStatsComponent = (function () {
     function PlayerGameStatsComponent(repo) {
         this.repo = repo;
+        this.tableMode = true;
+        this.isEdit = false;
     }
     PlayerGameStatsComponent.prototype.ngOnInit = function () {
     };
     Object.defineProperty(PlayerGameStatsComponent.prototype, "gameStatsHitting", {
         get: function () {
-            console.log('get gameStatsHitting()');
+            // console.log('get gameStatsHitting()');
             //console.log(this.repo.gameStatsHitting);
             return this.repo.gameStatsHitting;
         },
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(PlayerGameStatsComponent.prototype, "playerHittingStats", {
+        get: function () {
+            return this.repo.playerHittingStats;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    PlayerGameStatsComponent.prototype.selectHittingStats = function (playerId, gameId) {
+        console.log('selectHittingStats()');
+        this.repo.getHittingStatsByGame(playerId, gameId);
+        console.log("selectHittingStats() 2 ");
+        console.log(this.repo.playerHittingStats);
+        if (this.repo.playerHittingStats.playerId != 0) {
+            this.isEdit = true;
+        }
+    };
+    PlayerGameStatsComponent.prototype.clearHittingStats = function () {
+        this.repo.playerHittingStats = new __WEBPACK_IMPORTED_MODULE_2__models_statsHitting_model__["a" /* StatsHitting */]();
+        this.tableMode = true;
+        this.isEdit = false;
+    };
+    PlayerGameStatsComponent.prototype.saveHittingStats = function () {
+        console.log('saveHittingStats()');
+        console.log(this.repo.playerHittingStats);
+        if (this.repo.playerHittingStats.playerId != null)
+            this.repo.updateHittingStats(this.repo.playerHittingStats);
+        this.clearHittingStats();
+    };
     return PlayerGameStatsComponent;
 }());
 PlayerGameStatsComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'player-game-stats',
-        template: __webpack_require__(202),
-        styles: [__webpack_require__(203)]
+        template: __webpack_require__(203),
+        styles: [__webpack_require__(204)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], PlayerGameStatsComponent);
@@ -2213,15 +2284,43 @@ var _a;
 
 /***/ }),
 /* 202 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "\r\n\r\n<table class=\"table table-sm table-striped marginT-30\"> \r\n    <tr>\r\n        <th>Player</th>\r\n        <th>PA</th>\r\n        <th>AB</th>\r\n        <th>Singles</th>\r\n        <th>Doubles </th>\r\n        <th>Triples </th>\r\n        <th>HR </th>\r\n        <th>HBP </th>\r\n        <th>BB </th>\r\n        <th>Avg </th>\r\n    </tr>\r\n    <tr *ngFor=\"let s of gameStatsHitting\">\r\n        <td> <input [(ngModel)]=\"s.player.firstName\" class=\"form-control\" /> </td>\r\n        <td> <input [(ngModel)]=\"s.pa\" class=\"form-control\" /> </td>\r\n        <td><input [(ngModel)]=\"s.ab\" class=\"form-control\" /> </td>\r\n        <td><input [(ngModel)]=\"s.singles\" class=\"form-control\" /> </td>\r\n        <td> <input [(ngModel)]=\"s.doubles\" class=\"form-control\" /> </td>\r\n        <td><input [(ngModel)]=\"s.triples\" class=\"form-control\" /> </td>\r\n        <td><input [(ngModel)]=\"s.homeruns\" class=\"form-control\" /> </td>\r\n        <td> <input [(ngModel)]=\"s.hbp\" class=\"form-control\" /></td>\r\n        <td><input [(ngModel)]=\"s.bb\" class=\"form-control\" /> </td>\r\n        <td> <input [(ngModel)]=\"s.battingAverage\" class=\"form-control\" /></td>\r\n    </tr>\r\n\r\n    </table>\r\n"
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatsHitting; });
+var StatsHitting = (function () {
+    function StatsHitting(gameId, playerId, teamId, ab, pa, singles, doubles, triples, homeruns, hbp, bb, battingAverage, player, team) {
+        this.gameId = gameId;
+        this.playerId = playerId;
+        this.teamId = teamId;
+        this.ab = ab;
+        this.pa = pa;
+        this.singles = singles;
+        this.doubles = doubles;
+        this.triples = triples;
+        this.homeruns = homeruns;
+        this.hbp = hbp;
+        this.bb = bb;
+        this.battingAverage = battingAverage;
+        this.player = player;
+        this.team = team;
+    }
+    return StatsHitting;
+}());
+
+//# sourceMappingURL=statsHitting.model.js.map
 
 /***/ }),
 /* 203 */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n\r\n<table *ngIf=\"tableMode; else create\" class=\"table table-sm table-striped marginT-30\"> \r\n    <tr>\r\n        <th>Player</th>\r\n        <th>PA</th>\r\n        <th>AB</th>\r\n        <th>Singles</th>\r\n        <th>Doubles </th>\r\n        <th>Triples </th>\r\n        <th>HR </th>\r\n        <th>HBP </th>\r\n        <th>BB </th>\r\n        <th>Avg </th>\r\n        <th>Edit</th>\r\n    </tr>\r\n    <tr *ngFor=\"let s of gameStatsHitting\">\r\n        <ng-template [ngIf]=\"playerHittingStats?.playerId != s.playerId\" [ngIfElse]=\"edit\">\r\n            <td> {{s.player.firstName}} {{s.player.lastName}} </td>\r\n            <td> {{s.pa }}</td>\r\n            <td> {{s.ab }}</td>\r\n            <td> {{s.singles }}</td>\r\n            <td> {{s.doubles}}</td>\r\n            <td> {{s.triples}}</td>\r\n            <td> {{s.homeruns }}</td>\r\n            <td> {{s.hbp }}</td>\r\n            <td> {{s.bb }}</td>\r\n            <td> {{s.battingAverage }}</td>\r\n            <!--<td> <input [(ngModel)]=\"s.player.firstName\" class=\"form-control\" /> </td>\r\n    <td> <input [(ngModel)]=\"s.pa\" class=\"form-control\" /> </td>\r\n    <td><input [(ngModel)]=\"s.ab\" class=\"form-control\" /> </td>\r\n    <td><input [(ngModel)]=\"s.singles\" class=\"form-control\" /> </td>\r\n    <td> <input [(ngModel)]=\"s.doubles\" class=\"form-control\" /> </td>\r\n    <td><input [(ngModel)]=\"s.triples\" class=\"form-control\" /> </td>\r\n    <td><input [(ngModel)]=\"s.homeruns\" class=\"form-control\" /> </td>\r\n    <td> <input [(ngModel)]=\"s.hbp\" class=\"form-control\" /></td>\r\n    <td><input [(ngModel)]=\"s.bb\" class=\"form-control\" /> </td>\r\n    <td> <input [(ngModel)]=\"s.battingAverage\" class=\"form-control\" /></td>-->\r\n            <td> <button class=\"btn btn-sm btn-dark\" (click)=\"selectHittingStats(s.playerId, s.gameId)\">Edit</button> </td>\r\n        </ng-template>\r\n    </tr>\r\n\r\n    </table>\r\n\r\n\r\n<ng-template #edit>\r\n    <td colspan=\"6\">\r\n        <player-game-stats-editor></player-game-stats-editor>\r\n        <div class=\"text-center marginT-15\">\r\n            <button class=\"btn btn-sm btn-primary\" (click)=\"saveHittingStats()\">  Save</button>\r\n            <button class=\"btn btn-sm btn-info\" (click)=\"clearHittingStats()\"> Cancel</button>\r\n        </div>\r\n    </td>\r\n</ng-template>"
+
+/***/ }),
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(21)(false);
+exports = module.exports = __webpack_require__(19)(false);
 // imports
 
 
@@ -2235,7 +2334,76 @@ exports.push([module.i, "", ""]);
 module.exports = module.exports.toString();
 
 /***/ }),
-/* 204 */
+/* 205 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PlayerGameStatsEditorComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(2);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var PlayerGameStatsEditorComponent = (function () {
+    function PlayerGameStatsEditorComponent(repo) {
+        this.repo = repo;
+    }
+    PlayerGameStatsEditorComponent.prototype.ngOnInit = function () {
+    };
+    Object.defineProperty(PlayerGameStatsEditorComponent.prototype, "playerHittingStats", {
+        get: function () {
+            return this.repo.playerHittingStats;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return PlayerGameStatsEditorComponent;
+}());
+PlayerGameStatsEditorComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'player-game-stats-editor',
+        template: __webpack_require__(206),
+        styles: [__webpack_require__(207)]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
+], PlayerGameStatsEditorComponent);
+
+var _a;
+//# sourceMappingURL=player-game-stats-editor.component.js.map
+
+/***/ }),
+/* 206 */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n<div class=\"row\">\r\n    <div class=\"col-md-2\">\r\n        <label>Player</label>\r\n        <input class=\"form-control\" [(ngModel)]=\"playerHittingStats.playerId\" readonly=\"readonly\" />\r\n    </div>\r\n    <div class=\"col-md-2\">\r\n        <label>PA</label>\r\n        <input class=\"form-control\" [(ngModel)]=\"playerHittingStats.pa\" type=\"number\"/>\r\n    </div>\r\n    <div class=\"col-md-2\">\r\n        <label>AB</label>\r\n        <input class=\"form-control\" [(ngModel)]=\"playerHittingStats.ab\" type=\"number\"/>\r\n    </div>\r\n    <div class=\"col-md-2\">\r\n        <label>HBP</label>\r\n        <input class=\"form-control\" [(ngModel)]=\"playerHittingStats.hbp\" type=\"number\"/>\r\n    </div>\r\n    <div class=\"col-md-2\">\r\n        <label>BB</label>\r\n        <input class=\"form-control\" [(ngModel)]=\"playerHittingStats.bb\" type=\"number\"/>\r\n    </div>\r\n</div>\r\n<div class=\"row\">\r\n    <div class=\"col-md-2\">\r\n        <label>Singles</label>\r\n        <input class=\"form-control\" [(ngModel)]=\"playerHittingStats.singles\" type=\"number\"/>\r\n    </div>\r\n    <div class=\"col-md-2\">\r\n        <label>Doubles</label>\r\n        <input class=\"form-control\" [(ngModel)]=\"playerHittingStats.doubles\" type=\"number\"/>\r\n    </div>\r\n    <div class=\"col-md-2\">\r\n        <label>Triples</label>\r\n        <input class=\"form-control\" [(ngModel)]=\"playerHittingStats.triples\" type=\"number\"/>\r\n    </div>\r\n    <div class=\"col-md-2\">\r\n        <label>HR</label>\r\n        <input class=\"form-control\" [(ngModel)]=\"playerHittingStats.homeruns\" type=\"number\" />\r\n    </div>\r\n    <div class=\"col-md-2\">\r\n        <label>BA</label>\r\n        <input class=\"form-control\" [(ngModel)]=\"playerHittingStats.battingAverage\" \r\n               value=\"{{((playerHittingStats.singles + playerHittingStats.doubles + playerHittingStats.triples + playerHittingStats.homeruns) / playerHittingStats.ab) | number : '1.3' }}\" />\r\n    </div>\r\n\r\n</div>\r\n\r\n\r\n"
+
+/***/ }),
+/* 207 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(19)(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+/* 208 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2264,7 +2432,7 @@ ModelModule = __decorate([
 //# sourceMappingURL=model.module.js.map
 
 /***/ }),
-/* 205 */
+/* 209 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2319,8 +2487,8 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-root',
-        template: __webpack_require__(206),
-        styles: [__webpack_require__(207)]
+        template: __webpack_require__(210),
+        styles: [__webpack_require__(211)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], AppComponent);
@@ -2329,16 +2497,16 @@ var _a;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
-/* 206 */
+/* 210 */
 /***/ (function(module, exports) {
 
 module.exports = "<!--<article>\r\n    <div class=\"row\">\r\n        <div class=\"col-md-2\">\r\n            <button class=\"btn btn-block btn-outline-info\" routerLink=\"/\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Teams</button>\r\n            <button class=\"btn btn-block btn-outline-info\" routerLink=\"/games\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Games</button>\r\n            <button class=\"btn btn-block btn-outline-info\" routerLink=\"/admin\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Admin</button>\r\n        </div>\r\n        <div class=\"col-md-10\">\r\n            <router-outlet></router-outlet>\r\n        </div>\r\n    </div>\r\n</article>-->\r\n\r\n<nav class=\"navbar navbar-expand-md navbar-dark fixed-top bg-dark\">\r\n    <a class=\"navbar-brand\" href=\"#\">MCYSA</a>\r\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n        <span class=\"navbar-toggler-icon\"></span>\r\n    </button>\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">\r\n        <ul class=\"navbar-nav mr-auto\">\r\n            <li class=\"nav-item\">\r\n                <!--<button class=\"btn btn-block btn-outline-info\" routerLink=\"/\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Teams</button>-->\r\n                <a class=\"nav-link\" href=\"#\" routerLink=\"/\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\">Teams</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n                <!--<button class=\"btn btn-block btn-outline-info\" routerLink=\"/games\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\"> Games</button>-->\r\n                <a class=\"nav-link\" href=\"#\" routerLink=\"/games\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\">Games</a>\r\n            </li>\r\n\r\n            <!--<li class=\"nav-item\">\r\n                <a class=\"nav-link\" href=\"#\" routerLink=\"/admin\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\">Admin</a>\r\n            </li>-->\r\n\r\n            <li class=\"nav-item dropdown\">\r\n                <a class=\"nav-link dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\"  role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Admin</a>\r\n                <div class=\"dropdown-menu\">\r\n                    <a class=\"dropdown-item\" href=\"#\" routerLink=\"/admin/ballparks\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\">Ballparks</a>\r\n                    <a class=\"dropdown-item\" href=\"#\" routerLink=\"/admin/teams\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\">Teams</a>\r\n                    <a class=\"dropdown-item\" href=\"#\" routerLink=\"/admin/players\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\">Players</a>\r\n                    <a class=\"dropdown-item\" href=\"#\" routerLink=\"/admin/tournaments\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\">Tournaments</a>\r\n                    <a class=\"dropdown-item\" href=\"#\" routerLink=\"/admin/games\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact: true}\">Games</a>\r\n                    <a class=\"dropdown-item\" href=\"#\" routerLink=\"/admin/stats\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\">Stats</a>\r\n                    <!--<div class=\"dropdown-divider\"></div>\r\n                    <a class=\"dropdown-item\" href=\"#\">Separated link</a>-->\r\n                </div>\r\n            </li>\r\n\r\n        </ul>\r\n        <!--<form class=\"form-inline mt-2 mt-md-0\">\r\n            <input class=\"form-control mr-sm-2\" type=\"text\" placeholder=\"Search\" aria-label=\"Search\">\r\n            <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\r\n        </form>-->\r\n    </div>\r\n</nav>\r\n<main class=\"container-fluid margin marginT-30\" >\r\n    <router-outlet></router-outlet>\r\n</main>"
 
 /***/ }),
-/* 207 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(21)(false);
+exports = module.exports = __webpack_require__(19)(false);
 // imports
 
 
@@ -2352,13 +2520,13 @@ exports.push([module.i, "", ""]);
 module.exports = module.exports.toString();
 
 /***/ }),
-/* 208 */
+/* 212 */
 /***/ (function(module, exports) {
 
 module.exports = "\r\n<div class=\"row\">\r\n    <div class=\"col-6\">\r\n        <state-filter></state-filter>\r\n    </div>\r\n    <div class=\"col-6\">\r\n        <age-filter class=\"float-right\"></age-filter>\r\n    </div>\r\n</div>\r\n\r\n<table class=\"table table-striped marginT-15\">\r\n    <tr>\r\n        <th>Team Name</th>\r\n        <th>Record</th>\r\n        <th>Age Group</th>\r\n        <th>Manager First Name</th>\r\n        <th>Manager Last Name</th>\r\n        <th>State</th>\r\n        <th></th>\r\n    </tr>\r\n    <tr *ngFor=\"let team of teams\">\r\n        <td>{{team?.teamName || 'Loading Data...'}}</td>\r\n        <td>{{team?.record}}</td>\r\n        <td>{{team?.ageGroup.name || 'Loading data ...'}}</td>\r\n        <td>{{team?.managerFirstName}}</td>\r\n        <td>{{team?.managerLastName}}</td>\r\n        <td>{{team?.state.name}}</td>\r\n        <td> <button class=\"btn btn-default btn-sm\" [routerLink]=\"['/teamDetail', team.id]\">Details</button></td>\r\n    </tr>\r\n</table>\r\n\r\n<!-- (click)=\"selectTeam(team.id)\" data-toggle=\"modal\" data-target=\"#myModal\"-->"
 
 /***/ }),
-/* 209 */
+/* 213 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2395,7 +2563,7 @@ var StateFilterComponent = (function () {
 StateFilterComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: "state-filter",
-        template: __webpack_require__(210)
+        template: __webpack_require__(214)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], StateFilterComponent);
@@ -2404,13 +2572,13 @@ var _a;
 //# sourceMappingURL=stateFilter.component.js.map
 
 /***/ }),
-/* 210 */
+/* 214 */
 /***/ (function(module, exports) {
 
 module.exports = "<!--<div class=\"btn-group\" role=\"group\" aria-label=\"...\" >\r\n    <button class=\"btn btn-info\" (click)=\"setState('va')\">VA</button>\r\n    <button class=\"btn btn-info\" (click)=\"setState('md')\">MD</button>\r\n    <button class=\"btn btn-info\" (click)=\"setState(null)\">All</button>\r\n</div>-->\r\n\r\n<div class=\"btn-group pull-right\" role=\"group\" aria-label=\"...\">\r\n    <div *ngFor=\"let s of repo.teams | filterUniqueStates\">\r\n        <button class=\"btn btn-info\" (click)=\"setState(s)\">{{s}}  </button> &nbsp;\r\n    </div>\r\n    <button class=\"btn btn-info\" (click)=\"setState()\" value=\"All\">All</button>\r\n</div>\r\n\r\n<!--*ngIf=\"i<5;\"  let i=index-->"
 
 /***/ }),
-/* 211 */
+/* 215 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2445,7 +2613,7 @@ var AgeFilterComponent = (function () {
 AgeFilterComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: "age-filter",
-        template: __webpack_require__(212)
+        template: __webpack_require__(216)
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], AgeFilterComponent);
@@ -2454,31 +2622,31 @@ var _a;
 //# sourceMappingURL=ageFilter.component.js.map
 
 /***/ }),
-/* 212 */
+/* 216 */
 /***/ (function(module, exports) {
 
 module.exports = "<!--<div class=\"btn-group pull-right\" role=\"group\" aria-label=\"...\">\r\n    <button class=\"btn btn-info\" (click)=\"setAge(11)\">11u</button>\r\n    <button class=\"btn btn-info\" (click)=\"setAge(12)\">12u</button>\r\n    <button class=\"btn btn-info\" (click)=\"setAge(null)\">All</button>\r\n</div>-->\r\n\r\n\r\n<div class=\"btn-group pull-right\" role=\"group\" aria-label=\"...\">\r\n    <div *ngFor=\"let a of repo.ageGroups\">\r\n        <button class=\"btn btn-info\" (click)=\"setAge(a.id)\">{{a.name}}  </button> &nbsp;\r\n    </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
-/* 213 */
+/* 217 */
 /***/ (function(module, exports) {
 
 module.exports = "\r\n<article class=\"container\">\r\n    <section>\r\n        <h3>Team Info</h3>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-3\">\r\n                <span class=\"text-muted\">Team Name</span> <br />\r\n                {{team?.teamName}}\r\n            </div>\r\n            <div class=\"col-md-3\">\r\n                <span class=\"text-muted\">Age Group</span> <br />\r\n                {{team?.ageGroup.name}}\r\n            </div>\r\n            <div class=\"col-md-3\">\r\n                <span class=\"text-muted\">Manager First Name</span> <br />\r\n                {{team?.managerFirstName}}\r\n            </div>\r\n            <div class=\"col-md-3\">\r\n                <span class=\"text-muted\">Manager Last Name</span> <br />\r\n                {{team?.managerLastName}}\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"row marginT-15\">\r\n            <div class=\"col-md-3\">\r\n                <span class=\"text-muted\">Manager Email</span> <br />\r\n                {{team?.email}}\r\n            </div>\r\n            <div class=\"col-md-3\">\r\n                <span class=\"text-muted\">Manager Phone</span> <br />\r\n                {{team?.phone}}\r\n            </div>\r\n            <div class=\"col-md-3\">\r\n                <span class=\"text-muted\">Street</span> <br />\r\n                {{team?.street}}\r\n            </div>\r\n            <div class=\"col-md-3\">\r\n                <span class=\"text-muted\">City</span> <br />\r\n                {{team?.city}}\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"row marginT-15\">\r\n            <div class=\"col-md-3\">\r\n                <span class=\"text-muted\">State</span> <br />\r\n                {{team?.state.name}}\r\n            </div>\r\n            <div class=\"col-md-3\">\r\n                <span class=\"text-muted\">Zip</span> <br />\r\n                {{team?.zip}}\r\n            </div>\r\n            <div class=\"col-md-3\">\r\n                <span class=\"text-muted\">POC Name</span> <br />\r\n                {{team?.pocFirstName}} {{team?.pocLastName}}\r\n            </div>\r\n            <div class=\"col-md-3\">\r\n                <span class=\"text-muted\">POC Email</span> <br />\r\n                {{team?.pocEmail}}\r\n            </div>\r\n        </div>\r\n    </section>\r\n\r\n\r\n    <section class=\"marginT-15\">\r\n        <h3>Players</h3>\r\n        <table class=\"table table-striped table-condensed table-responsive marginT-15\">\r\n            <tr>\r\n                <th>First Name</th>\r\n                <th>Last Name</th>\r\n                <th>DOB</th>\r\n            </tr>\r\n\r\n            <tr *ngFor=\"let player of team?.players\">\r\n                <td>{{player?.firstName}}</td>\r\n                <td>{{player?.lastName}}</td>\r\n                <td>{{player?.dob | date:'short'}}</td>\r\n            </tr>\r\n        </table>\r\n    </section>\r\n\r\n\r\n    <div class=\"text-center\">\r\n        <button class=\"btn btn-primary\" routerLink=\"/\">Back</button>\r\n        <button class=\"btn btn-info\" routerLink=\"/admin\">Admin</button>\r\n    </div>\r\n\r\n</article>"
 
 /***/ }),
-/* 214 */
+/* 218 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row\">\r\n    <div class=\"col-6\">\r\n        <!--<state-filter></state-filter>-->\r\n        <tournament-filter></tournament-filter>\r\n    </div>\r\n    <div class=\"col-6\">\r\n        <age-filter class=\"float-right\"></age-filter>\r\n    </div>\r\n</div>\r\n\r\n\r\n<table class=\"table table-striped marginT-15\">\r\n    <tr>\r\n        <th >Home Team</th>\r\n        <th>Away Team</th>\r\n        <th>Ballpark</th>\r\n        <th>Game Date</th>\r\n        <th>Home Team Runs</th>\r\n        <th>Away Team Runs</th>\r\n        <!--<th></th>-->\r\n    </tr>\r\n    <tr *ngFor=\"let game of games\" [ngClass]=\"setStyle(game)\" >\r\n        <td>{{game?.homeTeam.teamName || 'Loading Data...'}}</td>\r\n        <td>{{game?.awayTeam.teamName || 'Loading data ...'}}</td>\r\n        <td><button class=\"btn btn-sm\" [routerLink]=\"['/ballparkDetail', game.ballparkId]\"> {{game?.ballpark.name}}</button></td>\r\n        <td>{{game?.gameDate | date:'short'}}</td>\r\n        <td>{{game?.homeTeamRuns}}</td>\r\n        <td>{{game?.awayTeamRuns}}</td>\r\n        <!--<td> <button class=\"btn btn-default btn-sm\" [routerLink]=\"['/gameDetail', game.id]\">Details</button></td>-->\r\n    </tr>\r\n</table>\r\n\r\n<!-- (click)=\"selectTeam(team.id)\" data-toggle=\"modal\" data-target=\"#myModal\"-->"
 
 /***/ }),
-/* 215 */
+/* 219 */
 /***/ (function(module, exports) {
 
 module.exports = "\r\n<article class=\"container\">\r\n\r\n    <table class=\"table table-striped table-condensed table-responsive marginT-15\">\r\n        <tr><th>Ballpark</th> <td>{{ballpark?.name}}</td></tr>\r\n        <tr><th>Street </th> <td>{{ballpark?.street}} </td></tr>\r\n        <tr><th>City </th><td>{{ballpark?.city}} </td></tr>\r\n        <tr><th>State</th> <td>{{ballpark?.stateId}}</td>  </tr>\r\n        <tr><th>Zip</th>  <td>{{ballpark?.zip}} </td></tr>\r\n        <tr><th>Google Maps</th> <td><a href=\"https://www.google.com/maps/search/{{ballpark.name}} {{ballpark.city}} {{ballpark.stateId}}\" target=\"_blank\"><img src=\"/images/Maps-icon.png\" height=\"45\" /></a></td></tr>\r\n    </table>\r\n    <div class=\"text-center\">\r\n        <button class=\"btn btn-primary\" routerLink=\"/games\">Back</button>\r\n        <button class=\"btn btn-info\" routerLink=\"/admin\">Admin</button>\r\n    </div>\r\n\r\n</article>"
 
 /***/ }),
-/* 216 */
+/* 220 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2533,7 +2701,7 @@ var RoutingConfig = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterM
 //# sourceMappingURL=app.routing.js.map
 
 /***/ }),
-/* 217 */
+/* 221 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

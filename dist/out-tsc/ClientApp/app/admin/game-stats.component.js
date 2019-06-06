@@ -26,7 +26,7 @@ var GameStatsComponent = /** @class */ (function () {
     });
     Object.defineProperty(GameStatsComponent.prototype, "games", {
         get: function () {
-            console.log("get games");
+            //console.log("get games");
             console.log(this.repo.games);
             return this.repo.games;
         },
@@ -42,8 +42,8 @@ var GameStatsComponent = /** @class */ (function () {
     });
     Object.defineProperty(GameStatsComponent.prototype, "teams", {
         get: function () {
-            console.log('selected team');
-            console.log(this.repo.teams);
+            // console.log('selected team');
+            //console.log(this.repo.teams);
             return this.repo.teams;
         },
         enumerable: true,

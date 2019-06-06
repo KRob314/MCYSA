@@ -38,6 +38,7 @@ export class Repository
 	player: Player;
     players: Player[];
     gameStatsHitting: StatsHitting[];
+    playerHittingStats: StatsHitting;
 
     constructor(private http: Http)
     {
@@ -200,9 +201,33 @@ export class Repository
 
     getGameStatsHitting( gameId: number, teamId: number)
     {
-        let url = statsHittingUrl + "?gameId=" + gameId + "&teamId=" + teamId;
+       // let url = statsHittingUrl + "?gameId=" + gameId + "&teamId=" + teamId;
+        let url = statsHittingUrl + "/" + gameId + "/" + teamId;
 
         this.sendRequest(RequestMethod.Get, url).subscribe(response => this.gameStatsHitting = response);
+    }
+
+    getHittingStatsByGame(playerId: number, gameId: number)
+    {
+        console.log('getHittingStatsByGame()');
+
+        let url = statsHittingUrl + "/GetByPlayer/" + playerId + "/" + gameId;
+
+        //try
+        //{
+            this.sendRequest(RequestMethod.Get, url).subscribe(response =>
+            {
+
+                console.log(response);
+
+                this.playerHittingStats = response;
+            });
+        //}
+        //catch (error)
+        //{
+            //console.log("getHittingStatsByGame() Error");
+            //console.log(error.message);
+        //}
     }
 
     private sendRequest(verb: RequestMethod, url: string, data?: any): Observable<any>
@@ -443,6 +468,30 @@ export class Repository
 			this.sendRequest(RequestMethod.Delete, tournamentUrl + "/" + id).subscribe(response => this.getTournaments());
 		}
 	}
+
+    updateHittingStats(stats: StatsHitting)
+    {
+        console.log('updateHittingStats()');
+
+        let data =
+            {
+                playerId: stats.playerId,
+                gameId: stats.gameId,
+                pa: stats.pa,
+                ab: stats.ab,
+                singles: stats.singles,
+                doubles: stats.doubles,
+                triples: stats.triples,
+                homeruns: stats.homeruns,
+                hbp: stats.hbp,
+                bb: stats.bb,
+                battingAverage: stats.battingAverage
+            };
+
+        console.log(data);
+
+        this.sendRequest(RequestMethod.Put, statsHittingUrl + "/UpdatePlayerHittingStats/" + data.playerId + "/" + data.gameId, data).subscribe(response => this.playerHittingStats);
+    }
 
     //get team(): Team
     //{

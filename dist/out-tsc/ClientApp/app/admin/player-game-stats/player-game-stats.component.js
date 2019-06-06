@@ -11,21 +11,53 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("../../models/repository");
+var statsHitting_model_1 = require("../../models/statsHitting.model");
 var PlayerGameStatsComponent = /** @class */ (function () {
     function PlayerGameStatsComponent(repo) {
         this.repo = repo;
+        this.tableMode = true;
+        this.isEdit = false;
     }
     PlayerGameStatsComponent.prototype.ngOnInit = function () {
     };
     Object.defineProperty(PlayerGameStatsComponent.prototype, "gameStatsHitting", {
         get: function () {
-            console.log('get gameStatsHitting()');
+            // console.log('get gameStatsHitting()');
             //console.log(this.repo.gameStatsHitting);
             return this.repo.gameStatsHitting;
         },
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(PlayerGameStatsComponent.prototype, "playerHittingStats", {
+        get: function () {
+            return this.repo.playerHittingStats;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    PlayerGameStatsComponent.prototype.selectHittingStats = function (playerId, gameId) {
+        console.log('selectHittingStats()');
+        this.repo.getHittingStatsByGame(playerId, gameId);
+        console.log("selectHittingStats() 2 ");
+        console.log(this.repo.playerHittingStats);
+        if (this.repo.playerHittingStats.playerId != 0) {
+            this.isEdit = true;
+        }
+    };
+    PlayerGameStatsComponent.prototype.clearHittingStats = function () {
+        this.repo.playerHittingStats = new statsHitting_model_1.StatsHitting();
+        this.tableMode = true;
+        this.isEdit = false;
+    };
+    PlayerGameStatsComponent.prototype.saveHittingStats = function () {
+        console.log('saveHittingStats()');
+        console.log(this.repo.playerHittingStats);
+        if (this.repo.playerHittingStats.playerId != null)
+            this.repo.updateHittingStats(this.repo.playerHittingStats);
+        this.repo.getGameStatsHitting(this.repo.playerHittingStats.gameId, this.repo.filter.teamId);
+        this.clearHittingStats();
+    };
     PlayerGameStatsComponent = __decorate([
         core_1.Component({
             selector: 'player-game-stats',

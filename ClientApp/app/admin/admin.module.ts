@@ -18,6 +18,7 @@ import { GameEditorComponent } from "./gameEditor.component";
 import { SharedModule } from "../shared.module";
 import { GameStatsComponent } from './game-stats.component';
 import { PlayerGameStatsComponent } from './player-game-stats/player-game-stats.component';
+import { PlayerGameStatsEditorComponent } from './player-game-stats-editor/player-game-stats-editor.component';
 
 @NgModule({
     imports: [BrowserModule, RouterModule, FormsModule, SharedModule],
@@ -26,7 +27,7 @@ import { PlayerGameStatsComponent } from './player-game-stats/player-game-stats.
 		PlayerAdminComponent, PlayerEditorComponent,
 		TournamentEditorComponent, TournamentAdminComponent,
 		BallparkAdminComponent, BallparkEditorComponent,
-	GameAdminComponent, GameEditorComponent, GameStatsComponent, PlayerGameStatsComponent] //, TournamentFilterComponent]
+	GameAdminComponent, GameEditorComponent, GameStatsComponent, PlayerGameStatsComponent, PlayerGameStatsEditorComponent] //, TournamentFilterComponent]
 })
 
 export class AdminModule { }
