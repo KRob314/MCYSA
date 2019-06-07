@@ -16,14 +16,23 @@ var TeamDetailComponent = /** @class */ (function () {
     function TeamDetailComponent(repo, router, activeRoute) {
         this.repo = repo;
         var id = Number.parseInt(activeRoute.snapshot.params["id"]);
-        if (id)
+        if (id) {
             this.repo.getTeam(id);
+            this.repo.getTeamCombinedHittingStats(id);
+        }
         else
             router.navigateByUrl("/");
     }
     Object.defineProperty(TeamDetailComponent.prototype, "team", {
         get: function () {
             return this.repo.team;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TeamDetailComponent.prototype, "teamCombinedHittingStats", {
+        get: function () {
+            return this.repo.teamCombinedHittingStats;
         },
         enumerable: true,
         configurable: true

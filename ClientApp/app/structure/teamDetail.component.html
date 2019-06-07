@@ -60,24 +60,36 @@
         </div>
     </section>
 
-
     <section class="marginT-15">
-        <h3>Players</h3>
-        <table class="table table-striped table-condensed table-responsive marginT-15">
+        <h3>Player Stats</h3>
+        <table class="table table-striped" style="width:100%;">
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>DOB</th>
+                <th>Player</th>
+                <th>PA</th>
+                <th>AB</th>
+                <th>Singles</th>
+                <th>Doubles </th>
+                <th>Triples </th>
+                <th>HR </th>
+                <th>HBP </th>
+                <th>BB </th>
+                <th>Avg </th>
             </tr>
 
-            <tr *ngFor="let player of team?.players">
-                <td>{{player?.firstName}}</td>
-                <td>{{player?.lastName}}</td>
-                <td>{{player?.dob | date:'short'}}</td>
+            <tr *ngFor="let s of teamCombinedHittingStats">
+                <td> {{s.player.firstName}} {{s.player.lastName}} </td>
+                <td> {{s.pa }}</td>
+                <td> {{s.ab }}</td>
+                <td> {{s.singles }}</td>
+                <td> {{s.doubles}}</td>
+                <td> {{s.triples}}</td>
+                <td> {{s.homeruns }}</td>
+                <td> {{s.hbp }}</td>
+                <td> {{s.bb }}</td>
+                <td> {{s.battingAverage | number : '1.3' }}</td>
             </tr>
         </table>
     </section>
-
 
     <div class="text-center">
         <button class="btn btn-primary" routerLink="/">Back</button>

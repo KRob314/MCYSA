@@ -55,7 +55,6 @@ var PlayerGameStatsComponent = /** @class */ (function () {
         console.log(this.repo.playerHittingStats);
         if (this.repo.playerHittingStats.playerId != null)
             this.repo.updateHittingStats(this.repo.playerHittingStats);
-        this.repo.getGameStatsHitting(this.repo.playerHittingStats.gameId, this.repo.filter.teamId);
         this.clearHittingStats();
     };
     PlayerGameStatsComponent = __decorate([

@@ -22,6 +22,45 @@ namespace MCYSA.Controllers
             this.context = context;
         }
 
+        [Route("GetTeamHittingStats/{teamId}")]
+        [HttpGet]
+        public List<StatsHittingData> GetTeamHittingStats(int teamId)
+        {
+            var players = context.Players.Where(p => p.TeamId == teamId);
+            List<StatsHittingData> data = new List<StatsHittingData>();
+
+
+            foreach(var p in players)
+            {
+                var hittingStats = context.Stats_Hitting.Where(h => h.PlayerId == p.Id);
+
+
+                StatsHittingData combinedStats = new StatsHittingData()
+                {
+                    PlayerId = p.Id,
+                    Player = p
+                };
+
+                foreach(var s in hittingStats)
+                {
+                    s.Player.Stats_Hitting = null;
+                    combinedStats.PA += s.PA;
+                    combinedStats.AB += s.AB;
+                    combinedStats.Singles += s.Singles;
+                    combinedStats.Doubles += s.Doubles;
+                    combinedStats.Triples += s.Triples;
+                    combinedStats.Homeruns += s.Homeruns;
+                    GetBattingAvg(combinedStats);                   
+                }
+
+                data.Add(combinedStats);
+
+            }
+
+            return data;
+
+        }
+
 
         [HttpGet("{gameId}/{teamId}")]
         //[Route("api/GetStats_Hitting")]

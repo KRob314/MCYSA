@@ -3,6 +3,7 @@ import { Repository } from "../models/repository";
 import { Team } from "../models/team.model";
 import { Router, ActivatedRoute } from "@angular/router";
 import { DatePipe } from "@angular/common";
+import { StatsHitting } from "../models/statsHitting.model";
 
 
 @Component({
@@ -17,7 +18,10 @@ export class TeamDetailComponent
         let id = Number.parseInt(activeRoute.snapshot.params["id"]);
 
         if (id)
+        {
             this.repo.getTeam(id);
+            this.repo.getTeamCombinedHittingStats(id);
+        }
         else
             router.navigateByUrl("/");
     }
@@ -27,4 +31,10 @@ export class TeamDetailComponent
 	
         return this.repo.team;
     }
+
+    get teamCombinedHittingStats(): StatsHitting[]
+    {
+        return this.repo.teamCombinedHittingStats;
+    }
+
 }

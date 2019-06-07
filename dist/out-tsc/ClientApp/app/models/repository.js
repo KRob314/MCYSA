@@ -171,6 +171,14 @@ var Repository = /** @class */ (function () {
         //console.log(error.message);
         //}
     };
+    Repository.prototype.getTeamCombinedHittingStats = function (teamId) {
+        var _this = this;
+        var url = statsHittingUrl + "/GetTeamHittingStats/" + teamId;
+        this.sendRequest(http_1.RequestMethod.Get, url).subscribe(function (response) {
+            console.log(response);
+            _this.teamCombinedHittingStats = response;
+        });
+    };
     Repository.prototype.sendRequest = function (verb, url, data) {
         return this.http.request(new http_1.Request({
             method: verb, url: url, body: data

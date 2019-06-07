@@ -37,6 +37,7 @@ export class Repository
 	games: Game[];
 	player: Player;
     players: Player[];
+    teamCombinedHittingStats: StatsHitting[];
     gameStatsHitting: StatsHitting[];
     playerHittingStats: StatsHitting;
 
@@ -228,6 +229,19 @@ export class Repository
             //console.log("getHittingStatsByGame() Error");
             //console.log(error.message);
         //}
+    }
+
+    getTeamCombinedHittingStats(teamId: number)
+    {
+        let url = statsHittingUrl + "/GetTeamHittingStats/" + teamId;
+
+        this.sendRequest(RequestMethod.Get, url).subscribe(response =>
+        {
+
+            console.log(response);
+
+            this.teamCombinedHittingStats = response;
+        });
     }
 
     private sendRequest(verb: RequestMethod, url: string, data?: any): Observable<any>

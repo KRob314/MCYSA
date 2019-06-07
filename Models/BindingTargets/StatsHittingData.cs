@@ -22,6 +22,7 @@ namespace MCYSA.Models.BindingTargets
         public int HBP { get; set; }
         public decimal BattingAverage { get; set; }
 
+        public Player Player { get; set; }
 
         public Stats_Hitting statsHitting => new Stats_Hitting
         {
@@ -35,7 +36,8 @@ namespace MCYSA.Models.BindingTargets
             Homeruns = Homeruns,
             HBP = HBP,
             BB = BB,
-            BattingAverage = BattingAverage
+            BattingAverage = BattingAverage,
+            Player = Player
         };
 
     }
